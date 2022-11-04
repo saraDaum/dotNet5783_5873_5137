@@ -8,7 +8,7 @@ namespace stage0
         static void Main (string[] rags)
         {
             welcome5873();
-            welcome5874();
+            welcome0000();
             Console.ReadKey();
         }
 
@@ -18,7 +18,7 @@ namespace stage0
             string userName = Console.ReadLine();
             Console.WriteLine("{0}, welcome to my first console application.", userName);
         }
-        static partial void welcome5874() { }
+        static partial void welcome0000();
     }
 
 }
