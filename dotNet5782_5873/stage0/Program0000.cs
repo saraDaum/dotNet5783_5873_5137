@@ -8,6 +8,9 @@ namespace stage0
 {
     internal partial class Program
     {
+        /// <summary>
+        /// aaaa
+        /// </summary>
         static partial void welcome0000()
         {
             Console.WriteLine("Is it working?");
