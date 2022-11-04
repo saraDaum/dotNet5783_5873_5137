@@ -8,12 +8,12 @@ namespace stage0
 {
     internal partial class Program
     {
-        /// <summary>
-        /// aaaa
-        /// </summary>
+       
+        //Done by Sara.
+        
         static partial void welcome0000()
         {
-            Console.WriteLine("Is it working?");
+            Console.WriteLine("Is it working?\nYes! it is!!");
         }
 
     }
