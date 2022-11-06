@@ -10,6 +10,7 @@ namespace DO;
 
 ///<summary>
 /// Structure for Order
+/// Every order have the details of the transaction. Cusomer details, time of order, shiping time ect.
 /// </summary>
 public struct Order
 {
@@ -22,7 +23,7 @@ public struct Order
     public DateTime DeliveryDate { get; set; }
     public override string ToString() => $@"
     Product details:\n
-    Product ID={ID}: {CustomerName}, 
+    Product barkode={Barcode}: {ProductName}, 
     category: {Category},
     Price: {Price},
    	Amount in stock: {InStock}";
