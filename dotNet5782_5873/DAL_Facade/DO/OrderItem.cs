@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace DO;
 
 ///<summary>
-/// Structure for Order
-/// Every order have the details of the transaction. Cusomer details, time of order, shiping time ect.
+/// Structure for OrderItem:
+/// Every OrderItem have the details of the item that order. Price, amount ect.
 /// </summary>
 public struct OrderItem
 {

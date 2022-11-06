@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace DO;
 
 ///<summary>
-/// Structure for Order
+/// Structure for Order:
 /// Every order have the details of the transaction. Cusomer details, time of order, shiping time ect.
 /// </summary>
 public struct Order

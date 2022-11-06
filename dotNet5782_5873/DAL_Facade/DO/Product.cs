@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace DO;
 
+///<summary>
+/// Structure for Product:
+/// Every product have the details like: product name, product price, product amount in stock ect.
+/// </summary>
 public struct Product
 {
     public int Barcode { get; set; }
