@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static DO.Enums;
 
 namespace DO;
 
@@ -18,4 +20,10 @@ public struct Product
     public double ProductPrice { get; set; }
     public int InStock { get; set; }
 
+    public override string ToString() => $@"
+    Product details:\n
+    Product barkode={Barcode}: {ProductName}, 
+    category: {Category},
+    Price: {ProductPrice},
+   	Amount in stock: {InStock}";
 }

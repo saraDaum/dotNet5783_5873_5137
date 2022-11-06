@@ -5,7 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DO;
-internal class Enums
+public struct Enums
 {
+    public enum Category
+    {
+        Pencils, 
+        lipstiks,
+        blushes,
+        bronzers,
+        makeup,
+
+    }
 
 }

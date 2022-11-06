@@ -1,6 +1,6 @@
 ﻿namespace DAL_List
 {
-    public class Class1
+    public class DALProduct
     {
 
     }
