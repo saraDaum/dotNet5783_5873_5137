@@ -5,7 +5,7 @@ namespace stage0
 {
     partial class Program
     {
-        static void Main (string[] args)
+        static void Main(string[] args)
         {
             welcome5873();
             welcome0000();
