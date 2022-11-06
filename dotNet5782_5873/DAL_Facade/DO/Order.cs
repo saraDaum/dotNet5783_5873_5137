@@ -14,16 +14,21 @@ namespace DO;
 public struct Order
 {
     public int ID { get; set; }
-    public int price { get; set; }
-    public string category { get; set; }
-    public string name { get; set; }
-    public bool inStock { get; set; }
+    public int Price { get; set; }
+    public string Category { get; set; }
+    public string CustomerName { get; set; }
+    public string CustomerEmail { get; set; }
+    public string CustomerAddress { get; set; }
+    public int InStock { get; set; }
+    public DateTime OrderDate { get; set; }
+    public DateTime ShipDate { get; set; }
+    public DateTime DeliveryDate { get; set; }
     public override string ToString() => $@"
     Product details:\n
-    Product ID={ID}: {name}, 
-    category - {category},
-    Price: {price},
-   	Amount in stock: {inStock}";
+    Product ID={ID}: {CustomerName}, 
+    category: {Category},
+    Price: {Price},
+   	Amount in stock: {InStock}";
 
 
 }
