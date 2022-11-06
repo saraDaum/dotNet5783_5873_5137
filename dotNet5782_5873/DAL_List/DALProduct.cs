@@ -1,4 +1,4 @@
-﻿namespace DAL_List
+﻿namespace DAL
 {
     public class DALProduct
     {
