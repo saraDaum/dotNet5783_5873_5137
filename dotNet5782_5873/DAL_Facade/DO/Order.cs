@@ -9,7 +9,7 @@ using System.Xml.Linq;
 namespace DO;
 
 ///<summary>
-/// Structure for ????
+/// Structure for Order
 /// </summary>
 public struct Order
 {
