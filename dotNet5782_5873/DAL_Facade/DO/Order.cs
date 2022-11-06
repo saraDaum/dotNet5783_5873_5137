@@ -20,15 +20,15 @@ public struct Order
 
 
     //Constructor
-    public Order(int id, string customerName, string customerEmail, string customerAddress, DateTime orderDate, DateTime shipDate, DateTime deliveryDate)
+    public Order(int id, string customerName, string customerEmail, string customerAddress, DateTime orderDate)
     {
         ID = id;    
         CustomerName = customerName;
         CustomerEmail = customerEmail;
         CustomerAddress = customerAddress;
         OrderDate = orderDate;  
-        ShipDate = shipDate;
-        DeliveryDate = deliveryDate;    
+        ShipDate = DateTime.MinValue;
+        DeliveryDate = DateTime.MinValue ;    
 
     }
 
