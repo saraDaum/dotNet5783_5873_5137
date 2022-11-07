@@ -1,7 +1,6 @@
-﻿namespace DAL
-{
-    public class DALProduct
-    {
+﻿namespace DAL;
 
-    }
+public class DALProduct
+{
+
 }
