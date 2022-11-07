@@ -68,7 +68,7 @@ internal static class DataSource
     }
 
     //This function calculate the barcode of each item.
-    // In another function we check if this barkode already exist .
+    // In is_barkode_OK function we check if this barkode already exist .
     private static int product_Barcode_Calculation() {
         int barode =Config.rnd.Next(0, 100000000);
         if (barode < 10)
@@ -86,7 +86,6 @@ internal static class DataSource
         else if (barode < 10000000)
             barode *= 10;
         return barode;
-
     }
 
     //A helper function that checks whether this barcode already exists for another product
