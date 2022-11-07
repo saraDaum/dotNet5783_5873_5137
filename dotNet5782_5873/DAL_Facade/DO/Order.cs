@@ -1,5 +1,5 @@
 ﻿using static DO.Enums;
-
+using DAL.DataSource.Config ;
 namespace DO;
 
 ///<summary>
@@ -20,9 +20,9 @@ public struct Order
 
 
     //Constructor
-    public Order(int id, string customerName, string customerEmail, string customerAddress, DateTime orderDate)
+    public Order( string customerName, string customerEmail, string customerAddress, DateTime orderDate)
     {
-        ID = id;    
+        ID = NextOrder++;    
         CustomerName = customerName;
         CustomerEmail = customerEmail;
         CustomerAddress = customerAddress;
