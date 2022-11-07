@@ -1,4 +1,5 @@
 ﻿using DO;
+using DO.Product;
 
 namespace DAL;
 
@@ -17,7 +18,7 @@ internal static class DataSource
 
         //A random feild
         public static readonly Random rnd = new Random();
-       
+
     }
 
     //Constructor
@@ -26,7 +27,7 @@ internal static class DataSource
 
     }
 
-   
+
     //All entity arrays
     internal static Order[] OrderArray = new Order[100];
     internal static OrderItem[] orderItemArray = new OrderItem[200];
@@ -40,18 +41,33 @@ internal static class DataSource
     {
         for (int i = 0; i < 12; i++)
         {
-            init_Product();
+            before_Insert_Product(i);
+            init_Product(i);
             init_order();
             init_OrderItem();
         }
-        for (int i = 0; i < 30; i++)
+        for (int i = 12; i < 43; i++)
         {
             init_order();
             init_OrderItem();
         }
     }
 
-   
+    //This function restart the array in inder "i" whith a barcode.
+    private static void before_Insert_Product(int i)
+    {
+        int barcode = product_Barcode_Calculation();
+        bool checkarcode = barcode.is_Barkode_OK();
+        while (checkarcode)
+        {
+            barcode = product_Barcode_Calculation();
+            checkarcode = barcode.is_Barkode_OK();
+        }
+
+
+    }
+
+
     private static void init_order(Order myOrder)
     {
         OrderArray[Config.DALOrder_Length++] = myOrder;
@@ -68,9 +84,10 @@ internal static class DataSource
     }
 
     //This function calculate the barcode of each item.
-    // In another function we check if this barkode already exist .
-    private static int product_Barcode_Calculation() {
-        int barode =Config.rnd.Next(0, 100000000);
+    // In "is_Barkode_OK" function we check if this barkode already exist .
+    private static int product_Barcode_Calculation()
+    {
+        int barode = Config.rnd.Next(0, 100000000);
         if (barode < 10)
             barode *= 10000000;
         else if (barode < 100)
@@ -89,16 +106,16 @@ internal static class DataSource
 
     }
 
-    
-    private static bool is_Barkode_OK(int barcode)
+
+    //A helper function that checks whether this barcode already exists for another product
+    private static bool is_Barkode_OK()
     {
-        for(int i=0; i<Config.DALProduct_Length; i++)
+        for (int i = 0; i < Config.DALProduct_Length; i++)
         {
-            if (productArray[i].Barcode == barcode)
+            if (productArray[i].Barcode == this)
                 return true;
         }
         return false;
     }
 
-    //A helper function that checks whether this barcode already exists for another product
 }
