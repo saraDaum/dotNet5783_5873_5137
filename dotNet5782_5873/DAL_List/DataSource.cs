@@ -71,4 +71,15 @@ internal static class DataSource
         int OrderID = rnd.Next();
 
     }
+
+    
+    private static bool is_Barkode_OK(int barcode)
+    {
+        for(int i=0; i<Config.DALProduct_Length; i++)
+        {
+            if (productArray[i].Barcode == barcode)
+                return true;
+        }
+        return false;
+    }
 }
