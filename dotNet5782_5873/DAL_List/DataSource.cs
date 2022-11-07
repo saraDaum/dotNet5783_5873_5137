@@ -14,6 +14,30 @@ internal static class DataSource
 
     }
 
+    //Constructor
+    public static DataSource()
+    {
+
+    }
+
+    /// <summary>
+    /// Loops to initialize the values.
+    ///Instead of making a separate loop for each type of item, I put them together to save loops.
+    /// </summary>
+    private static s_Initalize()
+    {
+        for(int i=0; i<12; i++)
+        {
+            init_Product();
+            init_order();
+            init_OrderItem();
+        }
+        for(int i=0; i<30; i++)
+        {
+            init_order();
+            init_OrderItem();
+        }
+    }
 
     //A random feild
     private static  Random rnd = new Random();
