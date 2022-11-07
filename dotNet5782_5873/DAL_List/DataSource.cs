@@ -16,7 +16,7 @@ internal static class DataSource
         public static int NextOrder { get => NextOrder + 1; private set; } = 0;//Only Order has automatic numberation.
 
         //A random feild
-        private static readonly Random rnd = new Random();
+        public static readonly Random rnd = new Random();
        
     }
 
@@ -67,8 +67,27 @@ internal static class DataSource
         productArray[Config.DALProduct_Length++] = myProduct;
     }
 
-    private static int find_OrderID() {
-        int OrderID = rnd.Next();
+    //This function calculate the barcode of each item.
+    // In another function we check if this barkode already exist .
+    private static int product_Barcode_Calculation() {
+        int barode =Config.rnd.Next(0, 100000000);
+        if (barode < 10)
+            barode *= 10000000;
+        else if (barode < 100)
+            barode *= 1000000;
+        else if (barode < 1000)
+            barode *= 100000;
+        else if (barode < 10000)
+            barode *= 10000;
+        else if (barode < 100000)
+            barode *= 1000;
+        else if (barode < 1000000)
+            barode *= 100;
+        else if (barode < 10000000)
+            barode *= 10;
+        return barode;
 
     }
+
+    //A helper function that checks whether this barcode already exists for another product
 }
