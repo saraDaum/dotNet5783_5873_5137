@@ -1,5 +1,4 @@
-﻿using static DO.Enums;
-using DAL.DataSource.Config ;
+﻿
 namespace DO;
 
 ///<summary>
@@ -20,17 +19,17 @@ public struct Order
 
 
     //Constructor
-    public Order( string customerName, string customerEmail, string customerAddress, DateTime orderDate)
-    {
-        ID = NextOrder++;    
-        CustomerName = customerName;
-        CustomerEmail = customerEmail;
-        CustomerAddress = customerAddress;
-        OrderDate = orderDate;  
-        ShipDate = DateTime.MinValue;
-        DeliveryDate = DateTime.MinValue ;    
+    //public Order( string customerName, string customerEmail, string customerAddress, DateTime orderDate)
+    //{
+    //    ID =DataSource. NextOrder;    
+    //    CustomerName = customerName;
+    //    CustomerEmail = customerEmail;
+    //    CustomerAddress = customerAddress;
+    //    OrderDate = orderDate;  
+    //    ShipDate = DateTime.MinValue;
+    //    DeliveryDate = DateTime.MinValue ;    
 
-    }
+    //}
 
     public override string ToString() => $@"
     Order details:\n

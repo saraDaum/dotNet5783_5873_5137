@@ -1,6 +1,5 @@
 ﻿namespace DO;
-public struct Enums
-{
+ 
     public enum Category
     {
         Pencils, 
@@ -11,4 +10,4 @@ public struct Enums
 
     }
 
-}
+

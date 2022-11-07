@@ -7,23 +7,23 @@ internal static class DataSource
     internal static class Config
     {
         //Static variables
-        internal static int DALOrder_Length = 0;
-        internal static int DALOrderItem_Length = 0;
-        internal static int DALProduct_Length = 0;
+        internal static int Next_DALOrder = 0;
+        internal static int Next_DALOrderItem = 0;
+        internal static int Next_DALProduct = 0;
 
-        //NextOrder.get() return NextOrder+1 and doesn't advance by one the value.
-        //The value will be changed in OrderId field (ID = NextOrder++)
-        private static int NextOrder { get => NextOrder + 1; private set; } = 100000;//Only Order has automatic numberation.
+
+        //NextOrder.get() return NextOrder+1 and advance iit by one the value.
+        private static int nextOrder = 100000;
+        public static int NextOrderNumber { get => nextOrder++; private set => nextOrder = value; }  //Only Order has automatic numberation.
 
         //A random feild
         public static readonly Random rnd = new Random();
 
-        public static dateTime date = new();
 
     }
 
     //Constructor
-    public static DataSource()
+    static DataSource()
     {
         s_Initalize();
     }
@@ -38,77 +38,411 @@ internal static class DataSource
     /// Loops to initialize the values.
     ///Instead of making a separate loop for each type of item, I put them together to save loops.
     /// </summary>
-    private static s_Initalize()
+    private static void s_Initalize()
     {
-        for (int i = 0; i < 12; i++)
-        {
-            Insert_Product(i);
-            //init_Product(i);
-            Insert_order(i);
-            //init_order(i);
-            init_OrderItem();
-        }
-        for (int i = 12; i < 43; i++)
-        {
-            init_order();
-            init_OrderItem();
-        }
+        init_Products();
+        init_order();
+        init_OrderItem();
     }
+    //המורה,
+    //  את יכולה להראות לי דוגמא לאיתחול משתנה.
+
 
     //This function restart the array in inder "i" whith a barcode.
-    private static void Insert_Product(int i)
+    private static int Make_A_Barcode()
     {
         int barcode = product_Barcode_Calculation();
-        bool checkarcode = barcode.is_Barkode_OK();
+        bool checkarcode = is_Barkode_OK(barcode);
         while (checkarcode)
         {
             barcode = product_Barcode_Calculation();
-            checkarcode = barcode.is_Barkode_OK();
+            checkarcode = is_Barkode_OK(barcode);
         }
-        Console.WriteLine("Please enter category of product.\nFor eye pencial enter 0,\nfor lipsticks enter 1,\nfor blushes enter 2,\nfor bronzers enter 3,\nfor makeups enter 4\n");
-        Category myCategory = Console.ReadLine();
-        Console.WriteLine("Please enter name of product.");
-        string myProductName = Console.ReadLine();
-        Console.WriteLine("What is the price of the product?");
-        double myPrice = Console.ReadLine();
-        Console.WriteLine("What is the quantity in stock?");
-        int myInStock = Console.ReadLine();
-        //Sends to constructor
-         Product myProduct(barcode,myProductName, myCategory, myPrice, myInStock);
+        return barcode;
+       
     }
 
+    //DELETE!!
     private static void Insert_order(int i)
     {
-        OrderArray[i].ID = NextOrder++;
-        Console.WriteLine("Please enter your name (or the name of the person ordering).");
+        OrderArray[i].ID = Config.NextOrderNumber;
         OrderArray[i].CustomerName = Console.ReadLine();
-        Console.WriteLine("Please enter your email address.");
         OrderArray[i].CustomerEmail = Console.ReadLine();
-        Console.WriteLine("Please enter your address.");
         OrderArray[i].CustomerAddress = Console.ReadLine();
-        DateTime OrderDate = DateTime.today;
+        DateTime OrderDate = DateTime.Today;
         OrderArray[i].OrderDate = OrderDate;
-        OrderArray[i].ShipDate = DateTime.today- new TimeSpan(Config.rnd.NextInt64(10L*1000L*1000L*3600L*24L*7L));
-
-
-
+        OrderArray[i].ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 7L));
 
     }
 
-    private static void init_order(Order myOrder)
+    //DONE!!
+    private static void init_order()
     {
-        OrderArray[Config.DALOrder_Length++] = myOrder;
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Sara Cohen",
+            CustomerEmail = "Sara0548@gmail.com",
+            CustomerAddress = "Hamodia 3, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Hodaya Levy",
+            CustomerEmail = "Hodaya25840@gmail.com",
+            CustomerAddress = "Zahal 52, Beit-Shemesh",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Rachel Cohen",
+            CustomerEmail = "racheli.me@gmail.com",
+            CustomerAddress = "Smile 103, Jerusalem",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Malka Seld",
+            CustomerEmail = "malka_seld@gmail.com",
+            CustomerAddress = "Happyness 72, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Shira Cohen",
+            CustomerEmail = "Shira_052715@gmail.com",
+            CustomerAddress = "Black  23, Jerusalem",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Yael Fadila",
+            CustomerEmail = "Yael.no.yes@gmail.com",
+            CustomerAddress = "Hamodia 83, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Adi Holasher",
+            CustomerEmail = "Adi_123@gmail.com",
+            CustomerAddress = "Flower 91, Beer - Sheva",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Shlomo Cohen",
+            CustomerEmail = "Shlomo_120548@gmail.com",
+            CustomerAddress = "Sorek 94, Cineret",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Zadok Cohen Zedek",
+            CustomerEmail = "someone@gmail.com",
+            CustomerAddress = "anivalid 137, Zfat",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Maya Feld",
+            CustomerEmail = "M1010_m10@gmail.com",
+            CustomerAddress = "Gilo 94, Duchifat",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Lea Daum",
+            CustomerEmail = "Sara0548@gmail.com",
+            CustomerAddress = "Hamodia 3, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Keren Karni",
+            CustomerEmail = "karen.local@gmail.com",
+            CustomerAddress = "Gefen 3, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Jak Levy",
+            CustomerEmail = "0558523510@gmail.com",
+            CustomerAddress = "Zahal 512, Beit-Shemesh",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Akiva Gidoni",
+            CustomerEmail = "smile.me@gmail.com",
+            CustomerAddress = "Smile 83, Tirat - Carmel",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Tom Seldalom",
+            CustomerEmail = "tim.tom@gmail.com",
+            CustomerAddress = "Happyness 73,  Tirat - Carmel",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Shir bonbon",
+            CustomerEmail = "Shir_0123@gmail.com",
+            CustomerAddress = "My boat  19, Kiryat - Shmona",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Yael Fogel",
+            CustomerEmail = "Yaeyes@gmail.com",
+            CustomerAddress = "Tena 83, Hermon",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Adi Ozer",
+            CustomerEmail = "Adi_Ozer@gmail.com",
+            CustomerAddress = "Flower 94, Gidon",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Gad Jakobi",
+            CustomerEmail = "Dad@gmail.com",
+            CustomerAddress = "Fish 94, Cineret",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = " Dan  Zedek",
+            CustomerEmail = "Dani_Dan@gmail.com",
+            CustomerAddress = "Summer 137, Zfat",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Maya Bobi",
+            CustomerEmail = "M_BOBI@gmail.com",
+            CustomerAddress = "Gilo 96, Duchifat",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderArray[Config.Next_DALOrder++] = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Bob Sfog",
+            CustomerEmail = "bob100@gmail.com",
+            CustomerAddress = "Dogilo 126, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+
     }
 
-    private static void init_OrderItem(OrderItem myOrderItem)
+    private static void init_OrderItem()
     {
-        orderItemArray[Config.DALOrderItem_Length++] = myOrderItem;
+        orderItemArray[Config.Next_DALOrderItem++] = new OrderItem { 
+
+        };
     }
 
-    private static void init_Product(Product myProduct)
+    //DONE
+    private static void init_Products()
     {
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Red blushe - SACARA",
+            Category = Category.blushes,
+            ProductPrice = 45,
+            InStock = 6
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Blush for a natural color in the cheeks - MAC",
+            Category = Category.blushes,
+            ProductPrice = 75,
+            InStock = 4
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "A luxurious blush - Loreal",
+            Category = Category.blushes,
+            ProductPrice = 59,
+            InStock = 3
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "A black eye pencil- SACARA",
+            Category = Category.Pencils,
+            ProductPrice = 19,
+            InStock = 6
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "A gray eye pencil- MAC",
+            Category = Category.Pencils,
+            ProductPrice = 39,
+            InStock = 3
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "A black eye pencil, hipoalerganic- MAC",
+            Category = Category.Pencils,
+            ProductPrice = 49,
+            InStock = 4
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "A natural lipstick- MAC",
+            Category = Category.lipstiks,
+            ProductPrice = 69,
+            InStock = 4
+        };
 
-        productArray[Config.DALProduct_Length++] = myProduct;
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "A simple lipstick- SACARA",
+            Category = Category.lipstiks,
+            ProductPrice = 36,
+            InStock = 3
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Pair lipstick, hipoalerganic - MAC",
+            Category = Category.lipstiks,
+            ProductPrice = 72,
+            InStock = 2
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Makeup number 310 - MAC",
+            Category = Category.makeup,
+            ProductPrice = 79,
+            InStock = 3
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Makeup number 350 - MAC",
+            Category = Category.makeup,
+            ProductPrice = 79,
+            InStock = 2
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Makeup number 390 - MAC",
+            Category = Category.makeup,
+            ProductPrice = 79,
+            InStock = 4
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Light Makeup  - SOFT-TOUCH",
+            Category = Category.makeup,
+            ProductPrice = 59,
+            InStock = 3
+        };
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Light bronzer - SOFT-TOUCH",
+            Category = Category.bronzers,
+            ProductPrice = 35,
+            InStock = 3
+        };
+
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Dramatic bronzer - SOFT-TOUCH",
+            Category = Category.bronzers,
+            ProductPrice = 39,
+            InStock = 4
+        };
+
+        productArray[Config.Next_DALProduct++] = new Product()
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = "Bronzer - MAC",
+            Category = Category.bronzers,
+            ProductPrice = 45,
+            InStock = 2
+        };
+
     }
 
     //This function calculate the barcode of each item.
@@ -135,11 +469,11 @@ internal static class DataSource
 
 
     //A helper function that checks whether this barcode already exists for another product
-    private static bool is_Barkode_OK()
+    private static bool is_Barkode_OK(int b)
     {
-        for (int i = 0; i < Config.DALProduct_Length; i++)
+        for (int i = 0; i < Config.Next_DALProduct; i++)
         {
-            if (productArray[i].Barcode == this)
+            if (productArray[i].Barcode == b)
                 return true;
         }
         return false;

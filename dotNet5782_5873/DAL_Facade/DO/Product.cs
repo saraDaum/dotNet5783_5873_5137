@@ -1,5 +1,4 @@
-﻿using static DO.Enums;
-
+﻿
 namespace DO;
 
 ///<summary>
@@ -20,7 +19,7 @@ public struct Product
     {
         Barcode = barcode;
         ProductName = productName;
-         = category;
+        Category = category;
         ProductPrice = price;
         InStock = stock;
        
