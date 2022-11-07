@@ -28,6 +28,6 @@ public struct OrderItem
     Order item details:\n
     Product barkode:{ProductID}, 
     Order number:{OrderID}, 
-     Price: {ProductPrice},
+    Price: {ProductPrice},
    	Amount in order: {Amount}";
 }
