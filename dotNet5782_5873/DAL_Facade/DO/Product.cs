@@ -20,7 +20,7 @@ public struct Product
     {
         Barcode = barcode;
         ProductName = productName;
-        Category = category;
+         = category;
         ProductPrice = price;
         InStock = stock;
        
