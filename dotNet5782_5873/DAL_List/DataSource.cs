@@ -1,4 +1,5 @@
 ﻿using DO;
+using Microsoft.VisualBasic;
 using static DO.Product;
 namespace DAL;
 
@@ -35,8 +36,7 @@ internal static class DataSource
     internal static Product[] productArray = new Product[50];
 
     /// <summary>
-    /// Loops to initialize the values.
-    ///Instead of making a separate loop for each type of item, I put them together to save loops.
+    /// Initialize the values.
     /// </summary>
     private static void s_Initalize()
     {
@@ -44,8 +44,8 @@ internal static class DataSource
         init_order();
         init_OrderItem();
     }
-    
-    //This function restart the array in inder "i" whith a barcode.
+
+    //This function restart the array in index "i" with a barcode.
     private static int Make_A_Barcode()
     {
         int barcode = product_Barcode_Calculation();
@@ -56,7 +56,7 @@ internal static class DataSource
             checkarcode = is_Barkode_OK(barcode);
         }
         return barcode;
-       
+
     }
 
     //DELETE!!
@@ -300,7 +300,8 @@ internal static class DataSource
 
     private static void init_OrderItem()
     {
-        orderItemArray[Config.Next_DALOrderItem++] = new OrderItem { 
+        orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
+        {
 
         };
     }
@@ -474,6 +475,46 @@ internal static class DataSource
                 return true;
         }
         return false;
+    }
+
+    //This function get an ID number and returns the corresponding object
+    public static Order ReturnOrderObject(int id)
+    {
+        foreach (Order currentOrder in OrderArray)
+        {
+            if (currentOrder.ID == id)
+                return currentOrder;
+        }
+        Order emptyOrder = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "",
+            CustomerEmail = "",
+            CustomerAddress = "",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today,
+            DeliveryDate = DateTime.Today
+        };
+        return emptyOrder;
+    }
+
+    //This function get an ID number and returns the corresponding object
+    public static Product ReturnProductObject(int barcode)
+    {
+        foreach(Product currentProduct in productArray)
+        {
+            if (currentProduct.Barcode == barcode)
+                return currentProduct;
+        }
+         Product emptyProduct= new Product
+        {
+             Barcode = 0000000,
+             ProductName = "",
+             Category = Category.blushes,
+             ProductPrice = 0,
+             InStock = 0
+         };
+        return emptyProduct;
     }
 
 }
