@@ -44,10 +44,7 @@ internal static class DataSource
         init_order();
         init_OrderItem();
     }
-    //המורה,
-    //  את יכולה להראות לי דוגמא לאיתחול משתנה.
-
-
+    
     //This function restart the array in inder "i" whith a barcode.
     private static int Make_A_Barcode()
     {
