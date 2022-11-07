@@ -1,6 +1,6 @@
 ﻿namespace DAL;
 
-internal class DALOrder
+public class DALOrder
 {
 
 }

@@ -4,7 +4,8 @@ namespace DAL;
 
 internal static class DataSource
 {
-    internal static class Config {
+    internal static class Config
+    {
         //Static variables
         internal static int DALOrder_Length = 0;
         internal static int DALOrderItem_Length = 0;
@@ -40,7 +41,7 @@ internal static class DataSource
     }
 
     //A random feild
-    private static  Random rnd = new Random();
+    private static Random rnd = new Random();
     readonly static int num = rnd.Next();
 
     //All entity arrays
@@ -48,20 +49,20 @@ internal static class DataSource
     internal static OrderItem[] orderItemArray = new OrderItem[200];
     internal static Product[] productArray = new Product[50];
 
-    
-    
+
+
     private static void init_order(Order myOrder)
     {
-        OrderArray[DALOrder_Length++] = myOrder;
+        OrderArray[Config.DALOrder_Length++] = myOrder;
     }
-   
+
     private static void init_OrderItem(OrderItem myOrderItem)
     {
-        orderItemArray[DALOrderItem_Length++] = myOrderItem;
+        orderItemArray[Config.DALOrderItem_Length++] = myOrderItem;
     }
 
     private static void init_Product(Product myProduct)
     {
-        productArray[DALProduct_Length++] = myProduct;
+        productArray[Config.DALProduct_Length++] = myProduct;
     }
 }
