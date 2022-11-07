@@ -1,6 +1,5 @@
 ﻿using DO;
-using DO.Product;
-
+using static DO.Product;
 namespace DAL;
 
 internal static class DataSource
@@ -14,17 +13,19 @@ internal static class DataSource
 
         //NextOrder.get() return NextOrder+1 and doesn't advance by one the value.
         //The value will be changed in OrderId field (ID = NextOrder++)
-        public static int NextOrder { get => NextOrder + 1; private set; } = 0;//Only Order has automatic numberation.
+        private static int NextOrder { get => NextOrder + 1; private set; } = 100000;//Only Order has automatic numberation.
 
         //A random feild
         public static readonly Random rnd = new Random();
+
+        public static dateTime date = new();
 
     }
 
     //Constructor
     public static DataSource()
     {
-
+        s_Initalize();
     }
 
 
@@ -41,9 +42,10 @@ internal static class DataSource
     {
         for (int i = 0; i < 12; i++)
         {
-            before_Insert_Product(i);
-            init_Product(i);
-            init_order();
+            Insert_Product(i);
+            //init_Product(i);
+            Insert_order(i);
+            //init_order(i);
             init_OrderItem();
         }
         for (int i = 12; i < 43; i++)
@@ -54,7 +56,7 @@ internal static class DataSource
     }
 
     //This function restart the array in inder "i" whith a barcode.
-    private static void before_Insert_Product(int i)
+    private static void Insert_Product(int i)
     {
         int barcode = product_Barcode_Calculation();
         bool checkarcode = barcode.is_Barkode_OK();
@@ -63,10 +65,35 @@ internal static class DataSource
             barcode = product_Barcode_Calculation();
             checkarcode = barcode.is_Barkode_OK();
         }
+        Console.WriteLine("Please enter category of product.\nFor eye pencial enter 0,\nfor lipsticks enter 1,\nfor blushes enter 2,\nfor bronzers enter 3,\nfor makeups enter 4\n");
+        Category myCategory = Console.ReadLine();
+        Console.WriteLine("Please enter name of product.");
+        string myProductName = Console.ReadLine();
+        Console.WriteLine("What is the price of the product?");
+        double myPrice = Console.ReadLine();
+        Console.WriteLine("What is the quantity in stock?");
+        int myInStock = Console.ReadLine();
+        //Sends to constructor
+         Product myProduct(barcode,myProductName, myCategory, myPrice, myInStock);
+    }
+
+    private static void Insert_order(int i)
+    {
+        OrderArray[i].ID = NextOrder++;
+        Console.WriteLine("Please enter your name (or the name of the person ordering).");
+        OrderArray[i].CustomerName = Console.ReadLine();
+        Console.WriteLine("Please enter your email address.");
+        OrderArray[i].CustomerEmail = Console.ReadLine();
+        Console.WriteLine("Please enter your address.");
+        OrderArray[i].CustomerAddress = Console.ReadLine();
+        DateTime OrderDate = DateTime.today;
+        OrderArray[i].OrderDate = OrderDate;
+        OrderArray[i].ShipDate = DateTime.today- new TimeSpan(Config.rnd.NextInt64(10L*1000L*1000L*3600L*24L*7L));
+
+
 
 
     }
-
 
     private static void init_order(Order myOrder)
     {
@@ -80,6 +107,7 @@ internal static class DataSource
 
     private static void init_Product(Product myProduct)
     {
+
         productArray[Config.DALProduct_Length++] = myProduct;
     }
 
