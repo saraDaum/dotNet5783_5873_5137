@@ -306,7 +306,7 @@ internal static class DataSource
         };
     }
 
-    //DONE
+    //
     private static void init_Products()
     {
         productArray[Config.Next_DALProduct++] = new Product()
@@ -465,7 +465,6 @@ internal static class DataSource
         return barcode;
     }
 
-
     //A helper function that checks whether this barcode already exists for another product
     private static bool is_Barkode_OK(int b)
     {
@@ -477,7 +476,23 @@ internal static class DataSource
         return false;
     }
 
-    //This function get an ID number and returns the corresponding object
+    public static int addProduct(Product newProduct)
+    {
+        bool isExist = is_Barkode_OK(newProduct.Barcode);
+        if (isExist)
+        {
+            Console.WriteLine("A product with this barcode already exists in the database.");
+            return 0;
+        }
+        else
+        {
+            productArray[Config.Next_DALProduct] = newProduct;
+            Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
+        }
+        return newProduct.Barcode;
+    }
+
+    //This function get an ID number and returns the corresponding Order object
     public static Order ReturnOrderObject(int id)
     {
         foreach (Order currentOrder in OrderArray)
@@ -498,23 +513,60 @@ internal static class DataSource
         return emptyOrder;
     }
 
-    //This function get an ID number and returns the corresponding object
+    //This function get an ID number and returns the corresponding Product object
     public static Product ReturnProductObject(int barcode)
     {
-        foreach(Product currentProduct in productArray)
+        foreach (Product currentProduct in productArray)
         {
             if (currentProduct.Barcode == barcode)
                 return currentProduct;
         }
-         Product emptyProduct= new Product
+        Product emptyProduct = new Product
         {
-             Barcode = 0000000,
-             ProductName = "",
-             Category = Category.blushes,
-             ProductPrice = 0,
-             InStock = 0
-         };
+            Barcode = 0000000,
+            ProductName = "",
+            Category = Category.blushes,
+            ProductPrice = 0,
+            InStock = 0
+        };
         return emptyProduct;
     }
 
-}
+    //Delete product from product's array
+    public static void deleteProduct(int ProductBarcode)
+    {
+        bool existFlag = false;
+        for (int i = 0; i < Config.Next_DALProduct; i++)
+        {
+            if (productArray[i].Barcode == ProductBarcode)
+            {
+                existFlag = true;
+                productArray[i] = productArray[Config.Next_DALProduct];
+                Config.Next_DALProduct--;
+            }
+            if (existFlag == false)
+            {
+                throw new Exception("ERROR: This product dosen't exist in stock\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+
+    }
+
+    //Delete order from order's array
+    public static void deleteOrder(int OrderNumber)
+    {
+        bool existFlag = false;
+        for (int i = 0; i < Config.Next_DALOrder; i++)
+        {
+            if (OrderArray[i].ID == OrderNumber)
+            {
+                existFlag = true;
+                OrderArray[i] = OrderArray[Config.Next_DALOrder];
+                Config.Next_DALOrder--;
+            }
+            if (existFlag == false)
+            {
+                throw new Exception("ERROR: This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+    }
