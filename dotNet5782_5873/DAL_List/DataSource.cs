@@ -1,6 +1,6 @@
 ﻿using DO;
 using Microsoft.VisualBasic;
-using static DO.Product;
+using static DO.OrderItem;
 namespace DAL;
 
 internal static class DataSource
@@ -486,10 +486,50 @@ internal static class DataSource
         }
         else
         {
-            productArray[Config.Next_DALProduct] = newProduct;
+            productArray[Config.Next_DALProduct++] = newProduct;
             Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
         }
         return newProduct.Barcode;
+    }
+
+    public static int addOrder(Order newOrder)
+    {
+        bool isExist = false;
+        foreach (Order currentOrder in OrderArray)
+        {
+            if (currentOrder.ID == newOrder.ID)
+            {
+                Console.WriteLine("A order with this number already exists in the database.");
+                isExist = true;
+            }
+        }
+        if (!isExist)
+        {
+            OrderArray[Config.Next_DALOrder++] = newOrder;
+            Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
+            return newOrder.ID;
+        }
+        return 0;
+    }
+
+    public static int addOrderItem(OrderItem newOrderItem)
+    {
+        bool isExist = false;
+        foreach (OrderItem currentOrderItem in orderItemArray)
+        {
+            if (currentOrderItem.OrderID == newOrderItem.OrderID && currentOrderItem.ProductID == newOrderItem.ProductID)
+            {
+                Console.WriteLine("An order item with this details already exists in the database.");
+                isExist = true;
+            }
+        }
+        if (!isExist)
+        {
+            orderItemArray[Config.Next_DALOrderItem++] = newOrderItem;
+            Console.WriteLine("The order item entered to database successfully.\nThe order item number of the item is: ");
+            return newOrderItem.OrderItemCounter;
+        }
+        return 0;
     }
 
     //This function get an ID number and returns the corresponding Order object
@@ -543,6 +583,8 @@ internal static class DataSource
                 existFlag = true;
                 productArray[i] = productArray[Config.Next_DALProduct];
                 Config.Next_DALProduct--;
+                Console.WriteLine("The product has been successfully deleted");
+
             }
             if (existFlag == false)
             {
@@ -563,6 +605,8 @@ internal static class DataSource
                 existFlag = true;
                 OrderArray[i] = OrderArray[Config.Next_DALOrder];
                 Config.Next_DALOrder--;
+                Console.WriteLine("The order has been successfully deleted");
+
             }
             if (existFlag == false)
             {
@@ -570,3 +614,24 @@ internal static class DataSource
             }
         }
     }
+
+    //Delete orderItem from orderItem's array
+    public static void deleteOrderItem(int OrderNumber, int productBarcode)
+    {
+        bool existFlag = false;
+        for (int i = 0; i < Config.Next_DALOrderItem; i++)
+        {
+            if (orderItemArray[i].OrderID == OrderNumber && orderItemArray[i].ProductID == productBarcode)
+            {
+                existFlag = true;
+                orderItemArray[i] = orderItemArray[Config.Next_DALOrderItem];
+                Config.Next_DALOrderItem--;
+                Console.WriteLine("The item has been successfully deleted");
+            }
+            if (existFlag == false)
+            {
+                throw new Exception("ERROR: This item doesn't found.\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+    }
+}
