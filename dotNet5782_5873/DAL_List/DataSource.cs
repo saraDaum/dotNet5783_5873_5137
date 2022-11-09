@@ -447,21 +447,7 @@ internal static class DataSource
     // In "is_Barkode_OK" function we check if this barkode already exist .
     private static int product_Barcode_Calculation()
     {
-        int barcode = Config.rnd.Next(0, 100000000);
-        if (barcode < 10)
-            barcode *= 10000000;
-        else if (barcode < 100)
-            barcode *= 1000000;
-        else if (barcode < 1000)
-            barcode *= 100000;
-        else if (barcode < 10000)
-            barcode *= 10000;
-        else if (barcode < 100000)
-            barcode *= 1000;
-        else if (barcode < 1000000)
-            barcode *= 100;
-        else if (barcode < 10000000)
-            barcode *= 10;
+        int barcode = Config.rnd.Next(10000000, 100000000);
         return barcode;
     }
 
