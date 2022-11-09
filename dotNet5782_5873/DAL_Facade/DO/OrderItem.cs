@@ -12,21 +12,22 @@ public struct OrderItem
     public int OrderID { get; set; }
     public double ProductPrice { get; set; }
     public int Amount { get; set; }
-    public  int OrderItemCounter { get => OrderItemCounter++; private set => OrderItemCounter = value; }
-   
+    public int autoID { get; set; }
+
     //Constructor
-    public OrderItem(int productId, int orderId, double price, int amount)
-    {
-        ProductID = productId;
-        OrderID = orderId;
-        ProductPrice = price;
-        Amount = amount;
-    }
+    // public OrderItem(int productId, int orderId, double price, int amount)
+    //{
+    //    ProductID = productId;
+    //    OrderID = orderId;
+    //    ProductPrice = price;
+    //    Amount = amount;
+    //}
 
     public override string ToString() => $@"
     Order item details:\n
-    Product barkode:{ProductID}, 
-    Order number:{OrderID}, 
+    ID code: {autoID}
+    Product barkode: {ProductID}, 
+    Order number: {OrderID}, 
     Price: {ProductPrice},
    	Amount in order: {Amount}";
 }

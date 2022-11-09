@@ -16,6 +16,7 @@ internal static class DataSource
         //NextOrder.get() return NextOrder+1 and advance iit by one the value.
         private static int nextOrder = 100000;
         public static int NextOrderNumber { get => nextOrder++; private set => nextOrder = value; }  //Only Order has automatic numberation.
+        public static int autoCounter { get => autoCounter++; private set => autoCounter = value; }
 
         //A random feild
         public static readonly Random rnd = new Random();
@@ -302,11 +303,16 @@ internal static class DataSource
     {
         orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
         {
-
+            //ProductID = ,
+            //OrderID = ,
+            //ProductPrice =,
+            //Amount = ,
+            //autoCounter = autoCounter.get()
         };
+
+
     }
 
-    //
     private static void init_Products()
     {
         productArray[Config.Next_DALProduct++] = new Product()
@@ -442,16 +448,23 @@ internal static class DataSource
         };
 
     }
-
-    //This function calculate the barcode of each item.
-    // In "is_Barkode_OK" function we check if this barkode already exist .
+    /// <summary>
+    ///This function calculate the barcode of each item.
+    /// In "is_Barkode_OK" function we check if this barkode already exist .
+    /// </summary>
+    /// <returns></returns>
     private static int product_Barcode_Calculation()
     {
         int barcode = Config.rnd.Next(10000000, 100000000);
         return barcode;
     }
 
-    //A helper function that checks whether this barcode already exists for another product
+   
+    /// <summary>
+    /// A helper function that checks whether this barcode already exists for another product
+    /// </summary>
+    /// <param name="b"></param>
+    /// <returns></returns>
     private static bool is_Barkode_OK(int b)
     {
         for (int i = 0; i < Config.Next_DALProduct; i++)
@@ -461,6 +474,12 @@ internal static class DataSource
         }
         return false;
     }
+
+    /// <summary>
+    /// ADD AN OBJECT FUNCTIONS
+    /// </summary>
+    /// <param name="newObject"></param>
+    /// <returns></returns>
 
     public static int addProduct(Product newProduct)
     {
@@ -518,6 +537,12 @@ internal static class DataSource
         return 0;
     }
 
+    /// <summary>
+    /// RETURN OBJECT FUNCTIONS
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+
     //This function get an ID number and returns the corresponding Order object
     public static Order ReturnOrderObject(int id)
     {
@@ -539,13 +564,17 @@ internal static class DataSource
         return emptyOrder;
     }
 
-    //This function get an ID number and returns the corresponding Product object
+    //This function gets an ID number and returns the corresponding Product object
     public static Product ReturnProductObject(int barcode)
     {
+        bool flag = false;
         foreach (Product currentProduct in productArray)
         {
             if (currentProduct.Barcode == barcode)
+            {
+                flag = true;
                 return currentProduct;
+            }
         }
         Product emptyProduct = new Product
         {
@@ -555,11 +584,122 @@ internal static class DataSource
             ProductPrice = 0,
             InStock = 0
         };
+        if (!flag)
+            throw new Exception("ERROR: This product doesn't found.\n(Check yourself. Maybe you just have a typo. ");
+
+
         return emptyProduct;
     }
 
+    /// <summary>
+    /// RETURN FUNCTIONS
+    /// </summary>
+    /// <returns></returns>
+
+    //This function returns all instances of  product 
+    public static Product[] returnAllProducts()
+    {
+        Product[] myProducts = new Product[Config.Next_DALProduct];
+        for (int i = 0; i < Config.Next_DALProduct; i++)
+        {
+            myProducts[i] = productArray[i];
+        }
+        return myProducts;
+    }
+
+    //This function returns all instances of  order 
+    public static Order[] returnAllOrders()
+    {
+        Order[] myOrders = new Order[Config.Next_DALOrder];
+        for (int i = 0; i < Config.Next_DALOrder; i++)
+        {
+            myOrders[i] = OrderArray[i];
+        }
+        return myOrders;
+    }
+
+    //This function returns all instances of orderItem 
+    public static OrderItem[] returnAllOrderItems()
+    {
+        OrderItem[] myOrderItems = new OrderItem[Config.Next_DALOrderItem];
+        for (int i = 0; i < Config.Next_DALOrder; i++)
+        {
+            myOrderItems[i] = orderItemArray[i];
+        }
+        return myOrderItems;
+    }
+
+    /// <summary>
+    /// UPDATING FUNCTIONS
+    /// </summary>
+    /// <param name="newOne"></param>
+    /// <exception cref="Exception"></exception>
+
+    //Update orderItem in orderItem's array
+    public static void updateOrderItem(OrderItem newOne)
+    {
+        bool existFlag = false;
+        for (int i = 0; i < Config.Next_DALOrderItem; i++)
+        {
+            if (orderItemArray[i].OrderID == newOne.OrderID && orderItemArray[i].ProductID == newOne.ProductID)
+            {
+                existFlag = true;
+                orderItemArray[i] = newOne;
+                Console.WriteLine("Item has been successfully update");
+            }
+            if (existFlag == false)
+            {
+                throw new Exception("ERROR: This item doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+    }
+
+    //Update order in order's array
+    public static void updateOrder(Order newOne)
+    {
+        bool existFlag = false;
+        for (int i = 0; i < Config.Next_DALOrder; i++)
+        {
+            if (OrderArray[i].ID == newOne.ID)
+            {
+                existFlag = true;
+                OrderArray[i] = newOne;
+                Console.WriteLine("Order has been successfully update");
+            }
+            if (existFlag == false)
+            {
+                throw new Exception("ERROR: This order doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+    }
+
+    //Update product in product's array
+    public static void updateProduct(Product newOne)
+    {
+        bool existFlag = false;
+        for (int i = 0; i < Config.Next_DALProduct; i++)
+        {
+            if (productArray[i].Barcode == newOne.Barcode)
+            {
+                existFlag = true;
+                productArray[i] = newOne;
+                Console.WriteLine("Product has been successfully update");
+            }
+            if (existFlag == false)
+            {
+                throw new Exception("ERROR: This product doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+    }
+
+    /// <summary>
+    /// DELETE FUNCTIONS
+    /// </summary>
+    /// <param name="ID code"></param>
+    /// <exception cref="Exception"></exception>
+
     //Delete product from product's array
-    public static void deleteProduct(int ProductBarcode)
+    static void deleteProduct(int ProductBarcode)
     {
         bool existFlag = false;
         for (int i = 0; i < Config.Next_DALProduct; i++)
@@ -581,7 +721,7 @@ internal static class DataSource
     }
 
     //Delete order from order's array
-    public static void deleteOrder(int OrderNumber)
+    static void deleteOrder(int OrderNumber)
     {
         bool existFlag = false;
         for (int i = 0; i < Config.Next_DALOrder; i++)
@@ -602,7 +742,7 @@ internal static class DataSource
     }
 
     //Delete orderItem from orderItem's array
-    public static void deleteOrderItem(int OrderNumber, int productBarcode)
+    static void deleteOrderItem(int OrderNumber, int productBarcode)
     {
         bool existFlag = false;
         for (int i = 0; i < Config.Next_DALOrderItem; i++)
@@ -621,3 +761,5 @@ internal static class DataSource
         }
     }
 }
+
+
