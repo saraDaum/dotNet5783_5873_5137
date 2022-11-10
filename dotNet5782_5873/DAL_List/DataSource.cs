@@ -313,6 +313,8 @@ internal static class DataSource
 
     }
 
+
+
     private static void init_Products()
     {
         productArray[Config.Next_DALProduct++] = new Product()
@@ -537,11 +539,22 @@ internal static class DataSource
         return 0;
     }
 
+   // public static int ReturnOrderIdObject(Order order )
+    //{
+
+      // foreach(Order order1 in order)
+       //   { 
+        //    if(order1.ID == order.ID)   
+          //      return order1.ID;   
+        //  }
+   // }
+
     /// <summary>
     /// RETURN OBJECT FUNCTIONS
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
+
 
     //This function get an ID number and returns the corresponding Order object
     public static Order ReturnOrderObject(int id)
