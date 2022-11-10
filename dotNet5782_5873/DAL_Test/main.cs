@@ -1,96 +1,47 @@
-﻿using DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DAL
+﻿namespace DAL_Test
 {
-    public static void Main(string[] args)
+    public class Application
     {
-         void application()
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Please choose from the next options:");
-            Console.WriteLine("for order type 1");
-            Console.WriteLine("for orderItem type 2");
-            Console.WriteLine("for prouduct type 3");
-            int choose = Console.Read();
-
-            switch (choose)
+            void application()
             {
-                case (1):
-                    {
-                        order();
-                        break;
-                    }
-                case (2):
-                    {
-                        orderItem();
-                        break;
-                    }
-                case (3):
-                    {
-                        prouduct();
-                        break;
-                    }
-                default:
-                    {
-                        Console.WriteLine("eroor..........");
-                        application();
-                        break;
-                    }
+                Console.WriteLine("Please choose from the next options:");
+                Console.WriteLine("For order type 1");
+                Console.WriteLine("For orderItem type 2");
+                Console.WriteLine("For prouduct type 3");
+                int choose = Console.Read();
 
-
-            }
-
-            int orderCounter = 0;
-
-            void order()
-            {
-
-                orderCounter++;
-
-                Console.WriteLine("if you went to add press 1");
-                Console.WriteLine("if you went to read press 2");
-                Console.WriteLine("if you went to update press 3");
-                Console.WriteLine("if you went to delete press 4");
-                Console.WriteLine("if you went to exit  press 5");
-
-                int chooseorder = Console.Read();
-
-                switch (chooseorder)
+                switch (choose)
                 {
                     case (1):
                         {
-                            DataSource.addOrder();
+                            order();
                             break;
                         }
-
                     case (2):
                         {
-                            DataSource.wwwww();
+                            orderItem();
                             break;
                         }
-
                     case (3):
                         {
-                            DataSource.deleteOrder();
+                            prouduct();
+                            break;
+                        }
+                    default:
+                        {
+                            Console.WriteLine("ERROR..........");
+                            application();
                             break;
                         }
 
-                    case (4):
-                        {
-                            exit();
-                            break;
-                        }
+
                 }
 
+                int orderCounter = 0;
 
-
-                int orderItemCounter = 0;
-
-                void orderItem()
+                void order()
                 {
 
                     orderCounter++;
@@ -101,13 +52,13 @@ namespace DAL
                     Console.WriteLine("if you went to delete press 4");
                     Console.WriteLine("if you went to exit  press 5");
 
-                    int chooseorderItem = Console.Read();
+                    int chooseorder = Console.Read();
 
-                    switch (chooseorderItem)
+                    switch (chooseorder)
                     {
                         case (1):
                             {
-                                DataSource.addOrder();
+                                addOrder();
                                 break;
                             }
 
@@ -119,7 +70,7 @@ namespace DAL
 
                         case (3):
                             {
-                                DataSource.deleteOrderItem();
+                                DataSource.deleteOrder();
                                 break;
                             }
 
@@ -129,6 +80,7 @@ namespace DAL
                                 break;
                             }
                     }
+
 
 
                     int orderItemCounter = 0;
@@ -144,13 +96,13 @@ namespace DAL
                         Console.WriteLine("if you went to delete press 4");
                         Console.WriteLine("if you went to exit  press 5");
 
-                        int chooseprouduct = Console.Read();
+                        int chooseorderItem = Console.Read();
 
-                        switch (chooseprouduct)
+                        switch (chooseorderItem)
                         {
                             case (1):
                                 {
-                                    DataSource.addProduct();
+                                    DataSource.addOrder();
                                     break;
                                 }
 
@@ -162,7 +114,7 @@ namespace DAL
 
                             case (3):
                                 {
-                                    DataSource.deleteProduct();
+                                    DataSource.deleteOrderItem();
                                     break;
                                 }
 
@@ -174,19 +126,64 @@ namespace DAL
                         }
 
 
-                        void exit()
-                    {
+                        int orderItemCounter = 0;
 
+                        void orderItem()
+                        {
+
+                            orderCounter++;
+
+                            Console.WriteLine("if you went to add press 1");
+                            Console.WriteLine("if you went to read press 2");
+                            Console.WriteLine("if you went to update press 3");
+                            Console.WriteLine("if you went to delete press 4");
+                            Console.WriteLine("if you went to exit  press 5");
+
+                            int chooseprouduct = Console.Read();
+
+                            switch (chooseprouduct)
+                            {
+                                case (1):
+                                    {
+                                        DataSource.addProduct();
+                                        break;
+                                    }
+
+                                case (2):
+                                    {
+                                        DataSource.wwwww();
+                                        break;
+                                    }
+
+                                case (3):
+                                    {
+                                        DataSource.deleteProduct();
+                                        break;
+                                    }
+
+                                case (4):
+                                    {
+                                        exit();
+                                        break;
+                                    }
+                            }
+
+
+                            void exit()
+                            {
+
+
+                            }
+
+
+
+                        }
 
                     }
-
-
 
                 }
 
             }
-
         }
-
     }
 }
