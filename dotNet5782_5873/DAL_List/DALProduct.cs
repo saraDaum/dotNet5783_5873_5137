@@ -44,20 +44,25 @@ public struct DALProduct
 
     public static void newProduct()
     {
-        Console.WriteLine("Hello, please enter your ProductName ");
-        string AnsProductName = Console.ReadLine();
-
-        Console.WriteLine("Please enter your Category");
+        Console.WriteLine("Hello,Please enter your Category");
         Category AnsCategory = Console.ReadLine();
 
+        Console.WriteLine("please enter your ProductName ");
+        string AnsProductName = Console.ReadLine();
 
-        product newproduct  = new product
+        foreach (Product currentProduct in ProductArray)
         {
-            ID = Config.NextOrderNumber,
-            //
-            ProductPrice = AnsProductPrice,
-            Amount = AnsAmount,
-            //
+            if (currentProduct.Category== AnsCategory && currentProduct.ProductName == AnsProductName)
+
+
+        Product newproduct  = new product
+        {
+            Barcode = Make_A_Barcode(),
+            ProductName = AnsProductName,
+            Category = AnsCategory,
+            ProductPrice=currentProduct.ProductPrice,   
+            ProductName = currentProduct.ProductName,   
+            
 
         };
         addProduct(newProduct);
@@ -89,12 +94,41 @@ public struct DALProduct
     }
 
 
-    /// <summary>
-    /// Update product in product's array
-    /// </summary>
-    /// <param name="newOne"></param>
-    /// <exception cref="Exception"></exception>
-    public static void updateProduct(Product newOne)
+        public static void readAnProduct()
+
+        {
+            int productNumber;
+            Console.WriteLine("Please enter your Product barcode");
+            string productStr = Console.ReadLine();
+            int productBarcode;
+            bool TryParseSucceeded = int.TryParse(productStr, out productBarcode);
+            if (TryParseSucceeded)
+            {
+                bool isExist = false;
+                foreach (Product currentProduct in ProductArray)
+                {
+                    if (currentProduct.Barcode == ProductBarcode)
+                    {
+                        isExist = true;
+                        currentProduct.ToString();
+                    }
+                    if (isExist)
+                        Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
+                }
+            }
+            else
+            {
+                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+            }
+        }
+
+
+        /// <summary>
+        /// Update product in product's array
+        /// </summary>
+        /// <param name="newOne"></param>
+        /// <exception cref="Exception"></exception>
+        public static void updateProduct(Product newOne)
     {
         bool existFlag = false;
         for (int i = 0; i < Config.Next_DALProduct; i++)

@@ -140,7 +140,7 @@ namespace DAL_Test
 
                             switch (chooseProuduct)
                             {
-                                case (1):
+                        case (1):
                                     {
                                         DAL.DALProduct.newProduct();
                                         break;
@@ -148,12 +148,12 @@ namespace DAL_Test
 
                         case (2):
                             {
-                                DAL.DALProduct.wwwww();
+                                DAL.DALProduct.readAnProduct();
                                 break;
                             }
                         case (3):
                             {
-                                DAL.DALProduct.kkjkj();
+                                DAL.DALProduct.updateProduct();
                                 break;
                             }
                         case (4):
