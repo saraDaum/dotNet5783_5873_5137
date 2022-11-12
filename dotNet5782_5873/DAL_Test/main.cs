@@ -59,13 +59,13 @@ namespace DAL_Test
                     {
                         case (1):
                             {
-                                DAL.DALOrder.DAL_AddOrder();
+                                DAL.DALOrder.newOrder();
                                 break;
                             }
 
                         case (2):
                             {
-                                DataSource.wwwww();
+                                DataSource.();
                                 break;
                             }
 
