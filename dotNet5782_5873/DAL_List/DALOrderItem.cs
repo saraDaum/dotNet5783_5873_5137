@@ -1,4 +1,5 @@
 ﻿using DO;
+using System;
 using static DAL.DataSource;
 
 namespace DAL;
@@ -28,12 +29,14 @@ public struct DALOrderItem
 
     }
 
-    /// <summary>
-    /// ADD AN OBJECT 
-    /// </summary>
-    /// <param name="newOrderItem"></param>
-    /// <returns></returns>
-    public static int addOrderItem(OrderItem newOrderItem)
+
+
+        /// <summary>
+        /// ADD AN OBJECT 
+        /// </summary>
+        /// <param name="newOrderItem"></param>
+        /// <returns></returns>
+        public static int addOrderItem(OrderItem newOrderItem)
     {
         bool isExist = false;
         foreach (OrderItem currentOrderItem in orderItemArray)

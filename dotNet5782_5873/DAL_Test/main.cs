@@ -138,13 +138,13 @@ namespace DAL_Test
 
                     int chooseProuduct = Console.Read();
 
-                    switch (chooseProuduct)
-                    {
-                        case (1):
+                            switch (chooseProuduct)
                             {
-                                DAL.DALProduct.addProduct();
-                                break;
-                            }
+                                case (1):
+                                    {
+                                        DAL.DALProduct.newProduct();
+                                        break;
+                                    }
 
                         case (2):
                             {
