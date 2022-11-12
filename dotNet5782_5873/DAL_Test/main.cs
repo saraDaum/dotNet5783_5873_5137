@@ -53,9 +53,9 @@ namespace DAL_Test
                     Console.WriteLine("if you went to delete an order enter 4");
                     Console.WriteLine("if you went to exit enter 5");
 
-                    int chooseorder = Console.Read();
+                    int chooseOrder = Console.Read();
 
-                    switch (chooseorder)
+                    switch (chooseOrder)
                     {
                         case (1):
                             {
@@ -68,8 +68,13 @@ namespace DAL_Test
                                 DAL.DALOrder.readAnOrder();
                                 break;
                             }
-
                         case (3):
+                            {
+                               
+                                break;
+                            }
+
+                        case (4):
                             {
                                 DAL.DALOrder.delete();
                                 break;
@@ -97,29 +102,33 @@ namespace DAL_Test
                         Console.WriteLine("if you went to delete press 4");
                         Console.WriteLine("if you went to exit  press 5");
 
-                        int chooseorderItem = Console.Read();
+                        int chooseOrderItem = Console.Read();
 
-                        switch (chooseorderItem)
+                        switch (chooseOrderItem)
                         {
                             case (1):
                                 {
-                                    DataSource.addOrder();
+                                    DAL.DALOrderItem.newOrderItem();
                                     break;
                                 }
 
                             case (2):
                                 {
-                                    DataSource.wwwww();
+                                    DAL.DALOrder.wwwww();
                                     break;
                                 }
-
                             case (3):
                                 {
-                                    DataSource.deleteOrderItem();
+                                    
+                                    break;
+
+                            case (4):
+                                {
+                                    DAL.DALOrder.deleteOrderItem();
                                     break;
                                 }
 
-                            case (4):
+                            case (5):
                                 {
                                     exit();
                                     break;
@@ -129,10 +138,10 @@ namespace DAL_Test
 
                         int orderItemCounter = 0;
 
-                        void orderItem()
+                        void product()
                         {
 
-                            orderCounter++;
+                            productCounter++;
 
                             Console.WriteLine("if you went to add press 1");
                             Console.WriteLine("if you went to read press 2");
@@ -140,29 +149,34 @@ namespace DAL_Test
                             Console.WriteLine("if you went to delete press 4");
                             Console.WriteLine("if you went to exit  press 5");
 
-                            int chooseprouduct = Console.Read();
+                            int chooseProuduct = Console.Read();
 
-                            switch (chooseprouduct)
+                            switch (chooseProuduct)
                             {
                                 case (1):
                                     {
-                                        DataSource.addProduct();
+                                        DAL.DALProduct.newProduct();
                                         break;
                                     }
 
                                 case (2):
                                     {
-                                        DataSource.wwwww();
+                                        DAL.DALProduct.wwwww();
                                         break;
                                     }
-
                                 case (3):
                                     {
-                                        DataSource.deleteProduct();
+                                        DAL.DALProduct.wwwww();
                                         break;
                                     }
 
                                 case (4):
+                                    {
+                                        DAL.DALProduct.deleteProduct();
+                                        break;
+                                    }
+
+                                case (5):
                                     {
                                         exit();
                                         break;

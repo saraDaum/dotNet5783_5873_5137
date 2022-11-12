@@ -1,4 +1,5 @@
 ﻿using DO;
+using System;
 using static DAL.DataSource;
 
 namespace DAL;
@@ -39,6 +40,32 @@ public struct DALProduct
         }
         return false;
     }
+
+
+    public static void newProduct()
+    {
+        Console.WriteLine("Hello, please enter your ProductName ");
+        string AnsProductName = Console.ReadLine();
+
+        Console.WriteLine("Please enter your Category");
+        Category AnsCategory = Console.ReadLine();
+
+
+        product newproduct  = new product
+        {
+            ID = Config.NextOrderNumber,
+            //
+            ProductPrice = AnsProductPrice,
+            Amount = AnsAmount,
+            //
+
+        };
+        addProduct(newProduct);
+    }
+
+
+
+
 
     /// <summary>
     /// ADD AN OBJECT 
