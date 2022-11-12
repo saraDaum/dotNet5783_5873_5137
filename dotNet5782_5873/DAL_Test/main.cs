@@ -59,19 +59,19 @@ namespace DAL_Test
                     {
                         case (1):
                             {
-                                DAL.DALOrder.addOrder();
+                                DAL.DALOrder.newOrder();
                                 break;
                             }
 
                         case (2):
                             {
-                                DataSource.wwwww();
+                                DAL.DALOrder.readAnOrder();
                                 break;
                             }
 
                         case (3):
                             {
-                                DataSource.deleteOrder();
+                                DAL.DALOrder.delete();
                                 break;
                             }
 
