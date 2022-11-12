@@ -76,7 +76,33 @@ public struct DALOrder
         }
         return 0;
     }
-
+   
+    public static void readAnOrder()
+        
+    {
+        int orderNumber;
+        Console.WriteLine("Please enter your order number");
+        string orderStr=Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderStr, out orderNumber);
+        if (TryParseSucceeded)
+        {
+            bool isExist=false;
+            foreach (Order currentOrder in OrderArray)
+            {
+                if (currentOrder.ID == orderNumber)
+                {
+                    isExist=true;
+                    currentOrder.ToString();
+                }
+                if (isExist)
+                    Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+        }
+    }
 
 
     /// <summary>
@@ -119,6 +145,26 @@ public struct DALOrder
         return emptyOrder;
     }
 
+    public static void delete()
+    {
+        Console.WriteLine("Do you know your order number? Enter y or n.");
+        string ans = Console.ReadLine();
+        if (ans == "n" || ans == "N")
+        {
+            foreach (Order currentOrder in OrderArray)
+            {
+                currentOrder.ToString();
+            }
+        }
+        Console.WriteLine("Please enter your order number.");
+        int orderNumber;
+        string orderNumStr = Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
+        if (TryParseSucceeded)
+        {
+            deleteOrder(orderNumber);
+        }
+    }
 
     /// <summary>
     /// Delete order from order's array.
@@ -140,7 +186,7 @@ public struct DALOrder
             }
             if (existFlag == false)
             {
-                throw new Exception("ERROR: This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo. ");
+                Console.WriteLine("ERROR: This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.) ");
             }
         }
     }

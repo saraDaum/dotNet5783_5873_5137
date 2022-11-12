@@ -65,13 +65,13 @@ namespace DAL_Test
 
                         case (2):
                             {
-                                DataSource.();
+                                DAL.DALOrder.readAnOrder();
                                 break;
                             }
 
                         case (3):
                             {
-                                DataSource.deleteOrder();
+                                DAL.DALOrder.delete();
                                 break;
                             }
 
