@@ -5,7 +5,7 @@ namespace DAL;
 
 public struct DALOrderItem
 {
-    
+
     /// <summary>
     /// This function gets object details, create a new object and put it in the array.
     /// </summary>
@@ -110,26 +110,26 @@ public struct DALOrderItem
                             Amount = amount,
                             autoID = Config.autoCounter
                         };
-                        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+                        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
                         return newOrderItem;
 
                     }
                 }
                 else
                 {
-                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
 
                 }
             }
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
             }
 
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
         }
         OrderItem emptyOrderItem = new OrderItem
         {
@@ -139,12 +139,107 @@ public struct DALOrderItem
             Amount = 0,
             autoID = 0
         };
-        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
         return emptyOrderItem;
     }
 
+    /// <summary>
+    /// This functoin creates an orderItem object, enter it to array and print this ID
+    /// </summary>
+    public static void newOrderItem()
+    {
+        OrderItem newOne = createAnOrderItem();
+        int numOrederItem = addOrderItem(newOne);
+        Console.WriteLine("Order item ID is: {0}", numOrederItem);
+    }
 
-    //Update orderItem in orderItem's array
+    public static void readAnOrderItem()
+    {
+        int orderItemNum;
+        Console.WriteLine("Please enter your order number");
+        string orderItemStr = Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderItemStr, out orderItemNum);
+        if (TryParseSucceeded)
+        {
+            bool isExist = false;
+            foreach (OrderItem currentOrderItem in orderItemArray)
+            {
+                if (currentOrderItem.OrderID == orderItemNum)
+                {
+                    isExist = true;
+                    currentOrderItem.ToString();
+                }
+                if (isExist)
+                    Console.WriteLine("This order item dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+        }
+    }
+
+    public static void update()
+    {
+        Console.WriteLine("Do you know your order item ID? Enter y or n.");
+        string ans = Console.ReadLine();
+        //int OrderNumber, productBarcode;
+        if (ans == "n" || ans == "N")
+        {
+            foreach (OrderItem currentOrderItem in orderItemArray)      //Print all order items for customer
+            {
+                currentOrderItem.ToString();
+            }
+        }
+        Console.WriteLine("Please enter your order item ID.");
+        int orderNumber;
+        string orderNumStr = Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
+        if (TryParseSucceeded)
+        {
+            Console.WriteLine("What amount do you want?");
+            int amount;
+            string amountStr = Console.ReadLine();
+            bool TryParseSucceeded2 = int.TryParse(amountStr, out amount);
+            if (TryParseSucceeded2)
+            {
+                foreach (OrderItem currentOrderItem in orderItemArray)
+                {
+                    if (currentOrderItem.OrderID == orderNumber)        //Searching the item to make an update object
+                    {
+                        OrderItem updateOne = new OrderItem
+
+                        {
+                            ProductID = currentOrderItem.ProductID,
+                            OrderID = currentOrderItem.OrderID,
+                            Amount = amount,                           //The new amount
+                            ProductPrice = currentOrderItem.ProductPrice,
+                            autoID = currentOrderItem.autoID
+                        };
+                        updateOrderItem(updateOne);
+                    }
+                    else
+                    {
+                        Console.WriteLine("No order item match.");
+                    }
+                }
+            }
+            else
+            {
+                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:ORDER_ITEM");
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:ORDER_ITEM");
+        }
+    }
+
+    /// <summary>
+    /// Update orderItem in orderItem's array
+    /// </summary>
+    /// <param name="newOne"></param>
+    /// <exception cref="Exception"></exception>
     public static void updateOrderItem(OrderItem newOne)
     {
         bool existFlag = false;
@@ -163,7 +258,7 @@ public struct DALOrderItem
         }
     }
 
-    
+
     //This function returns all instances of orderItem 
     public static OrderItem[] returnAllOrderItems()
     {
@@ -173,6 +268,42 @@ public struct DALOrderItem
             myOrderItems[i] = orderItemArray[i];
         }
         return myOrderItems;
+    }
+
+    public static void delete()
+    {
+        Console.WriteLine("Do you know your order item ID? Enter y or n.");
+        string ans = Console.ReadLine();
+        int OrderNumber, productBarcode;
+        if (ans == "n" || ans == "N")
+        {
+            foreach (OrderItem currentOrderItem in orderItemArray)      //Print all order items for customer
+            {
+                currentOrderItem.ToString();
+            }
+        }
+        Console.WriteLine("Please enter your order item ID.");
+        int orderNumber;
+        string orderNumStr = Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
+        if (TryParseSucceeded)
+        {
+            foreach (OrderItem currentOrderItem in orderItemArray)      //Searching the order item to delete it.
+            {
+                if (currentOrderItem.OrderID == orderNumber)
+                {
+                    deleteOrderItem(orderNumber, currentOrderItem.ProductID);
+                }
+                else
+                {
+                    Console.WriteLine("No match item.");
+                }
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+        }
     }
 
     /// <summary>
@@ -195,7 +326,7 @@ public struct DALOrderItem
             }
             if (existFlag == false)
             {
-                throw new Exception("ERROR: This item doesn't found.\n(Check yourself. Maybe you just have a typo. ");
+                Console.WriteLine("ERROR: This item doesn't found.\n(Check yourself. Maybe you just have a typo. ");
             }
         }
     }

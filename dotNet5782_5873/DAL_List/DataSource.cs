@@ -315,77 +315,7 @@ internal static class DataSource
     }
 
 
-    /// <summary>
-    /// This function create and enter an orderItem object to array.
-    /// </summary>
-    /// <exception cref="Exception"></exception>
-    public static void createAnOrderItem()
-    {
-        Console.WriteLine("Welcome yo Order menu.\nDo you know your order number? enter y or n");
-        string ans = Console.ReadLine();
-        if (ans == "y")
-        {
-            Console.WriteLine("Please enter your order number");
-        }
-        else
-        {
-            DALOrder.returnAllOrders();
-            Console.WriteLine("Please enter your order number");
-        }
-        int orderNum2;
-        string orderStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderStr, out orderNum2);
-        if (TryParseSucceeded)
-        {
-            Console.WriteLine("Please enter product barcode");
-            int barcode;
-            string barcodeStr = Console.ReadLine();
-            bool result = int.TryParse(barcodeStr, out barcode);
-            if (result)
-            {
-                Console.WriteLine("O.K. What is the price of the product?");
-                double price;
-                string priceStr = Console.ReadLine();
-                bool convertResult = double.TryParse(priceStr, out price);
-                if (convertResult)
-                {
-
-                    Console.WriteLine("O.K. What is the price of the product?");
-                    int amount;
-                    string amountStr = Console.ReadLine();
-                    bool result2 = int.TryParse(amountStr, out amount);
-                    if (result2)
-                    {
-                        init_OrderItem(barcode, orderNum2, price, amount, Config.autoCounter)
-                        Console.WriteLine("OKAY. All detailes has been saved");
-
-
-                    }
-                    else
-                    {
-                        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-
-                    }
-                }
-                else
-                {
-                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-
-                }
-            }
-            else
-            {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-
-            }
-
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-
-        }
-    }
+   
 
 
 

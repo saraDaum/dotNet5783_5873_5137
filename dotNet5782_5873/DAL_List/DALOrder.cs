@@ -28,16 +28,16 @@ public struct DALOrder
     }
 
 
-    public static int newOrder()
+    public static void newOrder()
     {
-        Console.WriteLine("Hello, please enter your name")
-        string AnsCustomerName = Console.Read();
+        Console.WriteLine("Hello, please enter your name");
+        string AnsCustomerName = Console.ReadLine();
 
-        Console.WriteLine("Please enter your email")
-        string AnsCustomerEmail = Console.Read();
+        Console.WriteLine("Please enter your email");
+        string AnsCustomerEmail = Console.ReadLine();
 
-        Console.WriteLine("Please enter your Address")
-        string AnsCustomerAddress = Console.Read();
+        Console.WriteLine("Please enter your Address");
+        string AnsCustomerAddress = Console.ReadLine();
 
         Order newOrder = new Order
         {

@@ -8,9 +8,9 @@ namespace DAL_Test
             void application()
             {
                 Console.WriteLine("Please choose from the next options:");
-                Console.WriteLine("For order a product enter 1");
-                Console.WriteLine("For add an orderItem enter 2");
-                Console.WriteLine("For prouduct enter 3");
+                Console.WriteLine("For order menu enter 1");
+                Console.WriteLine("For order item's menu enter 2");
+                Console.WriteLine("For prouduct's menu enter 3");
                 int choose = Console.Read();
 
                 switch (choose)
@@ -27,7 +27,7 @@ namespace DAL_Test
                         }
                     case (3):
                         {
-                            prouduct();
+                            products();
                             break;
                         }
                     default:
@@ -40,22 +40,19 @@ namespace DAL_Test
 
                 }
 
-                int orderCounter = 0;
+
 
                 void order()
                 {
-
-                    orderCounter++;
-
                     Console.WriteLine("If you want to add an order enter 1");
                     Console.WriteLine("If you want to read an order enter 2");
                     Console.WriteLine("if you want to update an order enter 3");
                     Console.WriteLine("if you went to delete an order enter 4");
                     Console.WriteLine("if you went to exit enter 5");
 
-                    int chooseorder = Console.Read();
+                    int chooseOrder = Console.Read();
 
-                    switch (chooseorder)
+                    switch (chooseOrder)
                     {
                         case (1):
                             {
@@ -68,123 +65,125 @@ namespace DAL_Test
                                 DAL.DALOrder.readAnOrder();
                                 break;
                             }
-
                         case (3):
+                            {
+                                break;
+                            }
+                        case (4):
                             {
                                 DAL.DALOrder.delete();
                                 break;
                             }
 
+                        case (5):
+                            {
+                                exit();
+                                break;
+                            }
+                    }
+                }
+
+                void orderItem()
+                {
+                    Console.WriteLine("if you went to add press 1");
+                    Console.WriteLine("if you went to read press 2");
+                    Console.WriteLine("if you went to update press 3");
+                    Console.WriteLine("if you went to delete press 4");
+                    Console.WriteLine("if you went to exit  press 5");
+
+                    int chooseOrderItem = Console.Read();       //Cousting!!
+
+                    switch (chooseOrderItem)
+                    {
+                        case (1):
+                            {
+                                DAL.DALOrderItem.newOrderItem();
+                                break;
+                            }
+
+                        case (2):
+                            {
+                                DAL.DALOrderItem.readAnOrderItem();
+                                break;
+                            }
+                        case (3):
+                            {
+                                DAL.DALOrderItem.update();
+                                break;
+                            }
                         case (4):
+                            {
+                                DAL.DALOrderItem.delete();
+                                break;
+                            }
+
+                        case (5):
+                            {
+                                exit();
+                                break;
+                            }
+                    }
+                }
+
+
+
+
+                void products()
+                {
+                    Console.WriteLine("if you went to add press 1");
+                    Console.WriteLine("if you went to read press 2");
+                    Console.WriteLine("if you went to update press 3");
+                    Console.WriteLine("if you went to delete press 4");
+                    Console.WriteLine("if you went to exit  press 5");
+
+                    int chooseProuduct = Console.Read();
+
+                    switch (chooseProuduct)
+                    {
+                        case (1):
+                            {
+                                DAL.DALProduct.addProduct();
+                                break;
+                            }
+
+                        case (2):
+                            {
+                                DAL.DALProduct.wwwww();
+                                break;
+                            }
+                        case (3):
+                            {
+                                DAL.DALProduct.kkjkj();
+                                break;
+                            }
+                        case (4):
+                            {
+                                DAL.DALProduct.deleteProduct();
+                                break;
+                            }
+
+                        case (5):
                             {
                                 exit();
                                 break;
                             }
                     }
 
-
-
-                    int orderItemCounter = 0;
-
-                    void orderItem()
-                    {
-
-                        orderCounter++;
-
-                        Console.WriteLine("if you went to add press 1");
-                        Console.WriteLine("if you went to read press 2");
-                        Console.WriteLine("if you went to update press 3");
-                        Console.WriteLine("if you went to delete press 4");
-                        Console.WriteLine("if you went to exit  press 5");
-
-                        int chooseorderItem = Console.Read();
-
-                        switch (chooseorderItem)
-                        {
-                            case (1):
-                                {
-                                    DataSource.addOrder();
-                                    break;
-                                }
-
-                            case (2):
-                                {
-                                    DataSource.wwwww();
-                                    break;
-                                }
-
-                            case (3):
-                                {
-                                    DataSource.deleteOrderItem();
-                                    break;
-                                }
-
-                            case (4):
-                                {
-                                    exit();
-                                    break;
-                                }
-                        }
-
-
-                        int orderItemCounter = 0;
-
-                        void orderItem()
-                        {
-
-                            orderCounter++;
-
-                            Console.WriteLine("if you went to add press 1");
-                            Console.WriteLine("if you went to read press 2");
-                            Console.WriteLine("if you went to update press 3");
-                            Console.WriteLine("if you went to delete press 4");
-                            Console.WriteLine("if you went to exit  press 5");
-
-                            int chooseprouduct = Console.Read();
-
-                            switch (chooseprouduct)
-                            {
-                                case (1):
-                                    {
-                                        DataSource.addProduct();
-                                        break;
-                                    }
-
-                                case (2):
-                                    {
-                                        DataSource.wwwww();
-                                        break;
-                                    }
-
-                                case (3):
-                                    {
-                                        DataSource.deleteProduct();
-                                        break;
-                                    }
-
-                                case (4):
-                                    {
-                                        exit();
-                                        break;
-                                    }
-                            }
-
-
-                            void exit()
-                            {
-
-
-                            }
-
-
-
-                        }
-
-                    }
+                }
+                void exit()
+                {
+                    Console.WriteLine("LOG OUT.......");
+                    return;
 
                 }
 
+
+
+
+
             }
+
         }
+
     }
 }
