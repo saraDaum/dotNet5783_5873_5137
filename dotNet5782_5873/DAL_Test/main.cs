@@ -148,12 +148,12 @@ namespace DAL_Test
 
                         case (2):
                             {
-                                DAL.DALProduct.readAnProduct();
+                                DAL.DALProduct.read();
                                 break;
                             }
                         case (3):
                             {
-                                DAL.DALProduct.updateProduct();
+                                DAL.DALProduct.update();
                                 break;
                             }
                         case (4):

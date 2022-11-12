@@ -44,10 +44,9 @@ public struct DALProduct
 
     public static void newProduct()
     {
-        Console.WriteLine("Hello,Please enter your Category");
+        Console.WriteLine("Hello, please enter product category");
         Category AnsCategory = Console.ReadLine();
-
-        Console.WriteLine("please enter your ProductName ");
+        Console.WriteLine("Please enter your ProductName ");
         string AnsProductName = Console.ReadLine();
 
         foreach (Product currentProduct in ProductArray)
@@ -93,6 +92,13 @@ public struct DALProduct
         return newProduct.Barcode;
     }
 
+    public static void update()
+    {
+        Console.WriteLine("What product do you want to update? Enter product category");
+        string category= Console.ReadLine();
+        Console.WriteLine("Please enter product name");
+        string productName = Console.ReadLine();
+    }
 
         public static void readAnProduct()
 
@@ -173,6 +179,15 @@ public struct DALProduct
 
     }
 
+    public static void read()
+    {
+        Product[] allProducts = new Product[Config.Next_DALProduct];
+        allProducts = returnAllProducts();
+        foreach (Product currentProduct in productArray)      //Print all product for customer
+        {
+            currentProduct.ToString();
+        }
+    }
 
     /// <summary>
     /// This function returns all instances of  product 
