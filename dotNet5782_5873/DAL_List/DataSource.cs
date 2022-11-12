@@ -1,4 +1,6 @@
 ﻿using DO;
+using System.Diagnostics;
+
 namespace DAL;
 internal static class DataSource
 {
@@ -42,7 +44,7 @@ internal static class DataSource
         auto_Init_order();
         //orderItem
     }
-      
+
 
 
 
@@ -285,23 +287,39 @@ internal static class DataSource
 
     }
 
-    private static void init_OrderItem(int pID, int oID, double price, int amount)
+    public static void init_OrderItem(int pID, int oID, double price, int amount, int ID = 0)
     {
-
-        orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
+        if (ID != 0)
         {
-            ProductID = pID,
-            OrderID = oID,
-            ProductPrice = price,
-            Amount = amount,
-            autoID = Config.autoCounter
-        };
-
+            orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
+            {
+                ProductID = pID,
+                OrderID = oID,
+                ProductPrice = price,
+                Amount = amount,
+                autoID = ID
+            };
+        }
+        else
+        {
+            orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
+            {
+                ProductID = pID,
+                OrderID = oID,
+                ProductPrice = price,
+                Amount = amount,
+                autoID = Config.autoCounter
+            };
+        }
 
     }
 
-    //This function create and return an orderItem object
-    public static OrderItem createAnOrderItem()
+
+    /// <summary>
+    /// This function create and enter an orderItem object to array.
+    /// </summary>
+    /// <exception cref="Exception"></exception>
+    public static void createAnOrderItem()
     {
         Console.WriteLine("Welcome yo Order menu.\nDo you know your order number? enter y or n");
         string ans = Console.ReadLine();
@@ -311,7 +329,7 @@ internal static class DataSource
         }
         else
         {
-            returnAllOrders();
+            DALOrder.returnAllOrders();
             Console.WriteLine("Please enter your order number");
         }
         int orderNum2;
@@ -338,22 +356,14 @@ internal static class DataSource
                     bool result2 = int.TryParse(amountStr, out amount);
                     if (result2)
                     {
+                        init_OrderItem(barcode, orderNum2, price, amount, Config.autoCounter)
                         Console.WriteLine("OKAY. All detailes has been saved");
+
 
                     }
                     else
                     {
-                        //init_OrderItem(barcode, orderNum2,price,amount);
-                        OrderItem newOrderItem = new OrderItem
-                        {
-                            ProductID = barcode,
-                            OrderID = orderNum2,
-                            ProductPrice = price,
-                            Amount = amount,
-                            autoID = Config.autoCounter
-                        };
                         throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-                        return newOrderItem;
 
                     }
                 }
@@ -366,147 +376,20 @@ internal static class DataSource
             else
             {
                 throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+
             }
 
-    }
-
-
-
-    private static void init_Products()
-    {
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "Red blushe - SACARA",
-            Category = Category.blushes,
-            ProductPrice = 45,
-            InStock = 6
-        };
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "Blush for a natural color in the cheeks - MAC",
-            Category = Category.blushes,
-            ProductPrice = 75,
-            InStock = 4
-        };
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "A luxurious blush - Loreal",
-            Category = Category.blushes,
-            ProductPrice = 59,
-            InStock = 3
-        };
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "A black eye pencil- SACARA",
-            Category = Category.Pencils,
-            ProductPrice = 19,
-            InStock = 6
-        };
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "A gray eye pencil- MAC",
-            Category = Category.Pencils,
-            ProductPrice = 39,
-            InStock = 3
-        };
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "A black eye pencil, hipoalerganic- MAC",
-            Category = Category.Pencils,
-            ProductPrice = 49,
-            InStock = 4
-        };
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = "A natural lipstick- MAC",
-            Category = Category.lipstiks,
-            ProductPrice = 69,
-            InStock = 4
-        };
         }
         else
         {
             throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+
         }
-        OrderItem emptyOrderItem = new OrderItem
-        {
-            ProductID = 0,
-            OrderID = 0,
-            ProductPrice = 0,
-            Amount = 0,
-            autoID = 0
-        };
-        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        return emptyOrderItem;
     }
 
-    
-private static void init_Products()
-{
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "Red blushe - SACARA",
-        Category = Category.blushes,
-        ProductPrice = 45,
-        InStock = 6
-    };
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "Blush for a natural color in the cheeks - MAC",
-        Category = Category.blushes,
-        ProductPrice = 75,
-        InStock = 4
-    };
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "A luxurious blush - Loreal",
-        Category = Category.blushes,
-        ProductPrice = 59,
-        InStock = 3
-    };
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "A black eye pencil- SACARA",
-        Category = Category.Pencils,
-        ProductPrice = 19,
-        InStock = 6
-    };
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "A gray eye pencil- MAC",
-        Category = Category.Pencils,
-        ProductPrice = 39,
-        InStock = 3
-    };
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "A black eye pencil, hipoalerganic- MAC",
-        Category = Category.Pencils,
-        ProductPrice = 49,
-        InStock = 4
-    };
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "A natural lipstick- MAC",
-        Category = Category.lipstiks,
-        ProductPrice = 69,
-        InStock = 4
-    };
-    private static void auto_Init_Products()
+
+
+    public static void auto_Init_Products()
     {
         productArray[Config.Next_DALProduct++] = new Product()
         {
@@ -631,123 +514,92 @@ private static void init_Products()
             InStock = 4
         };
 
-    productArray[Config.Next_DALProduct++] = new Product()
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = "Bronzer - MAC",
-        Category = Category.bronzers,
-        ProductPrice = 45,
-        InStock = 2
-    };
-
-}
-/// <summary>
-///This function calculate the barcode of each item.
-/// In "is_Barkode_OK" function we check if this barkode already exist .
-/// </summary>
-/// <returns></returns>
-private static int product_Barcode_Calculation()
-{
-    int barcode = Config.rnd.Next(10000000, 100000000);
-    return barcode;
-}
-
-
-/// <summary>
-/// A helper function that checks whether this barcode already exists for another product
-/// </summary>
-/// <param name="b"></param>
-/// <returns></returns>
-private static bool is_Barkode_OK(int b)
-{
-    for (int i = 0; i < Config.Next_DALProduct; i++)
-    {
-        if (productArray[i].Barcode == b)
-            return true;
-    }
-    return false;
-}
-
-/// <summary>
-/// ADD AN OBJECT FUNCTIONS
-/// </summary>
-/// <param name="newObject"></param>
-/// <returns></returns>
-
-public static int addProduct(Product newProduct)
-{
-    bool isExist = is_Barkode_OK(newProduct.Barcode);
-    if (isExist)
-    {
-        Console.WriteLine("A product with this barcode already exists in the database.");
-        return 0;
-    }
-    else
-    {
-        productArray[Config.Next_DALProduct++] = newProduct;
-        Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
-    }
-    return newProduct.Barcode;
-}
-
-public static int addOrder(Order newOrder)
-{
-    bool isExist = false;
-    foreach (Order currentOrder in OrderArray)
-    {
-        if (currentOrder.ID == newOrder.ID)
+        productArray[Config.Next_DALProduct++] = new Product()
         {
-            Console.WriteLine("A order with this number already exists in the database.");
-            isExist = true;
-        }
-    }
-    if (!isExist)
-    {
-        OrderArray[Config.Next_DALOrder++] = newOrder;
-        Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
-        return newOrder.ID;
-    }
-    return 0;
-}
+            Barcode = DALProduct.Make_A_Barcode(),
+            ProductName = "Bronzer - MAC",
+            Category = Category.bronzers,
+            ProductPrice = 45,
+            InStock = 2
+        };
 
-public static int addOrderItem(OrderItem newOrderItem)
-{
-    bool isExist = false;
-    foreach (OrderItem currentOrderItem in orderItemArray)
-    {
-        if (currentOrderItem.OrderID == newOrderItem.OrderID && currentOrderItem.ProductID == newOrderItem.ProductID)
-        {
-            Console.WriteLine("An order item with this details already exists in the database.");
-            isExist = true;
-        }
     }
-    if (!isExist)
+    /// <summary>
+    ///This function calculate the barcode of each item.
+    /// In "is_Barkode_OK" function we check if this barkode already exist .
+    /// </summary>
+    /// <returns></returns>
+    private static int product_Barcode_Calculation()
     {
-        orderItemArray[Config.Next_DALOrderItem++] = newOrderItem;
-        Console.WriteLine("The order item entered to database successfully.\nThe order item number of the item is: ");
-        return newOrderItem.OrderItemCounter;
+        int barcode = Config.rnd.Next(10000000, 100000000);
+        return barcode;
     }
-    return 0;
-}
 
-   // public static int ReturnOrderIdObject(Order order )
-    //{
-
-      // foreach(Order order1 in order)
-       //   { 
-        //    if(order1.ID == order.ID)   
-          //      return order1.ID;   
-        //  }
-   // }
 
     /// <summary>
-    /// RETURN OBJECT FUNCTIONS
+    /// A helper function that checks whether this barcode already exists for another product
+    /// </summary>
+    /// <param name="b"></param>
+    /// <returns></returns>
+    private static bool is_Barkode_OK(int b)
+    {
+        for (int i = 0; i < Config.Next_DALProduct; i++)
+        {
+            if (productArray[i].Barcode == b)
+                return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// ADD AN OBJECT FUNCTIONS
+    /// </summary>
+    /// <param name="newObject"></param>
+    /// <returns></returns>
+
+    public static int addProduct(Product newProduct)
+    {
+        bool isExist = is_Barkode_OK(newProduct.Barcode);
+        if (isExist)
+        {
+            Console.WriteLine("A product with this barcode already exists in the database.");
+            return 0;
+        }
+        else
+        {
+            productArray[Config.Next_DALProduct++] = newProduct;
+            Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
+        }
+        return newProduct.Barcode;
+    }
+
+   
+
+    public static int addOrderItem(OrderItem newOrderItem)
+    {
+        bool isExist = false;
+        foreach (OrderItem currentOrderItem in orderItemArray)
+        {
+            if (currentOrderItem.OrderID == newOrderItem.OrderID && currentOrderItem.ProductID == newOrderItem.ProductID)
+            {
+                Console.WriteLine("An order item with this details already exists in the database.");
+                isExist = true;
+            }
+        }
+        if (!isExist)
+        {
+            orderItemArray[Config.Next_DALOrderItem++] = newOrderItem;
+            Console.WriteLine("The order item entered to database successfully.\nThe order item number of the item is: ");
+            return newOrderItem.autoID;
+        }
+        return 0;
+    }
+
+    /// <summary>
+    /// This function gets an ID number and returns the corresponding Order object.
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-
-
-    //This function get an ID number and returns the corresponding Order object
     public static Order ReturnOrderObject(int id)
     {
         foreach (Order currentOrder in OrderArray)
@@ -767,52 +619,26 @@ public static int addOrderItem(OrderItem newOrderItem)
         };
         return emptyOrder;
     }
-//This function get an ID number and returns the corresponding Order object
-public static Order ReturnOrderObject(int id)
-{
-    foreach (Order currentOrder in OrderArray)
-    {
-        if (currentOrder.ID == id)
-            return currentOrder;
-    }
-    Order emptyOrder = new Order
-    {
-        ID = Config.NextOrderNumber,
-        CustomerName = "",
-        CustomerEmail = "",
-        CustomerAddress = "",
-        OrderDate = DateTime.Today,
-        ShipDate = DateTime.Today,
-        DeliveryDate = DateTime.Today
-    };
-    return emptyOrder;
-}
-        productArray[Config.Next_DALProduct++] = new Product()
-        {
-            Barcode = DALProduct.Make_A_Barcode(),
-            ProductName = "Bronzer - MAC",
-            Category = Category.bronzers,
-            ProductPrice = 45,
-            InStock = 2
-        };
-
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
+   
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
 
 

@@ -60,7 +60,7 @@ public struct DALOrderItem
     /// <exception cref="Exception"></exception>
     public static OrderItem createAnOrderItem()
     {
-        Console.WriteLine("Welcome yo Order menu.\nDo you know your order number? enter y or n");
+        Console.WriteLine("Welcome to OrderItem menu.\nDo you know your order number? enter y or n");
         string ans = Console.ReadLine();
         if (ans == "y")
         {
@@ -69,7 +69,7 @@ public struct DALOrderItem
         else
         {
 
-            returnAllOrders();
+            DALOrder.returnAllOrders();
             Console.WriteLine("Please enter your order number");
         }
         int orderNum2;

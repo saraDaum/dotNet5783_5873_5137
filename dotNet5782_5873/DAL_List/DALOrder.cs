@@ -25,9 +25,8 @@ public struct DALOrder
             }
         }
     }
-
     /// <summary>
-    /// ADD AN OBJECT 
+    /// This function gets an order object, enter it to order's array and returns the order number
     /// </summary>
     /// <param name="newOrder"></param>
     /// <returns></returns>
@@ -50,6 +49,7 @@ public struct DALOrder
         }
         return 0;
     }
+   
 
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿namespace DAL_Test
+﻿
+namespace DAL_Test
 {
     public class Application
     {
@@ -7,9 +8,9 @@
             void application()
             {
                 Console.WriteLine("Please choose from the next options:");
-                Console.WriteLine("For order type 1");
-                Console.WriteLine("For orderItem type 2");
-                Console.WriteLine("For prouduct type 3");
+                Console.WriteLine("For order a product enter 1");
+                Console.WriteLine("For add an orderItem enter 2");
+                Console.WriteLine("For prouduct enter 3");
                 int choose = Console.Read();
 
                 switch (choose)
@@ -46,11 +47,11 @@
 
                     orderCounter++;
 
-                    Console.WriteLine("if you went to add press 1");
-                    Console.WriteLine("if you went to read press 2");
-                    Console.WriteLine("if you went to update press 3");
-                    Console.WriteLine("if you went to delete press 4");
-                    Console.WriteLine("if you went to exit  press 5");
+                    Console.WriteLine("If you want to add an order enter 1");
+                    Console.WriteLine("If you want to read an order enter 2");
+                    Console.WriteLine("if you want to update an order enter 3");
+                    Console.WriteLine("if you went to delete an order enter 4");
+                    Console.WriteLine("if you went to exit enter 5");
 
                     int chooseorder = Console.Read();
 
@@ -58,7 +59,7 @@
                     {
                         case (1):
                             {
-                                addOrder();
+                                DAL.DALOrder.addOrder();
                                 break;
                             }
 
