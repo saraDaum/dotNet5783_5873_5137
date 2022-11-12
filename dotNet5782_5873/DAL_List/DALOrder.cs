@@ -1,4 +1,5 @@
 ﻿using DO;
+using System;
 using static DAL.DataSource;
 
 namespace DAL;
@@ -24,6 +25,32 @@ public struct DALOrder
                 throw new Exception("ERROR: This order doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
             }
         }
+    }
+
+
+    public static int newOrder()
+    {
+        Console.WriteLine("Hello, please enter your name")
+        string AnsCustomerName = Console.Read();
+
+        Console.WriteLine("Please enter your email")
+        string AnsCustomerEmail = Console.Read();
+
+        Console.WriteLine("Please enter your Address")
+        string AnsCustomerAddress = Console.Read();
+
+        Order newOrder = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = AnsCustomerName,
+            CustomerEmail = AnsCustomerEmail,
+            CustomerAddress = AnsCustomerAddress,
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        addOrder(newOrder);
+
     }
     /// <summary>
     /// This function gets an order object, enter it to order's array and returns the order number
@@ -92,7 +119,7 @@ public struct DALOrder
         return myOrders;
     }
 
-   
+
     /// <summary>
     /// This function gets an ID number and returns the corresponding Order object
     /// </summary>
