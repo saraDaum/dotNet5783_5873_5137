@@ -59,7 +59,7 @@ namespace DAL_Test
                     {
                         case (1):
                             {
-                                DAL.DALOrder.addOrder();
+                                DAL.DALOrder.DAL_AddOrder();
                                 break;
                             }
 
