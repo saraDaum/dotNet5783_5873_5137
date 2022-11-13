@@ -170,6 +170,7 @@ namespace DAL_Test
                     }
 
                 }
+               
                 void exit()
                 {
                     Console.WriteLine("LOG OUT.......");
@@ -182,7 +183,7 @@ namespace DAL_Test
 
 
             }
-
+            application();
         }
 
     }
