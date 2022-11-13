@@ -314,11 +314,6 @@ internal static class DataSource
 
     }
 
-
-   
-
-
-
     public static void auto_Init_Products()
     {
         productArray[Config.Next_DALProduct++] = new Product()

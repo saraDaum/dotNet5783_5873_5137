@@ -42,42 +42,66 @@ public struct DALProduct
     }
 
 
-    public static void newProduct()
+    /// <summary>
+    /// This function create a product object and enter it to the array.
+    /// </summary>
+    /// <returns></returns>
+    public static int newProduct()
     {
-        Console.WriteLine("Hello, please enter product category");
-        Category AnsCategory = Console.ReadLine();
+        Category category = new Category();
+        Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
+        string AnsCategory = Console.ReadLine();
+        switch (AnsCategory)
+        {
+            case ("Pencils"):
+                {
+                    category = (Category)0;
+                    break;
+                }
+            case ("lipstiks"):
+                {
+                    category = (Category)1;
+
+                    break;
+                }
+            case (" blushes"):
+                {
+                    category = (Category)2;
+                    break;
+                }
+            case ("bronzers"):
+
+                {
+                    category = (Category)3;
+                    break;
+                }
+            case ("makeup"):
+                {
+                    category = (Category)4;
+                    break;
+                }
+            default:
+                break;
+        }
         Console.WriteLine("Please enter your ProductName ");
         string AnsProductName = Console.ReadLine();
-
-        foreach (Product currentProduct in productArray)
+        Console.WriteLine("How much does the item cost? ");
+        string strPrice = Console.ReadLine();
+        Console.WriteLine("What is the quantity in stock? ");
+        double price = Convert.ToDouble(strPrice);
+        string strAmount = Console.ReadLine();
+        int amount = Convert.ToInt32(strAmount); ;
+        Product newProduct = new Product
         {
-            if (currentProduct.Category == AnsCategory && currentProduct.ProductName == AnsProductName)
-            {
-
-                Product newProduct = new Product
-                {
-                    Barcode = Make_A_Barcode(),
-                    Category = AnsCategory,
-                    ProductPrice = currentProduct.ProductPrice,
-                    ProductName = currentProduct.ProductName,
+            Barcode = Make_A_Barcode(),
+            ProductName = AnsProductName,
+            Category = category,
+            ProductPrice = price,
+            InStock = amount,
 
 
-                };
-                addProduct(newProduct);
-            }
-        }
-    }
+        };
 
-
-
-
-    /// <summary>
-    /// ADD AN OBJECT 
-    /// </summary>
-    /// <param name="newProduct"></param>
-    /// <returns></returns>
-    public static int addProduct(Product newProduct)
-    {
         bool isExist = is_Barkode_OK(newProduct.Barcode);
         if (isExist)
         {
@@ -90,51 +114,106 @@ public struct DALProduct
             Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
         }
         return newProduct.Barcode;
+
+        //foreach (Product currentProduct in productArray)
+        //{
+        //    if (((int)currentProduct.Category) == ((int)category) && currentProduct.ProductName == AnsProductName)
+        //    {
+
+        //        Product newProduct = new Product
+        //        {
+        //            Barcode = Make_A_Barcode(),
+        //            ProductName = currentProduct.ProductName,
+        //            Category = category,
+        //            ProductPrice = currentProduct.ProductPrice,
+        //            InStock = currentProduct.InStock,
+
+
+        //        };
+        //        addProduct(newProduct);
+        //    }
+        //}
     }
 
+
+
+
+
+    /// <summary>
+    /// ADD AN OBJECT 
+    /// </summary>
+    /// <param name="newProduct"></param>
+    /// <returns></returns>
+    //public static int addProduct(Product newProduct)
+    //{
+    //    bool isExist = is_Barkode_OK(newProduct.Barcode);
+    //    if (isExist)
+    //    {
+    //        Console.WriteLine("A product with this barcode already exists in the database.");
+    //        return 0;
+    //    }
+    //    else
+    //    {
+    //        productArray[Config.Next_DALProduct++] = newProduct;
+    //        Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
+    //    }
+    //    return newProduct.Barcode;
+    //}
+
+    
     public static void update()
     {
-        Console.WriteLine("What product do you want to update? Enter product category");
-        string category= Console.ReadLine();
-        Console.WriteLine("Please enter product name");
-        string productName = Console.ReadLine();
-    }
-
-        public static void readAnProduct()
-
+        foreach (Product currentProduct in productArray)
+            currentProduct.ToString();
+        Console.WriteLine("Please enter product barcode that you want to update it.");
+        string strBarcode = Console.ReadLine();
+        Console.WriteLine("O.K.\nWhat do you want to update? amount in stock or price?");
+        string ans = Console.ReadLine();
+        int amount = 0;
+        double price = 0;
+        switch (ans)
         {
-            int productNumber;
-            Console.WriteLine("Please enter your Product barcode");
-            string productStr = Console.ReadLine();
-            int productBarcode;
-            bool TryParseSucceeded = int.TryParse(productStr, out productBarcode);
-            if (TryParseSucceeded)
-            {
-                bool isExist = false;
-                foreach (Product currentProduct in productArray)
-                {
-                    if (currentProduct.Barcode == productBarcode)
-                    {
-                        isExist = true;
-                        currentProduct.ToString();
-                    }
-                    if (isExist)
-                        Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
-                }
-            }
-            else
-            {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-            }
+            case ("amount"):
+                Console.WriteLine("What is the quantity in stock?");
+                string ans2 = Console.ReadLine();
+                amount = Convert.ToInt32(ans2);
+                break;
+            case ("price"):
+                Console.WriteLine("What is the updated price?");
+                string strPrice = Console.ReadLine();
+                price = Convert.ToDouble(strPrice);
+                break;
         }
 
 
-        /// <summary>
-        /// Update product in product's array
-        /// </summary>
-        /// <param name="newOne"></param>
-        /// <exception cref="Exception"></exception>
-        public static void updateProduct(Product newOne)
+        int barcode = Convert.ToInt32(strBarcode);
+
+        bool isExist = false;
+        for (int i = 0; i < Config.Next_DALProduct; i++)
+        {
+            if (productArray[i].Barcode == barcode)
+            {
+                isExist = true;
+                if (price != 0)
+                    productArray[i].ProductPrice = price;
+                if (amount != 0)
+                    productArray[i].InStock = amount;
+                Console.WriteLine("Product has been successfully update");
+            }
+            if (isExist == false)
+            {
+                throw new Exception("ERROR: This product doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
+            }
+        }
+
+    }
+
+    /// <summary>
+    /// Update product in product's array
+    /// </summary>
+    /// <param name="newOne"></param>
+    /// <exception cref="Exception"></exception>
+    public static void updateProduct(Product newOne)
     {
         bool existFlag = false;
         for (int i = 0; i < Config.Next_DALProduct; i++)
@@ -149,6 +228,33 @@ public struct DALProduct
             {
                 throw new Exception("ERROR: This product doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
             }
+        }
+    }
+    public static void ReadAnProduct()
+
+    {
+        int productNumber;
+        Console.WriteLine("Please enter your Product barcode");
+        string productStr = Console.ReadLine();
+        int productBarcode;
+        bool TryParseSucceeded = int.TryParse(productStr, out productBarcode);
+        if (TryParseSucceeded)
+        {
+            bool isExist = false;
+            foreach (Product currentProduct in productArray)
+            {
+                if (currentProduct.Barcode == productBarcode)
+                {
+                    isExist = true;
+                    currentProduct.ToString();
+                }
+                if (isExist)
+                    Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
         }
     }
 
@@ -242,7 +348,7 @@ public struct DALProduct
         return myProducts;
     }
 
-   
+
     /// <summary>
     /// This function gets an ID number and returns the corresponding Product object
     /// </summary>
