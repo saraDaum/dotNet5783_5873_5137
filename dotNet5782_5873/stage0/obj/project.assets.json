@@ -8,23 +8,23 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\st226\\.nuget\\packages\\": {},
+    "C:\\Users\\st222\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
+      "projectUniqueName": "C:\\Users\\st222\\Source\\Repos\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
       "projectName": "stage0",
-      "projectPath": "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
-      "packagesPath": "C:\\Users\\st226\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\obj\\",
+      "projectPath": "C:\\Users\\st222\\Source\\Repos\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
+      "packagesPath": "C:\\Users\\st222\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\st222\\Source\\Repos\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\st226\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\st222\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -158,7 +158,7 @@ namespace DAL_Test
                             }
                         case (4):
                             {
-                                DAL.DALProduct.deleteProduct();
+                                DAL.DALProduct.delete();
                                 break;
                             }
 

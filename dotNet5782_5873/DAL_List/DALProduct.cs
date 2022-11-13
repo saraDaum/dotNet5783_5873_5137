@@ -49,24 +49,24 @@ public struct DALProduct
         Console.WriteLine("Please enter your ProductName ");
         string AnsProductName = Console.ReadLine();
 
-        foreach (Product currentProduct in ProductArray)
+        foreach (Product currentProduct in productArray)
         {
-            if (currentProduct.Category== AnsCategory && currentProduct.ProductName == AnsProductName)
+            if (currentProduct.Category == AnsCategory && currentProduct.ProductName == AnsProductName)
+            {
+
+                Product newProduct = new Product
+                {
+                    Barcode = Make_A_Barcode(),
+                    Category = AnsCategory,
+                    ProductPrice = currentProduct.ProductPrice,
+                    ProductName = currentProduct.ProductName,
 
 
-        Product newproduct  = new product
-        {
-            Barcode = Make_A_Barcode(),
-            ProductName = AnsProductName,
-            Category = AnsCategory,
-            ProductPrice=currentProduct.ProductPrice,   
-            ProductName = currentProduct.ProductName,   
-            
-
-        };
-        addProduct(newProduct);
+                };
+                addProduct(newProduct);
+            }
+        }
     }
-
 
 
 
@@ -111,9 +111,9 @@ public struct DALProduct
             if (TryParseSucceeded)
             {
                 bool isExist = false;
-                foreach (Product currentProduct in ProductArray)
+                foreach (Product currentProduct in productArray)
                 {
-                    if (currentProduct.Barcode == ProductBarcode)
+                    if (currentProduct.Barcode == productBarcode)
                     {
                         isExist = true;
                         currentProduct.ToString();
@@ -151,6 +151,45 @@ public struct DALProduct
             }
         }
     }
+
+
+
+    public static void delete()
+    {
+        Console.WriteLine("Do you know your product barcode? Enter y or n.");
+        string ans = Console.ReadLine();
+        int ProductBarcode;
+        if (ans == "n" || ans == "N")
+        {
+            foreach (Product currentProduct in productArray)      //Print all order items for customer
+            {
+                currentProduct.ToString();
+            }
+        }
+        Console.WriteLine("Please enter your product barcode.");
+        string orderNumStr = Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
+        if (TryParseSucceeded)
+        {
+            foreach (Product currentProduct in productArray)      //Searching the order item to delete it.
+            {
+                if (currentProduct.Barcode == ProductBarcode)
+                {
+                    deleteProduct(currentProduct.Barcode);
+                }
+                else
+                {
+                    Console.WriteLine("No match item.");
+                }
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+        }
+    }
+
+
 
 
     /// <summary>
