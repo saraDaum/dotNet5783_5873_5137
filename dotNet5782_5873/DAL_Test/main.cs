@@ -40,6 +40,7 @@ namespace DAL_Test
 
                 }
 
+            }
 
 
                 void order()
@@ -124,9 +125,6 @@ namespace DAL_Test
                             }
                     }
                 }
-
-
-
 
                 void products()
                 {
