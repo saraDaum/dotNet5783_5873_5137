@@ -1,10 +1,11 @@
 ﻿using DO;
 using System;
+using DalApi;
 using static DAL.DataSource;
 
 namespace DAL;
 
-public struct DALOrderItem
+internal class DALOrderItem:DalApi.ICrud<OrderItem>
 {
 
     /// <summary>
@@ -334,9 +335,31 @@ public struct DALOrderItem
         }
     }
 
+    public OrderItem add(OrderItem entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OrderItem Get(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OrderItem update(OrderItem entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OrderItem delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
     //public static OrderItem getOrderItemDetails()
     //{
 
     //}
+
+
 
 }

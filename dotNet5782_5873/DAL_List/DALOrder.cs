@@ -1,33 +1,36 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 using System;
 using static DAL.DataSource;
 
 namespace DAL;
 
 
-public struct DALOrder
+internal struct DALOrder : DalApi.ICrud<Order>
 {
-
-    //Update order in order's array
+    /// <summary>list
+    /// Update order in order's array
+    /// </summary>
+    /// <param name="newOne"></param>
+    /// <exception cref="Exception"></exception>
     public static void updateOrder(Order newOne)
     {
-        bool existFlag = false;
-        for (int i = 0; i < Config.Next_DALOrder; i++)
+        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOne.ID);
+        if (index == -1)
         {
-            if (OrderArray[i].ID == newOne.ID)
-            {
-                existFlag = true;
-                OrderArray[i] = newOne;
-                Console.WriteLine("Order has been successfully update");
-            }
-            if (existFlag == false)
-            {
-                throw new Exception("ERROR: This order doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
-            }
+            throw new Exception("Object dosen't exist.");
         }
+        if (index != -1)
+        {
+            OrderList.Insert(index, newOne);
+
+        }
+
     }
 
-
+    /// <summary>list
+    /// Create an Order Object.
+    /// </summary>
     public static void newOrder()
     {
         Console.WriteLine("Hello, please enter your name");
@@ -52,51 +55,43 @@ public struct DALOrder
         addOrder(newOrder);
 
     }
-    /// <summary>
+    /// <summary>list
     /// This function gets an order object, enter it to order's array and returns the order number
     /// </summary>
     /// <param name="newOrder"></param>
     /// <returns></returns>
     public static int addOrder(Order newOrder)
     {
-        bool isExist = false;
-        foreach (Order currentOrder in OrderArray)
+        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOrder.ID);
+        if (index == -1)
         {
-            if (currentOrder.ID == newOrder.ID)
-            {
-                Console.WriteLine("A order with this number already exists in the database.");
-                isExist = true;
-            }
-        }
-        if (!isExist)
-        {
-            OrderArray[Config.Next_DALOrder++] = newOrder;
+            OrderList.Insert(0, newOrder);
             Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
             return newOrder.ID;
         }
+        if (index != -1)
+        {
+            throw new Exception("A order with this number already exists in the database.");
+
+        }
         return 0;
     }
-   
+
+    /// <summary>list
+    /// This function gets an Order object and print it's detail
+    /// </summary>
+    /// <exception cref="Exception"></exception>
     public static void readAnOrder()
-        
+
     {
         int orderNumber;
         Console.WriteLine("Please enter your order number");
-        string orderStr=Console.ReadLine();
+        string orderStr = Console.ReadLine();
         bool TryParseSucceeded = int.TryParse(orderStr, out orderNumber);
         if (TryParseSucceeded)
         {
-            bool isExist=false;
-            foreach (Order currentOrder in OrderArray)
-            {
-                if (currentOrder.ID == orderNumber)
-                {
-                    isExist=true;
-                    currentOrder.ToString();
-                }
-                if (isExist)
-                    Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
-            }
+            Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == orderNumber);
+            MyOrder.ToString();
         }
         else
         {
@@ -105,56 +100,42 @@ public struct DALOrder
     }
 
 
-    /// <summary>
+    /// <summary>list
     /// This function returns all instances of order
     /// </summary>
     /// <returns></returns>
-    public static Order[] returnAllOrders()
+    public static IEnumerable<Order> returnAllOrders()
     {
-        Order[] myOrders = new Order[Config.Next_DALOrder];
-        for (int i = 0; i < Config.Next_DALOrder; i++)
-        {
-            myOrders[i] = OrderArray[i];
-        }
-        return myOrders;
+        IEnumerable<Order> orders = OrderList;
+        return orders;
     }
 
 
-    /// <summary>
+    /// <summary>list
     /// This function gets an ID number and returns the corresponding Order object
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
     public static Order ReturnOrderObject(int id)
     {
-        foreach (Order currentOrder in OrderArray)
-        {
-            if (currentOrder.ID == id)
-                return currentOrder;
-        }
-        Order emptyOrder = new Order
-        {
-            ID = Config.NextOrderNumber,
-            CustomerName = "",
-            CustomerEmail = "",
-            CustomerAddress = "",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today,
-            DeliveryDate = DateTime.Today
-        };
-        return emptyOrder;
+        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
+        if (index == -1)
+            throw new Exception("This object dosen't exist.");
+        return OrderList.ElementAt(index);
+
     }
 
+    /// <summary>list
+    /// This function
+    /// </summary>
     public static void delete()
     {
+        
         Console.WriteLine("Do you know your order number? Enter y or n.");
         string ans = Console.ReadLine();
         if (ans == "n" || ans == "N")
         {
-            foreach (Order currentOrder in OrderArray)
-            {
-                currentOrder.ToString();
-            }
+            returnAllOrders();
         }
         Console.WriteLine("Please enter your order number.");
         int orderNumber;
@@ -173,21 +154,52 @@ public struct DALOrder
     /// <exception cref="Exception"></exception>
     static void deleteOrder(int OrderNumber)
     {
-        bool existFlag = false;
-        for (int i = 0; i < Config.Next_DALOrder; i++)
+        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == OrderNumber);
+        if (index == -1)
         {
-            if (OrderArray[i].ID == OrderNumber)
-            {
-                existFlag = true;
-                OrderArray[i] = OrderArray[Config.Next_DALOrder];
-                Config.Next_DALOrder--;
-                Console.WriteLine("The order has been successfully deleted");
-
-            }
-            if (existFlag == false)
-            {
-                Console.WriteLine("ERROR: This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.) ");
-            }
+            throw new Exception("The order has been successfully deleted.");
         }
+        if (index != -1)
+        {
+            OrderList.RemoveAt(index);
+        }
+        //bool existFlag = false;
+        //for (int i = 0; i < Config.Next_DALOrder; i++)
+        //{
+        //    if (OrderArray[i].ID == OrderNumber)
+        //    {
+        //        existFlag = true;
+        //        OrderArray[i] = OrderArray[Config.Next_DALOrder];
+        //        Config.Next_DALOrder--;
+        //        Console.WriteLine("The order has been successfully deleted");
+
+        //    }
+        //    if (existFlag == false)
+        //    {
+        //        Console.WriteLine("ERROR: This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.) ");
+        //    }
+        //}
     }
+
+
+    public Order add(Order entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Order Get(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Order update(Order entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Order delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
 }

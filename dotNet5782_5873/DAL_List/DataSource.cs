@@ -6,12 +6,6 @@ internal static class DataSource
 {
     internal static class Config
     {
-        //Static variables
-        internal static int Next_DALOrder = 0;
-        internal static int Next_DALOrderItem = 0;
-        internal static int Next_DALProduct = 0;
-
-
         //NextOrder.get() return NextOrder+1 and advance iit by one the value.
         private static int nextOrder = 100000;
         public static int NextOrderNumber { get => nextOrder++; private set => nextOrder = value; }  //Only Order has automatic numberation.
@@ -31,9 +25,19 @@ internal static class DataSource
 
 
     //All entity arrays
-    internal static Order[] OrderArray = new Order[100];
-    internal static OrderItem[] orderItemArray = new OrderItem[200];
-    internal static Product[] productArray = new Product[50];
+    //internal static Order[] OrderArray = new Order[100];
+    //internal static OrderItem[] orderItemArray = new OrderItem[200];
+    //internal static Product[] productArray = new Product[50];
+    
+    
+    /// <summary>
+    /// The arrays are in list form
+    /// </summary>
+
+    internal static List<Order> OrderList = new List<Order>();
+    internal static List<OrderItem> orderItemList= new List<OrderItem>();
+    internal static List<Product> ProductList = new List<Product>();   
+     
 
     /// <summary>
     /// Initialize the values.
@@ -43,22 +47,6 @@ internal static class DataSource
         auto_Init_Products();
         auto_Init_order();
         //orderItem
-    }
-
-
-
-
-    //DELETE!!
-    private static void Insert_order(int i)
-    {
-        OrderArray[i].ID = Config.NextOrderNumber;
-        OrderArray[i].CustomerName = Console.ReadLine();
-        OrderArray[i].CustomerEmail = Console.ReadLine();
-        OrderArray[i].CustomerAddress = Console.ReadLine();
-        DateTime OrderDate = DateTime.Today;
-        OrderArray[i].OrderDate = OrderDate;
-        OrderArray[i].ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 7L));
-
     }
 
     //DONE!!
@@ -332,7 +320,7 @@ internal static class DataSource
             ProductPrice = 75,
             InStock = 4
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductArray[Config.Next_DALProduct++] = new Product()
         {
             Barcode = DALProduct.Make_A_Barcode(),
             ProductName = "A luxurious blush - Loreal",
