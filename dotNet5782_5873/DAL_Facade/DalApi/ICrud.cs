@@ -2,10 +2,11 @@
 
 public interface ICrud<T>
 {
-    T add(T entity);
+    T Add(T entity);  
     T Get(int id);
-    T update(T entity);
-    T delete(int id);
+    T Update(T entity);
+   
+    T Delete(int id);
     //T deleteAll();
    //IEnumerable<T>
   

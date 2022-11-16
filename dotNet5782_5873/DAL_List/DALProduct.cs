@@ -5,155 +5,140 @@ namespace DAL;
 
 internal struct DALProduct : DalApi.ICrud<Product>
 {
-
-    public Product add(Product entity)
-    {
-        throw new NotImplementedException();
-    }
-
     public Product Get(int id)
     {
         throw new NotImplementedException();
     }
-
-    public Product update(Product entity)
+    public Product Add(Product entity)
     {
         throw new NotImplementedException();
     }
 
-    public Product delete(int id)
+    //לבדוק האם חובה להחזיר את הברקוד או להדפיס אותו
+    /// <summary>list
+    /// This function create a product object and enter it to the array.
+    /// </summary>
+    /// <returns></returns>
+    public int Add1()
+    {
+        Category category = new Category();
+        Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
+        string AnsCategory = Console.ReadLine();
+        switch (AnsCategory)
+        {
+            case ("Pencils"):
+                {
+                    category = (Category)0;
+                    break;
+                }
+            case ("lipstiks"):
+                {
+                    category = (Category)1;
+
+                    break;
+                }
+            case (" blushes"):
+                {
+                    category = (Category)2;
+                    break;
+                }
+            case ("bronzers"):
+
+                {
+                    category = (Category)3;
+                    break;
+                }
+            case ("makeup"):
+                {
+                    category = (Category)4;
+                    break;
+                }
+            default:
+                break;
+        }
+        Console.WriteLine("Please enter your ProductName ");
+        string AnsProductName = Console.ReadLine();
+        Console.WriteLine("How much does the item cost? ");
+        string strPrice = Console.ReadLine();
+        Console.WriteLine("What is the quantity in stock? ");
+        double price = Convert.ToDouble(strPrice);
+        string strAmount = Console.ReadLine();
+        int amount = Convert.ToInt32(strAmount); ;
+        Product newProduct = new Product
+        {
+            Barcode = MakeABarcode(),
+            ProductName = AnsProductName,
+            Category = category,
+            ProductPrice = price,
+            InStock = amount,
+
+
+        };
+
+        bool isExist = is_Barkode_OK(newProduct.Barcode);
+        if (isExist)
+        {
+            Console.WriteLine("A product with this barcode already exists in the database.");
+            return 0;
+        }
+        else
+        {
+            ProductList.Add(newProduct);
+            Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is: {0} ", newProduct.Barcode);
+        }
+        return newProduct.Barcode;
+    }
+
+    public Product Update(Product entity)
     {
         throw new NotImplementedException();
     }
 
-    public static int product_Barcode_Calculation()
+    public Product Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    
+    /// <summary>list
+    /// This function restart the array in index "i" with a barcode.
+    /// </summary>
+    /// <returns></returns>
+    public int MakeABarcode()
     {
         int barcode = Config.rnd.Next(10000000, 100000000);
-        return barcode;
-    }
-
-    //This function restart the array in index "i" with a barcode.
-    public static int Make_A_Barcode()
-    {
-        int barcode = product_Barcode_Calculation();
         bool checkarcode = is_Barkode_OK(barcode);
         while (checkarcode)
         {
-            barcode = product_Barcode_Calculation();
+            barcode = Config.rnd.Next(10000000, 100000000);
             checkarcode = is_Barkode_OK(barcode);
         }
         return barcode;
 
     }
 
-    /// <summary>
+    /// <summary>list
     /// A helper function that checks whether this barcode already exists for another product
     /// </summary>
     /// <param name="b"></param>
     /// <returns></returns>
-    public static bool is_Barkode_OK(int b)
+    public static bool is_Barkode_OK(int barcode)
     {
-        for (int i = 0; i < Config.Next_DALProduct; i++)
-        { ProductArray[i].Barcode == b)
-                return true;
-    }
+        int index = ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
+        if(index == -1)
+        {
+            throw new Exception("Object dosen't exist");
+        }
+        else
+        {
+            return true;
+
+        }
         return false;
-  
-}
-
-
-/// <summary>
-/// This function create a product object and enter it to the array.
-/// </summary>
-/// <returns></returns>
-public static int newProduct()
-{
-    Category category = new Category();
-    Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
-    string AnsCategory = Console.ReadLine();
-    switch (AnsCategory)
-    {
-        case ("Pencils"):
-            {
-                category = (Category)0;
-                break;
-            }
-        case ("lipstiks"):
-            {
-                category = (Category)1;
-
-                break;
-            }
-        case (" blushes"):
-            {
-                category = (Category)2;
-                break;
-            }
-        case ("bronzers"):
-
-            {
-                category = (Category)3;
-                break;
-            }
-        case ("makeup"):
-            {
-                category = (Category)4;
-                break;
-            }
-        default:
-            break;
     }
-    Console.WriteLine("Please enter your ProductName ");
-    string AnsProductName = Console.ReadLine();
-    Console.WriteLine("How much does the item cost? ");
-    string strPrice = Console.ReadLine();
-    Console.WriteLine("What is the quantity in stock? ");
-    double price = Convert.ToDouble(strPrice);
-    string strAmount = Console.ReadLine();
-    int amount = Convert.ToInt32(strAmount); ;
-    Product newProduct = new Product
-    {
-        Barcode = Make_A_Barcode(),
-        ProductName = AnsProductName,
-        Category = category,
-        ProductPrice = price,
-        InStock = amount,
 
 
-    };
 
-    bool isExist = is_Barkode_OK(newProduct.Barcode);
-    if (isExist)
-    {
-        Console.WriteLine("A product with this barcode already exists in the database.");
-        return 0;
-    }
-    else
-    {
-        ProductArray[Config.Next_DALProduct++] = newProduct;
-        Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
-    }
-    return newProduct.Barcode;
-
-    //foreach (Product currentProduct in ProductArray)
-    //{
-    //    if (((int)currentProduct.Category) == ((int)category) && currentProduct.ProductName == AnsProductName)
-    //    {
-
-    //        Product newProduct = new Product
-    //        {
-    //            Barcode = Make_A_Barcode(),
-    //            ProductName = currentProduct.ProductName,
-    //            Category = category,
-    //            ProductPrice = currentProduct.ProductPrice,
-    //            InStock = currentProduct.InStock,
-
-
-    //        };
-    //        addProduct(newProduct);
-    //    }
-    //}
-}
 
 
 
@@ -394,6 +379,9 @@ public static Product ReturnProductObject(int barcode)
 
 
     return emptyProduct;
+}
+
+    
 }
 
 
