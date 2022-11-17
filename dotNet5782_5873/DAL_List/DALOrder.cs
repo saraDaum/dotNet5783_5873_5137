@@ -9,22 +9,6 @@ namespace DAL;
 
 internal struct DALOrder : DalApi.ICrud<Order>
 {
-    /// <summary>list
-    /// This function gets an ID number and returns the corresponding Order object
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    public static Order ReturnOrderObject(int id)
-    {
-        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
-        if (index == -1)
-            throw new Exception("This object dosen't exist.");
-        return OrderList.ElementAt(index);
-
-    }
-
-
-
     /// <summary>
     /// This function gets an order object, enter it to order's array and returns the order number
     /// </summary>
@@ -46,38 +30,6 @@ internal struct DALOrder : DalApi.ICrud<Order>
 
         }
         return 0;
-    }
-
-    /// <summary>
-    /// This function gets an Order object and print it's detail
-    /// </summary>
-    /// <param name="id"></param>
-    /// <exception cref="Exception"></exception>
-    public void ReadById(int id)
-    {
-        int orderNumber;
-        Console.WriteLine("Please enter your order number");
-        string orderStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderStr, out orderNumber);
-        if (TryParseSucceeded)
-        {
-            Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == orderNumber);
-            MyOrder.ToString();
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
-
-    /// <summary>
-    /// This function returns all instances of order
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerable<Order> GetAll()
-    {
-        IEnumerable<Order> orders = OrderList;
-        return orders;
     }
 
     /// <summary>
@@ -114,7 +66,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
         bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
         if (TryParseSucceeded)
         {
-            int index = OrderList.FindIndex(MyOrder => MyOrder.ID == OrderNumber);
+            int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
             if (index == -1)
             {
                 throw new Exception("The order has been successfully deleted.");
@@ -126,5 +78,73 @@ internal struct DALOrder : DalApi.ICrud<Order>
         }
 
     }
+    /// <summary>
+    /// This function returns all instances of order
+    /// </summary>
+    /// <returns></returns>
+    public IEnumerable<Order> GetAll()
+    {
+        IEnumerable<Order> orders = OrderList;
+        return orders;
+    }
 
+
+    /// <summary>list
+    /// This function gets an ID number and returns the corresponding Order object
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public static Order Get(int id)
+    {
+        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
+        if (index == -1)
+            throw new Exception("This object dosen't exist.");
+        return OrderList.ElementAt(index);
+
+    }
+
+
+
+    /// <summary>
+    /// This function gets an Order object and print it's detail
+    /// </summary>
+    /// <param name="id"></param>
+    /// <exception cref="Exception"></exception>
+    public void ReadById(int id)
+    {
+        int orderNumber;
+        Console.WriteLine("Please enter your order number");
+        string orderStr = Console.ReadLine();
+        bool TryParseSucceeded = int.TryParse(orderStr, out orderNumber);
+        if (TryParseSucceeded)
+        {
+            Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == id);
+            MyOrder.ToString();
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+        }
+    }
+
+
+
+
+
+    Order ICrud<Order>.Add(Order entity)
+    {
+        throw new NotImplementedException();
+    }
+
+  
+
+    Order ICrud<Order>.Update(Order entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    Order ICrud<Order>.Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
 }

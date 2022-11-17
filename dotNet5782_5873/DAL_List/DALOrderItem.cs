@@ -7,8 +7,8 @@ namespace DAL;
 
 internal class DALOrderItem:DalApi.ICrud<OrderItem>
 {
-
-    /// <summary>
+  
+    /// <summary>list
     /// This function gets object details, create a new object and put it in the array.
     /// </summary>
     /// <param name="pID"></param>
@@ -17,8 +17,7 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
     /// <param name="amount"></param>
     private static int init_OrderItem(int pID, int oID, double price, int amount)
     {
-
-        orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
+        OrderItem MyOrderItem = new OrderItem
         {
             ProductID = pID,
             OrderID = oID,
@@ -26,9 +25,10 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
             Amount = amount,
             autoID = Config.autoCounter
         };
-        return orderItemArray[--Config.Next_DALOrderItem].autoID;
+        Add(MyOrderItem);
+        return MyOrderItem.OrderID ;
 
-    }
+    } 
 
 
 
@@ -37,10 +37,10 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
         /// </summary>
         /// <param name="newOrderItem"></param>
         /// <returns></returns>
-        public static int addOrderItem(OrderItem newOrderItem)
+        public static int Add(OrderItem newOrderItem)
     {
         bool isExist = false;
-        foreach (OrderItem currentOrderItem in orderItemArray)
+        foreach (OrderItem currentOrderItem in OrderItemList)
         {
             if (currentOrderItem.OrderID == newOrderItem.OrderID && currentOrderItem.ProductID == newOrderItem.ProductID)
             {
@@ -50,7 +50,7 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
         }
         if (!isExist)
         {
-            orderItemArray[Config.Next_DALOrderItem++] = newOrderItem;
+            //OrderItemList[Config.Next_DALOrderItem++] = newOrderItem;
             Console.WriteLine("The order item entered to database successfully.\nThe order item number of the item is: ");
             return newOrderItem.autoID;
         }
@@ -62,7 +62,7 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public static OrderItem createAnOrderItem()
+    public static OrderItem Add()
     {
         Console.WriteLine("Welcome to OrderItem menu.\nDo you know your order number? enter y or n");
         string ans = Console.ReadLine();
@@ -105,7 +105,7 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
                     }
                     else
                     {
-                        //init_OrderItem(barcode, orderNum2,price,amount);
+                        
                         OrderItem newOrderItem = new OrderItem
                         {
                             ProductID = barcode,
@@ -115,7 +115,7 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
                             autoID = Config.autoCounter
                         };
                         throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
-                        return newOrderItem;
+                        OrderItemList.Insert(0, newOrderItem);
 
                     }
                 }
@@ -340,10 +340,21 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
         throw new NotImplementedException();
     }
 
-    public OrderItem Get(int id)
+    public IEnumerable<OrderItem> GetAll()
     {
-        throw new NotImplementedException();
+        IEnumerable<OrderItem> OrderItems = OrderItemList;
+        return OrderItems;
     }
+    public void ReadAll()
+    {
+       
+    }
+
+
+
+
+
+
 
     public OrderItem update(OrderItem entity)
     {
@@ -351,6 +362,26 @@ internal class DALOrderItem:DalApi.ICrud<OrderItem>
     }
 
     public OrderItem delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    OrderItem ICrud<OrderItem>.Add(OrderItem entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OrderItem Get(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OrderItem Update(OrderItem entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public OrderItem Delete(int id)
     {
         throw new NotImplementedException();
     }

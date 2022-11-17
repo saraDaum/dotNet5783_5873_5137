@@ -56,7 +56,7 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DALOrder.newOrder();
+                            DAL.DALOrder.Add();
                             break;
                         }
 
