@@ -2,7 +2,7 @@
 using System.Diagnostics;
 
 namespace DAL;
-internal static class DataSource
+internal class DataSource
 {
     internal static class Config
     {
@@ -24,20 +24,14 @@ internal static class DataSource
     }
 
 
-    //All entity arrays
-    //internal static Order[] OrderArray = new Order[100];
-    //internal static OrderItem[] orderItemArray = new OrderItem[200];
-    //internal static Product[] productArray = new Product[50];
-    
-    
     /// <summary>
     /// The arrays are in list form
     /// </summary>
 
     internal static List<Order> OrderList = new List<Order>();
-    internal static List<OrderItem> orderItemList= new List<OrderItem>();
-    internal static List<Product> ProductList = new List<Product>();   
-     
+    internal static List<OrderItem> OrderItemList = new List<OrderItem>();
+    internal static List<Product> ProductList = new List<Product>();
+
 
     /// <summary>
     /// Initialize the values.
@@ -49,10 +43,12 @@ internal static class DataSource
         //orderItem
     }
 
-    //DONE!!
+    /// <summary>list
+    /// Auto boot
+    /// </summary>
     private static void auto_Init_order()
     {
-        OrderArray[Config.Next_DALOrder++] = new Order
+        Order MyOrder = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Sara Cohen",
@@ -62,7 +58,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder);
+        Order MyOrder1 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Hodaya Levy",
@@ -72,7 +69,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder1);
+        Order MyOrder2 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Rachel Cohen",
@@ -82,7 +80,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder2);
+        Order MyOrder3 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Malka Seld",
@@ -92,7 +91,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder3);
+        Order MyOrder4 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Shira Cohen",
@@ -102,7 +102,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder4);
+        Order MyOrder5 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Yael Fadila",
@@ -112,7 +113,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder5);
+        Order MyOrder6 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Adi Holasher",
@@ -122,7 +124,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder6);
+        Order MyOrder7 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Shlomo Cohen",
@@ -132,7 +135,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder7);
+        Order MyOrder8 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Zadok Cohen Zedek",
@@ -142,7 +146,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder8);
+        Order MyOrder9 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Maya Feld",
@@ -152,7 +157,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder9);
+        Order MyOrder10 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Lea Daum",
@@ -162,7 +168,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder10);
+        Order MyOrder11 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Keren Karni",
@@ -172,7 +179,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder11);
+        Order MyOrder12 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Jak Levy",
@@ -182,7 +190,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder12);
+        Order MyOrder13 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Akiva Gidoni",
@@ -192,7 +201,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder13);
+        Order MyOrder14 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Tom Seldalom",
@@ -202,7 +212,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder14);
+        Order MyOrder15 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Shir bonbon",
@@ -212,7 +223,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder15);
+        Order MyOrder16 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Yael Fogel",
@@ -222,7 +234,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder16);
+        Order MyOrder17 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Adi Ozer",
@@ -232,7 +245,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder17);
+        Order MyOrder18 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Gad Jakobi",
@@ -242,7 +256,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder18);
+        Order MyOrder19 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = " Dan  Zedek",
@@ -252,7 +267,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder19);
+        Order MyOrder20 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Maya Bobi",
@@ -262,7 +278,8 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
-        OrderArray[Config.Next_DALOrder++] = new Order
+        OrderList.Add(MyOrder20);
+        Order MyOrder21 = new Order
         {
             ID = Config.NextOrderNumber,
             CustomerName = "Bob Sfog",
@@ -272,197 +289,184 @@ internal static class DataSource
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
             DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
+        OrderList.Add(MyOrder21);
+        Order MyOrder22 = new Order
+        {
+            ID = Config.NextOrderNumber,
+            CustomerName = "Bob Sfog",
+            CustomerEmail = "bob100@gmail.com",
+            CustomerAddress = "Dogilo 126, Ofakim",
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
+            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+        };
+        OrderList.Add(MyOrder22);
+
 
     }
 
-    public static void init_OrderItem(int pID, int oID, double price, int amount, int ID = 0)
-    {
-        if (ID != 0)
-        {
-            orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
-            {
-                ProductID = pID,
-                OrderID = oID,
-                ProductPrice = price,
-                Amount = amount,
-                autoID = ID
-            };
-        }
-        else
-        {
-            orderItemArray[Config.Next_DALOrderItem++] = new OrderItem
-            {
-                ProductID = pID,
-                OrderID = oID,
-                ProductPrice = price,
-                Amount = amount,
-                autoID = Config.autoCounter
-            };
-        }
-
-    }
-
+   
+    /// <summary>list
+    /// Auto boot
+    /// </summary>
     public static void auto_Init_Products()
     {
-        productArray[Config.Next_DALProduct++] = new Product()
+        Product MyProduct1 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
             InStock = 6
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct1);
+        Product MyProduct2 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
+            ProductName = "Red blushe - SACARA",
+            Category = Category.blushes,
+            ProductPrice = 45,
+            InStock = 6
+        };
+        ProductList.Add(MyProduct2);
+        Product MyProduct3 = new Product
+        {
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Blush for a natural color in the cheeks - MAC",
             Category = Category.blushes,
             ProductPrice = 75,
             InStock = 4
         };
-        ProductArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct3);
+        Product MyProduct4 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "A luxurious blush - Loreal",
             Category = Category.blushes,
             ProductPrice = 59,
             InStock = 3
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct4);
+        Product MyProduct5 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "A black eye pencil- SACARA",
             Category = Category.Pencils,
             ProductPrice = 19,
             InStock = 6
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct5);
+        Product MyProduct6 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "A gray eye pencil- MAC",
             Category = Category.Pencils,
             ProductPrice = 39,
             InStock = 3
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct6);
+        Product MyProduct7 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "A black eye pencil, hipoalerganic- MAC",
             Category = Category.Pencils,
             ProductPrice = 49,
             InStock = 4
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct7);
+        Product MyProduct8 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "A natural lipstick- MAC",
             Category = Category.lipstiks,
             ProductPrice = 69,
             InStock = 4
         };
-
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct8);
+        Product MyProduct9 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "A simple lipstick- SACARA",
             Category = Category.lipstiks,
             ProductPrice = 36,
             InStock = 3
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct9);
+        Product MyProduct10 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Pair lipstick, hipoalerganic - MAC",
             Category = Category.lipstiks,
             ProductPrice = 72,
             InStock = 2
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct10);
+        Product MyProduct11 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Makeup number 310 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
             InStock = 3
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct11);
+        Product MyProduct12 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Makeup number 350 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
             InStock = 2
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct12);
+        Product MyProduct13 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Makeup number 390 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
             InStock = 4
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct13);
+        Product MyProduct14 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Light Makeup  - SOFT-TOUCH",
             Category = Category.makeup,
             ProductPrice = 59,
             InStock = 3
         };
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct14);
+        Product MyProduct15 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Light bronzer - SOFT-TOUCH",
             Category = Category.bronzers,
             ProductPrice = 35,
             InStock = 3
         };
-
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct15);
+        Product MyProduct16 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Dramatic bronzer - SOFT-TOUCH",
             Category = Category.bronzers,
             ProductPrice = 39,
             InStock = 4
         };
-
-        productArray[Config.Next_DALProduct++] = new Product()
+        ProductList.Add(MyProduct16);
+        Product MyProduct17 = new Product
         {
-            Barcode = DALProduct.Make_A_Barcode(),
+            Barcode = DALProduct.MakeABarcode(),
             ProductName = "Bronzer - MAC",
             Category = Category.bronzers,
             ProductPrice = 45,
             InStock = 2
         };
-
-    }
-    /// <summary>
-    ///This function calculate the barcode of each item.
-    /// In "is_Barkode_OK" function we check if this barkode already exist .
-    /// </summary>
-    /// <returns></returns>
-    private static int product_Barcode_Calculation()
-    {
-        int barcode = Config.rnd.Next(10000000, 100000000);
-        return barcode;
+        ProductList.Add(MyProduct17);
     }
 
 
-    /// <summary>
-    /// A helper function that checks whether this barcode already exists for another product
-    /// </summary>
-    /// <param name="b"></param>
-    /// <returns></returns>
-    private static bool is_Barkode_OK(int b)
-    {
-        for (int i = 0; i < Config.Next_DALProduct; i++)
-        {
-            if (productArray[i].Barcode == b)
-                return true;
-        }
-        return false;
-    }
 
     /// <summary>
     /// ADD AN OBJECT FUNCTIONS
@@ -470,70 +474,11 @@ internal static class DataSource
     /// <param name="newObject"></param>
     /// <returns></returns>
 
-    public static int addProduct(Product newProduct)
-    {
-        bool isExist = is_Barkode_OK(newProduct.Barcode);
-        if (isExist)
-        {
-            Console.WriteLine("A product with this barcode already exists in the database.");
-            return 0;
-        }
-        else
-        {
-            productArray[Config.Next_DALProduct++] = newProduct;
-            Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is:  ");
-        }
-        return newProduct.Barcode;
-    }
 
-   
 
-    public static int addOrderItem(OrderItem newOrderItem)
-    {
-        bool isExist = false;
-        foreach (OrderItem currentOrderItem in orderItemArray)
-        {
-            if (currentOrderItem.OrderID == newOrderItem.OrderID && currentOrderItem.ProductID == newOrderItem.ProductID)
-            {
-                Console.WriteLine("An order item with this details already exists in the database.");
-                isExist = true;
-            }
-        }
-        if (!isExist)
-        {
-            orderItemArray[Config.Next_DALOrderItem++] = newOrderItem;
-            Console.WriteLine("The order item entered to database successfully.\nThe order item number of the item is: ");
-            return newOrderItem.autoID;
-        }
-        return 0;
-    }
 
-    /// <summary>
-    /// This function gets an ID number and returns the corresponding Order object.
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    public static Order ReturnOrderObject(int id)
-    {
-        foreach (Order currentOrder in OrderArray)
-        {
-            if (currentOrder.ID == id)
-                return currentOrder;
-        }
-        Order emptyOrder = new Order
-        {
-            ID = Config.NextOrderNumber,
-            CustomerName = "",
-            CustomerEmail = "",
-            CustomerAddress = "",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today,
-            DeliveryDate = DateTime.Today
-        };
-        return emptyOrder;
-    }
-   
-   
+
+
 
 }
 
@@ -552,6 +497,6 @@ internal static class DataSource
 
 
 
-   
+
 
 
