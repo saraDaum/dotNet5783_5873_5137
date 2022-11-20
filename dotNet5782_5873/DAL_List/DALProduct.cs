@@ -91,7 +91,7 @@ internal struct DALProduct : DalApi.ICrud<Product>
 
     public Product Update(Product entity)
     {
-        throw new NotImplementedException();
+       
     }
 
     public Product Delete(int id)
@@ -104,7 +104,7 @@ internal struct DALProduct : DalApi.ICrud<Product>
     /// This function restart the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
-    public int MakeABarcode()
+    public static int MakeABarcode()
     {
         int barcode = Config.rnd.Next(10000000, 100000000);
         bool checkarcode = is_Barkode_OK(barcode);
@@ -166,7 +166,7 @@ internal struct DALProduct : DalApi.ICrud<Product>
 //}
 
 
-public static void update()
+public static void Update()
 {
     foreach (Product currentProduct in ProductArray)
         currentProduct.ToString();
@@ -218,24 +218,24 @@ public static void update()
 /// </summary>
 /// <param name="newOne"></param>
 /// <exception cref="Exception"></exception>
-public static void updateProduct(Product newOne)
-{
-    bool existFlag = false;
-    for (int i = 0; i < Config.Next_DALProduct; i++)
-    {
-        if (ProductArray[i].Barcode == newOne.Barcode)
-        {
-            existFlag = true;
-            ProductArray[i] = newOne;
-            Console.WriteLine("Product has been successfully update");
-        }
-        if (existFlag == false)
-        {
-            throw new Exception("ERROR: This product doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
-        }
-    }
-}
-public static void ReadAnProduct()
+//public static void updateProduct(Product newOne)
+//{
+//    bool existFlag = false;
+//    for (int i = 0; i < Config.Next_DALProduct; i++)
+//    {
+//        if (ProductArray[i].Barcode == newOne.Barcode)
+//        {
+//            existFlag = true;
+//            ProductArray[i] = newOne;
+//            Console.WriteLine("Product has been successfully update");
+//        }
+//        if (existFlag == false)
+//        {
+//            throw new Exception("ERROR: This product doesn't found. No action happened.\n(Check yourself. Maybe you just have a typo. ");
+//        }
+//    }
+//}
+public static void ReadAnProduct(int id)
 
 {
     int productNumber;

@@ -9,7 +9,7 @@ namespace DAL;
 
 internal struct DALOrder : DalApi.ICrud<Order>
 {
-    /// <summary>
+    /// <summary>list
     /// This function gets an order object, enter it to order's array and returns the order number
     /// </summary>
     /// <param name="newOrder"></param>
@@ -32,7 +32,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
         return 0;
     }
 
-    /// <summary>
+    /// <summary>list
     /// Update order in order's array
     /// </summary>
     /// <param name="newOne"></param>
@@ -52,6 +52,11 @@ internal struct DALOrder : DalApi.ICrud<Order>
         }
     }
 
+    /// <summary>list
+    /// Delete an Order object
+    /// </summary>
+    /// <param name="id"></param>
+    /// <exception cref="Exception"></exception>
     public void Delete(int id)
     {
         Console.WriteLine("Do you know your order number? Enter y or n.");
@@ -78,7 +83,8 @@ internal struct DALOrder : DalApi.ICrud<Order>
         }
 
     }
-    /// <summary>
+
+    /// <summary>list
     /// This function returns all instances of order
     /// </summary>
     /// <returns></returns>
@@ -94,7 +100,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static Order Get(int id)
+    public  Order Get(int id)
     {
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
         if (index == -1)
@@ -105,7 +111,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
 
 
 
-    /// <summary>
+    /// <summary>list
     /// This function gets an Order object and print it's detail
     /// </summary>
     /// <param name="id"></param>
@@ -119,7 +125,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
         if (TryParseSucceeded)
         {
             Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == id);
-            MyOrder.ToString();
+            Console.WriteLine(MyOrder);
         }
         else
         {
@@ -127,24 +133,4 @@ internal struct DALOrder : DalApi.ICrud<Order>
         }
     }
 
-
-
-
-
-    Order ICrud<Order>.Add(Order entity)
-    {
-        throw new NotImplementedException();
-    }
-
-  
-
-    Order ICrud<Order>.Update(Order entity)
-    {
-        throw new NotImplementedException();
-    }
-
-    Order ICrud<Order>.Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
 }
