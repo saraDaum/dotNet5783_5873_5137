@@ -1,4 +1,4 @@
-﻿
+﻿using DAL;
 namespace DAL_Test
 {
     public class Application
@@ -56,13 +56,13 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DALOrder.Add();
+                            DAL.DalList.DALOrder.Add();
                             break;
                         }
 
                     case (2):
                         {
-                            DAL.DALOrder.readAnOrder();
+                            DAL.DALOrder.Get();
                             break;
                         }
                     case (3):

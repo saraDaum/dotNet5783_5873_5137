@@ -2,6 +2,7 @@
 using DO;
 using Microsoft.VisualBasic;
 using System;
+using System.Reflection;
 using static DAL.DataSource;
 
 namespace DAL;
@@ -18,13 +19,13 @@ internal struct DALOrder : DalApi.ICrud<Order>
     public int Add(Order newOrder)
     {
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOrder.ID);
-        if (index == -1)
+        if (index != -1)
         {
             OrderList.Insert(0, newOrder);
             Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
             return newOrder.ID;
         }
-        if (index != -1)
+        if (index == -1)
         {
             throw new Exception("A order with this number already exists in the database.");
 
@@ -57,13 +58,13 @@ internal struct DALOrder : DalApi.ICrud<Order>
     /// </summary>
     /// <param name="id"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete(int id)
+    public void Delete()
     {
         Console.WriteLine("Do you know your order number? Enter y or n.");
         string ans = Console.ReadLine();
         if (ans == "n" || ans == "N")
         {
-            OrderList.ForEach(MyOrder => MyOrder.ToString());
+            OrderList.ForEach(MyOrder => print(MyOrder));
         }
         Console.WriteLine("Please enter your order number.");
         int orderNumber;
@@ -72,16 +73,25 @@ internal struct DALOrder : DalApi.ICrud<Order>
         if (TryParseSucceeded)
         {
             int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
-            if (index == -1)
-            {
-                throw new Exception("The order has been successfully deleted.");
-            }
-            if (index != -1)
-            {
-                OrderList.RemoveAt(index);
-            }
+            
         }
 
+    }
+
+    public void Delete(int id)
+    {
+        if (index == -1)
+        {
+            throw new Exception("The order has been successfully deleted.");
+        }
+        if (index != -1)
+        {
+            OrderList.RemoveAt(index);
+        }
+    }
+    public static void print(Order obj)
+    {
+        Console.WriteLine(obj);
     }
 
     /// <summary>list
