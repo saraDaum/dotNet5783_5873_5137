@@ -140,7 +140,7 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
-            foreach (OrderItem currentOrderItem in orderItemArray)      //Print all order items for customer
+            foreach (OrderItem currentOrderItem in OrderItemList)      //Print all order items for customer
             {
                 currentOrderItem.ToString();
             }
@@ -157,7 +157,7 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
             bool TryParseSucceeded2 = int.TryParse(amountStr, out amount);
             if (TryParseSucceeded2)
             {
-                foreach (OrderItem currentOrderItem in orderItemArray)
+                foreach (OrderItem currentOrderItem in OrderItemList)
                 {
                     if (currentOrderItem.OrderID == orderNumber)        //Searching the item to make an update object
                     {
@@ -196,6 +196,8 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     /// <exception cref="Exception"></exception>
     public static void updateOrderItem(OrderItem newOne)
     {
+
+       
         bool existFlag = false;
         for (int i = 0; i < Config.Next_DALOrderItem; i++)
         {
