@@ -1,9 +1,10 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 using static DAL.DataSource;
 
 namespace DAL;
 
-internal struct DALProduct : DalApi.ICrud<Product>
+internal struct DALProduct : DalApi.ICrud<Product>  
 {
     public Product Get(int id)
     {
@@ -137,7 +138,7 @@ internal struct DALProduct : DalApi.ICrud<Product>
         if (TryParseSucceeded)
         {
             bool isExist = false;
-            foreach (Product currentProduct in ProductArray)
+            foreach (Product currentProduct in ProductList)
             {
                 if (currentProduct.Barcode == productBarcode)
                 {
@@ -202,6 +203,17 @@ public static void print(Product obj)
 public static void read()
 {
     
+}
+
+    int ICrud<Product>.Add(Product entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ICrud<Product>.Update(Product entity)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 /// <summary>

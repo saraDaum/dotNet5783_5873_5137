@@ -9,6 +9,11 @@ namespace DAL
 {
    public class DalList
     {
+        public static readonly object DALOrder;
+
+        public static object DALOrderItem { get; set; }
+        public static object DALProduct { get; set; }
+
         public DalApi.ICrud<Order> order => new DALOrder();
 
         public DalApi.ICrud<OrderItem> OrderItem => new DALOrderItem();

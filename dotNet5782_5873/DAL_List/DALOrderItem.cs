@@ -279,6 +279,15 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     public void ReadAll()
     {
 
-    } 
+    }
 
+    OrderItem ICrud<OrderItem>.Get(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    void ICrud<OrderItem>.Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
