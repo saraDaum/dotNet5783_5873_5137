@@ -1,7 +1,7 @@
-﻿namespace BL
+﻿namespace BO
 {
-    public class Class1
+    public class BoEntity
     {
-
+        public int MyProperty { get; set; }
     }
 }
