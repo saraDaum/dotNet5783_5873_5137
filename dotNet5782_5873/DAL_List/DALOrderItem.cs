@@ -5,9 +5,10 @@ using static DAL.DataSource;
 using System.Reflection;
 
 namespace DAL;
-
+//Finish
 internal class DALOrderItem : DalApi.ICrud<OrderItem>
 {
+    private OrderItem NULL;
 
 
     /// <summary>
@@ -130,14 +131,14 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public OrderItem? Get(int id)
+    public OrderItem Get(int id)
     {
         int index = OrderItemList.FindIndex(currentOrderItem => currentOrderItem.autoID == id);
         if (index != -1)
         {
             return OrderItemList[index];
         }
-        return null;
+        return NULL;
     }
     private static void print(OrderItem myOrderItem, int id)
     {
@@ -245,6 +246,8 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
             if (TryParseSucceeded)
             {
                 OrderItem obj = OrderItemList.Find(currentOrderItem => currentOrderItem.OrderID == orderItemNumber);    //Searching the order item to delete it.
+                Delete(obj.autoID);
+
             }
 
             else
@@ -257,9 +260,9 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     /// This functoin getsan object and delete it.
     /// </summary>
     /// <param name="myOrderItem"></param>
-    public void Delete(OrderItem myOrderItem)
+    public void Delete(int id)
     {
-        int index = OrderItemList.FindIndex(currentOrderItem => currentOrderItem.autoID == myOrderItem.autoID);    //Searching the order item to delete it.
+        int index = OrderItemList.FindIndex(currentOrderItem => currentOrderItem.autoID == id);    //Searching the order item to delete it.
         if (index != -1)
         {
             OrderItemList.RemoveAt(index);

@@ -9,7 +9,7 @@ namespace DAL
 {
    public class DalList
     {
-        public DalApi.ICrud<Order> order => new DALOrder();
+        public DalApi.ICrud<Order>Order => new DALOrder();
 
         public DalApi.ICrud<OrderItem> OrderItem => new DALOrderItem();
 

@@ -72,7 +72,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
         bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
         if (TryParseSucceeded)
         {
-            int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
+            Delete(orderNumber);
             
         }
 
@@ -80,13 +80,13 @@ internal struct DALOrder : DalApi.ICrud<Order>
 
     public void Delete(int id)
     {
-        if (index == -1)
+        if (id == -1)
         {
             throw new Exception("The order has been successfully deleted.");
         }
-        if (index != -1)
+        if (id != -1)
         {
-            OrderList.RemoveAt(index);
+            OrderList.RemoveAt(id);
         }
     }
     public static void print(Order obj)
