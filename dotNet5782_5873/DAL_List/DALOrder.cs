@@ -8,7 +8,7 @@ using static DAL.DataSource;
 namespace DAL;
 
 
-internal struct DALOrder : DalApi.ICrud<Order>
+internal class DALOrder : DalApi.ICrud<Order>
 {
     /// <summary>list
     /// This function gets an order object, enter it to order's array and returns the order number
@@ -58,7 +58,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
     /// </summary>
     /// <param name="id"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete(int id)
+    public void Delete()
     {
         Console.WriteLine("Do you know your order number? Enter y or n.");
         string ans = Console.ReadLine();
@@ -78,7 +78,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
 
     }
 
-    public void DeleteO(int index)
+    public void Delete(int index)
     {
         if (index == -1)
         {

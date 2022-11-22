@@ -468,12 +468,6 @@ internal class DataSource
 
 
 
-    /// <summary>
-    /// ADD AN OBJECT FUNCTIONS
-    /// </summary>
-    /// <param name="newObject"></param>
-    /// <returns></returns>
-
 
 
 
