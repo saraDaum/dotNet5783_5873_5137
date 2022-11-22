@@ -1,10 +1,11 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 using System.Xml.Linq;
 using static DAL.DataSource;
 
 namespace DAL;
 
-internal struct DALProduct : DalApi.ICrud<Product>
+internal struct DALProduct : DalApi.ICrud<Product>  
 {
     private Product NULL;
 

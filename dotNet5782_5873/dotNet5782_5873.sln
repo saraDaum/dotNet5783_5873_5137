@@ -5,11 +5,15 @@ VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stage0", "stage0\stage0.csproj", "{E0D5536F-308F-4BF3-A60B-E690AF621F46}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Facade", "DAL_Facade\DAL_Facade.csproj", "{9B605F71-F0F0-453E-80B1-D4CE2FD5B8E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Facade", "DAL_Facade\DAL_Facade.csproj", "{9B605F71-F0F0-453E-80B1-D4CE2FD5B8E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_List", "DAL_List\DAL_List.csproj", "{33BB6ACF-9DEC-44EE-82D7-60846B9C38AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_List", "DAL_List\DAL_List.csproj", "{33BB6ACF-9DEC-44EE-82D7-60846B9C38AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL_Test", "DAL_Test\DAL_Test.csproj", "{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Test", "DAL_Test\DAL_Test.csproj", "{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlTest", "BlTest\BlTest.csproj", "{B9F19351-9B9F-41C8-96B3-263F19836AFB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,6 @@
 ﻿using DAL;
+using DO;
+
 namespace DAL_Test
 {
     public class Application
@@ -56,13 +58,13 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DalList.DALOrder.Add();
+                            DAL.DalList.DALOrder.add();
                             break;
                         }
 
                     case (2):
                         {
-                            DAL.DALOrder.Get();
+                            DAL.DalList.DALOrder.GetType();
                             break;
                         }
                     case (3):
@@ -71,7 +73,7 @@ namespace DAL_Test
                         }
                     case (4):
                         {
-                            DAL.DALOrder.delete();
+                            DAL.DalList.DALOrder.Delete();
                             break;
                         }
 
@@ -97,23 +99,23 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DALOrderItem.newOrderItem();
+                            DAL.DalList.DALOrderItem.Add();
                             break;
                         }
 
                     case (2):
                         {
-                            DAL.DALOrderItem.readAnOrderItem();
+                            DAL.DalList.DALOrderItem.ReadAll();
                             break;
                         }
                     case (3):
                         {
-                            DAL.DALOrderItem.update();
+                            DAL.DalList.DALOrderItem.update();
                             break;
                         }
                     case (4):
                         {
-                            DAL.DALOrderItem.delete();
+                            DAL.DalList.DALOrderItem.delete();
                             break;
                         }
 
@@ -139,23 +141,23 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DALProduct.newProduct();
+                            DAL.DalList.DALProduct.newProduct();
                             break;
                         }
 
                     case (2):
                         {
-                            DAL.DALProduct.read();
+                            DAL.DalList.DALProduct.read();
                             break;
                         }
                     case (3):
                         {
-                            DAL.DALProduct.update();
+                            DAL.DalList.DALProduct.update();
                             break;
                         }
                     case (4):
                         {
-                            DAL.DALProduct.delete();
+                            DAL.DalList.DALProduct.delete();
                             break;
                         }
 

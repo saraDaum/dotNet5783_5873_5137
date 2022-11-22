@@ -58,7 +58,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
     /// </summary>
     /// <param name="id"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete()
+    public void Delete(int id)
     {
         Console.WriteLine("Do you know your order number? Enter y or n.");
         string ans = Console.ReadLine();
@@ -78,7 +78,7 @@ internal struct DALOrder : DalApi.ICrud<Order>
 
     }
 
-    public void Delete(int id)
+    public void DeleteO(int index)
     {
         if (id == -1)
         {
