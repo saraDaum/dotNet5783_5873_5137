@@ -1,26 +1,30 @@
 ﻿using DalApi;
 using DO;
+using System.Xml.Linq;
 using static DAL.DataSource;
 
 namespace DAL;
 
 internal struct DALProduct : DalApi.ICrud<Product>  
 {
-    public Product Get(int id)
+    private Product NULL;
+
+    public Product Get(int barcode)
     {
-        throw new NotImplementedException();
-    }
-    public Product Add(Product entity)
-    {
-        throw new NotImplementedException();
+        int index = ProductList.FindIndex(current => current.Barcode == barcode);
+        if (index != -1)
+        {
+            return ProductList[index];
+        }
+        return NULL;
     }
 
-    //לבדוק האם חובה להחזיר את הברקוד או להדפיס אותו
+
     /// <summary>list
     /// This function create a product object and enter it to the array.
     /// </summary>
     /// <returns></returns>
-    public int Add1()
+    public int Add()
     {
         Category category = new Category();
         Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
@@ -84,9 +88,14 @@ internal struct DALProduct : DalApi.ICrud<Product>
         }
         else
         {
-            ProductList.Add(newProduct);
-            Console.WriteLine("The product entered to database successfully.\nThe barcode of the item is: {0} ", newProduct.Barcode);
+            Add(newProduct);
         }
+        return newProduct.Barcode;
+    }
+
+    public int Add(Product newProduct)
+    {
+        ProductList.Add(newProduct);
         return newProduct.Barcode;
     }
 
@@ -162,7 +171,7 @@ internal struct DALProduct : DalApi.ICrud<Product>
         int ProductBarcode;
         if (ans == "n" || ans == "N")
         {
-            ProductList.ForEach(p=>print(p));     //Print all order items for customer
+            ProductList.ForEach(p => print(p));     //Print all order items for customer
         }
         Console.WriteLine("Please enter your product barcode.");
         string orderNumStr = Console.ReadLine();
@@ -178,41 +187,156 @@ internal struct DALProduct : DalApi.ICrud<Product>
         }
     }
 
-/// <summary>list
-/// Delete an Order object
-/// </summary>
-/// <param name="id"></param>
-/// <exception cref="Exception"></exception>
-public void Delete(int id)
-{
-    ProductList.RemoveAt(id);
-
-}
-
-public static void print(Product obj)
-{
-    Console.WriteLine(obj);
-}
-/// <summary>
-/// Delete product from product's array
-/// </summary>
-/// <param name="ProductBarcode"></param>
-/// <exception cref="Exception"></exception>
-
-
-public static void read()
-{
-    
-}
-
-    int ICrud<Product>.Add(Product entity)
+    /// <summary>list
+    /// Delete an Order object
+    /// </summary>
+    /// <param name="id"></param>
+    /// <exception cref="Exception"></exception>
+    public void Delete(int id)
     {
-        throw new NotImplementedException();
+        ProductList.RemoveAt(id);
+        Console.WriteLine("The item has been successfully removed");
     }
 
-    void ICrud<Product>.Update(Product entity)
+    public static void print(Product obj)
     {
-        throw new NotImplementedException();
+        Console.WriteLine(obj);
+    }
+    /// <summary>
+    /// Delete product from product's array
+    /// </summary>
+    /// <param name="ProductBarcode"></param>
+    /// <exception cref="Exception"></exception>
+
+
+    public void Update()
+    {
+        Console.WriteLine("Do you know your product's barcode? Enter y or n.");
+        string ans = Console.ReadLine();
+        //int OrderNumber, productBarcode;
+        if (ans == "n" || ans == "N")
+        {
+            ProductList.ForEach(obj => print(obj));
+        }
+        Console.WriteLine("Please enter your  product's barcode.");
+        string strBarcode = Console.ReadLine();
+        int barcode;
+        bool TryParseSucceeded = int.TryParse(strBarcode, out barcode);
+        if (TryParseSucceeded)
+        {
+            Console.WriteLine("What do you want to update?\nTo update product name enter 1, To update product price enter 2, To update product amount in stock enter 2\n");
+            string answer = Console.ReadLine();
+            int choose;
+            bool TryParseSucceeded2 = int.TryParse(answer, out choose);
+            if (TryParseSucceeded2)
+            {
+                int index = ProductList.FindIndex(obj => obj.Barcode == barcode);         //Searching the item to make an update object
+                if (index != -1)
+                {
+                    switch (choose)
+                    {
+                        case (1):
+                            {
+                                Console.WriteLine("O.K. Please enter the new name.");
+                                string name = Console.ReadLine();
+                                Product updateOne = new Product
+                                {
+                                    Barcode = ProductList[index].Barcode,
+                                    ProductName = name,
+                                    Category = ProductList[index].Category,
+                                    ProductPrice = ProductList[index].ProductPrice,
+                                    InStock = ProductList[index].InStock
+
+
+                                };
+                                Update(updateOne);
+                                break;
+                            }
+                        case (2):
+                            {
+                                Console.WriteLine("O.K. Please enter the new price.");
+                                string strPrice = Console.ReadLine();
+                                int newPrice;
+                                bool tryToConvert = int.TryParse(strPrice, out newPrice);
+                                if (tryToConvert)
+                                {
+                                    Product updateOne = new Product
+                                    {
+                                        Barcode = ProductList[index].Barcode,
+                                        ProductName = ProductList[index].ProductName,
+                                        Category = ProductList[index].Category,
+                                        ProductPrice = newPrice,
+                                        InStock = ProductList[index].InStock
+
+
+                                    };
+                                    Update(updateOne);
+                                    break;
+                                }
+                                else
+                                {
+                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                }
+                            }
+                        case 3:
+                            {
+                                Console.WriteLine("O.K. Please enter the new amount in stock.");
+                                string strAmount = Console.ReadLine();
+                                int newInStock;
+                                bool convertAmount = int.TryParse(strAmount, out newInStock);
+                                if (convertAmount)
+                                {
+                                    Product updateOne = new Product
+                                    {
+                                        Barcode = ProductList[index].Barcode,
+                                        ProductName = ProductList[index].ProductName,
+                                        Category = ProductList[index].Category,
+                                        ProductPrice = ProductList[index].ProductPrice,
+                                        InStock = newInStock
+                                    };
+                                    Update(updateOne);
+                                    break;
+                                }
+                                else
+                                {
+                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                }
+                            }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No order item match.");
+                }
+            }
+
+            else
+            {
+                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+            }
+        }
+        else
+        {
+            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+        }
+    }
+
+    /// <summary>
+    /// This function gets an Product object and update it.
+    /// </summary>
+    /// <param name="myOrderItem"></param>
+    public void Update(Product myProduct)
+    {
+        int index = ProductList.FindIndex(obj => obj.Barcode == myProduct.Barcode);         //Searching the item to make an update object
+        if (index != -1)
+        {
+            ProductList[index] = myProduct;
+            Console.WriteLine("Item has been successfully updated. ");
+        }
+        else
+        {
+            Console.WriteLine("No match item.");
+        }
     }
 }
 
