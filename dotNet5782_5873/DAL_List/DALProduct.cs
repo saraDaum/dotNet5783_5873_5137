@@ -147,7 +147,7 @@ internal struct DALProduct : DalApi.ICrud<Product>
         if (TryParseSucceeded)
         {
             bool isExist = false;
-            foreach (Product currentProduct in ProductList)
+            foreach (DALProduct currentProduct in ProductList)
             {
                 if (currentProduct.Barcode == productBarcode)
                 {

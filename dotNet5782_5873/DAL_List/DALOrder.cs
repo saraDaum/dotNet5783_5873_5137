@@ -80,15 +80,16 @@ internal struct DALOrder : DalApi.ICrud<Order>
 
     public void DeleteO(int index)
     {
-        if (id == -1)
+        if (index == -1)
         {
             throw new Exception("The order has been successfully deleted.");
         }
-        if (id != -1)
+        if (index != -1)
         {
-            OrderList.RemoveAt(id);
+            OrderList.RemoveAt(index);
         }
     }
+
     public static void print(Order obj)
     {
         Console.WriteLine(obj);
