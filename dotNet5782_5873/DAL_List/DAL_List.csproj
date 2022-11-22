@@ -18,4 +18,8 @@
     <RootNamespace>DAL</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DAL_Facade\DAL_Facade.csproj" />
+  </ItemGroup>
+
 </Project>
