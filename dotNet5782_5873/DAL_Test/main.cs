@@ -58,13 +58,13 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DalList.DALOrder.Add();
+                            DalList.DALOrder.Add();
                             break;
                         }
 
                     case (2):
                         {
-                            DAL.DalList.DALOrder.GetType();
+                            DAL.DalList.DALOrder.Get();
                             break;
                         }
                     case (3):
@@ -99,7 +99,7 @@ namespace DAL_Test
                 {
                     case (1):
                         {
-                            DAL.DalList.DALOrderItem.Add();
+                           DalList.DALOrderItem.Add();
                             break;
                         }
 

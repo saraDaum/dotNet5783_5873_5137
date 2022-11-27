@@ -143,7 +143,7 @@ internal class DALProduct : DalApi.ICrud<Product>
         if (TryParseSucceeded)
         {
             bool isExist = false;
-            foreach (DALProduct currentProduct in ProductList)
+            foreach (Product currentProduct in ProductList)
             {
                 if (currentProduct.Barcode == productBarcode)
                 {
