@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class Class2
+    internal class exceptions
     {
         public int ProductID { get;  }
         public int OrderID { get;  }
