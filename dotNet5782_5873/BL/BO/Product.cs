@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class Class2
+    public class Product
     {
+        public int MyProperty { get; set; }
     }
 }
