@@ -8,6 +8,6 @@ namespace BO
 {
     public class OrderItem
     {
-        public int MyProperty { get; set; }
+       
     }
 }

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-     public class Enums
+
+    public enum OrderStatus
     {
 
-
-
-
-
     }
+
 }
