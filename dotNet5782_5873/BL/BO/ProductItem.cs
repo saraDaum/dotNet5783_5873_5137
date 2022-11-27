@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,11 +9,41 @@ namespace BO
 {
     internal class ProductItem
     {
-        public int Id { get; set; } 
-        public string Name { get; set; }    
-        public double Price { get; set; }   
+        /// <summary>
+        /// Identification number product item
+        /// </summary>
+        public int ID { get; set; }
+        /// <summary>
+        /// Product name
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Product price
+        /// </summary>
+        public double Price { get; set; }
+        /// <summary>
+        /// Product category
+        /// </summary>
         public Category Category { get; set; }
-        public int Amount { get; set; } 
-        public bool InStocket { get; set; }
+        /// <summary>
+        /// Amount of product items
+        /// </summary>
+        public int Amount { get; set; }
+        /// <summary>
+        /// Amount in stock
+        /// </summary>
+        public bool InStock { get; set; }
+        /// <summary>
+        /// Print all ProductItem's details
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $@"
+    Product item details:\n
+    ID product: {ID}
+    Product name: {Name},
+    Product category:{Category}
+    Price: {Price},
+   	Amount in order: {Amount},
+   	Amount in stock: {InStock}";
     }
 }

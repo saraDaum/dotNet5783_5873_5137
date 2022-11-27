@@ -28,5 +28,17 @@ namespace BO
         /// Total price
         /// </summary>
         public double TotalPrice { get; set; }
+
+        /// <summary>
+        /// Print all order for list's details
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $@"
+    OrderForList details:\n
+    Order number: {ID}, 
+    Orderer name: {CustomerName},
+    Status: {Status}
+    Amount: {AmountOfItems},
+    Total:{TotalPrice}";
     }
 }

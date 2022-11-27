@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    internal interface IProduct
+    public interface IProduct
     {
+
     }
 }
