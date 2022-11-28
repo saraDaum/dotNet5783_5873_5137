@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DalApi;
+using BlApi;
+namespace BlImplementation;
 
-namespace BlApi
+internal class Cart:ICart
 {
-    public interface IProduct
-    {
-
-    }
+    
 }

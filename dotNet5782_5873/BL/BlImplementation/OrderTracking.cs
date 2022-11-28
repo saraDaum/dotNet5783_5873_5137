@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BlApi;
+namespace BlImplementation;
 
-namespace BlApi
+internal class OrderTracking:IOrderTracking
 {
-    public interface IProduct
-    {
-
-    }
 }

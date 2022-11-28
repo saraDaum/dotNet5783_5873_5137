@@ -14,17 +14,7 @@ public struct Product
     public double ProductPrice { get; set; }
     public int InStock { get; set; }
 
-    //constructor
-    public Product(int barcode, string productName, Category category, double price, int stock)
-    {
-        Barcode = barcode;
-        ProductName = productName;
-        Category = category;
-        ProductPrice = price;
-        InStock = stock;
-       
-    }
-
+    
     public override string ToString() => $@"
     Product details:\n
     {Barcode}- {ProductName}, 

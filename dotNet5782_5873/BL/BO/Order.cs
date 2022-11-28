@@ -37,6 +37,10 @@ namespace BO
         /// </summary>
         public DateTime DeliveryDate { get; }
 
+        /// <summary>
+        /// Print all order's details
+        /// </summary>
+        /// <returns></returns>
         public override string ToString() => $@"
     Order details:\n
     Order number: {ID}, 

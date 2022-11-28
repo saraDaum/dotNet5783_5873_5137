@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,16 @@ namespace BO
         /// OrderTracking status
         /// </summary>
         public OrderStatus Status { get; set; }
+
+        /// <summary>
+        /// Print all OrderItem's details
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString() => $@"
+    Order tracking details:\n
+    ID :{ID}
+    Status:{Status}";
     }
+
+
 }
