@@ -26,17 +26,20 @@ namespace BlImplementation
         .ForMember(b => b.OrderDate, option => option.MapFrom(d => d.OrderDate))
         .ForMember(b => b.ShipDate, option => option.MapFrom(d => d.ShipDate))
         .ForMember(b => b.DeliveryDate, option => option.MapFrom(d => d.DeliveryDate))
-
-
-
-
-
-
-
-
+        .ForMember(b => b.Status, option => option.Ignore())
+        .ForMember(b => b.AmountOfItems, option => option.Ignore())
+        .ForMember(b => b.TotalPrice, option => option.Ignore())
 
         );
 
+
+        MapperConfiguration configuratioOrderItem = new MapperConfiguration(cnf =>
+        cnf.CreateMap<BO.OrderItem, DO.OrderItem>()
+        );
+
+        MapperConfiguration configuratioProduct = new MapperConfiguration(cnf =>
+        cnf.CreateMap<BO.Product, DO.Product>()
+        );
 
 
 
