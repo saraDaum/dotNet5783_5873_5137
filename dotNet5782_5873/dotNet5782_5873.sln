@@ -11,9 +11,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_List", "DAL_List\DAL_Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Test", "DAL_Test\DAL_Test.csproj", "{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL", "BL\BL.csproj", "{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BL", "BL\BL.csproj", "{B301EA6C-31DD-4B7A-9BF9-81E0E012861A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlTest", "BlTest\BlTest.csproj", "{B9F19351-9B9F-41C8-96B3-263F19836AFB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlTest", "BlTest\BlTest.csproj", "{B9F19351-9B9F-41C8-96B3-263F19836AFB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BI", "BI", "{A9CB83AC-4267-488F-AEC8-73EC9F1C742D}"
+	ProjectSection(SolutionItems) = preProject
+		IBI.cs = IBI.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
