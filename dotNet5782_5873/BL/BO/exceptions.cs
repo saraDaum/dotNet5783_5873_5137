@@ -8,6 +8,7 @@ namespace BO
 {
     internal class exceptions
     {
+        
         public int ProductID { get;  }
         public int OrderID { get;  }
         public double ProductPrice { get;  }

@@ -23,9 +23,9 @@ namespace BO
         /// <summary>
         /// An item in cart
         /// </summary>
-        public OrderItem item { get; set; }
+        public OrderItem Item { get; set; }
         /// <summary>
-        /// The TotalPrice of cart
+        /// The Total price of customer cart
         /// </summary>
         public double TotalPrice { get; set; }
         /// <summary>
@@ -33,10 +33,10 @@ namespace BO
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $@"
-     Cart:\n
+     Cart details:\n
     {CustomerName} - {CustomerAddress}:
-    email:{CustomerEmail}
-    Product: {item},
-    Total: {TotalPrice}";
+    {nameof(CustomerEmail)}:{CustomerEmail}
+    {nameof(Item)}: {Item},
+    {nameof(TotalPrice)}: {TotalPrice}";
     }
 }

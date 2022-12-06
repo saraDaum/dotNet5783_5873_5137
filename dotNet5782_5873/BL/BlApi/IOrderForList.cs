@@ -8,5 +8,6 @@ namespace BlApi
 {
     public class IOrderForList
     {
+        public int Id { get; set; }
     }
 }
