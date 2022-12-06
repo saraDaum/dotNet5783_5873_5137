@@ -7,8 +7,8 @@ using BO;
 
 namespace BlApi;
 
-public interface IOrder
+public interface IOrder: ICrud<Order>
 {
-     
 
 }
+

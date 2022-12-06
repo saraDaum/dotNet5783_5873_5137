@@ -8,8 +8,7 @@ namespace BlApi
 {
     public class ICart
     {
-        public string Name { get; set; };
-        public string Description { get; set; };
+      
 
     }
 }
