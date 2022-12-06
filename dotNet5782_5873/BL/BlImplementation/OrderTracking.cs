@@ -8,4 +8,6 @@ namespace BlImplementation;
 
 internal class OrderTracking:IOrderTracking
 {
+    private IDal Dal= new Dallist();
+
 }

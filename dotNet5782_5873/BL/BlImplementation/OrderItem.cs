@@ -8,4 +8,6 @@ using BlApi;
 namespace BlImplementation;
 internal class OrderItem:IOrderItem
 {
+    private IDal Dal= new Dallist();
+
 }

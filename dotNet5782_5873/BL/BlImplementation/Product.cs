@@ -8,4 +8,6 @@ using System.Threading.Tasks;
 namespace BlImplementation;
 internal class Product:IProduct
 {
+    private IDal Dal= new Dallist();
+
 }

@@ -41,11 +41,5 @@ namespace BlImplementation
         cnf.CreateMap<BO.Product, DO.Product>()
         );
 
-
-
-
-
-
-
     }
 }

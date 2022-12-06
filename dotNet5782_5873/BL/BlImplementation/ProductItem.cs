@@ -7,4 +7,7 @@ using BlApi;
 namespace BlImplementation;
 internal class ProductItem:IProductItem
 {
+    private IDal Dal= new Dallist();
+
+
 }

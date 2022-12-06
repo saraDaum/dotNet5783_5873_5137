@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\dotNet5782_5873",
-    "\\dotNet5782_5873\\DAL_List"
+    "\\dotNet5782_5873\\BL",
+    "\\dotNet5782_5873\\BL\\BlImplementation"
   ],
-  "SelectedNode": "\\dotNet5782_5873\\DAL_List\\DALProduct.cs",
+  "SelectedNode": "\\dotNet5782_5873\\BL\\BlImplementation\\AutoMapper.cs",
   "PreviewInSolutionExplorer": false
 }
