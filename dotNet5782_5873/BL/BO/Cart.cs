@@ -23,7 +23,7 @@ namespace BO
         /// <summary>
         /// An item in cart
         /// </summary>
-        public OrderItem Item { get; set; }
+        public List<OrderItem> Item { get; set; }
         /// <summary>
         /// The Total price of customer cart
         /// </summary>

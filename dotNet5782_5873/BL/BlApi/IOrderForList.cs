@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DalApi;
 
 namespace BlApi
 {
-    public class IOrderForList
+    public interface IOrderForList : ICrud<BO.Order>
     {
-        public int Id { get; set; }
+        
     }
 }

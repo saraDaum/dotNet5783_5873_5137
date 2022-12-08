@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    public class ICart
+    public interface ICart
     {
-        public string Name { get; set; };
-        public string Description { get; set; };
-
+       // public string Name { get; set; };
+       // public string Description { get; set; };
+       //nead to do function().
     }
 }
