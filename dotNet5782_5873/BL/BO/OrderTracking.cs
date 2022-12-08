@@ -13,6 +13,7 @@ namespace BO
         /// OrderTracking ID
         /// </summary>
         public int ID { get; set; }
+
         /// <summary>
         /// OrderTracking status
         /// </summary>

@@ -9,29 +9,35 @@ namespace BO
     public class Order
     {
         /// <summary>
-        /// Order ID
+        /// Order's unique ID
         /// </summary>
         public int ID { get; }
+
         /// <summary>
         /// The name of the orderer
         /// </summary>
-        public string CustomerName { get; }
+        public string CustomerName? { get; }
+
         /// <summary>
-        /// The email of the orderer
+        /// The email address of the orderer
         /// </summary>
         public string CustomerEmail { get; }
+
         /// <summary>
         /// The Address of the orderer
         /// </summary>
         public string CustomerAddress { get; }
+
         /// <summary>
         /// Date of the order
         /// </summary>
         public DateTime OrderDate { get; }
+
         /// <summary>
         /// Date of the ship
         /// </summary>
         public DateTime ShipDate { get; }
+
         /// <summary>
         /// Date of the delivery
         /// </summary>
@@ -44,8 +50,8 @@ namespace BO
         public override string ToString() => $@"
     Order details:\n
     Order number: {ID}, 
-    Name of the order: {CustomerName},
-    address: {CustomerAddress}
-    Order date: {OrderDate}";
+    {nameof(CustomerName)}: {CustomerName},
+    {nameof(CustomerAddress)}: {CustomerAddress}
+    {nameof(OrderDate)}: {OrderDate}";
     }
 }

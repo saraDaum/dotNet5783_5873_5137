@@ -13,10 +13,25 @@ internal class Order:IOrder
 
     BO.Order order = new BO.Order();
     
-    public bool Add(BO.Order MyBOOrder)
+    public int Add(BO.Order MyBOOrder)
     {
-        DO.Order MyOrder=MyBOOrder;
-      
-        return true;
+       
+     
     }
+    public void Delete(int ID)
+    {
+
+    }
+    
+    public BO.Order Get (int Id)
+    {
+
+    }
+    
+    public void Update(BO.Order MyBoOrder)
+    {
+
+    }
+    
+
 }

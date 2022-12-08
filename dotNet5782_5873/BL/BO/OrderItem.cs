@@ -9,21 +9,25 @@ namespace BO
     public class OrderItem
     {
         /// <summary>
-        /// Prodct barcde
+        /// Product barcde in OrderItem
         /// </summary>
         public int ProductID { get;}
+
         /// <summary>
-        /// Order number
+        /// Order number in OrderItem
         /// </summary>
         public int OrderID { get;}
+
         /// <summary>
-        /// Product price
+        /// Product price in OrderItem
         /// </summary>
         public double ProductPrice { get;}
+
         /// <summary>
         /// The requested quantity of the product
         /// </summary>
         public int Amount { get;}
+
         /// <summary>
         /// Auto ID for this OrderItem
         /// </summary>

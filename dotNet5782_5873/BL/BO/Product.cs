@@ -13,18 +13,22 @@ namespace BO
         /// Product barcode (identification number)
         /// </summary>
         public int Barcode { get; set; }
+
         /// <summary>
         /// Product name
         /// </summary>
         public string ProductName { get; set; }
+
         /// <summary>
         /// Product category
         /// </summary>
         public Category Category { get; set; }
+
         /// <summary>
         /// Product price
         /// </summary>
         public double ProductPrice { get; set; }
+
         /// <summary>
         /// Amount in stock
         /// </summary>

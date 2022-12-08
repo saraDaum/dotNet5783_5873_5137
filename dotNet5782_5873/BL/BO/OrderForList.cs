@@ -9,21 +9,25 @@ namespace BO
     internal class OrderForList
     {
         /// <summary>
-        /// Id of OrderOfList
+        /// Unique ID of OrderOfList
         /// </summary>
         public int ID { get; set; }
+
         /// <summary>
         /// Customer name
         /// </summary>
         public string CustomerName { get; set; }
+
         /// <summary>
         /// Order status 
         /// </summary>
         public OrderStatus Status { get; set; }
+
         /// <summary>
         /// Amount of Items
         /// </summary>
         public int AmountOfItems { get; set; }
+
         /// <summary>
         /// Total price
         /// </summary>
@@ -36,8 +40,8 @@ namespace BO
         public override string ToString() => $@"
     OrderForList details:\n
     Order number: {ID}, 
-    Orderer name: {CustomerName},
-    Status: {Status}
+    {nameof(CustomerName)}: {CustomerName},
+    {nameof(Status)}: {Status}
     Amount: {AmountOfItems},
     Total:{TotalPrice}";
     }
