@@ -40,10 +40,10 @@ namespace BO
         /// <returns></returns>
         public override string ToString() => $@"
     Product details:\n
-    {Barcode}- {ProductName}, 
-    category: {Category},
-    Price: {ProductPrice},
-   	Amount in stock: {InStock}";
+    {nameof{Barcode}-} {ProductName}, 
+    {nameof{category}:} {Category},
+    {nameof{Price}:} {ProductPrice},
+   	{nameof{Amount in stock}:} {InStock}";
 
     }
 }

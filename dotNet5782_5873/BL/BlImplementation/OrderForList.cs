@@ -7,6 +7,11 @@ using BlApi;
 namespace BlImplementation;
 internal class OrderForList:IOrderForList
 {
-    private IDal dal= new Dallist();
-
+    private IDal Dal= new Dallist();
+    
+    
+    BO.Order
+        להמיר
+        ואז
+    Dal.Order.Add(DO.Order O)
 }

@@ -9,7 +9,12 @@ namespace BO
 
     public enum OrderStatus
     {
-
+       
     }
 
+    public enum Category
+    {
+
+
+    }
 }
