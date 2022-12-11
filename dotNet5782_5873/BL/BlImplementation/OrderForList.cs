@@ -10,8 +10,11 @@ internal class OrderForList:IOrderForList
     private IDal dal= new Dallist();
     
     
-    BO.Order
-        להמיר
-        ואז
-    Dal.Order.Add(DO.Order O)
+    BO.Order order= new BO.Order(); 
+
+       // להמיר
+       // ואז
+   // Dal.Order.Add(DO.Order O)
+   
+   
 }
