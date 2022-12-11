@@ -33,11 +33,11 @@ namespace BlImplementation
         );
 
 
-        MapperConfiguration configuratioOrderItem = new MapperConfiguration(cnf =>
+        MapperConfiguration configurationOrderItem = new MapperConfiguration(cnf =>
         cnf.CreateMap<BO.OrderItem, DO.OrderItem>()
         );
 
-        MapperConfiguration configuratioProduct = new MapperConfiguration(cnf =>
+        MapperConfiguration configurationProduct = new MapperConfiguration(cnf =>
         cnf.CreateMap<BO.Product, DO.Product>()
         );
 

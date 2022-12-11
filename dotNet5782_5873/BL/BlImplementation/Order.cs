@@ -17,13 +17,14 @@ internal class Order:IOrder
        CustomerAddress="Yesodot - Moshav shel parot",
        OrderDate= new DateTime(2022,12,10,0,0,0),
        ShipDate= new DateTime();
-            
-
+      
         };
     
+    AutoMapper MyMapper= new AutoMapper();
     public int Add(BO.Order MyBoOrder)
     {
        var DoOrder= DAL.DALOrder.Add(MyBoOrder);
+       MyMapper=
      
     }
     public void Delete(int ID)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class Product
+    public class BOProduct
     {
         /// <summary>
         /// Product barcode (identification number)
