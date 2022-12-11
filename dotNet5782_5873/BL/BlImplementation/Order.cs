@@ -33,7 +33,13 @@ internal class Order:IOrder
     
     public BO.Order Get (int Id)
     {
+     var doOrder = Dal.Order.GetById(id);
 
+    IAutoMapper mapper = myMapper.OrderMappingConfiguration.createMapper();
+    
+    var boOrder= mapper.Map<BO.Order>(doOrder)
+
+    return boOrder; 
     }
     
     public void Update(BO.Order MyBoOrder)

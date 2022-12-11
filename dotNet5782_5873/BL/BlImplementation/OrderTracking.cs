@@ -10,4 +10,27 @@ internal class OrderTracking:IOrderTracking
 {
     private IDal dal= new Dallist();
 
+    BO.OrderTracking orderTracking
+    {
+
+
+    }
+    public int Add (BO.OrderTracking MyBOOrderTracking)
+    {
+       // return dal.Add (MyBOOrderTracking);    
+    }
+
+    public int Delete (int ID)
+    {
+       // return dal.Delete (ID);
+    } 
+    public BO.OrderTracking Get (int Id )
+    {
+
+    }
+    public int Uptate (BO.OrderTracking MyBoOrderTracking) 
+    {
+    
+    }
+     
 }
