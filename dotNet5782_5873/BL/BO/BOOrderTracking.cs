@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class OrderTracking
+    internal class BOOrderTracking
     {
         /// <summary>
         /// OrderTracking ID

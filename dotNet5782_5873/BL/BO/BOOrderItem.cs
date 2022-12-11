@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class OrderItem
+    public class BOOrderItem
     {
         /// <summary>
         /// Product barcde in OrderItem

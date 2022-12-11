@@ -4,17 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BO
-{
+namespace BlApi;
 
-    public enum OrderStatus
-    {
-       
-    }
+public interface IAutoMapper 
+{ 
 
-    public enum Category
-    {
-
-
-    }
 }
+

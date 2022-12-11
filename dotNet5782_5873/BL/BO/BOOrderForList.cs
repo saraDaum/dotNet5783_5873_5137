@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class OrderForList
+    internal class BOOrderForList
     {
         /// <summary>
         /// Unique ID of OrderOfList

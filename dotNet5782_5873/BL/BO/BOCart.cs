@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class Cart
+    internal class BoCart
     {/// <summary>
      /// The customer name 
      /// </summary>
