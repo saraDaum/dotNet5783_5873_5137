@@ -53,5 +53,6 @@ namespace BO
     {nameof(CustomerName)}: {CustomerName},
     {nameof(CustomerAddress)}: {CustomerAddress}
     {nameof(OrderDate)}: {OrderDate}";
-    }
+    
+    
 }
