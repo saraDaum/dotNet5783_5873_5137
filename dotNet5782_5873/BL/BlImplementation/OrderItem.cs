@@ -19,7 +19,7 @@ public int Add(BO.Order MyBOOrderItem)
        // return Dal.Delete(ID);  
     }
 
-    public BO.Order Get (int id)
+    public BO.Order Get (int Id)
     {
 
     }

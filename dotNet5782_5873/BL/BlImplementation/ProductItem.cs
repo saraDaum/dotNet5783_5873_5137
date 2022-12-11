@@ -9,5 +9,26 @@ internal class ProductItem:IProductItem
 {
     private IDal dal= new Dallist();
 
+     BO.ProductItem productitem 
+    {
 
+
+    }
+    public int Add (BO.ProductItem MyBOOProductItem)
+    {
+       // return dal.Add (MyBOOProduct);    
+    }
+
+    public int Delete (int ID)
+    {
+       // return dal.Delete (ID);
+    } 
+    public BO.ProductItem Get (int Id )
+    {
+
+    }
+    public int Uptate (BO.ProductItem MyBoOProductItem) 
+    {
+    
+    }
 }
