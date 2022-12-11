@@ -5,26 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using BlApi;
 using DalApi;
+using AutoMapper;
 namespace BlImplementation;
 
 internal class Order:IOrder
 {
     private IDal dal= new Dallist();
 
-    BO.Order order = {
+    BLAutoMapper MyMapper= new BLAutoMapper();
+
+   Order order = {
        CustomerName="Miryami Aizenbach",
        CustomerEmail="Miryam7.52002@gmail.com",
        CustomerAddress="Yesodot - Moshav shel parot",
        OrderDate= new DateTime(2022,12,10,0,0,0),
        ShipDate= new DateTime();
-      
+      deliverDate= OrderDate.AddDays(10)
         };
     
-    AutoMapper MyMapper= new AutoMapper();
+
     public int Add(BO.Order MyBoOrder)
     {
        var DoOrder= DAL.DALOrder.Add(MyBoOrder);
-       MyMapper=
+      
      
     }
     public void Delete(int ID)

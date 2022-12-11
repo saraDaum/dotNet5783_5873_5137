@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlImplementation
 {
-    internal class AutoMapper
+    public class AutoMapper
     {
         MapperConfiguration configurationOredr = new MapperConfiguration(cnf =>
         cnf.CreateMap<BO.Order, DO.Order>()

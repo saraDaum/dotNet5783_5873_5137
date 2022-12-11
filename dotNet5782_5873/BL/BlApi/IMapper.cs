@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BlApi;
 
-public interface IAutoMapper 
+public interface IMapper 
 { 
 
 }
