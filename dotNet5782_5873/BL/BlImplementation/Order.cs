@@ -9,13 +9,13 @@ namespace BlImplementation;
 
 internal class Order:IOrder
 {
-    private IDal Dal= new Dallist();
+    private IDal dal= new Dallist();
 
     BO.Order order = new BO.Order();
     
     public int Add(BO.Order MyBOOrder)
     {
-       
+      
      
     }
     public void Delete(int ID)
