@@ -9,6 +9,25 @@ namespace BlImplementation;
 
 internal class Cart:ICart
 {
-    private IDal Dal= new Dallist();
+    private IDal dal= new Dallist();
 
+     public int Add(BO.Cart MyBoCart)
+    {
+       
+     
+    }
+    public void Delete(int ID)
+    {
+
+    }
+    
+    public BO.Order Get (int Id)
+    {
+
+    }
+    
+    public void Update(BO.Order MyBoCart)
+    {
+
+    }
 }

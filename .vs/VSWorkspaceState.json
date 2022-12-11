@@ -3,8 +3,14 @@
     "",
     "\\dotNet5782_5873",
     "\\dotNet5782_5873\\BL",
-    "\\dotNet5782_5873\\BL\\BlImplementation"
+    "\\dotNet5782_5873\\BL\\BlImplementation",
+    "\\dotNet5782_5873\\BL\\BO",
+    "\\dotNet5782_5873\\DAL_Facade",
+    "\\dotNet5782_5873\\DAL_Facade\\DO",
+    "\\dotNet5782_5873\\DAL_List",
+    "\\dotNet5782_5873\\DAL_Test",
+    "\\dotNet5782_5873\\stage0"
   ],
-  "SelectedNode": "\\dotNet5782_5873\\BL\\BlImplementation\\AutoMapper.cs",
+  "SelectedNode": "\\dotNet5782_5873\\BL\\BlImplementation\\Order.cs",
   "PreviewInSolutionExplorer": false
 }
