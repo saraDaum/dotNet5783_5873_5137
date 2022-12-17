@@ -9,13 +9,14 @@ using System.Runtime.InteropServices;
 
 namespace BlImplementation;
 
-internal class BoCart:IBoCart
+internal class BoCart:BlApi.IBoCart
 {
     private IDal dal= new Dallist();
 
      public int Add(BO.Cart MyBoCart)
     {
-      
+      dal.Add(MyBoCart);
+        return MyBoCart.ID;
      
     }
     public void Delete(int ID)
