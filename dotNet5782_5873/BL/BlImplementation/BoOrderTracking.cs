@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using BlApi;
 namespace BlImplementation;
 
-internal class OrderTracking:IOrderTracking
+internal class BoOrderTracking:IOrderTracking
 {
     private IDal dal= new Dallist();
 

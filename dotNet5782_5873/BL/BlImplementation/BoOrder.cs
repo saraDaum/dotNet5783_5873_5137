@@ -8,7 +8,7 @@ using DalApi;
 using AutoMapper;
 namespace BlImplementation;
 
-internal class Order:IOrder
+internal class BoOrder:BlApi.IBoOrder
 {
     private IDal dal= new Dallist();
 

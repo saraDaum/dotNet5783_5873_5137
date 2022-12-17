@@ -1,21 +1,20 @@
-﻿using BlApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using BlApi;
 namespace BlImplementation;
-internal class Product:IProduct
+internal class BoProductItem:IProductItem
 {
-   private IDal dal= new Dallist();
+    private IDal dal= new Dallist();
 
-    BO.Product product
+     BO.ProductItem productitem 
     {
 
 
     }
-    public int Add (BO.Product MyBOOProduct)
+    public int Add (BO.ProductItem MyBOOProductItem)
     {
        // return dal.Add (MyBOOProduct);    
     }
@@ -24,16 +23,12 @@ internal class Product:IProduct
     {
        // return dal.Delete (ID);
     } 
-    public BO.Product Get (int Id )
+    public BO.ProductItem Get (int Id )
     {
 
     }
-    public int Uptate (BO.Product MyBoOProduct) 
+    public int Uptate (BO.ProductItem MyBoOProductItem) 
     {
     
     }
-     
 }
-
-
-

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlApi;
+
 namespace BlImplementation;
-internal class OrderForList:IOrderForList
+
+internal class BoOrderForList:IOrderForList
 {
     private IDal dal= new Dallist();
     

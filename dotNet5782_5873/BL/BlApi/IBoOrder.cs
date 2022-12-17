@@ -1,13 +1,14 @@
-﻿using DalApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BO;
 
 namespace BlApi;
 
-public interface IOrderItem: ICrud<BO.OrderItem>
+public interface IBoOrder: ICrud<Order>
 {
 
 }
+

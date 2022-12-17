@@ -8,7 +8,7 @@ using DalApi;
 
 namespace BlApi
 {
-    public interface IOrderForList : ICrud<BO.Order>
+    public interface IBoOrderForList : ICrud<BO.Order>
     {
         
     }

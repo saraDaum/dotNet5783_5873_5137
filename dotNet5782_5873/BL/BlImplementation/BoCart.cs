@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace BlImplementation;
 
-internal class Cart:ICart
+internal class BoCart:IBoCart
 {
     private IDal dal= new Dallist();
 

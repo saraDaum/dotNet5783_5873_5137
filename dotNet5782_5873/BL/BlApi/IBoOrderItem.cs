@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BlApi;
-public class IProductItem:ICrud<BO.ProductItem>
+
+public interface IBoOrderItem: ICrud<BO.OrderItem>
 {
+
 }

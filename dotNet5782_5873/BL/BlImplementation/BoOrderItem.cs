@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using BlApi;
 
 namespace BlImplementation;
-internal class OrderItem:IOrderItem
+
+internal class BoOrderItem:IOrderItem
 {
     private IDal Dal= new Dallist();
      BO.OrderItem orderItem = new BO.OrderItem();
