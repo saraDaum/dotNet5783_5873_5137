@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 namespace BO
 {
 
-    public enum BoOrderStatus
+    public enum OrderStatus
     {
        
     }
 
-    public enum BoCategory
+    public enum Category
     {
 
 

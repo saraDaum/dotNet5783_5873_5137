@@ -4,10 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.
 namespace BlApi;
 
-internal class IBoOrderTracking:ICrud<BO.OrderTracking>
+internal interface IBoOrderTracking:ICrud<BO.OrderTracking>
 {
 
 

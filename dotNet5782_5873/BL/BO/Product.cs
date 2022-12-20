@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class BOProduct
+    public class Product
     {
         /// <summary>
         /// Product barcode (identification number)
@@ -22,7 +22,7 @@ namespace BO
         /// <summary>
         /// Product category
         /// </summary>
-        public Category Category { get; set; }
+        public DO.Category Category { get; set; }
 
         /// <summary>
         /// Product price
@@ -32,7 +32,7 @@ namespace BO
         /// <summary>
         /// Amount in stock
         /// </summary>
-        public int InStock { get; set; }
+        public int AmountInStock { get; set; }
 
         /// <summary>
         /// Print all product's details
@@ -40,10 +40,10 @@ namespace BO
         /// <returns></returns>
         public override string ToString() => $@"
     Product details:\n
-    {nameof{Barcode}-} {ProductName}, 
-    {nameof{category}:} {Category},
-    {nameof{Price}:} {ProductPrice},
-   	{nameof{Amount in stock}:} {InStock}";
+    {nameof(Barcode)} -{ProductName}, 
+    {nameof(Category)}: {Category},
+    {nameof(ProductPrice)} :{ProductPrice},
+   	{nameof(AmountInStock)} :{AmountInStock}";
 
     }
 }

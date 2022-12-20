@@ -54,7 +54,7 @@ internal class DataSource
             CustomerName = "Sara Cohen",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
-            OrderDate = DateTime.Today(),
+            OrderDate = DateTime.Today,
             ShipDate = DateTime.Today.AddDays(2),
             DeliveryDate =DateTime.Today.AddDays(10)
         };

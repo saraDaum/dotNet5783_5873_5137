@@ -1,6 +1,7 @@
-﻿namespace DalApi;
+﻿using DO;
+namespace DalApi;
 
-internal class IProduct
+public interface IProduct//:ICrud<Product>
 {
 
 }

@@ -1,10 +1,9 @@
 ﻿namespace DalApi;
 
-internal interface IDal<T>
+public interface IDal
 {
-    public IOrder order { get; }
-    public IOrderItem orderItem { get; }
+    public IOrder Order { get; }
+    public IOrderItem OrderItem { get; }
     public IProduct Product { get; }
 
-
-}
+ }

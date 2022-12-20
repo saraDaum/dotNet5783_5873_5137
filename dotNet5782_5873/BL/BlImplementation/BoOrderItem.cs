@@ -4,28 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlApi;
+using DAL;
+using DalApi;
+using DO;
 
 namespace BlImplementation;
 
 internal class BoOrderItem:IOrderItem
 {
-    private IDal Dal= new Dallist();
-     BO.OrderItem orderItem = new BO.OrderItem();
-public int Add(BO.Order MyBOOrderItem)
-    {
+    private IDal Dal= new DalList();
 
-    }
-    public int Delete (int ID)
+    public OrderItem GetOrderItem(int orderID, int productID)
     {
-       // return Dal.Delete(ID);  
-    }
-
-    public BO.Order Get (int Id)
-    {
-
-    }
-    public int Update (BO.OrderItem MyBoOrderItem)
-    {
-
+        throw new NotImplementedException();
     }
 }

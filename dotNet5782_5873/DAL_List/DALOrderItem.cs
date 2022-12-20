@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace DAL;
 //Finish
-internal class DALOrderItem : DalApi.ICrud<OrderItem>
+internal class DALOrderItem : IOrderItem
 {
     private OrderItem NULL;
 
@@ -44,7 +44,7 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     public int Add()
     {
         Console.WriteLine("Welcome to OrderItem menu.\nDo you know your order number? enter y or n");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         if (ans == "y")
         {
             Console.WriteLine("Please enter your order number");
@@ -56,26 +56,26 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
             Console.WriteLine("Please enter your order number");
         }
         int orderNum2;
-        string orderStr = Console.ReadLine();
+        string? orderStr = Console.ReadLine();
         bool TryParseSucceeded = int.TryParse(orderStr, out orderNum2);
         if (TryParseSucceeded)
         {
             Console.WriteLine("Please enter product barcode");
             int barcode;
-            string barcodeStr = Console.ReadLine();
+            string? barcodeStr = Console.ReadLine();
             bool result = int.TryParse(barcodeStr, out barcode);
             if (result)
             {
                 Console.WriteLine("O.K. What is the price of the product?");
                 double price;
-                string priceStr = Console.ReadLine();
+                string? priceStr = Console.ReadLine();
                 bool convertResult = double.TryParse(priceStr, out price);
                 if (convertResult)
                 {
 
                     Console.WriteLine("O.K. What is the price of the product?");
                     int amount;
-                    string amountStr = Console.ReadLine();
+                    string? amountStr = Console.ReadLine();
                     bool result2 = int.TryParse(amountStr, out amount);
                     if (result2)
                     {
@@ -121,17 +121,13 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         return 0;
     }
 
-    public static void GetAll()
-    {
-        OrderItemList.ForEach(MyOrderItem => print(MyOrderItem, id));
-    }
 
     /// <summary>
     /// This function gets an ID and return the match item from orderItem's list
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public OrderItem Get(int id)
+    public OrderItem GetById(int id)
     {
         int index = OrderItemList.FindIndex(currentOrderItem => currentOrderItem.autoID == id);
         if (index != -1)
@@ -282,19 +278,24 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         return OrderItems;
     }
 
-    OrderItem public GetOrderItem(int orderID, int productID)
-    {
+    public OrderItem GetOrderItem(int orderID, int productID) 
+    { 
+    // FIX!!
+       OrderItem MrOrderItem= new OrderItem();
+        return MrOrderItem;
 
     }
 
-
-    OrderItem ICrud<OrderItem>.Get(int id)
+    public OrderItem? GetById(int orderID, int productID)
     {
-        throw new NotImplementedException();
-    }
-
-    void ICrud<OrderItem>.Delete(int id)
-    {
-        throw new NotImplementedException();
+        int index = OrderItemList.FindIndex(o => o.OrderID == orderID && o.ProductID == productID);
+        if (index != -1)
+        {
+            return OrderItemList[index];
+        }
+        return null;
     }
 }
+
+
+

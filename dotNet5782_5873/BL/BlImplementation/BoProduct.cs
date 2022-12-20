@@ -1,40 +1,44 @@
-﻿using BlApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using BlApi;
+using BO;
+using DAL;
+using DalApi;
 
 namespace BlImplementation;
 
 internal class BoProduct:IBoProduct
 {
-   private IDal dal= new Dallist();
-    BLAutoMapper myMapper = new BLAutoMapper();
-    BO.Product product
-    {
+   private IDal dal= new DalList();
 
-
-    }
-    public int Add (BO.Product MyBOOProduct)
+    public int Add(Product entity)
     {
-       // return dal.Add (MyBOOProduct);    
+        throw new NotImplementedException();
     }
 
-    public int Delete (int ID)
+    public void Delete(int id)
     {
-       // return dal.Delete (ID);
-    } 
-    public BO.Product Get (int Id )
-    {
+        throw new NotImplementedException();
+    }
 
-    }
-    public int Uptate (BO.Product MyBoOProduct) 
+    public IEnumerable<Product> GetAll()
     {
-    
+        throw new NotImplementedException();
     }
-     
+
+    public Product GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(Product entity)
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class BOExceptions
+    internal class Exceptions
     {
         ///// <summary>
         ///// Product unique ID
@@ -27,12 +27,13 @@ namespace BO
 
 
 
-    //    public override string ToString() => $@"
-    //Order item details:\n
-    //ID code: {autoID}
-    //Product barkode: {ProductID}, 
-    //Order number: {OrderID}, 
-    //Price: {ProductPrice},
-   	//Amount in order: {Amount}";
-    //}
+        //    public override string ToString() => $@"
+        //Order item details:\n
+        //ID code: {autoID}
+        //Product barkode: {ProductID}, 
+        //Order number: {OrderID}, 
+        //Price: {ProductPrice},
+        //Amount in order: {Amount}";
+        //}
+    }
 }

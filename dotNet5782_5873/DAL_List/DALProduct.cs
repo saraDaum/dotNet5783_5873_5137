@@ -1,11 +1,13 @@
 ﻿using static DAL.DataSource;
-namespace DAL;
 using DO;
-internal class DALProduct : DalApi.ICrud<Product>  
+
+namespace DAL;
+
+internal class DALProduct :DalApi.IProduct
 {
     private Product NULL;
 
-    public Product Get(int barcode)
+    public Product GetById(int barcode)
     {
         int index = ProductList.FindIndex(current => current.Barcode == barcode);
         if (index != -1)
@@ -334,13 +336,17 @@ internal class DALProduct : DalApi.ICrud<Product>
             Console.WriteLine("No match item.");
         }
     }
+
+
+    /// <summary>
+    /// This function returns all instances of  product 
+    /// </summary>
+    /// <returns></returns>
+
+    public IEnumerable<Product> GetAll()
+    {
+        IEnumerable<Product> AllProducts = ProductList;
+        return AllProducts;
+    }
 }
-
-/// <summary>
-/// This function returns all instances of  product 
-/// </summary>
-/// <returns></returns>
-
-
-
 

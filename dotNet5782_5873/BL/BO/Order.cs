@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class BOOrder
+    public class Order
     {
         /// <summary>
         /// Order's unique ID

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class BoCart
+    public  class Cart
     {/// <summary>
      /// The customer name 
      /// </summary>
@@ -23,7 +23,7 @@ namespace BO
         /// <summary>
         /// An item in cart
         /// </summary>
-        public List<OrderItem> Item { get; set; }
+        public List<DO.OrderItem> Item { get; set; }
         /// <summary>
         /// The Total price of customer cart
         /// </summary>

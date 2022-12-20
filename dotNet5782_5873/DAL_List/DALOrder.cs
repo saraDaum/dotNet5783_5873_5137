@@ -8,7 +8,7 @@ using static DAL.DataSource;
 namespace DAL;
 
 
-internal class DALOrder : DalApi.ICrud<Order>
+internal class DALOrder : IOrder
 {
     /// <summary>list
     /// This function gets an order object, enter it to order's array and returns the order number
@@ -32,6 +32,13 @@ internal class DALOrder : DalApi.ICrud<Order>
         }
         return 0;
     }
+
+    public int Add()
+    {
+      
+        return 0;
+    }
+
 
     /// <summary>list
     /// Update order in order's array
@@ -61,14 +68,14 @@ internal class DALOrder : DalApi.ICrud<Order>
     public void Delete()
     {
         Console.WriteLine("Do you know your order number? Enter y or n.");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         if (ans == "n" || ans == "N")
         {
             OrderList.ForEach(MyOrder => print(MyOrder));
         }
         Console.WriteLine("Please enter your order number.");
         int orderNumber;
-        string orderNumStr = Console.ReadLine();
+        string? orderNumStr = Console.ReadLine();
         bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
         if (TryParseSucceeded)
         {
@@ -111,7 +118,7 @@ internal class DALOrder : DalApi.ICrud<Order>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public  Order Get(int id)
+    public  Order GetById(int id)
     {
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
         if (index == -1)

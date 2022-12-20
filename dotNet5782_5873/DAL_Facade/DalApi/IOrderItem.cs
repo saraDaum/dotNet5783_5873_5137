@@ -2,7 +2,7 @@
 
 namespace DalApi;
 
-internal interface IOrderItem
+public interface IOrderItem//:ICrud<OrderItem>
 {
  public OrderItem GetOrderItem(int orderID, int productID);
 }
