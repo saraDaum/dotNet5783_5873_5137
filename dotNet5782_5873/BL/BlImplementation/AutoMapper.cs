@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace BlImplementation
 {
-    public class AutoMapper
+    public class OurAutoMapper
     {
+
         MapperConfiguration configurationOredr = new MapperConfiguration(cnf =>
-        cnf.CreateMap<BO.Order, DO.Order>()
-        .ForMember(b=>b.ID,option=> option.MapFrom(b=>b.ID))
-        .ForMember(b=>b.CustomerName,option => option.MapFrom(d=>d.CustomerName))
+        cnf.CreateMap<BO.BOOrder, DO.Order>()
+        .ForMember(b => b.ID, option => option.MapFrom(b => b.ID))
+        .ForMember(b => b.CustomerName, option => option.MapFrom(d => d.CustomerName))
         .ForMember(b => b.CustomerEmail, option => option.MapFrom(d => d.CustomerEmail))
         .ForMember(b => b.CustomerAddress, option => option.MapFrom(d => d.CustomerAddress))
         .ForMember(b => b.OrderDate, option => option.MapFrom(d => d.OrderDate))
@@ -34,11 +35,11 @@ namespace BlImplementation
 
 
         MapperConfiguration configurationOrderItem = new MapperConfiguration(cnf =>
-        cnf.CreateMap<BO.OrderItem, DO.OrderItem>()
+        cnf.CreateMap<BO.BOOrderItem, DO.OrderItem>()
         );
 
         MapperConfiguration configurationProduct = new MapperConfiguration(cnf =>
-        cnf.CreateMap<BO.Product, DO.Product>()
+        cnf.CreateMap<BO.BOProduct, DO.Product()>
         );
 
     }

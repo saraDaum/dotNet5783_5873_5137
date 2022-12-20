@@ -1,6 +1,8 @@
-﻿namespace DalApi;
+﻿using DO;
 
-internal class IOrderItem
+namespace DalApi;
+
+internal interface IOrderItem
 {
-   
+ public OrderItem GetOrderItem(int orderID, int productID);
 }

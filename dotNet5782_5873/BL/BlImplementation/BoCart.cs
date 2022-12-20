@@ -12,10 +12,10 @@ namespace BlImplementation;
 internal class BoCart:IBoCart
 {
     private IDal dal= new Dallist();
-
+    AutoMapper MyAutoMapper = new AutoMapper();
      public int Add(BO.Cart MyBoCart)
     {
-      
+      IBoMapper boMapper= MyAutoMapper.Order
      
     }
     public void Delete(int ID)

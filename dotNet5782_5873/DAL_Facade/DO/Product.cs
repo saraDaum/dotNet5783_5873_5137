@@ -17,7 +17,7 @@ public struct Product
     
     public override string ToString() => $@"
     Product details:\n
-    {Barcode}- {ProductName}, 
+    {nameof(Barcode)}- {ProductName}, 
     category: {Category},
     Price: {ProductPrice},
    	Amount in stock: {InStock}";

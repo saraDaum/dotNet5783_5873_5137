@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DAL
 {
-    sealed public class DalList : IDal
+    sealed public class DalList //: IDal
     //public class DalList
     {
         public static readonly object DALOrder;

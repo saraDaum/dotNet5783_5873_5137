@@ -54,9 +54,9 @@ internal class DataSource
             CustomerName = "Sara Cohen",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
-            OrderDate = DateTime.Now(),
-            ShipDate = DateTime.Now.AddDays(2),
-            DeliveryDate =DateTime.Now.AddDays(10)
+            OrderDate = DateTime.Today(),
+            ShipDate = DateTime.Today.AddDays(2),
+            DeliveryDate =DateTime.Today.AddDays(10)
         };
         OrderList.Add(MyOrder);
         Order MyOrder1 = new Order
@@ -67,7 +67,7 @@ internal class DataSource
             CustomerAddress = "Zahal 52, Beit-Shemesh",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder1);
         Order MyOrder2 = new Order
@@ -78,7 +78,7 @@ internal class DataSource
             CustomerAddress = "Smile 103, Jerusalem",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder2);
         Order MyOrder3 = new Order
@@ -89,7 +89,7 @@ internal class DataSource
             CustomerAddress = "Happyness 72, Ofakim",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder3);
         Order MyOrder4 = new Order

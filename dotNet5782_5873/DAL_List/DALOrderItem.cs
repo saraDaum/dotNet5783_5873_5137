@@ -121,7 +121,7 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         return 0;
     }
 
-    public static void GetAll(int id)
+    public static void GetAll()
     {
         OrderItemList.ForEach(MyOrderItem => print(MyOrderItem, id));
     }
@@ -140,6 +140,8 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         }
         return NULL;
     }
+    //What is this function?
+
     private static void print(OrderItem myOrderItem, int id)
     {
         if (myOrderItem.autoID == id)
@@ -273,16 +275,18 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
             Console.WriteLine("No match item.");
         }
     }
-   
+
     public IEnumerable<OrderItem> GetAll()
     {
         IEnumerable<OrderItem> OrderItems = OrderItemList;
         return OrderItems;
     }
-    public void ReadAll()
+
+    OrderItem public GetOrderItem(int orderID, int productID)
     {
 
     }
+
 
     OrderItem ICrud<OrderItem>.Get(int id)
     {

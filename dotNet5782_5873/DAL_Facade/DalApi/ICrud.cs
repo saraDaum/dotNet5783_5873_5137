@@ -3,7 +3,7 @@
 public interface ICrud<T>
 {
     int Add(T entity);
-    T Get(int id);
+    T GetById(int id);
     void Update(T entity);
     void Delete(int id);
     //T deleteAll();

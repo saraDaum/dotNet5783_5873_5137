@@ -7,7 +7,6 @@ namespace DO;
 /// </summary>
 public struct Order
 {
-
     //Fields
     public int ID { get;  set; }
     public string CustomerName { get; set; }

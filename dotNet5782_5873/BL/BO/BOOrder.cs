@@ -16,7 +16,7 @@ namespace BO
         /// <summary>
         /// The name of the orderer
         /// </summary>
-        public string CustomerName? { get; }
+        public string? CustomerName { get; }
 
         /// <summary>
         /// The email address of the orderer
@@ -53,6 +53,7 @@ namespace BO
     {nameof(CustomerName)}: {CustomerName},
     {nameof(CustomerAddress)}: {CustomerAddress}
     {nameof(OrderDate)}: {OrderDate}";
+    }
     
     
 }

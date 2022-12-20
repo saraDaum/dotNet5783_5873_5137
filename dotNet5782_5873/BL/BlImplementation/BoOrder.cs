@@ -6,27 +6,23 @@ using System.Threading.Tasks;
 using BlApi;
 using DalApi;
 using AutoMapper;
+using DAL;
+
 namespace BlImplementation;
 
 internal class BoOrder:BlApi.IBoOrder
 {
-    private IDal dal= new Dallist();
+    private IDal dal= new DalList();
 
-    BLAutoMapper MyMapper= new BLAutoMapper();
-
-   Order order = {
-       CustomerName="Miryami Aizenbach",
-       CustomerEmail="Miryam7.52002@gmail.com",
-       CustomerAddress="Yesodot - Moshav shel parot",
-       OrderDate= new DateTime(2022,12,10,0,0,0),
-       ShipDate= new DateTime();
-      deliverDate= OrderDate.AddDays(10)
-        };
+    MapperConfiguration  oredrMapperConfig = new MapperConfiguration(cnf =>
+         cnf.CreateMap<BO.BOOrder, DO.Order>()
+         .ReverseMap()   );
     
-
-    public int Add(BO.Order MyBoOrder)
+    public int Add(BO.BOOrder MyBoOrder)
     {
-       var DoOrder= DAL.DALOrder.Add(MyBoOrder);
+      //  IAutoMapper autoMapper= oredrMapperConfig.cre
+       //DO.Order doorder= 
+        var DoOrder= DAL.DALOrder.Add(MyBoOrder);
       
      
     }
@@ -35,18 +31,18 @@ internal class BoOrder:BlApi.IBoOrder
 
     }
     
-    public BO.Order Get (int Id)
+    public BO.BOOrder Get (int Id)
     {
-     var doOrder = Dal.Order.GetById(id);
+     //var doOrder = Dal.Order.GetById(id);
 
     IAutoMapper mapper = myMapper.OrderMappingConfiguration.createMapper();
-    
-    var boOrder= mapper.Map<BO.Order>(doOrder)
 
-    return boOrder; 
+       // var boOrder = mapper.<BO.BOOrder, DO.Order>();
+
+    return ; 
     }
     
-    public void Update(BO.Order MyBoOrder)
+    public void Update(BO.BOOrder MyBoOrder)
     {
 
     }

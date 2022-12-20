@@ -9,10 +9,10 @@ namespace BlImplementation
 {
     public  class BL : IBl
     {
-        public IOrder Order => new BlImplementation.Order();
+        public IOrder Order => new BlImplementation.BoOrder();
 
-        public IOrderItem OrderItem =>  new BlImplementation.OrderItem();
+        public IOrderItem OrderItem =>  new BlImplementation.BoOrderItem();
 
-        public IProduct Product =>  new BlImplementation.Product();
+        public IProduct Product =>  new BlImplementation.BoProduct();
     }
 }
