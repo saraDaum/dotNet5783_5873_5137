@@ -33,10 +33,9 @@ internal class DALOrder : IOrder
         return 0;
     }
 
-    public int Add()
+    public void Add()
     {
       
-        return 0;
     }
 
 
@@ -136,10 +135,8 @@ internal class DALOrder : IOrder
     /// <exception cref="Exception"></exception>
     public void ReadById(int id)
     {
-        int orderNumber;
         Console.WriteLine("Please enter your order number");
-        string orderStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderStr, out orderNumber);
+        bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderNumber);
         if (TryParseSucceeded)
         {
             Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == id);

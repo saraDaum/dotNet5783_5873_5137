@@ -11,21 +11,26 @@ using DO;
 
 namespace BlImplementation;
 
-internal class BoOrder:BlApi.IBoOrder
+internal class BoOrder : IBoOrder
 {
-    private IDal dal= new DalList();
+    private IDal dal = new DalList();
 
-    MapperConfiguration  oredrMapperConfig = new MapperConfiguration(cnf =>
-         cnf.CreateMap<BO.Order, DO.Order>()
-         .ReverseMap());
-    
+    OurAutoMapper AutoMapper = new OurAutoMapper();
+
+
     public int Add(BO.Order MyBoOrder)
-    {
+    {/*
+        IMapper mapper = OurAutoMapper.OrderConfiguration.CreateMapper();
+        DO.Order doOrder = mapper.Map<DO.Order>(dal);
+        Dal.Order.Add(doOrder);
+        return doOrder.ID;
+        */
+
         //  IAutoMapper autoMapper= oredrMapperConfig.cre
         //DO.Order doorder= 
         // var DoOrder= DAL.DALOrder.Add(MyBoOrder);
         return 0;
-     
+
     }
 
     public int Add(Order entity)
@@ -37,8 +42,8 @@ internal class BoOrder:BlApi.IBoOrder
     {
 
     }
-    
-    public BO.Order Get (int Id)
+
+    public BO.Order Get(int Id)
     {
         //var doOrder = Dal.Order.GetById(id);
 
@@ -47,7 +52,7 @@ internal class BoOrder:BlApi.IBoOrder
         // var boOrder = mapper.<BO.BOOrder, DO.Order>();
         throw new NotImplementedException();
 
-     }
+    }
 
     public IEnumerable<Order> GetAll()
     {

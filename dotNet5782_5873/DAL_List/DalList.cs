@@ -18,7 +18,7 @@ namespace DAL
         public IOrder Order => new DALOrder() ;
         public IOrderItem OrderItem => new DALOrderItem() ;
         public IProduct Product => new DALProduct();
-
+        //public static IDal instance { get; } = new DalList();
 
 
 

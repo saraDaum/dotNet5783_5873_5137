@@ -154,22 +154,18 @@ internal class DALOrderItem : IOrderItem
     public void Update()
     {
         Console.WriteLine("Do you know your order item ID? Enter y or n.");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
             OrderItemList.ForEach(obj => print(obj));
         }
         Console.WriteLine("Please enter your order item ID.");
-        int orderItemNumber;
-        string orderNumStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderNumStr, out orderItemNumber);
+        bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderItemNumber);
         if (TryParseSucceeded)
         {
             Console.WriteLine("What amount do you want?");
-            int amount;
-            string amountStr = Console.ReadLine();
-            bool TryParseSucceeded2 = int.TryParse(amountStr, out amount);
+            bool TryParseSucceeded2 = int.TryParse(Console.ReadLine(), out int  amount);
             if (TryParseSucceeded2)
             {
                 int index = OrderItemList.FindIndex(obj => obj.OrderID == orderItemNumber);         //Searching the item to make an update object
@@ -238,9 +234,7 @@ internal class DALOrderItem : IOrderItem
             }
 
             Console.WriteLine("Please enter your order item ID.");
-            int orderItemNumber;
-            string orderNumStr = Console.ReadLine();
-            bool TryParseSucceeded = int.TryParse(orderNumStr, out orderItemNumber);
+            bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderItemNumber);
             if (TryParseSucceeded)
             {
                 OrderItem obj = OrderItemList.Find(currentOrderItem => currentOrderItem.OrderID == orderItemNumber);    //Searching the order item to delete it.

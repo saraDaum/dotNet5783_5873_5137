@@ -9,6 +9,10 @@ namespace DAL_Test
     {
         public static void Main(string[] args)
         {
+            IDal DalListVar = new DalList();
+            Order myOrder= new Order();
+            Product myProduct= new Product();
+            OrderItem myOrderItem= new OrderItem();
             void application()
             {
                 Console.WriteLine("Please choose from the next options:");
@@ -63,23 +67,23 @@ namespace DAL_Test
                     {
                         case (1):
                             {
-                              //  DalList.Order.Add();
+                                DalListVar.Order.Add();
                                 break;
                             }
 
                         case (2):
                             {
-                               // DalList.Order.Get();
+                                DalListVar.Order.Get();
                                 break;
                             }
                         case (3):
                             {
-                                // DalList.Order.Update();
+                                DalListVar.Order.Update(myOrder);
                                 break;
                             }
                         case (4):
                             {
-                               // DalList.Order.Delete();
+                                DalListVar.Order.Delete(1);
                                 break;
                             }
 
@@ -100,30 +104,30 @@ namespace DAL_Test
                 Console.WriteLine("if you went to delete press 4");
                 Console.WriteLine("if you went to exit  press 5");
 
-                bool convert = int.TryParse(Console.ReadLine(), out int chooseOrderItem);
+                var convert = int.TryParse(Console.ReadLine(), out int chooseOrderItem);
                 if (convert)
                 {
                     switch (chooseOrderItem)
                     {
                         case (1):
                             {
-                               // DalList.DALOrderItem.Add();
+                                DalListVar.OrderItem.Add(myOrderItem);
                                 break;
                             }
 
                         case (2):
                             {
-                               // DAL.DalList.DALOrderItem.ReadAll();
+                               DalListVar.OrderItem.GetById(1);
                                 break;
                             }
                         case (3):
                             {
-                                //DAL.DalList.DALOrderItem.update();
+                                DalListVar.OrderItem.Update(myOrderItem);
                                 break;
                             }
                         case (4):
                             {
-                                //DAL.DalList.DALOrderItem.delete();
+                                DalListVar.OrderItem.Delete();
                                 break;
                             }
 
@@ -151,23 +155,23 @@ namespace DAL_Test
                     {
                         case (1):
                             {
-                                //DalList.DALProduct.newProduct();
+                                DalListVar.Product.Add(myProduct);
                                 break;
                             }
 
                         case (2):
                             {
-                               // DalList.DALProduct.read();
+                                DalListVar.Product.GetById(1);
                                 break;
                             }
                         case (3):
                             {
-                                //DalList.DALProduct.update();
+                                DalListVar.Product.Update(myProduct);
                                 break;
                             }
                         case (4):
                             {
-                               // DalList.DALProduct.delete();
+                                DalListVar.Product.Delete();
                                 break;
                             }
 
