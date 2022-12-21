@@ -278,7 +278,7 @@ internal class DALOrderItem : IOrderItem
         return OrderItems;
     }
 
-    public OrderItem GetOrderItem(int orderID, int productID) 
+    public OrderItem GetByID(int orderID, int productID) 
     { 
     // FIX!!
        OrderItem MrOrderItem= new OrderItem();

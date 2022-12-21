@@ -9,7 +9,7 @@ namespace BlTest
             Console.WriteLine("Hello, World!");
 
             
-            bl.Order.Add();
+           
         }
     }
 }

@@ -16,6 +16,6 @@ namespace BlImplementation
 
         public IProduct Product => new BoProduct();
 
-        IOrder IBl.Order => throw new NotImplementedException();
+        //IOrder IBl.Order => throw new NotImplementedException();
     }
 }

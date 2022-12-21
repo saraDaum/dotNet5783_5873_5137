@@ -14,7 +14,7 @@ internal class BoOrderItem:IOrderItem
 {
     private IDal Dal= new DalList();
 
-    public OrderItem GetOrderItem(int orderID, int productID)
+    public OrderItem GetByID(int orderID, int productID)
     {
         throw new NotImplementedException();
     }

@@ -10,7 +10,7 @@ namespace DAL
     sealed public  class DalList : IDal
     //public class DalList
     {
-
+        
         //public static readonly object DALOrder;
         //public static object DALOrderItem { get; set; }
         // public static object DALProduct { get; set; }
