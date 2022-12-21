@@ -23,7 +23,7 @@ namespace BO
         /// <summary>
         /// An item in cart
         /// </summary>
-        public List<DO.OrderItem> Item { get; set; }
+        public List<DO.OrderItem> ItemsInCart { get; set; }
         /// <summary>
         /// The Total price of customer cart
         /// </summary>
@@ -36,7 +36,7 @@ namespace BO
      Cart details:\n
     {CustomerName} - {CustomerAddress}:
     {nameof(CustomerEmail)}:{CustomerEmail}
-    {nameof(Item)}: {Item},
+    {nameof(ItemsInCart)}: {ItemsInCart},
     {nameof(TotalPrice)}: {TotalPrice}";
     }
 }

@@ -14,15 +14,18 @@ namespace BlImplementation;
 internal class BoProduct:IBoProduct
 {
    private IDal dal= new DalList();
-
+    OurAutoMapper AutoMapper= new OurAutoMapper();
     public int Add(Product entity)
     {
-        throw new NotImplementedException();
+        IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+        DO.Product DoProduct= mapper.Map<DO.Product>(entity);
+        int Barcode = dal.Product.Add(DoProduct);
+        return Barcode;
     }
 
     public void Delete(int id)
     {
-        throw new NotImplementedException();
+        dal.Product.Delete(id);
     }
 
     public IEnumerable<Product> GetAll()

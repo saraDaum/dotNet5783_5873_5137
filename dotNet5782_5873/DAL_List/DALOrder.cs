@@ -84,15 +84,18 @@ internal class DALOrder : IOrder
 
     }
 
-    public void Delete(int index)
+    public void Delete(int ID)
     {
+        int index=OrderList.FindIndex(order=>order.ID==ID);
         if (index == -1)
         {
-            throw new Exception("The order has been successfully deleted.");
+            throw new Exception("Ivalid ID number.");
         }
         if (index != -1)
         {
             OrderList.RemoveAt(index);
+            Console.WriteLine("The item has been successfully removed");
+
         }
     }
 
@@ -122,7 +125,7 @@ internal class DALOrder : IOrder
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
         if (index == -1)
             throw new Exception("This object dosen't exist.");
-        return OrderList.ElementAt(index);
+        return OrderList[index];
 
     }
 

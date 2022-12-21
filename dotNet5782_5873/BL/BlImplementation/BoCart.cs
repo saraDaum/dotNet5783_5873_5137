@@ -7,16 +7,25 @@ using DalApi;
 using BlApi;
 using System.Runtime.InteropServices;
 using DAL;
+using System.Data.Common;
 
 namespace BlImplementation;
 
 internal class BoCart:IBoCart
 {
     private IDal dal= new DalList();
-   // IAutoMapper MyAutoMapper = new AutoMapper();
-     public int Add(BO.Cart MyBoCart)
+    OurAutoMapper AutoMapper = new OurAutoMapper();
+     public int Add(BO.Cart cart, BO.Product product)
     {
-
+        if (product.AmountInStock > 0)
+        {
+        product.AmountInStock--;
+           // Console.WriteLine("ProductID OrderID ProductPrice Amount autoID");
+        }
+        else
+        {
+            throw new Exception("This product has been out of stock.");
+        }
         IBoMapper boMapper;//= MyAutoMapper.Order;
         return 0;
      

@@ -14,9 +14,7 @@ internal class BoOrderForList:IBoOrderForList
 {
     private IDal dal= new DalList();
     
-    
-    BO.Order order= new BO.Order();
-
+   
     public int Add(Order entity)
     {
         throw new NotImplementedException();

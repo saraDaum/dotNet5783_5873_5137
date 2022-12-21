@@ -3,7 +3,7 @@ using DO;
 
 namespace DAL;
 
-internal class DALProduct :DalApi.IProduct
+internal class DALProduct : DalApi.IProduct
 {
     private Product NULL;
 
@@ -188,12 +188,20 @@ internal class DALProduct :DalApi.IProduct
     /// <summary>list
     /// Delete an Order object
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="barcode"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete(int id)
+    public void Delete(int barcode)
     {
-        ProductList.RemoveAt(id);
-        Console.WriteLine("The item has been successfully removed");
+        int index = ProductList.FindIndex(obj => obj.Barcode == barcode);
+        if (index == -1)
+        {
+            throw new Exception("No match item. Ivalid ID number.");
+        }
+        else
+        {
+            ProductList.RemoveAt(index);
+            Console.WriteLine("The item has been successfully removed");
+        }
     }
 
     public static void print(Product obj)

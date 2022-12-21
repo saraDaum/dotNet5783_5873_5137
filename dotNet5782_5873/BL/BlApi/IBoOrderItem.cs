@@ -9,5 +9,5 @@ namespace BlApi;
 
 public interface IBoOrderItem: ICrud<BO.OrderItem>
 {
-
+    BO.OrderItem GetById(int id, int orderId);
 }

@@ -262,7 +262,8 @@ internal class DALOrderItem : IOrderItem
         }
         else
         {
-            Console.WriteLine("No match item.");
+            throw new Exception("No match item. Ivalid ID number.");
+
         }
     }
 
@@ -272,13 +273,13 @@ internal class DALOrderItem : IOrderItem
         return OrderItems;
     }
 
-    public OrderItem GetByID(int orderID, int productID) 
+    /*public OrderItem GetByID(int orderID, int productID) 
     { 
     // FIX!!
        OrderItem MrOrderItem= new OrderItem();
         return MrOrderItem;
 
-    }
+    }*/
 
     public OrderItem? GetById(int orderID, int productID)
     {
@@ -287,7 +288,8 @@ internal class DALOrderItem : IOrderItem
         {
             return OrderItemList[index];
         }
-        return null;
+        throw new Exception("Invalid ID number");
+       
     }
 }
 

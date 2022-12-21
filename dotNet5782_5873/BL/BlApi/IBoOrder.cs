@@ -9,7 +9,7 @@ using DO;
 
 namespace BlApi;
 
-public interface IBoOrder: ICrud<DO.Order>
+public interface IBoOrder: ICrud<BO.Order>
 {
     
 }
