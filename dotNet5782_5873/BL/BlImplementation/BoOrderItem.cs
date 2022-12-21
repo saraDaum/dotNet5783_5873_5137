@@ -10,11 +10,31 @@ using DO;
 
 namespace BlImplementation;
 
-internal class BoOrderItem:IOrderItem
+internal class BoOrderItem:IBoOrderItem
 {
     private IDal Dal= new DalList();
 
-    public OrderItem GetByID(int orderID, int productID)
+    public int Add(BO.OrderItem entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Delete(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<BO.OrderItem> GetAll()
+    {
+        throw new NotImplementedException();
+    }
+
+    public BO.OrderItem GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(BO.OrderItem entity)
     {
         throw new NotImplementedException();
     }

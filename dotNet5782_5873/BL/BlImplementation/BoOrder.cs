@@ -19,49 +19,34 @@ internal class BoOrder : IBoOrder
 
 
     public int Add(BO.Order MyBoOrder)
-    {/*
-        IMapper mapper = OurAutoMapper.OrderConfiguration.CreateMapper();
-        DO.Order doOrder = mapper.Map<DO.Order>(dal);
-        Dal.Order.Add(doOrder);
-        return doOrder.ID;
-        */
-
-        //  IAutoMapper autoMapper= oredrMapperConfig.cre
-        //DO.Order doorder= 
-        // var DoOrder= DAL.DALOrder.Add(MyBoOrder);
-        return 0;
-
+    {
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        DO.Order DoOrder = mapper.Map<DO.Order>(MyBoOrder);
+        Add(DoOrder);
+        return DoOrder.ID;
+        
     }
 
+    //Why it's insist me to implement this function??
     public int Add(Order entity)
     {
-        throw new NotImplementedException();
+        dal.Order.Add(entity);
+        return entity.ID;
     }
 
     public void Delete(int ID)
     {
-
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        DO.Order DoOrder= mapper.Map<DO.Order>(ID);
+        dal.Order.Delete(ID);
     }
 
-    public BO.Order Get(int Id)
+   
+    public BO.Order GetById(int id)
     {
-        //var doOrder = Dal.Order.GetById(id);
-
-        //   IAutoMapper mapper = myMapper.OrderMappingConfiguration.createMapper();
-
-        // var boOrder = mapper.<BO.BOOrder, DO.Order>();
-        throw new NotImplementedException();
-
-    }
-
-    public IEnumerable<Order> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    public Order GetById(int id)
-    {
-        throw new NotImplementedException();
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        BO.Order myOrder = mapper.Map<BO.Order>(id);
+        return myOrder;
     }
 
     public void Update(BO.Order MyBoOrder)
@@ -70,6 +55,31 @@ internal class BoOrder : IBoOrder
     }
 
     public void Update(Order entity)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<BO.Order>  GetAll()
+    {
+        IMapper mapper= AutoMapper.OrderConfiguration.CreateMapper();
+        IEnumerable<BO.Order> AllBoOrders= new List<BO.Order>();//A new list of BO.Order
+        IEnumerable<DO.Order> AllDOOrders= dal.Order.GetAll(); //Get the DO.Order list
+        foreach (Order order in AllDOOrders)
+        {
+        BO.Order myOrder= mapper.Map<BO.Order>(order);//Mapper
+            AllBoOrders.Append(myOrder);
+        }
+        return AllBoOrders;
+    }
+
+  
+
+    Order ICrud<Order>.GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerable<Order> ICrud<Order>.GetAll()
     {
         throw new NotImplementedException();
     }

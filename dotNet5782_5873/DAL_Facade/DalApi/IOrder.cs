@@ -9,6 +9,6 @@ public interface IOrder:ICrud<Order>
     /// </summary>
     void Add();
     void Delete();
-    void Get();
+   
 }
 

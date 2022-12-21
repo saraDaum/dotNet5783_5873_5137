@@ -52,7 +52,9 @@ namespace BO
     Order number: {ID}, 
     {nameof(CustomerName)}: {CustomerName},
     {nameof(CustomerAddress)}: {CustomerAddress}
-    {nameof(OrderDate)}: {OrderDate}";
+    {nameof(OrderDate)}: {OrderDate},
+    {nameof(ShipDate)}: {ShipDate},
+    {nameof(DeliveryDate)}: {DeliveryDate}.";
     }
     
     

@@ -73,7 +73,7 @@ namespace DAL_Test
 
                         case (2):
                             {
-                                DalListVar.Order.Get();
+                                DalListVar.Order.GetById(1);
                                 break;
                             }
                         case (3):
