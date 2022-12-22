@@ -1,25 +1,11 @@
 ﻿using static DAL.DataSource;
-<<<<<<< HEAD
-using DalApi;
-=======
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 using DO;
 
 namespace DAL;
 
-<<<<<<< HEAD
-
-internal class DALProduct : IProduct
-{ 
-    
-
-
-private Product NULL;
-=======
 internal class DALProduct : DalApi.IProduct
 {
     private Product NULL;
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 
     public Product GetById(int barcode)
     {
@@ -370,17 +356,19 @@ internal class DALProduct : DalApi.IProduct
         IEnumerable<Product> AllProducts = ProductList;
         return AllProducts;
     }
+
+
+    /// <summary>
+    /// This function returns all instances of  product 
+    /// </summary>
+    /// <returns></returns>
+
+    public IEnumerable<Product> GetAll()
+    {
+        IEnumerable<Product> AllProducts = ProductList;
+        return AllProducts;
+    }
 }
-
-<<<<<<< HEAD
-
-/// <summary>
-/// This function returns all instances of  product 
-/// </summary>
-/// <returns></returns>
-
-
-
 
 =======
 >>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf

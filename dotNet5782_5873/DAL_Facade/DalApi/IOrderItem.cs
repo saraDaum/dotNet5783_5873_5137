@@ -1,12 +1,8 @@
 ﻿using DO;
 
-<<<<<<< HEAD
-public  class IOrderItem
-=======
 namespace DalApi;
 
 public interface IOrderItem:ICrud<OrderItem>
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 {
   OrderItem GetByID(int orderID, int productID);
     /// <summary>

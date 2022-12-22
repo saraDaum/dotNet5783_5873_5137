@@ -8,11 +8,7 @@ using static DAL.DataSource;
 namespace DAL;
 
 
-<<<<<<< HEAD
-public  class DALOrder : IOrder 
-=======
 internal class DALOrder : IOrder
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 {
     /// <summary>list
     /// This function gets an order object, enter it to order's array and returns the order number

@@ -9,6 +9,7 @@ using AutoMapper;
 using DAL;
 using DO;
 
+
 namespace BlImplementation;
 
 internal class BoOrder : IBoOrder
@@ -18,6 +19,11 @@ internal class BoOrder : IBoOrder
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
 
+    /// <summary>
+    /// This function gets an order object and create a new one.
+    /// </summary>
+    /// <param name="MyBoOrder"></param>
+    /// <returns></returns>
     public int Add(BO.Order MyBoOrder)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
@@ -27,6 +33,10 @@ internal class BoOrder : IBoOrder
 
     }
 
+    /// <summary>
+    /// This function gets an ID and delete the match Order.
+    /// </summary>
+    /// <param name="ID"></param>
     public void Delete(int ID)
     {
         dal.Order.Delete(ID);
@@ -34,13 +44,26 @@ internal class BoOrder : IBoOrder
         // DO.Order DoOrder = mapper.Map<DO.Order>(ID);
     }
 
+    /// <summary>
+    /// This function gets an ID and returns the match item.
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public BO.Order GetById(int id)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        BO.Order myOrder = mapper.Map<BO.Order>(id);
-        return myOrder;
+        IEnumerable<DO.Order> allDoOrder = dal.Order.GetAll();
+        BO.Order myBoOrder = new BO.Order();
+        DO.Order myOrder = allDoOrder.First(order => order.ID == id);
+        //Can't check if it's NULL
+        myBoOrder = mapper.Map<BO.Order>(myOrder);
+        return myBoOrder;
     }
 
+    /// <summary>
+    /// This function gets an order object (BO) and update it in DO.
+    /// </summary>
+    /// <param name="MyBoOrder"></param>
     public void Update(BO.Order MyBoOrder)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
@@ -48,12 +71,16 @@ internal class BoOrder : IBoOrder
         dal.Order.Update(DoOrder);
     }
 
+    /// <summary>
+    /// This function returns all the orders.
+    /// </summary>
+    /// <returns></returns>
     public IEnumerable<BO.Order> GetAll()
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
         IEnumerable<BO.Order> AllBoOrders = new List<BO.Order>();//A new list of BO.Order
         IEnumerable<DO.Order> AllDOOrders = dal.Order.GetAll(); //Get the DO.Order list
-        foreach (Order order in AllDOOrders)
+        foreach (DO.Order order in AllDOOrders)
         {
             BO.Order myOrder = mapper.Map<BO.Order>(order);//Mapper
             AllBoOrders.Append(myOrder);

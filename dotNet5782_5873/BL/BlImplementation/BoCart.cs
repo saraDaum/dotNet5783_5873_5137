@@ -39,7 +39,7 @@ internal class BoCart : IBoCart
             product.InStock -= quantityRequested;
             BoProduct.AmountInStock -= quantityRequested;
             dal.Product.Update(product);//Check that it's works
-                                        // Console.WriteLine("ProductID OrderID ProductPrice Amount autoID");
+            cart.TotalPrice+= entity.ProductPrice*entity.Amount;
         }
         else
         {

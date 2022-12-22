@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    public interface IBoOrderForList : ICrud<BO.BOOrderItem>
+    public interface IBoOrderForList : ICrud<BO.Order>
     {
         
     }

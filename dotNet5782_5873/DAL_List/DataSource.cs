@@ -54,15 +54,9 @@ internal class DataSource
             CustomerName = "Sara Cohen",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
-<<<<<<< HEAD
-            OrderDate = DateTime.Now,
-            ShipDate = DateTime.Now.AddDays(2),
-            DeliveryDate =DateTime.Now.AddDays(10)
-=======
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today.AddDays(2),
             DeliveryDate =DateTime.Today.AddDays(10)
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
         };
         OrderList.Add(MyOrder);
         Order MyOrder1 = new Order

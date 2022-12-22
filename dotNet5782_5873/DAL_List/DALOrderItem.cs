@@ -6,11 +6,7 @@ using System.Reflection;
 
 namespace DAL;
 //Finish
-<<<<<<< HEAD
-internal class DALOrderItem : IOrderItem 
-=======
 internal class DALOrderItem : IOrderItem
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 {
     private OrderItem NULL;
 
@@ -288,9 +284,6 @@ internal class DALOrderItem : IOrderItem
        
     }
 
-<<<<<<< HEAD
-    
-=======
     public OrderItem GetByID(int orderID, int productID)
     {
        int index= OrderItemList.FindIndex(item=> item.OrderID==orderID&& item.ProductID==productID);

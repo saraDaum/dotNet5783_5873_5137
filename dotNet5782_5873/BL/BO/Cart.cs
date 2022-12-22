@@ -32,7 +32,7 @@ namespace BO
         /// <summary>
         /// The Total price of customer cart
         /// </summary>
-        public double TotalPrice { get; set; }
+        public double TotalPrice { get; set; } = 0;//Remember to ask the teacher if it's O.K
         /// <summary>
         /// Print all cart's details
         /// </summary>
