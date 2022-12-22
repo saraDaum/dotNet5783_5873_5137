@@ -8,7 +8,11 @@ using static DAL.DataSource;
 namespace DAL;
 
 
-internal class DALOrder : DalApi.ICrud<Order>
+<<<<<<< HEAD
+public  class DALOrder : IOrder 
+=======
+internal class DALOrder : IOrder
+>>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 {
     /// <summary>list
     /// This function gets an order object, enter it to order's array and returns the order number
@@ -32,6 +36,12 @@ internal class DALOrder : DalApi.ICrud<Order>
         }
         return 0;
     }
+
+    public void Add()
+    {
+      
+    }
+
 
     /// <summary>list
     /// Update order in order's array
@@ -61,14 +71,14 @@ internal class DALOrder : DalApi.ICrud<Order>
     public void Delete()
     {
         Console.WriteLine("Do you know your order number? Enter y or n.");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         if (ans == "n" || ans == "N")
         {
             OrderList.ForEach(MyOrder => print(MyOrder));
         }
         Console.WriteLine("Please enter your order number.");
         int orderNumber;
-        string orderNumStr = Console.ReadLine();
+        string? orderNumStr = Console.ReadLine();
         bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
         if (TryParseSucceeded)
         {
@@ -78,15 +88,18 @@ internal class DALOrder : DalApi.ICrud<Order>
 
     }
 
-    public void Delete(int index)
+    public void Delete(int ID)
     {
+        int index=OrderList.FindIndex(order=>order.ID==ID);
         if (index == -1)
         {
-            throw new Exception("The order has been successfully deleted.");
+            throw new Exception("Ivalid ID number.");
         }
         if (index != -1)
         {
             OrderList.RemoveAt(index);
+            Console.WriteLine("The item has been successfully removed");
+
         }
     }
 
@@ -111,12 +124,12 @@ internal class DALOrder : DalApi.ICrud<Order>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public  Order Get(int id)
+    public  Order GetById(int id)
     {
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
         if (index == -1)
             throw new Exception("This object dosen't exist.");
-        return OrderList.ElementAt(index);
+        return OrderList[index];
 
     }
 
@@ -129,10 +142,8 @@ internal class DALOrder : DalApi.ICrud<Order>
     /// <exception cref="Exception"></exception>
     public void ReadById(int id)
     {
-        int orderNumber;
         Console.WriteLine("Please enter your order number");
-        string orderStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderStr, out orderNumber);
+        bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderNumber);
         if (TryParseSucceeded)
         {
             Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == id);

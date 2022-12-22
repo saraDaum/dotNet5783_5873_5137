@@ -3,11 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlApi;
-namespace BlImplementation;
-internal class ProductItem:IProductItem
+
+namespace BO
 {
-    private IDal dal= new Dallist();
+
+    public enum OrderStatus
+    {
+       
+    }
+
+    public enum Category
+    {
 
 
+    }
 }

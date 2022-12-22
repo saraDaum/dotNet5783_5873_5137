@@ -1,11 +1,27 @@
 ﻿using static DAL.DataSource;
-namespace DAL;
+<<<<<<< HEAD
+using DalApi;
+=======
+>>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 using DO;
-internal class DALProduct : DalApi.ICrud<Product>  
+
+namespace DAL;
+
+<<<<<<< HEAD
+
+internal class DALProduct : IProduct
+{ 
+    
+
+
+private Product NULL;
+=======
+internal class DALProduct : DalApi.IProduct
 {
     private Product NULL;
+>>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf
 
-    public Product Get(int barcode)
+    public Product GetById(int barcode)
     {
         int index = ProductList.FindIndex(current => current.Barcode == barcode);
         if (index != -1)
@@ -160,38 +176,46 @@ internal class DALProduct : DalApi.ICrud<Product>
         }
     }
 
-    public void Delete()
-    {
-        Console.WriteLine("Do you know your product barcode? Enter y or n.");
-        string ans = Console.ReadLine();
-        int ProductBarcode;
-        if (ans == "n" || ans == "N")
-        {
-            ProductList.ForEach(p => print(p));     //Print all order items for customer
-        }
-        Console.WriteLine("Please enter your product barcode.");
-        string orderNumStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
-        if (TryParseSucceeded)
-        {
-            int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
-            Delete(index);
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
+    //public void Delete()
+    //{
+    //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
+    //    string ans = Console.ReadLine();
+    //    int ProductBarcode;
+    //    if (ans == "n" || ans == "N")
+    //    {
+    //        ProductList.ForEach(p => print(p));     //Print all order items for customer
+    //    }
+    //    Console.WriteLine("Please enter your product barcode.");
+    //    string orderNumStr = Console.ReadLine();
+    //    bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
+    //    if (TryParseSucceeded)
+    //    {
+    //        int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
+    //        Delete(index);
+    //    }
+    //    else
+    //    {
+    //        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+    //    }
+    //}
 
     /// <summary>list
     /// Delete an Order object
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="barcode"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete(int id)
+    public void Delete(int barcode)
     {
-        ProductList.RemoveAt(id);
-        Console.WriteLine("The item has been successfully removed");
+        int index = ProductList.FindIndex(obj => obj.Barcode == barcode);
+        if (index == -1)
+        {
+            throw new Exception("No match item. Ivalid ID number.");
+        }
+        else
+        {
+            ProductList.RemoveAt(index);
+            Console.WriteLine("The item has been successfully removed");
+        }
     }
 
     public static void print(Product obj)
@@ -334,7 +358,21 @@ internal class DALProduct : DalApi.ICrud<Product>
             Console.WriteLine("No match item.");
         }
     }
+
+
+    /// <summary>
+    /// This function returns all instances of  product 
+    /// </summary>
+    /// <returns></returns>
+
+    public IEnumerable<Product> GetAll()
+    {
+        IEnumerable<Product> AllProducts = ProductList;
+        return AllProducts;
+    }
 }
+
+<<<<<<< HEAD
 
 /// <summary>
 /// This function returns all instances of  product 
@@ -344,3 +382,5 @@ internal class DALProduct : DalApi.ICrud<Product>
 
 
 
+=======
+>>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf

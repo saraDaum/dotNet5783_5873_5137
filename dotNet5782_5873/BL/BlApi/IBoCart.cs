@@ -1,20 +1,15 @@
-﻿using System;
+﻿using DalApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BO
+namespace BlApi
 {
-
-    public enum BoOrderStatus
+    public interface IBoCart //: ICrud<BO.Cart>
     {
-       
-    }
-
-    public enum BoCategory
-    {
-
+      
 
     }
 }

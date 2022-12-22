@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class ProductItem
+    public class ProductItem
     {
         /// <summary>
         /// Identification number product item
@@ -16,7 +16,7 @@ namespace BO
         /// <summary>
         /// Product name
         /// </summary>
-        public string Name { get; set; }
+        public string? Name { get; set; }
         /// <summary>
         /// Product price
         /// </summary>
@@ -24,7 +24,7 @@ namespace BO
         /// <summary>
         /// Product category
         /// </summary>
-        public Category Category { get; set; }
+        public DO.Category Category { get; set; }
         /// <summary>
         /// Amount of product items
         /// </summary>
@@ -33,6 +33,10 @@ namespace BO
         /// Amount in stock
         /// </summary>
         public bool InStock { get; set; }
+
+        public  List<ProductItem> ProductItemList = new List<ProductItem>();
+
+
         /// <summary>
         /// Print all ProductItem's details
         /// </summary>

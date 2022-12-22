@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BlApi;
-namespace BlImplementation;
 
-internal class OrderTracking:IOrderTracking
+namespace DalApi
 {
-    private IDal dal= new Dallist();
-
+    internal interface IMapper
+    {
+    }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class BOOrderForList
+    internal class OrderForList
     {
         /// <summary>
         /// Unique ID of OrderOfList
@@ -16,7 +16,7 @@ namespace BO
         /// <summary>
         /// Customer name
         /// </summary>
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
 
         /// <summary>
         /// Order status 

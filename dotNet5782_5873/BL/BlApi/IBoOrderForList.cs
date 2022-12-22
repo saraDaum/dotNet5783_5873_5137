@@ -5,11 +5,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BlApi
 {
-    public interface IProduct:ICrud<BO.Product>
+    public interface IBoOrderForList : ICrud<BO.BOOrderItem>
     {
-
-
+        
     }
 }

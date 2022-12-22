@@ -1,5 +1,7 @@
 ﻿using DAL;
+using DalApi;
 using DO;
+using System.Runtime.InteropServices;
 
 namespace DAL_Test
 {
@@ -7,39 +9,45 @@ namespace DAL_Test
     {
         public static void Main(string[] args)
         {
+            IDal DalListVar = new DalList();
+            Order myOrder= new Order();
+            Product myProduct= new Product();
+            OrderItem myOrderItem= new OrderItem();
             void application()
             {
                 Console.WriteLine("Please choose from the next options:");
                 Console.WriteLine("For order menu enter 1");
                 Console.WriteLine("For order item's menu enter 2");
                 Console.WriteLine("For prouduct's menu enter 3");
-                int choose = Console.Read();
-
-                switch (choose)
+                bool ans = int.TryParse(Console.ReadLine(), out int choose);
+                if (ans)
                 {
-                    case (1):
-                        {
-                            order();
-                            break;
-                        }
-                    case (2):
-                        {
-                            orderItem();
-                            break;
-                        }
-                    case (3):
-                        {
-                            products();
-                            break;
-                        }
-                    default:
-                        {
-                            Console.WriteLine("ERROR..........");
-                            application();
-                            break;
-                        }
+                    switch (choose)
+                    {
+                        case (1):
+                            {
+                                order();
+                                break;
+                            }
+                        case (2):
+                            {
+                                orderItem();
+                                break;
+                            }
+                        case (3):
+                            {
+                                products();
+                                break;
+                            }
+                        default:
+                            {
+                                Console.WriteLine("ERROR..........");
+                                application();
+                                break;
+                            }
 
 
+                    }
                 }
 
             }
@@ -52,36 +60,39 @@ namespace DAL_Test
                 Console.WriteLine("if you went to delete an order enter 4");
                 Console.WriteLine("if you went to exit enter 5");
 
-                int chooseOrder = Console.Read();
-
-                switch (chooseOrder)
+                bool convert = int.TryParse(Console.ReadLine(), out int chooseOrder);
+                if (convert)
                 {
-                    case (1):
-                        {
-                            DalList.DALOrder.Add();
-                            break;
-                        }
+                    switch (chooseOrder)
+                    {
+                        case (1):
+                            {
+                                DalListVar.Order.Add();
+                                break;
+                            }
 
-                    case (2):
-                        {
-                            DAL.DalList.DALOrder.Get();
-                            break;
-                        }
-                    case (3):
-                        {
-                            break;
-                        }
-                    case (4):
-                        {
-                            DAL.DalList.DALOrder.Delete();
-                            break;
-                        }
+                        case (2):
+                            {
+                                DalListVar.Order.GetById(1);
+                                break;
+                            }
+                        case (3):
+                            {
+                                DalListVar.Order.Update(myOrder);
+                                break;
+                            }
+                        case (4):
+                            {
+                                DalListVar.Order.Delete(1);
+                                break;
+                            }
 
-                    case (5):
-                        {
-                            exit();
-                            break;
-                        }
+                        case (5):
+                            {
+                                exit();
+                                break;
+                            }
+                    }
                 }
             }
 
@@ -93,37 +104,39 @@ namespace DAL_Test
                 Console.WriteLine("if you went to delete press 4");
                 Console.WriteLine("if you went to exit  press 5");
 
-                int chooseOrderItem = Console.Read();       //Cousting!!
-
-                switch (chooseOrderItem)
+                var convert = int.TryParse(Console.ReadLine(), out int chooseOrderItem);
+                if (convert)
                 {
-                    case (1):
-                        {
-                           DalList.DALOrderItem.Add();
-                            break;
-                        }
+                    switch (chooseOrderItem)
+                    {
+                        case (1):
+                            {
+                                DalListVar.OrderItem.Add(myOrderItem);
+                                break;
+                            }
 
-                    case (2):
-                        {
-                            DAL.DalList.DALOrderItem.ReadAll();
-                            break;
-                        }
-                    case (3):
-                        {
-                            DAL.DalList.DALOrderItem.update();
-                            break;
-                        }
-                    case (4):
-                        {
-                            DAL.DalList.DALOrderItem.delete();
-                            break;
-                        }
+                        case (2):
+                            {
+                               DalListVar.OrderItem.GetById(1);
+                                break;
+                            }
+                        case (3):
+                            {
+                                DalListVar.OrderItem.Update(myOrderItem);
+                                break;
+                            }
+                        case (4):
+                            {
+                                DalListVar.OrderItem.Delete();
+                                break;
+                            }
 
-                    case (5):
-                        {
-                            exit();
-                            break;
-                        }
+                        case (5):
+                            {
+                                exit();
+                                break;
+                            }
+                    }
                 }
             }
 
@@ -135,39 +148,40 @@ namespace DAL_Test
                 Console.WriteLine("if you went to delete press 4");
                 Console.WriteLine("if you went to exit  press 5");
 
-                int chooseProuduct = Console.Read();
-
-                switch (chooseProuduct)
+                bool convert = int.TryParse(Console.ReadLine(), out int chooseProuduct);
+                if (convert)
                 {
-                    case (1):
-                        {
-                            DAL.DalList.DALProduct.newProduct();
-                            break;
-                        }
+                    switch (chooseProuduct)
+                    {
+                        case (1):
+                            {
+                                DalListVar.Product.Add(myProduct);
+                                break;
+                            }
 
-                    case (2):
-                        {
-                            DAL.DalList.DALProduct.read();
-                            break;
-                        }
-                    case (3):
-                        {
-                            DAL.DalList.DALProduct.update();
-                            break;
-                        }
-                    case (4):
-                        {
-                            DAL.DalList.DALProduct.delete();
-                            break;
-                        }
+                        case (2):
+                            {
+                                DalListVar.Product.GetById(1);
+                                break;
+                            }
+                        case (3):
+                            {
+                                DalListVar.Product.Update(myProduct);
+                                break;
+                            }
+                        case (4):
+                            {
+                                DalListVar.Product.Delete();
+                                break;
+                            }
 
-                    case (5):
-                        {
-                            exit();
-                            break;
-                        }
+                        case (5):
+                            {
+                                exit();
+                                break;
+                            }
+                    }
                 }
-
             }
 
             void exit()

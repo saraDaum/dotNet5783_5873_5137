@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class BOOrder
+    ///<summary>
+    /// BO_Order:
+    /// Every entity have the details of the transaction. Cusomer details, time of order, shiping time ect.
+    /// </summary>
+    public class Order
     {
         /// <summary>
         /// Order's unique ID
@@ -16,17 +20,17 @@ namespace BO
         /// <summary>
         /// The name of the orderer
         /// </summary>
-        public string CustomerName? { get; }
+        public string? CustomerName { get; }
 
         /// <summary>
         /// The email address of the orderer
         /// </summary>
-        public string CustomerEmail { get; }
+        public string? CustomerEmail { get; }
 
         /// <summary>
         /// The Address of the orderer
         /// </summary>
-        public string CustomerAddress { get; }
+        public string? CustomerAddress { get; }
 
         /// <summary>
         /// Date of the order
@@ -52,7 +56,10 @@ namespace BO
     Order number: {ID}, 
     {nameof(CustomerName)}: {CustomerName},
     {nameof(CustomerAddress)}: {CustomerAddress}
-    {nameof(OrderDate)}: {OrderDate}";
+    {nameof(OrderDate)}: {OrderDate},
+    {nameof(ShipDate)}: {ShipDate},
+    {nameof(DeliveryDate)}: {DeliveryDate}.";
+    }
     
     
 }

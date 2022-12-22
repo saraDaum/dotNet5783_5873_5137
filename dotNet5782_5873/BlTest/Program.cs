@@ -8,8 +8,8 @@ namespace BlTest
         {
             Console.WriteLine("Hello, World!");
 
-            IBl bl = new BlImplementation.BL();
-            bl.Order.Add();
+            
+           
         }
     }
 }
