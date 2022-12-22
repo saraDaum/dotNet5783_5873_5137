@@ -357,18 +357,10 @@ internal class DALProduct : DalApi.IProduct
         return AllProducts;
     }
 
-
-    /// <summary>
-    /// This function returns all instances of  product 
-    /// </summary>
-    /// <returns></returns>
-
-    public IEnumerable<Product> GetAll()
+  
+    public void Delete()
     {
-        IEnumerable<Product> AllProducts = ProductList;
-        return AllProducts;
+        throw new NotImplementedException();
     }
 }
 
-=======
->>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf

@@ -24,7 +24,7 @@ namespace BO
         /// <summary>
         /// The customer address 
         /// </summary>
-        public string CustomerAddress { get => CustomerAddress; set => customerAddress = value; }
+        public string CustomerAddress { get ; set; }
         /// <summary>
         /// An item in cart
         /// </summary>
