@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace BlImplementation
 {
-    public  class BL : IBl
+
+    public class BL : IBl
     {
-        public IBoOrder Order => new BoOrder();
+        public IBoOrder Order { get; } => new BoOrder();
 
-        public IOrderItem OrderItem =>  new BoOrderItem();
+        public IOrderItem OrderItem { get; } =>  new BoOrderItem();
 
-        public IProduct Product => new BoProduct();
+        public IProduct Product { get; } => new BoProduct();
 
         //IOrder IBl.Order => throw new NotImplementedException();
     }
