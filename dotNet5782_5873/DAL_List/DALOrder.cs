@@ -18,14 +18,13 @@ internal class DALOrder : IOrder
     /// <exception cref="Exception"></exception>
     public int Add(Order newOrder)
     {
-        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOrder.ID);
-        if (index != -1)
+        if(!OrderList.Contains(newOrder))
         {
             OrderList.Insert(0, newOrder);
             Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
             return newOrder.ID;
         }
-        if (index == -1)
+        else
         {
             throw new Exception("A order with this number already exists in the database.");
 
@@ -35,7 +34,37 @@ internal class DALOrder : IOrder
 
     public void Add()
     {
-      
+        string name = "", email="", address= "";
+        Order newOrder = new Order();
+        do
+        {
+            Console.WriteLine("Please enter your name");
+            name = Console.ReadLine();
+        }
+        while (name == "");
+        do
+        {
+            Console.WriteLine("Please enter your email address");
+            email = Console.ReadLine();
+            while (!email.EndsWith("@gmail.com"))
+            {
+                Console.WriteLine("You don't enter a correct email.\nPlease enter a valid email address");
+                email = Console.ReadLine();
+            }
+        }
+        while (email == "" );
+        do
+        {
+            Console.WriteLine("Please enter your living address");
+            address = Console.ReadLine();
+        }
+        while (address == "");
+        Console.WriteLine("O.K. All details are in.\nPlease wait.");
+        newOrder.CustomerName = name;
+        newOrder.CustomerAddress = address;
+        newOrder.CustomerEmail = email;
+        Add(newOrder);
+
     }
 
 

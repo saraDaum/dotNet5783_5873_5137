@@ -60,6 +60,6 @@ namespace BO
     {nameof(ShipDate)}: {ShipDate},
     {nameof(DeliveryDate)}: {DeliveryDate}.";
     }
-    
-    
+
+
 }

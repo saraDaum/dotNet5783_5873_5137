@@ -222,9 +222,12 @@ internal class DALProduct : DalApi.IProduct
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
-            ProductList.ForEach(obj => print(obj));
+            foreach (var item in DAL.DataSource.ProductList)
+            {
+                Console.WriteLine(item);
+            }
         }
-        Console.WriteLine("Please enter your  product's barcode.");
+        Console.WriteLine("Please enter your product's barcode.");
         string strBarcode = Console.ReadLine();
         int barcode;
         bool TryParseSucceeded = int.TryParse(strBarcode, out barcode);

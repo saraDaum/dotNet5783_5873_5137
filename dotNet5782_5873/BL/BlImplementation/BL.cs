@@ -13,10 +13,11 @@ namespace BlImplementation
     {
         public IOrder Order => new BlImplementation.Order();
 
-        public IOrderItem OrderItem =>  new BlImplementation.OrderItem();
+        public IOrderItem OrderItem => new BlImplementation.OrderItem();
 
-        public List<BO.Order> Orders= new 
+        public IProduct Product=> new BlImplementation.Product();
 
-        //IOrder IBl.Order => throw new NotImplementedException();
-    }
+        public List<BO.Order> Orders = new List<BO.Order>();
+
+        }
 }

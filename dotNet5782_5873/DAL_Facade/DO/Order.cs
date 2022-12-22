@@ -7,14 +7,21 @@ namespace DO;
 /// </summary>
 public struct Order
 {
-    //Fields
-    public int ID { get;  set; }
+    //Static ID, helper variable
+    private static int staticID=1000;
+    /// <summary>
+    /// Unique order ID
+    /// </summary>
+    public int ID { get=> staticID++;  set=>ID= value; }
+    /// <summary>
+    /// 
+    /// </summary>
     public string CustomerName { get; set; }
     public string CustomerEmail { get; set; }
     public string CustomerAddress { get; set; }
-    public DateTime OrderDate { get; set; }
-    public DateTime ShipDate { get; set; }
-    public DateTime DeliveryDate { get; set; }
+    public DateTime OrderDate { get=>DateTime.Today ; set=> OrderDate=value; }
+    public DateTime ShipDate { get=> DateTime.Today.AddDays(2); set=>ShipDate= value; } 
+    public DateTime DeliveryDate { get=> DateTime.Today.AddDays(10); set=> DeliveryDate = value; }
 
 
     //Constructor

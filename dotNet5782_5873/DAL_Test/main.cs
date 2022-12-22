@@ -70,7 +70,7 @@ namespace DAL_Test
                                 DalListVar.Order.Add();
                                 break;
                             }
-
+                            
                         case (2):
                             {
                                 DalListVar.Order.GetById(1);
@@ -122,7 +122,7 @@ namespace DAL_Test
                             }
                         case (3):
                             {
-                                DalListVar.OrderItem.Update(myOrderItem);
+                                DalListVar.OrderItem.Update();
                                 break;
                             }
                         case (4):
@@ -166,7 +166,7 @@ namespace DAL_Test
                             }
                         case (3):
                             {
-                                DalListVar.Product.Update(myProduct);
+                                DalListVar.Product.Update();
                                 break;
                             }
                         case (4):
