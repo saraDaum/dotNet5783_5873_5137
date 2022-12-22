@@ -20,7 +20,7 @@ namespace DAL
         public IProduct Product => new DALProduct();
         //public static IDal instance { get; } = new DalList();
 
-        public IOrder Order => throw new NotImplementedException();
+        //public IOrder Order => throw new NotImplementedException();
 
         public IOrderItem OrderItem => new DALOrderItem();
 

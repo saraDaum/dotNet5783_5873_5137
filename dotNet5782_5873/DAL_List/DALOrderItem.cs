@@ -241,7 +241,7 @@ internal class DALOrderItem : IOrderItem
         }
     }
     /// <summary>
-    /// This functoin getsan object and delete it.
+    /// This functoin gets an object and delete it.
     /// </summary>
     /// <param name="myOrderItem"></param>
     public void Delete(int id)
