@@ -136,17 +136,9 @@ internal class DALOrderItem : IOrderItem
         }
         return NULL;
     }
-    //What is this function?
+   
 
-    private static void print(OrderItem myOrderItem, int id)
-    {
-        if (myOrderItem.autoID == id)
-        {
-            Console.WriteLine(myOrderItem);
-        }
-    }
-
-    private static void print(OrderItem myOrderItem)
+       private static void print(OrderItem myOrderItem)
     {
         Console.WriteLine(myOrderItem);
     }
@@ -290,6 +282,19 @@ internal class DALOrderItem : IOrderItem
         }
         throw new Exception("Invalid ID number");
        
+    }
+
+    public OrderItem GetByID(int orderID, int productID)
+    {
+       int index= OrderItemList.FindIndex(item=> item.OrderID==orderID&& item.ProductID==productID);
+        if(index!= -1)
+        {
+            return OrderItemList[index];
+        }
+        else
+        {
+            throw new Exception("Invalid ID");
+        }
     }
 }
 

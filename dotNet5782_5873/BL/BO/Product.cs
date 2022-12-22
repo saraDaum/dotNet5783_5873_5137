@@ -7,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace BO
 {
+
+    ///<summary>
+    /// BO_Product:
+    /// Every entity have the details like: product name,product category, product price, product amount in stock ect.
+    /// </summary>
     public class Product
     {
         /// <summary>

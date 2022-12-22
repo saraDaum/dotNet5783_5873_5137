@@ -18,7 +18,7 @@ public class ProductForList
     /// <summary>
     /// Product_For_List name
     /// </summary>
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Item price

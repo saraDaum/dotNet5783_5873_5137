@@ -56,10 +56,6 @@ internal class BoOrderItem : IBoOrderItem
         dal.OrderItem.Update(DoOrderItem);
     }
 
-    //What should I do with this function? I need 2 parameters!
-    public BO.OrderItem GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
+   
 
 }

@@ -7,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public  class Cart
+
+    /// <summary>
+    /// BoCart class
+    /// Every entity has customer details, list with all items and total price.
+    /// </summary>
+    public class Cart
     {/// <summary>
      /// The customer name 
      /// </summary>
