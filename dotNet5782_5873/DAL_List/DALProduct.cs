@@ -162,28 +162,28 @@ internal class DALProduct : DalApi.IProduct
         }
     }
 
-    public void Delete()
-    {
-        Console.WriteLine("Do you know your product barcode? Enter y or n.");
-        string ans = Console.ReadLine();
-        int ProductBarcode;
-        if (ans == "n" || ans == "N")
-        {
-            ProductList.ForEach(p => print(p));     //Print all order items for customer
-        }
-        Console.WriteLine("Please enter your product barcode.");
-        string orderNumStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
-        if (TryParseSucceeded)
-        {
-            int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
-            Delete(index);
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
+    //public void Delete()
+    //{
+    //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
+    //    string ans = Console.ReadLine();
+    //    int ProductBarcode;
+    //    if (ans == "n" || ans == "N")
+    //    {
+    //        ProductList.ForEach(p => print(p));     //Print all order items for customer
+    //    }
+    //    Console.WriteLine("Please enter your product barcode.");
+    //    string orderNumStr = Console.ReadLine();
+    //    bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
+    //    if (TryParseSucceeded)
+    //    {
+    //        int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
+    //        Delete(index);
+    //    }
+    //    else
+    //    {
+    //        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+    //    }
+    //}
 
     /// <summary>list
     /// Delete an Order object
@@ -356,5 +356,19 @@ internal class DALProduct : DalApi.IProduct
         IEnumerable<Product> AllProducts = ProductList;
         return AllProducts;
     }
+
+
+    /// <summary>
+    /// This function returns all instances of  product 
+    /// </summary>
+    /// <returns></returns>
+
+    public IEnumerable<Product> GetAll()
+    {
+        IEnumerable<Product> AllProducts = ProductList;
+        return AllProducts;
+    }
 }
 
+=======
+>>>>>>> 3156437c72a88d00c64cc98d35b70a23cca124cf

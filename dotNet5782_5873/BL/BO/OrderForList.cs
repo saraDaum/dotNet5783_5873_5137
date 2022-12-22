@@ -16,7 +16,7 @@ namespace BO
         /// <summary>
         /// Customer name
         /// </summary>
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
 
         /// <summary>
         /// Order status 

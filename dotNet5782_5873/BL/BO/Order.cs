@@ -25,12 +25,12 @@ namespace BO
         /// <summary>
         /// The email address of the orderer
         /// </summary>
-        public string CustomerEmail { get; }
+        public string? CustomerEmail { get; }
 
         /// <summary>
         /// The Address of the orderer
         /// </summary>
-        public string CustomerAddress { get; }
+        public string? CustomerAddress { get; }
 
         /// <summary>
         /// Date of the order

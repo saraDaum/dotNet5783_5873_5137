@@ -7,6 +7,7 @@ using BlApi;
 using DalApi;
 using AutoMapper;
 using DAL;
+using DO;
 
 
 namespace BlImplementation;

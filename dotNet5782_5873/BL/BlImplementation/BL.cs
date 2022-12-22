@@ -11,11 +11,9 @@ namespace BlImplementation
 
     public class BL : IBl
     {
-        public IBoOrder Order { get; } => new BoOrder();
+        public IOrder Order => new BlImplementation.Order();
 
-        public IOrderItem OrderItem { get; } =>  new BoOrderItem();
-
-        public IProduct Product { get; } => new BoProduct();
+        public IOrderItem OrderItem =>  new BlImplementation.OrderItem();
 
         public List<BO.Order> Orders= new 
 

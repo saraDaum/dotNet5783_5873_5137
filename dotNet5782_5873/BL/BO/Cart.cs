@@ -20,11 +20,11 @@ namespace BO
         /// <summary>
         /// The customer email 
         /// </summary>
-        public string CustomerEmail { get; set; }
+        public string? CustomerEmail { get; set; }
         /// <summary>
         /// The customer address 
         /// </summary>
-        public string CustomerAddress { get; set; }
+        public string CustomerAddress { get => CustomerAddress; set => customerAddress = value; }
         /// <summary>
         /// An item in cart
         /// </summary>
