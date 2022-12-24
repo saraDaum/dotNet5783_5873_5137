@@ -96,28 +96,28 @@ internal class DALOrderItem : IOrderItem
                     {
 
 
-                        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+                        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
 
                     }
                 }
                 else
                 {
-                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+                    throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
 
                 }
             }
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+                throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
             }
 
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+            throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
         }
 
-        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
         return 0;
     }
 
@@ -181,12 +181,12 @@ internal class DALOrderItem : IOrderItem
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:ORDER_ITEM");
+                throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM");
             }
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:ORDER_ITEM");
+            throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM");
         }
     }
 
@@ -236,7 +236,7 @@ internal class DALOrderItem : IOrderItem
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+                throw new FailedToConvertException("Daelete function :: DAL_ORDER_ITEM");
             }
         }
     }
@@ -254,7 +254,7 @@ internal class DALOrderItem : IOrderItem
         }
         else
         {
-            throw new Exception("No match item. Ivalid ID number.");
+            throw new InvalidEntityException("Delete function :: DAL_ORDER_ITEM");
 
         }
     }
@@ -280,7 +280,7 @@ internal class DALOrderItem : IOrderItem
         {
             return OrderItemList[index];
         }
-        throw new Exception("Invalid ID number");
+        throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM");
        
     }
 
@@ -293,7 +293,7 @@ internal class DALOrderItem : IOrderItem
         }
         else
         {
-            throw new Exception("Invalid ID");
+            throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM");
         }
     }
 

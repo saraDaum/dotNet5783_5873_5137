@@ -10,7 +10,13 @@ namespace DAL_Test
         public static void Main(string[] args)
         {
             IDal DalListVar = new DalList();
-            Order myOrder= new Order();
+            Order myOrder = new Order {
+                
+                CustomerAddress="Zhahl 13",
+                CustomerEmail="Shira@gmail.com",
+                CustomerName="Shira Cohen",
+               
+            };
             Product myProduct= new Product();
             OrderItem myOrderItem= new OrderItem();
             void application()
@@ -67,13 +73,13 @@ namespace DAL_Test
                     {
                         case (1):
                             {
-                                DalListVar.Order.Add();
+                                DalListVar.Order.Add(myOrder);
                                 break;
                             }
                             
                         case (2):
                             {
-                                DalListVar.Order.GetById(1);
+                                DalListVar.Order.GetById(1000);
                                 break;
                             }
                         case (3):
@@ -127,7 +133,7 @@ namespace DAL_Test
                             }
                         case (4):
                             {
-                                DalListVar.OrderItem.Delete();
+                                DalListVar.OrderItem.Delete(1);
                                 break;
                             }
 
@@ -171,7 +177,7 @@ namespace DAL_Test
                             }
                         case (4):
                             {
-                                DalListVar.Product.Delete();
+                                DalListVar.Product.Delete(1);
                                 break;
                             }
 

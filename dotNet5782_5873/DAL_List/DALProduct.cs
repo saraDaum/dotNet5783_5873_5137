@@ -1,5 +1,6 @@
 ﻿using static DAL.DataSource;
 using DO;
+using DalApi;
 
 namespace DAL;
 
@@ -13,6 +14,10 @@ internal class DALProduct : DalApi.IProduct
         if (index != -1)
         {
             return ProductList[index];
+        }
+        else
+        {
+            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT");
         }
         return NULL;
     }
@@ -124,7 +129,7 @@ internal class DALProduct : DalApi.IProduct
         int index = ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
         if (index == -1)
         {
-            throw new Exception("Object dosen't exist");
+            throw new EntityNotFoundException("is_Barkode_OK function :: DAL_PRODUCT");
         }
         else
         {
@@ -134,34 +139,8 @@ internal class DALProduct : DalApi.IProduct
         return false;
     }
 
-    public static void ReadAnProduct(int id)
-
-    {
-        int productNumber;
-        Console.WriteLine("Please enter your Product barcode");
-        string productStr = Console.ReadLine();
-        int productBarcode;
-        bool TryParseSucceeded = int.TryParse(productStr, out productBarcode);
-        if (TryParseSucceeded)
-        {
-            bool isExist = false;
-            foreach (Product currentProduct in ProductList)
-            {
-                if (currentProduct.Barcode == productBarcode)
-                {
-                    isExist = true;
-                    currentProduct.ToString();
-                }
-                if (isExist)
-                    Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
-            }
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
-
+    
+       
     //public void Delete()
     //{
     //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
@@ -195,7 +174,7 @@ internal class DALProduct : DalApi.IProduct
         int index = ProductList.FindIndex(obj => obj.Barcode == barcode);
         if (index == -1)
         {
-            throw new Exception("No match item. Ivalid ID number.");
+            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT");
         }
         else
         {
@@ -284,7 +263,7 @@ internal class DALProduct : DalApi.IProduct
                                 }
                                 else
                                 {
-                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
                                 }
                             }
                         case 3:
@@ -308,25 +287,25 @@ internal class DALProduct : DalApi.IProduct
                                 }
                                 else
                                 {
-                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
                                 }
                             }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No order item match.");
+                    throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
                 }
             }
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                throw new FailedToConvertException("Update function :: DAL_PRODUCT");
             }
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+            throw new FailedToConvertException("Update function :: DAL_PRODUCT");
         }
     }
 
@@ -344,7 +323,7 @@ internal class DALProduct : DalApi.IProduct
         }
         else
         {
-            Console.WriteLine("No match item.");
+            throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
         }
     }
 
@@ -361,9 +340,6 @@ internal class DALProduct : DalApi.IProduct
     }
 
   
-    public void Delete()
-    {
-        throw new NotImplementedException();
-    }
+   
 }
 

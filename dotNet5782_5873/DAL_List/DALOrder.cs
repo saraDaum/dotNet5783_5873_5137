@@ -18,7 +18,12 @@ internal class DALOrder : IOrder
     /// <exception cref="Exception"></exception>
     public int Add(Order newOrder)
     {
-        if(!OrderList.Contains(newOrder))
+        if (newOrder.ID != 0)
+        {
+
+        
+
+        if (!OrderList.Contains(newOrder))
         {
             OrderList.Insert(0, newOrder);
             Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
@@ -26,15 +31,20 @@ internal class DALOrder : IOrder
         }
         else
         {
-            throw new Exception("A order with this number already exists in the database.");
+            throw new DuplicateIdException(newOrder.ID, "Add function :: DAL_ORDER");
 
+        }
+        }
+        else
+        {
+            throw new InvalidEntityException("Add function :: DAL_ORDER");
         }
         return 0;
     }
 
     public void Add()
     {
-        string name = "", email="", address= "";
+        string name = "", email = "", address = "";
         Order newOrder = new Order();
         do
         {
@@ -52,7 +62,7 @@ internal class DALOrder : IOrder
                 email = Console.ReadLine();
             }
         }
-        while (email == "" );
+        while (email == "");
         do
         {
             Console.WriteLine("Please enter your living address");
@@ -79,7 +89,7 @@ internal class DALOrder : IOrder
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOne.ID);
         if (index == -1)
         {
-            throw new Exception("Object dosen't exist.");
+            throw new EntityNotFoundException("Update function :: DAL_ORDER");
         }
         if (index != -1)
         {
@@ -108,17 +118,17 @@ internal class DALOrder : IOrder
         if (TryParseSucceeded)
         {
             Delete(orderNumber);
-            
+
         }
 
     }
 
     public void Delete(int ID)
     {
-        int index=OrderList.FindIndex(order=>order.ID==ID);
+        int index = OrderList.FindIndex(order => order.ID == ID);
         if (index == -1)
         {
-            throw new Exception("Ivalid ID number.");
+            throw new InvalidEntityException("Delete function :: DAL_ORDER");
         }
         if (index != -1)
         {
@@ -149,11 +159,11 @@ internal class DALOrder : IOrder
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public  Order GetById(int id)
+    public Order GetById(int id)
     {
         int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
         if (index == -1)
-            throw new Exception("This object dosen't exist.");
+            throw new EntityNotFoundException("GetById function :: DAL_ORDER");
         return OrderList[index];
 
     }
@@ -176,7 +186,7 @@ internal class DALOrder : IOrder
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+            throw new FailedToConvertException("ReadById :: DAL_ORDER");
         }
     }
 
