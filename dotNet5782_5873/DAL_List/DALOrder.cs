@@ -20,20 +20,17 @@ internal class DALOrder : IOrder
     {
         if (newOrder.ID != 0)
         {
+            if (!OrderList.Contains(newOrder))
+            {
+                OrderList.Insert(0, newOrder);
+                Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
+                return newOrder.ID;
+            }
+            else
+            {
+                throw new DuplicateIdException(newOrder.ID, "Add function :: DAL_ORDER");
 
-        
-
-        if (!OrderList.Contains(newOrder))
-        {
-            OrderList.Insert(0, newOrder);
-            Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
-            return newOrder.ID;
-        }
-        else
-        {
-            throw new DuplicateIdException(newOrder.ID, "Add function :: DAL_ORDER");
-
-        }
+            }
         }
         else
         {
@@ -149,10 +146,18 @@ internal class DALOrder : IOrder
     /// <returns></returns>
     public IEnumerable<Order> GetAll()
     {
-        IEnumerable<Order> orders = OrderList;
+        IEnumerable<Order> orders = DataSource.OrderList;
         return orders;
     }
 
+    public void PrintAll()
+    {
+        List<Order> orders = OrderList;
+        foreach (var item in orders)
+        {
+            Console.WriteLine(item);
+        }
+    }
 
     /// <summary>list
     /// This function gets an ID number and returns the corresponding Order object

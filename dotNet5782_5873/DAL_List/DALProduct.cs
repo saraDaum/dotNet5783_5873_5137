@@ -102,17 +102,19 @@ internal class DALProduct : DalApi.IProduct
         return newProduct.Barcode;
     }
 
+     Random my_rnd=new Random();
+
     /// <summary>list
     /// This function restart the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
-    public static int MakeABarcode()
+    public  int MakeABarcode()
     {
-        int barcode = Config.rnd.Next(10000000, 100000000);
+        int  barcode = my_rnd.Next(10000000, 100000000);
         bool checkarcode = is_Barkode_OK(barcode);
         while (checkarcode)
         {
-            barcode = Config.rnd.Next(10000000, 100000000);
+            barcode = my_rnd.Next(10000000, 100000000);
             checkarcode = is_Barkode_OK(barcode);
         }
         return barcode;
@@ -124,18 +126,12 @@ internal class DALProduct : DalApi.IProduct
     /// </summary>
     /// <param name="b"></param>
     /// <returns></returns>
-    public static bool is_Barkode_OK(int barcode)
+    public bool is_Barkode_OK(int barcode)
     {
         int index = ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
         if (index == -1)
-        {
-            throw new EntityNotFoundException("is_Barkode_OK function :: DAL_PRODUCT");
-        }
-        else
-        {
             return true;
-
-        }
+       
         return false;
     }
 
