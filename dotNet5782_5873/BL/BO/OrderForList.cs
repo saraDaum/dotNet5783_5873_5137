@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace BO
 {
+
+    /// <summary>
+    /// OrderForList (a logical entity)
+    /// </summary>
     internal class OrderForList
     {
         /// <summary>

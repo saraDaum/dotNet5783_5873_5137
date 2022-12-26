@@ -2,7 +2,7 @@
 namespace DO;
 
 ///<summary>
-/// Structure for Order:
+/// Structure for Orde ( a data entity)
 /// Every order have the details of the transaction. Cusomer details, time of order, shiping time ect.
 /// </summary>
 public struct Order
@@ -18,17 +18,17 @@ public struct Order
     /// <summary>
     /// Customer name
     /// </summary>
-    public string CustomerName { get; set; }
+    public string? CustomerName { get; set; }
 
     /// <summary>
     /// Customer email address
     /// </summary>
-    public string CustomerEmail { get; set; }
+    public string? CustomerEmail { get; set; }
 
     /// <summary>
     /// Customer living address
     /// </summary>
-    public string CustomerAddress { get; set; }
+    public string? CustomerAddress { get; set; }
 
     /// <summary>
     /// Order date

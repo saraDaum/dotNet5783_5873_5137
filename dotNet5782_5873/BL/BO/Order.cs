@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace BO
 {
     ///<summary>
-    /// BO_Order:
+    /// BO_Order (a logical entity)
     /// Every entity have the details of the transaction. Cusomer details, time of order, shiping time ect.
     /// </summary>
     public class Order

@@ -64,11 +64,7 @@ namespace DAL_Test
 
                 void order()
                 {
-                    IEnumerable<Order> orders= DalListVar.Order.GetAll();
-                    foreach (Order order in orders)
-                    {
-                        Console.WriteLine(order);
-                    }
+                   
                     Console.WriteLine("If you want to add an order enter 1");
                     Console.WriteLine("If you want to read an order enter 2");
                     Console.WriteLine("if you want to update an order enter 3");

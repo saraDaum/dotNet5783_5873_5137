@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace BO;
 
+/// <summary>
+/// ProductForList class ( a logical entity)
+/// </summary>
 public class ProductForList
 {
     /// <summary>
