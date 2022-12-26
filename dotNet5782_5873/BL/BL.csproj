@@ -13,11 +13,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Compile Remove="BlImplementation\BL.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="BlImplementation\BL.cs" />
+	  <Compile Remove="BlImplementation\**" />
+	  <EmbeddedResource Remove="BlImplementation\**" />
+	  <None Remove="BlImplementation\**" />
 	</ItemGroup>
 
 	<ItemGroup>
