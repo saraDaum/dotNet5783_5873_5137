@@ -1,20 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\123\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj": {}
+    "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj": {}
   },
   "projects": {
-    "C:\\Users\\123\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj": {
+    "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\123\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
+        "projectUniqueName": "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
         "projectName": "stage0",
-        "projectPath": "C:\\Users\\123\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
-        "packagesPath": "C:\\Users\\123\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\123\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\obj\\",
+        "projectPath": "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
+        "packagesPath": "C:\\Users\\st226\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\st226\\Source\\Repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\123\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\st226\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -55,7 +56,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
