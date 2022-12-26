@@ -4,7 +4,7 @@ public interface ICrud<T>
 {
     int Add(T entity);
     T GetById(int id);
-    IEnumerable<T> GetAll();
+    IEnumerable<T?> GetAll();
     void Update(T entity);
     void Delete(int id);
     //T deleteAll();
