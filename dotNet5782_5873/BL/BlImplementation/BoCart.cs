@@ -39,7 +39,7 @@ internal class BoCart : IBoCart
             product.InStock -= quantityRequested;
             BoProduct.AmountInStock -= quantityRequested;
             dal.Product.Update(product);//Check that it's works
-            cart.TotalPrice+= entity.ProductPrice*entity.Amount;
+            cart.TotalPrice += entity.ProductPrice * entity.Amount;
         }
         else
         {
@@ -52,7 +52,7 @@ internal class BoCart : IBoCart
         return 0;
 
     }
-    
+
 
     /// <summary>
     /// This function clear the customer cart
@@ -71,7 +71,7 @@ internal class BoCart : IBoCart
     /// </summary>
     /// <param name="myCart"></param>
     /// <returns></returns>
-    public Tuple<List<BO.OrderItem>,double> Get(Cart myCart)
+    public Tuple<List<BO.OrderItem>, double> Get(Cart myCart)
     {
         int length = myCart.ItemsInCart.Count();
         List<BO.OrderItem> allItemsInCart = new List<BO.OrderItem>();
@@ -80,7 +80,7 @@ internal class BoCart : IBoCart
             IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
             allItemsInCart = myCart.ItemsInCart.ConvertAll(item => mapper.Map<BO.OrderItem>(item));
         }
-        return Tuple.Create( allItemsInCart, myCart.TotalPrice);
+        return Tuple.Create(allItemsInCart, myCart.TotalPrice);
     }
 
 

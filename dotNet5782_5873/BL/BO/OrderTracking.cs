@@ -17,7 +17,7 @@ namespace BO
         /// <summary>
         /// OrderTracking status
         /// </summary>
-        public  OrderSt Status  { get; set; }
+        public  OrderStatus Status  { get; set; }
 
         /// <summary>
         /// Print all OrderItem's details
