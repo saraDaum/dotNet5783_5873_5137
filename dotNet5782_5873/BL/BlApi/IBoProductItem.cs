@@ -7,8 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BlApi;
-public interface  IBoProductItem : ICrud<BO.ProductItem>
+public interface IBoProductItem : ICrud<BO.ProductItem>
 {
-     
+
 }
-    
+
