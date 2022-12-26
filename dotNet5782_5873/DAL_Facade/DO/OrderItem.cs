@@ -2,26 +2,37 @@
 namespace DO;
 
 ///<summary>
-/// Structure for OrderItem:
+/// Structure for OrderItem ( a data entity)
 /// Every OrderItem have the details of the item that order. Price, amount ect.
 /// </summary>
 public struct OrderItem
 {
-    //Fields
-    public int ProductID { get; set; }
-    public int OrderID { get; set; }
-    public double ProductPrice { get; set; }
-    public int Amount { get; set; }
-    public int autoID { get; set; }
 
-    //Constructor
-    // public OrderItem(int productId, int orderId, double price, int amount)
-    //{
-    //    ProductID = productId;
-    //    OrderID = orderId;
-    //    ProductPrice = price;
-    //    Amount = amount;
-    //}
+    /// <summary>
+    /// Product unique ID
+    /// </summary>
+    public int ProductID { get; set; }
+
+    /// <summary>
+    /// Order unique ID
+    /// </summary>
+    public int OrderID { get; set; }
+
+    /// <summary>
+    /// Product price
+    /// </summary>
+    public double ProductPrice { get; set; }
+
+    /// <summary>
+    /// 
+    /// Required amount from this item
+    /// </summary>
+    public int Amount { get; set; }
+
+    /// <summary>
+    /// Unique ID for this item
+    /// </summary>
+    public int autoID { get; set; }
 
     public override string ToString() => $@"
     Order item details:\n

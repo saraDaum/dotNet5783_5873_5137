@@ -1,5 +1,6 @@
 ﻿using static DAL.DataSource;
 using DO;
+using DalApi;
 
 namespace DAL;
 
@@ -13,6 +14,10 @@ internal class DALProduct : DalApi.IProduct
         if (index != -1)
         {
             return ProductList[index];
+        }
+        else
+        {
+            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT");
         }
         return NULL;
     }
@@ -97,17 +102,19 @@ internal class DALProduct : DalApi.IProduct
         return newProduct.Barcode;
     }
 
+     Random my_rnd=new Random();
+
     /// <summary>list
     /// This function restart the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
-    public static int MakeABarcode()
+    public  int MakeABarcode()
     {
-        int barcode = Config.rnd.Next(10000000, 100000000);
+        int  barcode = my_rnd.Next(10000000, 100000000);
         bool checkarcode = is_Barkode_OK(barcode);
         while (checkarcode)
         {
-            barcode = Config.rnd.Next(10000000, 100000000);
+            barcode = my_rnd.Next(10000000, 100000000);
             checkarcode = is_Barkode_OK(barcode);
         }
         return barcode;
@@ -119,49 +126,17 @@ internal class DALProduct : DalApi.IProduct
     /// </summary>
     /// <param name="b"></param>
     /// <returns></returns>
-    public static bool is_Barkode_OK(int barcode)
+    public bool is_Barkode_OK(int barcode)
     {
         int index = ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
         if (index == -1)
-        {
-            throw new Exception("Object dosen't exist");
-        }
-        else
-        {
             return true;
-
-        }
+       
         return false;
     }
 
-    public static void ReadAnProduct(int id)
-
-    {
-        int productNumber;
-        Console.WriteLine("Please enter your Product barcode");
-        string productStr = Console.ReadLine();
-        int productBarcode;
-        bool TryParseSucceeded = int.TryParse(productStr, out productBarcode);
-        if (TryParseSucceeded)
-        {
-            bool isExist = false;
-            foreach (Product currentProduct in ProductList)
-            {
-                if (currentProduct.Barcode == productBarcode)
-                {
-                    isExist = true;
-                    currentProduct.ToString();
-                }
-                if (isExist)
-                    Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
-            }
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
-
+    
+       
     //public void Delete()
     //{
     //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
@@ -195,7 +170,7 @@ internal class DALProduct : DalApi.IProduct
         int index = ProductList.FindIndex(obj => obj.Barcode == barcode);
         if (index == -1)
         {
-            throw new Exception("No match item. Ivalid ID number.");
+            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT");
         }
         else
         {
@@ -222,9 +197,12 @@ internal class DALProduct : DalApi.IProduct
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
-            ProductList.ForEach(obj => print(obj));
+            foreach (var item in DAL.DataSource.ProductList)
+            {
+                Console.WriteLine(item);
+            }
         }
-        Console.WriteLine("Please enter your  product's barcode.");
+        Console.WriteLine("Please enter your product's barcode.");
         string strBarcode = Console.ReadLine();
         int barcode;
         bool TryParseSucceeded = int.TryParse(strBarcode, out barcode);
@@ -281,7 +259,7 @@ internal class DALProduct : DalApi.IProduct
                                 }
                                 else
                                 {
-                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
                                 }
                             }
                         case 3:
@@ -305,25 +283,25 @@ internal class DALProduct : DalApi.IProduct
                                 }
                                 else
                                 {
-                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
                                 }
                             }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No order item match.");
+                    throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
                 }
             }
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                throw new FailedToConvertException("Update function :: DAL_PRODUCT");
             }
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+            throw new FailedToConvertException("Update function :: DAL_PRODUCT");
         }
     }
 
@@ -341,7 +319,7 @@ internal class DALProduct : DalApi.IProduct
         }
         else
         {
-            Console.WriteLine("No match item.");
+            throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
         }
     }
 
@@ -358,9 +336,6 @@ internal class DALProduct : DalApi.IProduct
     }
 
   
-    public void Delete()
-    {
-        throw new NotImplementedException();
-    }
+   
 }
 

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BO
 {
+    /// <summary>
+    /// OrderTracking class (a logical entity)
+    /// </summary>
     internal class OrderTracking
     {
         /// <summary>

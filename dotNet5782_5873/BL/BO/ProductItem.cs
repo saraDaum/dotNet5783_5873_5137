@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace BO
 {
+    /// <summary>
+    /// ProductItem class ( a logical entity)
+    /// </summary>
     public class ProductItem
     {
         /// <summary>

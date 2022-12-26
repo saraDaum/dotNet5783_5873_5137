@@ -9,14 +9,14 @@ namespace BO
 {
 
     /// <summary>
-    /// BoCart class
+    /// BoCart class (a logical entity)
     /// Every entity has customer details, list with all items and total price.
     /// </summary>
     public class Cart
     {/// <summary>
      /// The customer name 
      /// </summary>
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
         /// <summary>
         /// The customer email 
         /// </summary>
@@ -24,7 +24,7 @@ namespace BO
         /// <summary>
         /// The customer address 
         /// </summary>
-        public string CustomerAddress { get ; set; }
+        public string? CustomerAddress { get ; set; }
         /// <summary>
         /// An item in cart
         /// </summary>

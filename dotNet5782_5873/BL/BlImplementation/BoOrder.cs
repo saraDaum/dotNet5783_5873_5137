@@ -18,6 +18,7 @@ internal class BoOrder : IBoOrder
 
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
+    
 
     /// <summary>
     /// This function gets an order object and create a new one.

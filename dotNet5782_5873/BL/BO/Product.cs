@@ -9,7 +9,7 @@ namespace BO
 {
 
     ///<summary>
-    /// BO_Product:
+    /// BO_Product class (a logical entity)
     /// Every entity have the details like: product name,product category, product price, product amount in stock ect.
     /// </summary>
     public class Product
@@ -22,7 +22,7 @@ namespace BO
         /// <summary>
         /// Product name
         /// </summary>
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         /// <summary>
         /// Product category
