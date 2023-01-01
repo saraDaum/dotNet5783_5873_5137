@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class BOOrderTracking
+    /// <summary>
+    /// OrderTracking class (a logical entity)
+    /// </summary>
+    internal class OrderTracking
     {
         /// <summary>
         /// OrderTracking ID
@@ -17,7 +20,7 @@ namespace BO
         /// <summary>
         /// OrderTracking status
         /// </summary>
-        public OrderStatus Status { get; set; }
+        public  OrderStatus Status  { get; set; }
 
         /// <summary>
         /// Print all OrderItem's details

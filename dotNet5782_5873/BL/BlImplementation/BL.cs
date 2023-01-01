@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using DalApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,12 +8,18 @@ using System.Threading.Tasks;
 
 namespace BlImplementation
 {
-    public  class BL : IBl
+    sealed public class BL:IBl
     {
-        public IOrder Order => new BlImplementation.Order();
+            public IBoOrder Order => new BoOrder();
 
-        public IOrderItem OrderItem =>  new BlImplementation.OrderItem();
+            public IBoOrderItem OrderItem => new BoOrderItem();
 
-        public IProduct Product =>  new BlImplementation.Product();
+            public IBoProduct Product => new BoProduct();
+
+            public List<BO.Order> Orders = new List<BO.Order>();
+
+        }
     }
+
+}
 }

@@ -1,10 +1,10 @@
-﻿namespace DalApi;
+﻿using System.Diagnostics;
 
-internal interface IDal<T>
+namespace DalApi;
+
+public interface IDal
 {
-    public IOrder order { get; }
-    public IOrderItem orderItem { get; }
+    public IOrder Order { get; }
+    public IOrderItem OrderItem { get; }
     public IProduct Product { get; }
-
-
 }

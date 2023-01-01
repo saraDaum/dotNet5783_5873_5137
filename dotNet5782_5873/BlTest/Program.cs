@@ -6,10 +6,11 @@ namespace BlTest
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+           BO.Order order= new BO.Order();
+           Console.WriteLine(order.CustomerAddress);   
 
-            IBl bl = new BlImplementation.BL();
-            bl.Order.Add();
+            
+           
         }
     }
 }

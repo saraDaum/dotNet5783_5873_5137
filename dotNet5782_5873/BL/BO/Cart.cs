@@ -7,27 +7,32 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    internal class BoCart
+
+    /// <summary>
+    /// BoCart class (a logical entity)
+    /// Every entity has customer details, list with all items and total price.
+    /// </summary>
+    public class Cart
     {/// <summary>
      /// The customer name 
      /// </summary>
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
         /// <summary>
         /// The customer email 
         /// </summary>
-        public string CustomerEmail { get; set; }
+        public string? CustomerEmail { get; set; }
         /// <summary>
         /// The customer address 
         /// </summary>
-        public string CustomerAddress { get; set; }
+        public string? CustomerAddress { get ; set; }
         /// <summary>
         /// An item in cart
         /// </summary>
-        public List<OrderItem> Item { get; set; }
+        public List<DO.OrderItem> ItemsInCart { get; set; }
         /// <summary>
         /// The Total price of customer cart
         /// </summary>
-        public double TotalPrice { get; set; }
+        public double TotalPrice { get; set; } = 0;//Remember to ask the teacher if it's O.K
         /// <summary>
         /// Print all cart's details
         /// </summary>
@@ -36,7 +41,7 @@ namespace BO
      Cart details:\n
     {CustomerName} - {CustomerAddress}:
     {nameof(CustomerEmail)}:{CustomerEmail}
-    {nameof(Item)}: {Item},
+    {nameof(ItemsInCart)}: {ItemsInCart},
     {nameof(TotalPrice)}: {TotalPrice}";
     }
 }

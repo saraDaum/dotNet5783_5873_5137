@@ -1,5 +1,7 @@
-﻿using DO;
+﻿using DalApi;
+using DO;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DAL;
 internal class DataSource
@@ -54,9 +56,9 @@ internal class DataSource
             CustomerName = "Sara Cohen",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
-            OrderDate = DateTime.Now(),
-            ShipDate = DateTime.Now.AddDays(2),
-            DeliveryDate =DateTime.Now.AddDays(10)
+            OrderDate = DateTime.Today,
+            ShipDate = DateTime.Today.AddDays(2),
+            DeliveryDate =DateTime.Today.AddDays(10)
         };
         OrderList.Add(MyOrder);
         Order MyOrder1 = new Order
@@ -67,7 +69,7 @@ internal class DataSource
             CustomerAddress = "Zahal 52, Beit-Shemesh",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder1);
         Order MyOrder2 = new Order
@@ -78,7 +80,7 @@ internal class DataSource
             CustomerAddress = "Smile 103, Jerusalem",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder2);
         Order MyOrder3 = new Order
@@ -89,7 +91,7 @@ internal class DataSource
             CustomerAddress = "Happyness 72, Ofakim",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder3);
         Order MyOrder4 = new Order
@@ -311,9 +313,10 @@ internal class DataSource
     /// </summary>
     public static void auto_Init_Products()
     {
+        var helper= new DALProduct();
         Product MyProduct1 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
@@ -322,7 +325,7 @@ internal class DataSource
         ProductList.Add(MyProduct1);
         Product MyProduct2 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode =helper.MakeABarcode(),
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
@@ -331,7 +334,7 @@ internal class DataSource
         ProductList.Add(MyProduct2);
         Product MyProduct3 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Blush for a natural color in the cheeks - MAC",
             Category = Category.blushes,
             ProductPrice = 75,
@@ -340,7 +343,7 @@ internal class DataSource
         ProductList.Add(MyProduct3);
         Product MyProduct4 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "A luxurious blush - Loreal",
             Category = Category.blushes,
             ProductPrice = 59,
@@ -349,7 +352,7 @@ internal class DataSource
         ProductList.Add(MyProduct4);
         Product MyProduct5 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper    .MakeABarcode(),
             ProductName = "A black eye pencil- SACARA",
             Category = Category.Pencils,
             ProductPrice = 19,
@@ -358,7 +361,7 @@ internal class DataSource
         ProductList.Add(MyProduct5);
         Product MyProduct6 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "A gray eye pencil- MAC",
             Category = Category.Pencils,
             ProductPrice = 39,
@@ -367,7 +370,7 @@ internal class DataSource
         ProductList.Add(MyProduct6);
         Product MyProduct7 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "A black eye pencil, hipoalerganic- MAC",
             Category = Category.Pencils,
             ProductPrice = 49,
@@ -376,7 +379,7 @@ internal class DataSource
         ProductList.Add(MyProduct7);
         Product MyProduct8 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "A natural lipstick- MAC",
             Category = Category.lipstiks,
             ProductPrice = 69,
@@ -385,7 +388,7 @@ internal class DataSource
         ProductList.Add(MyProduct8);
         Product MyProduct9 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "A simple lipstick- SACARA",
             Category = Category.lipstiks,
             ProductPrice = 36,
@@ -394,7 +397,7 @@ internal class DataSource
         ProductList.Add(MyProduct9);
         Product MyProduct10 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Pair lipstick, hipoalerganic - MAC",
             Category = Category.lipstiks,
             ProductPrice = 72,
@@ -403,7 +406,7 @@ internal class DataSource
         ProductList.Add(MyProduct10);
         Product MyProduct11 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Makeup number 310 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
@@ -412,7 +415,7 @@ internal class DataSource
         ProductList.Add(MyProduct11);
         Product MyProduct12 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Makeup number 350 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
@@ -421,7 +424,7 @@ internal class DataSource
         ProductList.Add(MyProduct12);
         Product MyProduct13 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Makeup number 390 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
@@ -430,7 +433,7 @@ internal class DataSource
         ProductList.Add(MyProduct13);
         Product MyProduct14 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Light Makeup  - SOFT-TOUCH",
             Category = Category.makeup,
             ProductPrice = 59,
@@ -439,7 +442,7 @@ internal class DataSource
         ProductList.Add(MyProduct14);
         Product MyProduct15 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Light bronzer - SOFT-TOUCH",
             Category = Category.bronzers,
             ProductPrice = 35,
@@ -448,7 +451,7 @@ internal class DataSource
         ProductList.Add(MyProduct15);
         Product MyProduct16 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Dramatic bronzer - SOFT-TOUCH",
             Category = Category.bronzers,
             ProductPrice = 39,
@@ -457,7 +460,7 @@ internal class DataSource
         ProductList.Add(MyProduct16);
         Product MyProduct17 = new Product
         {
-            Barcode = DALProduct.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Bronzer - MAC",
             Category = Category.bronzers,
             ProductPrice = 45,

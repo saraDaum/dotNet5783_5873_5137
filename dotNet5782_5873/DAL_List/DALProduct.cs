@@ -1,16 +1,23 @@
 ﻿using static DAL.DataSource;
-namespace DAL;
 using DO;
-internal class DALProduct : DalApi.ICrud<Product>  
+using DalApi;
+
+namespace DAL;
+
+internal class DALProduct : DalApi.IProduct
 {
     private Product NULL;
 
-    public Product Get(int barcode)
+    public Product GetById(int barcode)
     {
         int index = ProductList.FindIndex(current => current.Barcode == barcode);
         if (index != -1)
         {
             return ProductList[index];
+        }
+        else
+        {
+            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT");
         }
         return NULL;
     }
@@ -95,17 +102,19 @@ internal class DALProduct : DalApi.ICrud<Product>
         return newProduct.Barcode;
     }
 
+     Random my_rnd=new Random();
+
     /// <summary>list
     /// This function restart the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
-    public static int MakeABarcode()
+    public  int MakeABarcode()
     {
-        int barcode = Config.rnd.Next(10000000, 100000000);
+        int  barcode = my_rnd.Next(10000000, 100000000);
         bool checkarcode = is_Barkode_OK(barcode);
         while (checkarcode)
         {
-            barcode = Config.rnd.Next(10000000, 100000000);
+            barcode = my_rnd.Next(10000000, 100000000);
             checkarcode = is_Barkode_OK(barcode);
         }
         return barcode;
@@ -117,81 +126,57 @@ internal class DALProduct : DalApi.ICrud<Product>
     /// </summary>
     /// <param name="b"></param>
     /// <returns></returns>
-    public static bool is_Barkode_OK(int barcode)
+    public bool is_Barkode_OK(int barcode)
     {
         int index = ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
         if (index == -1)
-        {
-            throw new Exception("Object dosen't exist");
-        }
-        else
-        {
             return true;
-
-        }
+       
         return false;
     }
 
-    public static void ReadAnProduct(int id)
-
-    {
-        int productNumber;
-        Console.WriteLine("Please enter your Product barcode");
-        string productStr = Console.ReadLine();
-        int productBarcode;
-        bool TryParseSucceeded = int.TryParse(productStr, out productBarcode);
-        if (TryParseSucceeded)
-        {
-            bool isExist = false;
-            foreach (Product currentProduct in ProductList)
-            {
-                if (currentProduct.Barcode == productBarcode)
-                {
-                    isExist = true;
-                    currentProduct.ToString();
-                }
-                if (isExist)
-                    Console.WriteLine("This order dosen't exist in database.\n(Check yourself. Maybe you just have a typo.)");
-            }
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
-
-    public void Delete()
-    {
-        Console.WriteLine("Do you know your product barcode? Enter y or n.");
-        string ans = Console.ReadLine();
-        int ProductBarcode;
-        if (ans == "n" || ans == "N")
-        {
-            ProductList.ForEach(p => print(p));     //Print all order items for customer
-        }
-        Console.WriteLine("Please enter your product barcode.");
-        string orderNumStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
-        if (TryParseSucceeded)
-        {
-            int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
-            Delete(index);
-        }
-        else
-        {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-        }
-    }
+    
+       
+    //public void Delete()
+    //{
+    //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
+    //    string ans = Console.ReadLine();
+    //    int ProductBarcode;
+    //    if (ans == "n" || ans == "N")
+    //    {
+    //        ProductList.ForEach(p => print(p));     //Print all order items for customer
+    //    }
+    //    Console.WriteLine("Please enter your product barcode.");
+    //    string orderNumStr = Console.ReadLine();
+    //    bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
+    //    if (TryParseSucceeded)
+    //    {
+    //        int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
+    //        Delete(index);
+    //    }
+    //    else
+    //    {
+    //        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+    //    }
+    //}
 
     /// <summary>list
     /// Delete an Order object
     /// </summary>
-    /// <param name="id"></param>
+    /// <param name="barcode"></param>
     /// <exception cref="Exception"></exception>
-    public void Delete(int id)
+    public void Delete(int barcode)
     {
-        ProductList.RemoveAt(id);
-        Console.WriteLine("The item has been successfully removed");
+        int index = ProductList.FindIndex(obj => obj.Barcode == barcode);
+        if (index == -1)
+        {
+            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT");
+        }
+        else
+        {
+            ProductList.RemoveAt(index);
+            Console.WriteLine("The item has been successfully removed");
+        }
     }
 
     public static void print(Product obj)
@@ -212,9 +197,12 @@ internal class DALProduct : DalApi.ICrud<Product>
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
-            ProductList.ForEach(obj => print(obj));
+            foreach (var item in DAL.DataSource.ProductList)
+            {
+                Console.WriteLine(item);
+            }
         }
-        Console.WriteLine("Please enter your  product's barcode.");
+        Console.WriteLine("Please enter your product's barcode.");
         string strBarcode = Console.ReadLine();
         int barcode;
         bool TryParseSucceeded = int.TryParse(strBarcode, out barcode);
@@ -271,7 +259,7 @@ internal class DALProduct : DalApi.ICrud<Product>
                                 }
                                 else
                                 {
-                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
                                 }
                             }
                         case 3:
@@ -295,25 +283,25 @@ internal class DALProduct : DalApi.ICrud<Product>
                                 }
                                 else
                                 {
-                                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
                                 }
                             }
                     }
                 }
                 else
                 {
-                    Console.WriteLine("No order item match.");
+                    throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
                 }
             }
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+                throw new FailedToConvertException("Update function :: DAL_PRODUCT");
             }
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:PRODUCT");
+            throw new FailedToConvertException("Update function :: DAL_PRODUCT");
         }
     }
 
@@ -331,16 +319,23 @@ internal class DALProduct : DalApi.ICrud<Product>
         }
         else
         {
-            Console.WriteLine("No match item.");
+            throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
         }
     }
+
+
+    /// <summary>
+    /// This function returns all instances of  product 
+    /// </summary>
+    /// <returns></returns>
+
+    public IEnumerable<Product> GetAll()
+    {
+        IEnumerable<Product> AllProducts = ProductList;
+        return AllProducts;
+    }
+
+  
+   
 }
-
-/// <summary>
-/// This function returns all instances of  product 
-/// </summary>
-/// <returns></returns>
-
-
-
 

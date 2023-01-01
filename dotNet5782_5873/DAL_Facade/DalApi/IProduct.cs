@@ -1,6 +1,11 @@
-﻿namespace DalApi;
+﻿using DO;
+namespace DalApi;
 
-internal class IProduct
+public interface IProduct:ICrud<Product>
 {
-
+    /// <summary>
+    /// This functions are an auxiliary functions
+    /// It get all required details from the customer and sends them to the matched function
+    /// </summary>
+      void Update();
 }

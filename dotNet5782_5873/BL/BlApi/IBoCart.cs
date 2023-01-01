@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    public interface IBoCart: ICrud<BO.Cart>
+    public interface IBoCart //: ICrud<BO.Cart>
     {
       
 

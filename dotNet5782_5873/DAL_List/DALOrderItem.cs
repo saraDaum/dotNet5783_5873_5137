@@ -6,7 +6,7 @@ using System.Reflection;
 
 namespace DAL;
 //Finish
-internal class DALOrderItem : DalApi.ICrud<OrderItem>
+internal class DALOrderItem : IOrderItem
 {
     private OrderItem NULL;
 
@@ -44,7 +44,7 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     public int Add()
     {
         Console.WriteLine("Welcome to OrderItem menu.\nDo you know your order number? enter y or n");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         if (ans == "y")
         {
             Console.WriteLine("Please enter your order number");
@@ -56,26 +56,26 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
             Console.WriteLine("Please enter your order number");
         }
         int orderNum2;
-        string orderStr = Console.ReadLine();
+        string? orderStr = Console.ReadLine();
         bool TryParseSucceeded = int.TryParse(orderStr, out orderNum2);
         if (TryParseSucceeded)
         {
             Console.WriteLine("Please enter product barcode");
             int barcode;
-            string barcodeStr = Console.ReadLine();
+            string? barcodeStr = Console.ReadLine();
             bool result = int.TryParse(barcodeStr, out barcode);
             if (result)
             {
                 Console.WriteLine("O.K. What is the price of the product?");
                 double price;
-                string priceStr = Console.ReadLine();
+                string? priceStr = Console.ReadLine();
                 bool convertResult = double.TryParse(priceStr, out price);
                 if (convertResult)
                 {
 
                     Console.WriteLine("O.K. What is the price of the product?");
                     int amount;
-                    string amountStr = Console.ReadLine();
+                    string? amountStr = Console.ReadLine();
                     bool result2 = int.TryParse(amountStr, out amount);
                     if (result2)
                     {
@@ -96,42 +96,38 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
                     {
 
 
-                        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+                        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
 
                     }
                 }
                 else
                 {
-                    throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+                    throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
 
                 }
             }
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+                throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
             }
 
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+            throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
         }
 
-        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN CREATE_AN_ORDER_ITEM FUNCTION:ORDER_ITEM");
+        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
         return 0;
     }
 
-    public static void GetAll(int id)
-    {
-        OrderItemList.ForEach(MyOrderItem => print(MyOrderItem, id));
-    }
 
     /// <summary>
     /// This function gets an ID and return the match item from orderItem's list
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public OrderItem Get(int id)
+    public OrderItem GetById(int id)
     {
         int index = OrderItemList.FindIndex(currentOrderItem => currentOrderItem.autoID == id);
         if (index != -1)
@@ -140,15 +136,9 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         }
         return NULL;
     }
-    private static void print(OrderItem myOrderItem, int id)
-    {
-        if (myOrderItem.autoID == id)
-        {
-            Console.WriteLine(myOrderItem);
-        }
-    }
+   
 
-    private static void print(OrderItem myOrderItem)
+       private static void print(OrderItem myOrderItem)
     {
         Console.WriteLine(myOrderItem);
     }
@@ -156,22 +146,18 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
     public void Update()
     {
         Console.WriteLine("Do you know your order item ID? Enter y or n.");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
             OrderItemList.ForEach(obj => print(obj));
         }
         Console.WriteLine("Please enter your order item ID.");
-        int orderItemNumber;
-        string orderNumStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderNumStr, out orderItemNumber);
+        bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderItemNumber);
         if (TryParseSucceeded)
         {
             Console.WriteLine("What amount do you want?");
-            int amount;
-            string amountStr = Console.ReadLine();
-            bool TryParseSucceeded2 = int.TryParse(amountStr, out amount);
+            bool TryParseSucceeded2 = int.TryParse(Console.ReadLine(), out int  amount);
             if (TryParseSucceeded2)
             {
                 int index = OrderItemList.FindIndex(obj => obj.OrderID == orderItemNumber);         //Searching the item to make an update object
@@ -195,12 +181,12 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:ORDER_ITEM");
+                throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM");
             }
         }
         else
         {
-            throw new Exception("ERROR: Failed to convert variables. Failed to receive input.\nAN ERROR OCCURED IN UPDATE FUNCTION:ORDER_ITEM");
+            throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM");
         }
     }
 
@@ -240,9 +226,7 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
             }
 
             Console.WriteLine("Please enter your order item ID.");
-            int orderItemNumber;
-            string orderNumStr = Console.ReadLine();
-            bool TryParseSucceeded = int.TryParse(orderNumStr, out orderItemNumber);
+            bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderItemNumber);
             if (TryParseSucceeded)
             {
                 OrderItem obj = OrderItemList.Find(currentOrderItem => currentOrderItem.OrderID == orderItemNumber);    //Searching the order item to delete it.
@@ -252,12 +236,12 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
 
             else
             {
-                throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
+                throw new FailedToConvertException("Daelete function :: DAL_ORDER_ITEM");
             }
         }
     }
     /// <summary>
-    /// This functoin getsan object and delete it.
+    /// This functoin gets an object and delete it.
     /// </summary>
     /// <param name="myOrderItem"></param>
     public void Delete(int id)
@@ -270,27 +254,50 @@ internal class DALOrderItem : DalApi.ICrud<OrderItem>
         }
         else
         {
-            Console.WriteLine("No match item.");
+            throw new InvalidEntityException("Delete function :: DAL_ORDER_ITEM");
+
         }
     }
-   
+
     public IEnumerable<OrderItem> GetAll()
     {
         IEnumerable<OrderItem> OrderItems = OrderItemList;
         return OrderItems;
     }
-    public void ReadAll()
-    {
 
+    /*public OrderItem GetByID(int orderID, int productID) 
+    { 
+    // FIX!!
+       OrderItem MrOrderItem= new OrderItem();
+        return MrOrderItem;
+
+    }*/
+
+    public OrderItem? GetById(int orderID, int productID)
+    {
+        int index = OrderItemList.FindIndex(o => o.OrderID == orderID && o.ProductID == productID);
+        if (index != -1)
+        {
+            return OrderItemList[index];
+        }
+        throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM");
+       
     }
 
-    OrderItem ICrud<OrderItem>.Get(int id)
+    public OrderItem GetByID(int orderID, int productID)
     {
-        throw new NotImplementedException();
+       int index= OrderItemList.FindIndex(item=> item.OrderID==orderID&& item.ProductID==productID);
+        if(index!= -1)
+        {
+            return OrderItemList[index];
+        }
+        else
+        {
+            throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM");
+        }
     }
 
-    void ICrud<OrderItem>.Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
 }
+
+
+

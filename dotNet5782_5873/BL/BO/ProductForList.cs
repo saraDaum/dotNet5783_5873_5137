@@ -1,4 +1,5 @@
-﻿using DO;
+﻿
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace BO;
 
-public class BOProductForList
+/// <summary>
+/// ProductForList class ( a logical entity)
+/// </summary>
+public class ProductForList
 {
     /// <summary>
     /// Product_For_List unique ID
@@ -17,7 +21,7 @@ public class BOProductForList
     /// <summary>
     /// Product_For_List name
     /// </summary>
-    public string Name { get; set; }
+    public string? Name { get; set; }
 
     /// <summary>
     /// Item price
@@ -27,7 +31,7 @@ public class BOProductForList
     /// <summary>
     /// Item category
     /// </summary>
-    public Category Category { get; set; }
+    public DO.Category Category { get; set; }
 
     public override string ToString() => $@"
     Product_For_List details:\n

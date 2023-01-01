@@ -7,22 +7,27 @@ using System.Threading.Tasks;
 
 namespace BO
 {
-    public class BOProduct
+
+    ///<summary>
+    /// BO_Product class (a logical entity)
+    /// Every entity have the details like: product name,product category, product price, product amount in stock ect.
+    /// </summary>
+    public class Product
     {
         /// <summary>
         /// Product barcode (identification number)
         /// </summary>
-        public int Barcode { get; set; }
+        public int? Barcode { get; }
 
         /// <summary>
         /// Product name
         /// </summary>
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
 
         /// <summary>
         /// Product category
         /// </summary>
-        public Category Category { get; set; }
+        public DO.Category Category { get; set; }
 
         /// <summary>
         /// Product price
@@ -32,7 +37,7 @@ namespace BO
         /// <summary>
         /// Amount in stock
         /// </summary>
-        public int InStock { get; set; }
+        public int AmountInStock { get; set; }
 
         /// <summary>
         /// Print all product's details
@@ -40,10 +45,10 @@ namespace BO
         /// <returns></returns>
         public override string ToString() => $@"
     Product details:\n
-    {nameof{Barcode}-} {ProductName}, 
-    {nameof{category}:} {Category},
-    {nameof{Price}:} {ProductPrice},
-   	{nameof{Amount in stock}:} {InStock}";
+    {nameof(Barcode)} -{ProductName}, 
+    {nameof(Category)}: {Category},
+    {nameof(ProductPrice)} :{ProductPrice},
+   	{nameof(AmountInStock)} :{AmountInStock}";
 
     }
 }

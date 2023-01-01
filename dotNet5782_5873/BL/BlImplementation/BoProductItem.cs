@@ -4,31 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlApi;
+using DAL;
+using DalApi;
+
 namespace BlImplementation;
-internal class BoProductItem:IProductItem
+internal class BoProductItem:IBoProductItem
 {
-    private IDal dal= new Dallist();
+    private IDal dal= new DalList();
 
-     BO.ProductItem productitem 
+    public int Add(BO.ProductItem entity)
     {
-
-
-    }
-    public int Add (BO.ProductItem MyBOOProductItem)
-    {
-       // return dal.Add (MyBOOProduct);    
+        throw new NotImplementedException();
     }
 
-    public int Delete (int ID)
+    public void Delete(int id)
     {
-       // return dal.Delete (ID);
-    } 
-    public BO.ProductItem Get (int Id )
-    {
-
+        throw new NotImplementedException();
     }
-    public int Uptate (BO.ProductItem MyBoOProductItem) 
+
+    public IEnumerable<BO.ProductItem> GetAll()
     {
-    
+        throw new NotImplementedException();
+    }
+
+    public BO.ProductItem GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(BO.ProductItem entity)
+    {
+        throw new NotImplementedException();
     }
 }

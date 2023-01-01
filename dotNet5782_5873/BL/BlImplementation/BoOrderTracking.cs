@@ -4,33 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BlApi;
+using BO;
+using DAL;
+using DalApi;
+
 namespace BlImplementation;
 
-internal class BoOrderTracking:IOrderTracking
+internal class BoOrderTracking:IBoOrderTracking
 {
-    private IDal dal= new Dallist();
+    private IDal dal= new DalList();
 
-    BO.OrderTracking orderTracking
+    public int Add(OrderTracking entity)
     {
-
-
-    }
-    public int Add (BO.OrderTracking MyBOOrderTracking)
-    {
-       // return dal.Add (MyBOOrderTracking);    
+        throw new NotImplementedException();
     }
 
-    public int Delete (int ID)
+    public void Delete(int id)
     {
-       // return dal.Delete (ID);
-    } 
-    public BO.OrderTracking Get (int Id )
-    {
+        throw new NotImplementedException();
+    }
 
-    }
-    public int Uptate (BO.OrderTracking MyBoOrderTracking) 
+    public IEnumerable<OrderTracking> GetAll()
     {
-    
+        throw new NotImplementedException();
     }
-     
+
+    public OrderTracking GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void Update(OrderTracking entity)
+    {
+        throw new NotImplementedException();
+    }
 }
