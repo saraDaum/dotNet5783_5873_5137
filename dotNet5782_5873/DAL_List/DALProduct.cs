@@ -65,12 +65,12 @@ internal class DALProduct : DalApi.IProduct
                 break;
         }
         Console.WriteLine("Please enter your ProductName ");
-        string AnsProductName = Console.ReadLine();
+        string? AnsProductName = Console.ReadLine();
         Console.WriteLine("How much does the item cost? ");
-        string strPrice = Console.ReadLine();
+        string? strPrice = Console.ReadLine();
         Console.WriteLine("What is the quantity in stock? ");
         double price = Convert.ToDouble(strPrice);
-        string strAmount = Console.ReadLine();
+        string? strAmount = Console.ReadLine();
         int amount = Convert.ToInt32(strAmount); ;
         Product newProduct = new Product
         {

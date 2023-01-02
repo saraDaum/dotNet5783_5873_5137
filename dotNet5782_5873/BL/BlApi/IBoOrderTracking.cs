@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace BlApi;
 
-internal interface IBoOrderTracking:ICrud<BO.OrderTracking>
+public interface IBoOrderTracking
 {
 
 

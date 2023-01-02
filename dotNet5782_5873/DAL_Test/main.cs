@@ -21,7 +21,7 @@ namespace DAL_Test
             try
             {
                 IDal DalListVar = new DalList();
-                IBL BLVar = new BL();
+                //IBL BLVar = new BL();
                 Order myOrder = new Order
                 {
 
@@ -34,10 +34,10 @@ namespace DAL_Test
                 Product myProduct = new Product
                 {
                     Barcode = 1234,
-                    ProductName="Lulypup",
-                    Category=,
-                    ProductPrice=5,
-                    AmountInStock = 1573,
+                    ProductName="Revlon lipstick",
+                    Category= 0,
+                    ProductPrice=45,
+                    AmountInStock = 13,
 
                 };
 
@@ -113,7 +113,7 @@ namespace DAL_Test
                             case (1):
                                 {
                                    
-                                    BLVar.Order.Add(myOrder);
+                                    DalListVar.Order.Add(myOrder);
                                     break;
                                 }
 
@@ -123,12 +123,12 @@ namespace DAL_Test
                                     Console.WriteLine("Please enter your ID");
                                     ID = Console.Read();
                                     if (ID!=-1)
-                                    BLVar.Order.GetById(ID);
+                                    DalListVar.Order.Get(order=> order.ID==1);
                                     break;
                                 }
                             case (3):
                                 {
-                                    BLVar.Order.Update(myOrder);
+                                    DalListVar.Order.Update(myOrder);
                                     break;
                                 }
                             case (4):
@@ -137,7 +137,7 @@ namespace DAL_Test
                                     string? ans = Console.ReadLine();
                                     if (ans == "n" || ans == "N")
                                     {
-                                        OrderList.ForEach(MyOrder => print(MyOrder));
+                                     OrderList.ForEach(MyOrder => print(MyOrder));
                                     }
                                     Console.WriteLine("Please enter your order number.");
                                     int orderNumber;
@@ -145,7 +145,7 @@ namespace DAL_Test
                                     bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
                                     if (TryParseSucceeded)
                                     {
-                                        BLVar.Order.Delete(orderNumber);
+                                        DalListVar.Order.Delete(orderNumber);
 
                                     }
 
@@ -162,7 +162,7 @@ namespace DAL_Test
                     }
                 }
 
-                int orderItem()
+                void orderItem()
                 {
                     Console.WriteLine("if you went to add press 1");
                     Console.WriteLine("if you went to read press 2");
@@ -176,28 +176,25 @@ namespace DAL_Test
                         switch (chooseOrderItem)
                         {
                             case (1):
-                                {
-                                    {
-                                       
-
-                                    DaListVar.OrderItem.Add(myOrderItem);
+                                {   
+                                  DalListVar.OrderItem.Add(myOrderItem);
                                     break;
                                 }
 
                             case (2):
                                 {
-                                   
-                                    BLVar.OrderItem.GetById(ID);
+
+                                    DalListVar.OrderItem.GetById(1);
                                     break;
                                 }
                             case (3):
                                 {
-                                    BLVar.OrderItem.Update();
+                                    DalListVar.OrderItem.Update();
                                     break;
                                 }
                             case (4):
                                 {
-                                    BLVar.OrderItem.Delete(1);
+                                    DalListVar.OrderItem.Delete(1);
                                     break;
                                 }
 

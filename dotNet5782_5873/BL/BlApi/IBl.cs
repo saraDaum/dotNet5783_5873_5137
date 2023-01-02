@@ -9,20 +9,14 @@ namespace BlApi;
 
 public interface IBl
 {
-    /// <summary>
-    /// Order interface implementation
-    /// </summary>
+    public IBoCart Cart { get; }
     public IOrder Order { get;  }
-
-    /// <summary>
-    /// OrderItem interface implementation
-    /// </summary>
+    public IBoOrderForList OrderForList { get; }  
     public IOrderItem OrderItem { get; }
-
-    /// <summary>
-    /// Product interface implementation
-    /// </summary>
+    public IBoOrderTracking OrderTracking { get; }     
     public IProduct Product { get; }
+   public IBoProductItem ProductItem { get; }   
+
 
 
 

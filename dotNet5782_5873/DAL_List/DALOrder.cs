@@ -2,6 +2,7 @@
 using DO;
 using Microsoft.VisualBasic;
 using System;
+using System.Linq;
 using System.Reflection;
 using static DAL.DataSource;
 
@@ -195,4 +196,12 @@ internal class DALOrder : IOrder
         }
     }
 
+    public IEnumerable<Order> Get(Func<Order,bool>? myDeligate)
+    {
+        if (myDeligate != null)
+        {
+           return OrderList.Where(myDeligate);
+        }
+        return OrderList;
+    }
 }
