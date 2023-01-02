@@ -133,20 +133,12 @@ namespace DAL_Test
                                 }
                             case (4):
                                 {
-                                    Console.WriteLine("Do you know your order number? Enter y or n.");
-                                    string? ans = Console.ReadLine();
-                                    if (ans == "n" || ans == "N")
-                                    {
-                                     OrderList.ForEach(MyOrder => print(MyOrder));
-                                    }
                                     Console.WriteLine("Please enter your order number.");
                                     int orderNumber;
-                                    string? orderNumStr = Console.ReadLine();
-                                    bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
+                                    bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out orderNumber);
                                     if (TryParseSucceeded)
                                     {
                                         DalListVar.Order.Delete(orderNumber);
-
                                     }
 
                               

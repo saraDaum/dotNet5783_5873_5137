@@ -1,16 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\dotNet5782_5873",
-    "\\dotNet5782_5873\\BL",
-    "\\dotNet5782_5873\\BL\\BlApi",
-    "\\dotNet5782_5873\\BL\\BlImplementation",
-    "\\dotNet5782_5873\\BL\\BO",
-    "\\dotNet5782_5873\\DAL_Facade",
-    "\\dotNet5782_5873\\DAL_Facade\\DalApi",
-    "\\dotNet5782_5873\\DAL_List",
-    "\\dotNet5782_5873\\DAL_Test"
+    ""
   ],
-  "SelectedNode": "\\dotNet5782_5873\\BL\\BlImplementation\\BoCart.cs",
+  "SelectedNode": "\\dotNet5782_5873.sln",
   "PreviewInSolutionExplorer": false
 }
