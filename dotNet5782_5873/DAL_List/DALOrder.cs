@@ -42,7 +42,7 @@ internal class DALOrder : IOrder
 
     public void Add()
     {
-        string name = "", email = "", address = "";
+        string? name = "", email = "", address = "";
         Order newOrder = new Order();
         do
         {
@@ -180,7 +180,7 @@ internal class DALOrder : IOrder
         return OrderList;
     }
 
-    public Order GetById(Predicate<Order> myDelegate)
+    public Order GetAnObject(Predicate<Order> myDelegate)
     {
         return OrderList.Find(myDelegate);
     }

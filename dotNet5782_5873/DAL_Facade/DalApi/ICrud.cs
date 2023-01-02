@@ -16,7 +16,7 @@ public interface ICrud<T>
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    T GetById(Predicate<T> myDelegate);
+    T GetAnObject(Predicate<T> myDelegate);
 
     /// <summary>
     /// This function gets a updated object and update the old one.   
