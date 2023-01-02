@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    public interface IBoProduct:ICrud<BO.Product>
+    public interface IBoProduct
     {
 
 

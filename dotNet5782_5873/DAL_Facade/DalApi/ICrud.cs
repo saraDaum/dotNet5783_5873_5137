@@ -7,7 +7,11 @@ public interface ICrud<T>
     IEnumerable<T?> GetAll();
     void Update(T entity);
     void Delete(int id);
-    //T deleteAll();
-    //IEnumerable<T>
+    /// <summary>
+    /// This function get a deligate and return the objects that match to the condition.
+    /// </summary>
+    /// <param name="deligate"></param>
+    /// <returns></returns>
+    IEnumerable<T>? Get(Func<T, bool>? deligate);
 
 }
