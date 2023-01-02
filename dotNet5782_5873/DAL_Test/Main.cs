@@ -21,7 +21,7 @@ namespace DAL_Test
             try
             {
                 IDal DalListVar = new DalList();
-                IBL BLVar = new BL();
+                //IBL BLVar = new BL();
                 Order myOrder = new Order
                 {
 
@@ -34,10 +34,10 @@ namespace DAL_Test
                 Product myProduct = new Product
                 {
                     Barcode = 1234,
-                    ProductName="Lulypup",
-                    Category=,
-                    ProductPrice=5,
-                    AmountInStock = 1573,
+                    ProductName="Revlon lipstick",
+                    Category= 0,
+                    ProductPrice=45,
+                    AmountInStock = 13,
 
                 };
 
@@ -112,15 +112,18 @@ namespace DAL_Test
                         {
                             case (1):
                                 {
-
-                                    DalListVar.Order.Add();
+                                   
+                                    DalListVar.Order.Add(myOrder);
                                     break;
                                 }
 
                             case (2):
                                 {
-
-                                    DalListVar.Order.Get();
+                                    int ID = 0;
+                                    Console.WriteLine("Please enter your ID");
+                                    ID = Console.Read();
+                                    if (ID!=-1)
+                                    BLVar.Order.GetById(ID);
                                     break;
                                 }
                             case (3):
@@ -130,6 +133,19 @@ namespace DAL_Test
                                 }
                             case (4):
                                 {
+                                    Console.WriteLine("Do you know your order number? Enter y or n.");
+                                    string? ans = Console.ReadLine();
+                                    if (ans == "n" || ans == "N")
+                                    {
+                                        OrderList.ForEach(MyOrder => print(MyOrder));
+                                    }
+                                    Console.WriteLine("Please enter your order number.");
+                                    int orderNumber;
+                                    string? orderNumStr = Console.ReadLine();
+                                    bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
+                                    if (TryParseSucceeded)
+                                    {
+                                        BLVar.Order.Delete(orderNumber);
 
                                     DalListVar.Order.Delete();
                                     break;
@@ -159,15 +175,17 @@ namespace DAL_Test
                         {
                             case (1):
                                 {
-                                    
-                                        DalListVar.OrderItem.Add();
-                                        break;
+                                    {
+                                       
+
+                                    DaListVar.OrderItem.Add(myOrderItem);
+                                    break;
                                 }
 
                             case (2):
                                 {
-
-                                    DalListVar.OrderItem.GetById(id);
+                                   
+                                    BLVar.OrderItem.GetById(ID);
                                     break;
                                 }
                             case (3):
@@ -177,7 +195,7 @@ namespace DAL_Test
                                 }
                             case (4):
                                 {
-                                    DalListVar.OrderItem.Delete();
+                                    BLVar.OrderItem.Delete(1);
                                     break;
                                 }
 
