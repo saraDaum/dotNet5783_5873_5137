@@ -21,7 +21,7 @@ namespace DAL_Test
             try
             {
                 IDal DalListVar = new DalList();
-                //IBL BLVar = new BL();
+                IBL BLVar = new BL();
                 Order myOrder = new Order
                 {
 
@@ -34,10 +34,10 @@ namespace DAL_Test
                 Product myProduct = new Product
                 {
                     Barcode = 1234,
-                    ProductName="Revlon lipstick",
-                    Category= 0,
-                    ProductPrice=45,
-                    AmountInStock = 13,
+                    ProductName="Lulypup",
+                    Category=,
+                    ProductPrice=5,
+                    AmountInStock = 1573,
 
                 };
 
@@ -112,18 +112,15 @@ namespace DAL_Test
                         {
                             case (1):
                                 {
-                                   
-                                    DalListVar.Order.Add(myOrder);
+
+                                    DalListVar.Order.Add();
                                     break;
                                 }
 
                             case (2):
                                 {
-                                    int ID = 0;
-                                    Console.WriteLine("Please enter your ID");
-                                    ID = Console.Read();
-                                    if (ID!=-1)
-                                    BLVar.Order.GetById(ID);
+
+                                    DalListVar.Order.Get();
                                     break;
                                 }
                             case (3):
@@ -133,15 +130,8 @@ namespace DAL_Test
                                 }
                             case (4):
                                 {
-                                    Console.WriteLine("Please enter your order number.");
-                                    int orderNumber;
-                                    bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out orderNumber);
-                                    if (TryParseSucceeded)
-                                    {
-                                        DalListVar.Order.Delete(orderNumber);
-                                    }
 
-                              
+                                    DalListVar.Order.Delete();
                                     break;
                                 }
 
@@ -169,17 +159,15 @@ namespace DAL_Test
                         {
                             case (1):
                                 {
-                                    {
-                                       
-
-                                    DaListVar.OrderItem.Add(myOrderItem);
-                                    break;
+                                    
+                                        DalListVar.OrderItem.Add();
+                                        break;
                                 }
 
                             case (2):
                                 {
-                                   
-                                    BLVar.OrderItem.GetById(ID);
+
+                                    DalListVar.OrderItem.GetById(id);
                                     break;
                                 }
                             case (3):
@@ -189,7 +177,7 @@ namespace DAL_Test
                                 }
                             case (4):
                                 {
-                                    BLVar.OrderItem.Delete(1);
+                                    DalListVar.OrderItem.Delete();
                                     break;
                                 }
 
