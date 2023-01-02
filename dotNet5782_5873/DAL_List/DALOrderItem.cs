@@ -41,7 +41,7 @@ internal class DALOrderItem : IOrderItem
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public int Add()
+    public void Add()
     {
         Console.WriteLine("Welcome to OrderItem menu.\nDo you know your order number? enter y or n");
         string? ans = Console.ReadLine();
@@ -118,7 +118,7 @@ internal class DALOrderItem : IOrderItem
         }
 
         throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
-        return 0;
+       
     }
 
 
