@@ -324,18 +324,18 @@ internal class DALProduct : DalApi.IProduct
     }
 
 
-    /// <summary>
-    /// This function returns all instances of  product 
-    /// </summary>
-    /// <returns></returns>
-
-    public IEnumerable<Product> GetAll()
+    public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
     {
-        IEnumerable<Product> AllProducts = ProductList;
-        return AllProducts;
+       if(deligate != null)
+        {
+            return ProductList.Where(deligate);
+        }
+       return ProductList;  
     }
 
-  
-   
+    public Product GetById(Predicate<Product> myDelegate)
+    {
+        return ProductList.Find(myDelegate);
+    }
 }
 
