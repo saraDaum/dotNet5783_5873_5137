@@ -8,7 +8,7 @@ namespace BlTest;
 
 public class ApplicationBL
 {
-    public static void Main(string[] args)
+    public void Main(string[] args)
     {
         IBl blVar = new BL();
         int choose = ReadInt("Choose the Entity you want");//להחליף את ההודעה למפורטת
@@ -21,34 +21,94 @@ public class ApplicationBL
             case 2:
                 order();
                 break;
+            case 3:
+                OrderForList();
+                break;  
+            case 4:
+                OrderItem();
+                break;
+            case 5:
+                OrderTracking();
+                break;
+            case 6:
+                Product();
+                break;
+            case 7:
+                ProductItem();
+                break;
+           
             default: return;
                 //וכן הלאה....
         }
-
-
-    }
-
-    private static void order()
-    {
-        int choose = ReadInt("הודעה שמפרטת מה להקיש");
-        switch (choose)
+        void order()
         {
-            case 0:
-                return;
-            case 1:
-                break  ;
+            Order order = new Order();
+            order.OrderDate = DateTime.Now;
+            order.ShipDate = DateTime.Now;
+            order.CustomerAddress = "123345";
+            order.CustomerName = "dtgfdgtf";
 
-            default:
-                break;
+            int choose = ReadInt("הודעה שמפרטת מה להקיש");
+            switch (choose)
+            {
+                case 0:
+                    return;
+                case 1:
+                    blVar.Order.Add(order);
+                    break;
+                case 2:
+                    blVar.Order.GetAnObject()
+
+                default:
+                    break;
+            }
+        }
+
+
+        void OrderForList()
+        {
+            int choose = ReadInt("הודעה שמפרטת מה להקיש");
+            switch (choose)
+            {
+
+
+
+            }
+        }
+
+         void OrderItem()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+         void OrderTracking()
+        {
+            throw new NotImplementedException();
+        }
+
+
+         void Product()
+        {
+            throw new NotImplementedException();
+        }
+
+
+         void ProductItem()
+        {
+            throw new NotImplementedException();
         }
     }
 
-    private static void cart()
+    
+
+    private  void cart()
     {
 
     }
 
-    static int ReadInt(string comment)
+  private int ReadInt(string comment)
     {
         Console.WriteLine(comment);
         string? s = Console.ReadLine();
