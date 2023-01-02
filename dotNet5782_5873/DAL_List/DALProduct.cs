@@ -333,7 +333,7 @@ internal class DALProduct : DalApi.IProduct
        return ProductList;  
     }
 
-    public Product GetById(Predicate<Product> myDelegate)
+    public Product GetAnObject(Predicate<Product> myDelegate)
     {
         return ProductList.Find(myDelegate);
     }
