@@ -10,12 +10,12 @@ namespace BlApi;
 public interface IBl
 {
     public IBoCart Cart { get; }
-    public IOrder Order { get;  }
+    public IBoOrder Order { get;  }
     public IBoOrderForList OrderForList { get; }  
-    public IOrderItem OrderItem { get; }
+    public IBoOrderItem OrderItem { get; }
     public IBoOrderTracking OrderTracking { get; }     
-    public IProduct Product { get; }
-   public IBoProductItem ProductItem { get; }   
+    public IBoProduct Product { get; }
+    public IBoProductItem ProductItem { get; }   
 
 
 

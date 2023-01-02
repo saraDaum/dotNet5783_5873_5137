@@ -10,14 +10,19 @@ namespace BlImplementation
 {
     sealed public class BL : IBl
     {
+        public IBoCart Cart => new BoCart();
+
         public IBoOrder Order => new BoOrder();
+
+        public IBoOrderForList OrderForList => new BoOrderForList();
 
         public IBoOrderItem OrderItem => new BoOrderItem();
 
-        public IBoProduct Product => new BoProduct();
+        public IBoOrderTracking OrderTracking => throw new NotImplementedException();
 
-        public List<BO.Order> Orders = new List<BO.Order>();
+        public IBoProduct Product => throw new NotImplementedException();
 
+        public IBoProductItem ProductItem => throw new NotImplementedException();
     }
 }
 
