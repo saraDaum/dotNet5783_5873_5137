@@ -1,5 +1,4 @@
-﻿using BlImplementation;
-using DAL;
+﻿using DAL;
 using DalApi;
 using DO;
 using System.Data.Common;
@@ -43,6 +42,7 @@ namespace DAL_Test
 
                 OrderItem myOrderItem = new OrderItem
                 {
+                    autoID = 1,
                     ProductID = 1,
                     OrderID = 1,
                     ProductPrice = 1200,
@@ -123,7 +123,7 @@ namespace DAL_Test
                                     Console.WriteLine("Please enter your ID");
                                     ID = Console.Read();
                                     if (ID!=-1)
-                                    BLVar.Order.GetById(ID);
+                                    DalListVar.Order.GetAnObject(order=>order.ID==1);
                                     break;
                                 }
                             case (3):
@@ -168,18 +168,15 @@ namespace DAL_Test
                         switch (chooseOrderItem)
                         {
                             case (1):
-                                {
-                                    {
-                                       
-
-                                    DaListVar.OrderItem.Add(myOrderItem);
+                                { 
+                                    DalListVar.OrderItem.Add(myOrderItem);
                                     break;
                                 }
 
                             case (2):
                                 {
                                    
-                                    BLVar.OrderItem.GetById(ID);
+                                    DalListVar.OrderItem.GetAnObject(item=> item.autoID==1);
                                     break;
                                 }
                             case (3):
@@ -189,7 +186,7 @@ namespace DAL_Test
                                 }
                             case (4):
                                 {
-                                    BLVar.OrderItem.Delete(1);
+                                    DalListVar.OrderItem.Delete(1);
                                     break;
                                 }
 
@@ -223,7 +220,7 @@ namespace DAL_Test
 
                             case (2):
                                 {
-                                    DalListVar.Product.GetById(1);
+                                    DalListVar.Product.GetAnObject(product=>product.Barcode== 1234);
                                     break;
                                 }
                             case (3):
