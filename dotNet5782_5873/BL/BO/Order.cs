@@ -15,37 +15,37 @@ namespace BO
         /// <summary>
         /// Order's unique ID
         /// </summary>
-        public int ID { get; }
+        public int ID { get; set; }
 
         /// <summary>
         /// The name of the orderer
         /// </summary>
-        public string? CustomerName { get; }
+        public string? CustomerName { get; set; }
 
         /// <summary>
         /// The email address of the orderer
         /// </summary>
-        public string? CustomerEmail { get; }
+        public string? CustomerEmail { get; set; }
 
         /// <summary>
         /// The Address of the orderer
         /// </summary>
-        public string? CustomerAddress { get; }
+        public string? CustomerAddress { get; set; }
 
         /// <summary>
         /// Date of the order
         /// </summary>
-        public DateTime OrderDate { get; }
+        public DateTime OrderDate { get; set; }
 
         /// <summary>
         /// Date of the ship
         /// </summary>
-        public DateTime ShipDate { get; }
+        public DateTime ShipDate { get; set; }
 
         /// <summary>
         /// Date of the delivery
         /// </summary>
-        public DateTime DeliveryDate { get; }
+        public DateTime DeliveryDate { get; set;}
 
         /// <summary>
         /// Print all order's details
