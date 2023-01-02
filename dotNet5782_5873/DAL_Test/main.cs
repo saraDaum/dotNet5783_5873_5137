@@ -112,44 +112,26 @@ namespace DAL_Test
                         {
                             case (1):
                                 {
-                                   
-                                    BLVar.Order.Add(myOrder);
+
+                                    DalListVar.Order.Add();
                                     break;
                                 }
 
                             case (2):
                                 {
-                                    int ID = 0;
-                                    Console.WriteLine("Please enter your ID");
-                                    ID = Console.Read();
-                                    if (ID!=-1)
-                                    BLVar.Order.GetById(ID);
+
+                                    DalListVar.Order.Get();
                                     break;
                                 }
                             case (3):
                                 {
-                                    BLVar.Order.Update(myOrder);
+                                    DalListVar.Order.Update(myOrder);
                                     break;
                                 }
                             case (4):
                                 {
-                                    Console.WriteLine("Do you know your order number? Enter y or n.");
-                                    string? ans = Console.ReadLine();
-                                    if (ans == "n" || ans == "N")
-                                    {
-                                        OrderList.ForEach(MyOrder => print(MyOrder));
-                                    }
-                                    Console.WriteLine("Please enter your order number.");
-                                    int orderNumber;
-                                    string? orderNumStr = Console.ReadLine();
-                                    bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
-                                    if (TryParseSucceeded)
-                                    {
-                                        BLVar.Order.Delete(orderNumber);
 
-                                    }
-
-                              
+                                    DalListVar.Order.Delete();
                                     break;
                                 }
 
@@ -162,7 +144,7 @@ namespace DAL_Test
                     }
                 }
 
-                int orderItem()
+                void orderItem()
                 {
                     Console.WriteLine("if you went to add press 1");
                     Console.WriteLine("if you went to read press 2");
@@ -177,27 +159,25 @@ namespace DAL_Test
                         {
                             case (1):
                                 {
-                                    {
-                                       
-
-                                    DaListVar.OrderItem.Add(myOrderItem);
-                                    break;
+                                    
+                                        DalListVar.OrderItem.Add();
+                                        break;
                                 }
 
                             case (2):
                                 {
-                                   
-                                    BLVar.OrderItem.GetById(ID);
+
+                                    DalListVar.OrderItem.GetById(id);
                                     break;
                                 }
                             case (3):
                                 {
-                                    BLVar.OrderItem.Update();
+                                    DalListVar.OrderItem.Update();
                                     break;
                                 }
                             case (4):
                                 {
-                                    BLVar.OrderItem.Delete(1);
+                                    DalListVar.OrderItem.Delete();
                                     break;
                                 }
 
