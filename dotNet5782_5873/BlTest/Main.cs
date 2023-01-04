@@ -23,7 +23,7 @@ public class ApplicationBL
                 break;
             case 3:
                 OrderForList();
-                break;  
+                break;
             case 4:
                 OrderItem();
                 break;
@@ -36,7 +36,7 @@ public class ApplicationBL
             case 7:
                 ProductItem();
                 break;
-           
+
             default: return;
                 //וכן הלאה....
         }
@@ -57,7 +57,23 @@ public class ApplicationBL
                     blVar.Order.Add(order);
                     break;
                 case 2:
-                    blVar.Order.GetAnObject()
+                    Order order1 = blVar.Order.GetAnObject(e => e.GetHashCode() == e.GetHashCode());//מחזיר תמיד אמת
+                    Console.WriteLine("the return obj is: ", order1);
+                    break;
+                case 3:
+                    IEnumerable<Order>? orders = blVar.Order.Get(e => e.GetHashCode() == e.GetHashCode());
+                    if (orders == null)
+                        Console.WriteLine("the list is empty");
+                    else
+                    {
+                        foreach (var item in orders)
+                        {
+                            Console.WriteLine(item);
+                        }
+                    }
+
+
+                    break;
 
                 default:
                     break;
@@ -67,48 +83,60 @@ public class ApplicationBL
 
         void OrderForList()
         {
+            Console.WriteLine("no function in here");
+            //int choose = ReadInt("הודעה שמפרטת מה להקיש");
+            //switch (choose)
+            //{
+            //    case 0:
+            //        return;
+            //    case 1:
+            //        blVar.OrderForList.Add();
+            //        break;
+
+
+            //}
+        }
+
+        void OrderItem()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        void OrderTracking()
+        {
             int choose = ReadInt("הודעה שמפרטת מה להקיש");
             switch (choose)
             {
-
-
-
+                case 0:
+                    return;
+                case 1:
+                    blVar.OrderTracking.ChangeOrderStatus(1,0);//הכנסתי אי די של ההזמנה-1 ואת הסטטוס של ההזמנה-0
+                    break;
             }
         }
 
-         void OrderItem()
+        void Product()
         {
             throw new NotImplementedException();
         }
 
 
-
-         void OrderTracking()
-        {
-            throw new NotImplementedException();
-        }
-
-
-         void Product()
-        {
-            throw new NotImplementedException();
-        }
-
-
-         void ProductItem()
+        void ProductItem()
         {
             throw new NotImplementedException();
         }
     }
 
-    
 
-    private  void cart()
+
+    private void cart()
     {
 
     }
 
-  private int ReadInt(string comment)
+    private int ReadInt(string comment)
     {
         Console.WriteLine(comment);
         string? s = Console.ReadLine();
