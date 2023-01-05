@@ -9,7 +9,10 @@ namespace BO
 
     public enum OrderStatus
     {
-       
+       Payed = 1,
+       Sent, 
+       Delevery,
+       Recive
     }
 
     public enum Category

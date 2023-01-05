@@ -2,6 +2,7 @@
 using DO;
 using Microsoft.VisualBasic;
 using System;
+using System.Linq;
 using System.Reflection;
 using static DAL.DataSource;
 
@@ -41,7 +42,7 @@ internal class DALOrder : IOrder
 
     public void Add()
     {
-        string name = "", email = "", address = "";
+        string? name = "", email = "", address = "";
         Order newOrder = new Order();
         do
         {
@@ -140,16 +141,6 @@ internal class DALOrder : IOrder
         Console.WriteLine(obj);
     }
 
-    /// <summary>list
-    /// This function returns all instances of order
-    /// </summary>
-    /// <returns></returns>
-    public IEnumerable<Order> GetAll()
-    {
-        IEnumerable<Order> orders = DataSource.OrderList;
-        return orders;
-    }
-
     public void PrintAll()
     {
         List<Order> orders = OrderList;
@@ -159,22 +150,7 @@ internal class DALOrder : IOrder
         }
     }
 
-    /// <summary>list
-    /// This function gets an ID number and returns the corresponding Order object
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    public Order GetById(int id)
-    {
-        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == id);
-        if (index == -1)
-            throw new EntityNotFoundException("GetById function :: DAL_ORDER");
-        return OrderList[index];
-
-    }
-
-
-
+  
     /// <summary>list
     /// This function gets an Order object and print it's detail
     /// </summary>
@@ -195,4 +171,17 @@ internal class DALOrder : IOrder
         }
     }
 
+    public IEnumerable<Order> Get(Func<Order,bool>? myDeligate)
+    {
+        if (myDeligate != null)
+        {
+           return OrderList.Where(myDeligate);
+        }
+        return OrderList;
+    }
+
+    public Order GetAnObject(Predicate<Order> myDelegate)
+    {
+        return OrderList.Find(myDelegate);
+    }
 }

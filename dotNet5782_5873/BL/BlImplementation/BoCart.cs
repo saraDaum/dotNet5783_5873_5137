@@ -29,7 +29,7 @@ internal class BoCart : IBoCart
     public int Add(BO.Cart cart, BO.OrderItem entity)
     {
         //Update the new amount
-        DO.Product product = dal.Product.GetAll().First(item => item.Barcode == entity.ProductID);
+        DO.Product product = dal.Product.GetAnObject(item => item.Barcode == entity.ProductID);
         IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
         BO.Product BoProduct = mapper.Map<BO.Product>(product);
         int quantityRequested = entity.Amount;

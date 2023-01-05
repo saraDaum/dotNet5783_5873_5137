@@ -7,19 +7,11 @@ using System.Text;
 using System.Threading.Tasks;
 namespace DAL
 {
-    sealed public class DalList : IDal
-    //public class DalList
+     sealed public class DalList : IDal   
     {
-
-        //public static readonly object DALOrder;
-        //public static object DALOrderItem { get; set; }
-        // public static object DALProduct { get; set; }
-
         public IOrder Order => new DALOrder();
         public IOrderItem OrderItem => new DALOrderItem();
         public IProduct Product => new DALProduct();
-        //public static IDal instance { get; } = new DalList();
-
        
     }
 }

@@ -8,9 +8,6 @@ namespace DAL;
 //Finish
 internal class DALOrderItem : IOrderItem
 {
-    private OrderItem NULL;
-
-
     /// <summary>
     /// ADD AN OBJECT 
     /// </summary>
@@ -41,7 +38,7 @@ internal class DALOrderItem : IOrderItem
     /// </summary>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public int Add()
+    public void Add()
     {
         Console.WriteLine("Welcome to OrderItem menu.\nDo you know your order number? enter y or n");
         string? ans = Console.ReadLine();
@@ -87,9 +84,9 @@ internal class DALOrderItem : IOrderItem
                             Amount = amount,
                             autoID = Config.autoCounter
                         };
-                        OrderItemList.Insert(0, NewOrderItem);
-                        Console.WriteLine("OKAY. All detailes has been saved");
-                        return NewOrderItem.autoID;
+                        Add(NewOrderItem);
+                       Console.WriteLine("OKAY. All detailes has been saved");
+                       
 
                     }
                     else
@@ -118,25 +115,8 @@ internal class DALOrderItem : IOrderItem
         }
 
         throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
-        return 0;
+       
     }
-
-
-    /// <summary>
-    /// This function gets an ID and return the match item from orderItem's list
-    /// </summary>
-    /// <param name="id"></param>
-    /// <returns></returns>
-    public OrderItem GetById(int id)
-    {
-        int index = OrderItemList.FindIndex(currentOrderItem => currentOrderItem.autoID == id);
-        if (index != -1)
-        {
-            return OrderItemList[index];
-        }
-        return NULL;
-    }
-   
 
        private static void print(OrderItem myOrderItem)
     {
@@ -215,7 +195,7 @@ internal class DALOrderItem : IOrderItem
     public void Delete()
     {
         Console.WriteLine("Do you know your order item ID? Enter y or n.");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
@@ -259,20 +239,6 @@ internal class DALOrderItem : IOrderItem
         }
     }
 
-    public IEnumerable<OrderItem> GetAll()
-    {
-        IEnumerable<OrderItem> OrderItems = OrderItemList;
-        return OrderItems;
-    }
-
-    /*public OrderItem GetByID(int orderID, int productID) 
-    { 
-    // FIX!!
-       OrderItem MrOrderItem= new OrderItem();
-        return MrOrderItem;
-
-    }*/
-
     public OrderItem? GetById(int orderID, int productID)
     {
         int index = OrderItemList.FindIndex(o => o.OrderID == orderID && o.ProductID == productID);
@@ -297,6 +263,19 @@ internal class DALOrderItem : IOrderItem
         }
     }
 
+    public IEnumerable<OrderItem>? Get(Func<OrderItem, bool>? deligate)
+    {
+        if (deligate != null)
+        {
+            return OrderItemList.Where(deligate);   
+        }
+        return OrderItemList;
+    }
+
+     public OrderItem GetAnObject(Predicate<OrderItem> myDelegate)
+    {
+        return OrderItemList.Find(myDelegate);
+    }
 }
 
 
