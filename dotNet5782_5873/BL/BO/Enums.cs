@@ -9,7 +9,7 @@ namespace BO
 
     public enum OrderStatus
     {
-       Payed = 1,
+       Payed ,
        Sent, 
        Delevery,
        Recive

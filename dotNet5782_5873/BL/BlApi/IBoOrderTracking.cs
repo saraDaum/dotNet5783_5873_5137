@@ -14,6 +14,6 @@ public interface IBoOrderTracking
     /// <param name="orderId">the order id</param>
     /// <param name="status">the status to replace</param>
     /// <returns>succese</returns>
-    bool ChangeOrderStatus(int orderId, BO.OrderStatus status);
+    bool ChangeOrderStatus(BO.OrderTracking order, BO.OrderStatus status);
 
 }

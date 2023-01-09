@@ -15,12 +15,20 @@ internal class BoOrderTracking:IBoOrderTracking
 {
     private IDal dal= new DalList();
 
-    public bool ChangeOrderStatus(int orderId ,BO.OrderStatus status)
+    public bool ChangeOrderStatus(BO.OrderTracking order ,BO.OrderStatus status)
     {
+        order.Status = status;
        
-         
-                                      //נמצא את ההזמנה שהאי די שלה נשלח
-        //נשנה את הסטטוס שלה
+        //{
+        //    if (item.orderId == orderId)//נמצא את ההזמנה שהאי די שלה נשלח
+        //    {
+        //        Console.WriteLine(item);
+
+        //        return true;
+        //    } 
+        }
+                                      
+                                      //נשנה את הסטטוס שלה
         //נחזיר אם הצלחנו
         return true;
     }

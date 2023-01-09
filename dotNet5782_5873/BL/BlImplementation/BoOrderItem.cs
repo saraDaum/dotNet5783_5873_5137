@@ -28,6 +28,11 @@ internal class BoOrderItem : IBoOrderItem
         dal.OrderItem.Delete(id);
     }
 
+    public IEnumerable<BO.OrderItem>? Get(Func<BO.OrderItem, bool>? deligate)
+    {
+        throw new NotImplementedException();
+    }
+
     public IEnumerable<BO.OrderItem> GetAll()
     {
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
@@ -39,6 +44,11 @@ internal class BoOrderItem : IBoOrderItem
             AllBoOrderItems.Append(myOrderItem);
         }
         return AllBoOrderItems;
+    }
+
+    public BO.OrderItem GetAnObject(Predicate<BO.OrderItem> myDelegate)
+    {
+        throw new NotImplementedException();
     }
 
     public BO.OrderItem GetById(int id, int orderId)

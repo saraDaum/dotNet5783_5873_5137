@@ -17,7 +17,7 @@ namespace BO
         /// <summary>
         /// Product barcode (identification number)
         /// </summary>
-        public int? Barcode { get; }
+        public int? Barcode { get; set; }
 
         /// <summary>
         /// Product name

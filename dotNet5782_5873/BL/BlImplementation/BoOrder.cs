@@ -39,9 +39,7 @@ internal class BoOrder : IBoOrder
     public void Delete(int ID)
     {
         dal.Order.Delete(ID);
-        //IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        // DO.Order DoOrder = mapper.Map<DO.Order>(ID);
-    }
+          }
 
     /// <summary>
     /// This function gets an ID and returns the match item.
