@@ -17,7 +17,7 @@ namespace BO
         /// <summary>
         /// Product barcode (identification number)
         /// </summary>
-        public int? Barcode { get; set; }
+        public int Barcode { get; set; }//It is not null. Product must have a barcode.
 
         /// <summary>
         /// Product name

@@ -1,6 +1,8 @@
 ﻿using BlApi;
 using BlImplementation;
 using BO;
+using DAL;
+using DalApi;
 using System;
 using System.Security.Cryptography.X509Certificates;
 
@@ -11,6 +13,7 @@ public class ApplicationBL
     public void Main(string[] args)
     {
         IBl blVar = new BL();
+        IDal dal = new DalList();//CHECK: Is it okay?
         int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For order menu enter 1, For orderitem menu enter 2, For Trackinorder menu enter 3, For product menu enter 4, For OrderForList menu enter 5, For cart menu enter 6, For  ProductItem menu enter 7 ");//להחליף את ההודעה למפורטת
         switch (choose)
         {
@@ -76,10 +79,10 @@ public class ApplicationBL
                     }
                     break;
                 case 4:
-                    blVar.Order.Update(order);
+                    blVar.Order.Update(myOrder);
                     break;
                 case 5:
-                    blVar.Order.Delete(order.ID);
+                    blVar.Order.Delete(myOrder.ID);
                     break;
 
                 default:
@@ -153,8 +156,8 @@ public class ApplicationBL
         }
 
 
-        
 
+        
         void OrderTracking()
         {
             int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For ChangeOrderStatus menu enter 1");
@@ -163,19 +166,19 @@ public class ApplicationBL
                 case 0:
                     return;
                 case 1:
-                    blVar.OrderTracking.ChangeOrderStatus(new BO.OrderTracking(), BO.OrderStatus.Payed);//הכנסתי אי די של ההזמנה-1 ואת הסטטוס של ההזמנה-0
+                   // blVar.OrderTracking.ChangeOrderStatus(, 0);//הכנסתי אי די של ההזמנה-1 ואת הסטטוס של ההזמנה-0
                     break;
             }
         }
 
         void Product()
         {
-            Product product = new Product();
-            product.Barcode = 10000001;
-            product.Category = (DO.Category)2;
-            product.ProductName = "blush sacara";
-            product.ProductPrice = 30;
-            product.AmountInStock = 13;
+            Product myProduct = new Product();
+            myProduct.Barcode = 10000001;
+            myProduct.Category = (DO.Category)2;
+            myProduct.ProductName = "blush sacara";
+            myProduct.ProductPrice = 30;
+            myProduct.AmountInStock = 13;
 
 
             int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For add menu enter 1, For GetAnObject menu enter 2, For Get menu enter 3, For Update menu enter 4, For Delete menu enter 5");
@@ -184,7 +187,7 @@ public class ApplicationBL
                 case 0:
                     return;
                 case 1:
-                    blVar.Product.Add(product);
+                    blVar.Product.Add(myProduct);
                     break;
                 case 2:
                     Product product1 = blVar.Product.GetAnObject(e => e.Barcode == 10000001);
@@ -203,10 +206,10 @@ public class ApplicationBL
 
                     break;
                 case 4:
-                    blVar.Product.Update(product);
+                    blVar.Product.Update(myProduct);
                     break;
                 case 5:
-                    blVar.Product.Delete((int)product.Barcode);
+                    blVar.Product.Delete((int)myProduct.Barcode);
                     break;
                 default:
                     break;

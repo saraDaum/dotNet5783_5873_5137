@@ -12,6 +12,9 @@ internal class BoProductItem:IBoProductItem
 {
     private IDal dal= new DalList();
 
+    //We don't implement it yet because we don't know what to do.
+    //We wait to see the rest of the instructions.
+
     public int Add(BO.ProductItem entity)
     {
         throw new NotImplementedException();

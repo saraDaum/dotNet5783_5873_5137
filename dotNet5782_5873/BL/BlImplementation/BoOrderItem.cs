@@ -30,7 +30,15 @@ internal class BoOrderItem : IBoOrderItem
 
     public IEnumerable<BO.OrderItem>? Get(Func<BO.OrderItem, bool>? deligate)
     {
-        throw new NotImplementedException();
+        IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
+        IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
+        IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.Get(item=>item.autoID==item.autoID); //Get the DO.Order list
+        foreach (OrderItem currentOrderItem in AllDOOrderItems)
+        {
+            BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
+            AllBoOrderItems.Append(myOrderItem);
+        }
+        return AllBoOrderItems;
     }
 
     public IEnumerable<BO.OrderItem> GetAll()
@@ -54,7 +62,7 @@ internal class BoOrderItem : IBoOrderItem
     public BO.OrderItem GetById(int id, int orderId)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.GetById(id));
+        BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.Get(item=>item.autoID==id));
         return myOrderItem;
     }
 

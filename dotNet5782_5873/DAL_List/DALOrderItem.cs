@@ -239,17 +239,7 @@ internal class DALOrderItem : IOrderItem
         }
     }
 
-    public OrderItem? GetById(int orderID, int productID)
-    {
-        int index = OrderItemList.FindIndex(o => o.OrderID == orderID && o.ProductID == productID);
-        if (index != -1)
-        {
-            return OrderItemList[index];
-        }
-        throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM");
-       
-    }
-
+   
     public OrderItem GetByID(int orderID, int productID)
     {
        int index= OrderItemList.FindIndex(item=> item.OrderID==orderID&& item.ProductID==productID);

@@ -108,7 +108,7 @@ internal class DALProduct : DalApi.IProduct
     /// This function restart the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
-    public  int MakeABarcode()
+    public int MakeABarcode()
     {
         int  barcode = my_rnd.Next(10000000, 100000000);
         bool checkarcode = is_Barkode_OK(barcode);

@@ -18,6 +18,24 @@ internal class BoOrder : IBoOrder
 
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
+    IEnumerable<BO.Order> AllBoOrders = new List<BO.Order>();//A new list of BO.Order
+
+    private IEnumerable<BO.Order> getOrderslist()
+    {
+        AllBoOrders.DefaultIfEmpty();
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        IEnumerable<DO.Order>? AllDoOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
+        if (AllDoOrders.Count() > 0)
+        {
+            foreach (DO.Order order in AllDoOrders)
+            {
+                BO.Order myOrder = mapper.Map<BO.Order>(order);//Mapper
+                AllBoOrders.Append(myOrder);
+            }
+        }
+        return AllBoOrders;
+    }
+
     /// <summary>
     /// This function gets an order object and create a new one.
     /// </summary>
@@ -39,7 +57,7 @@ internal class BoOrder : IBoOrder
     public void Delete(int ID)
     {
         dal.Order.Delete(ID);
-          }
+    }
 
     /// <summary>
     /// This function gets an ID and returns the match item.
@@ -49,11 +67,9 @@ internal class BoOrder : IBoOrder
     public BO.Order GetById(int id)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        IEnumerable<DO.Order>? allDoOrder = dal.Order.Get(item=> item.ID==item.ID);//Stupid condition because I want it return all list
+        IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID ==id);
         BO.Order myBoOrder = new BO.Order();
-        DO.Order myOrder = allDoOrder.First(order => order.ID == id);
-        //Can't check if it's NULL
-        myBoOrder = mapper.Map<BO.Order>(myOrder);
+        myBoOrder = mapper.Map<BO.Order>(DoOrder);
         return myBoOrder;
     }
 
@@ -74,18 +90,7 @@ internal class BoOrder : IBoOrder
     /// <returns></returns>
     public IEnumerable<BO.Order> GetAll()
     {
-        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        IEnumerable<BO.Order> AllBoOrders = new List<BO.Order>();//A new list of BO.Order
-        IEnumerable<DO.Order>? AllDOOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
-        if (AllDOOrders.Count() > 0)
-        {
-            foreach (DO.Order order in AllDOOrders)
-            {
-                BO.Order myOrder = mapper.Map<BO.Order>(order);//Mapper
-                AllBoOrders.Append(myOrder);
-            }
-        }
-        return AllBoOrders;
+        return AllBoOrders=getOrderslist();
     }
 
     public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
@@ -95,6 +100,29 @@ internal class BoOrder : IBoOrder
 
     public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
     {
-        throw new NotImplementedException();
+
+        AllBoOrders = getOrderslist();
+        IEnumerable<DO.Order>? AllDoOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
+        if (AllDoOrders.Count() > 0)
+        {
+
+        }
+        return AllBoOrders;
     }
+
+    //
+    public IEnumerable<OrderItem>? Get(Func<OrderItem, bool>? deligate)
+    {
+        if (deligate != null)
+        {
+            return OrderItemList.Where(deligate);
+        }
+        return OrderItemList;
+    }
+
+    public OrderItem GetAnObject(Predicate<OrderItem> myDelegate)
+    {
+        return OrderItemList.Find(myDelegate);
+    }
+    //
 }
