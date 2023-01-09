@@ -28,17 +28,12 @@ internal class BoProduct:IBoProduct
         dal.Product.Delete(id);
     }
 
-    public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<Product> GetAll()
     {
         throw new NotImplementedException();
     }
 
-    public Product GetAnObject(Predicate<Product> myDelegate)
+    public Product GetById(int id)
     {
         throw new NotImplementedException();
     }

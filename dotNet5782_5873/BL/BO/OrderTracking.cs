@@ -10,7 +10,7 @@ namespace BO
     /// <summary>
     /// OrderTracking class (a logical entity)
     /// </summary>
-    public class OrderTracking
+    public class OrderTracking 
     {
         /// <summary>
         /// OrderTracking ID

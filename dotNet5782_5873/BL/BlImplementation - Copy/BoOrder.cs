@@ -8,7 +8,7 @@ using DalApi;
 using AutoMapper;
 using DAL;
 using DO;
-using System.Reflection.Metadata.Ecma335;
+
 
 namespace BlImplementation;
 
@@ -39,7 +39,9 @@ internal class BoOrder : IBoOrder
     public void Delete(int ID)
     {
         dal.Order.Delete(ID);
-          }
+        //IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        // DO.Order DoOrder = mapper.Map<DO.Order>(ID);
+    }
 
     /// <summary>
     /// This function gets an ID and returns the match item.
@@ -49,7 +51,7 @@ internal class BoOrder : IBoOrder
     public BO.Order GetById(int id)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        IEnumerable<DO.Order>? allDoOrder = dal.Order.Get(item=> item.ID==item.ID);//Stupid condition because I want it return all list
+        IEnumerable<DO.Order> allDoOrder = dal.Order.GetAll();
         BO.Order myBoOrder = new BO.Order();
         DO.Order myOrder = allDoOrder.First(order => order.ID == id);
         //Can't check if it's NULL
@@ -76,25 +78,13 @@ internal class BoOrder : IBoOrder
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
         IEnumerable<BO.Order> AllBoOrders = new List<BO.Order>();//A new list of BO.Order
-        IEnumerable<DO.Order>? AllDOOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
-        if (AllDOOrders.Count() > 0)
+        IEnumerable<DO.Order> AllDOOrders = dal.Order.GetAll(); //Get the DO.Order list
+        foreach (DO.Order order in AllDOOrders)
         {
-            foreach (DO.Order order in AllDOOrders)
-            {
-                BO.Order myOrder = mapper.Map<BO.Order>(order);//Mapper
-                AllBoOrders.Append(myOrder);
-            }
+            BO.Order myOrder = mapper.Map<BO.Order>(order);//Mapper
+            AllBoOrders.Append(myOrder);
         }
         return AllBoOrders;
     }
 
-    public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
-    {
-        throw new NotImplementedException();
-    }
 }

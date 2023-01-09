@@ -7,6 +7,7 @@ using BlApi;
 using BO;
 using DAL;
 using DalApi;
+using DO;
 
 namespace BlImplementation;
 
@@ -14,28 +15,21 @@ internal class BoOrderTracking:IBoOrderTracking
 {
     private IDal dal= new DalList();
 
-    public int Add(OrderTracking entity)
+    public bool ChangeOrderStatus(BO.OrderTracking order ,BO.OrderStatus status)
     {
-        throw new NotImplementedException();
-    }
+        order.Status = status;
+       
+        //{
+        //    if (item.orderId == orderId)//נמצא את ההזמנה שהאי די שלה נשלח
+        //    {
+        //        Console.WriteLine(item);
 
-    public void Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<OrderTracking> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    public OrderTracking GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Update(OrderTracking entity)
-    {
-        throw new NotImplementedException();
+        //        return true;
+        //    } 
+        }
+                                      
+                                      //נשנה את הסטטוס שלה
+        //נחזיר אם הצלחנו
+        return true;
     }
 }

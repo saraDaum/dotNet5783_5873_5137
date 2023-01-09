@@ -11,33 +11,36 @@ public class ApplicationBL
     public void Main(string[] args)
     {
         IBl blVar = new BL();
-        int choose = ReadInt("Choose the Entity you want");//להחליף את ההודעה למפורטת
+        int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For order menu enter 1, For orderitem menu enter 2, For Trackinorder menu enter 3, For product menu enter 4, For OrderForList menu enter 5, For cart menu enter 6, For  ProductItem menu enter 7 ");//להחליף את ההודעה למפורטת
         switch (choose)
         {
             case 0: return;
             case 1:
-                cart();
+                order();
+
                 break;
             case 2:
-                order();
-                break;
-            case 3:
-                OrderForList();
-                break;  
-            case 4:
                 OrderItem();
                 break;
-            case 5:
+            case 3:
                 OrderTracking();
+
+                break;
+            case 4:
+                Product();
+                break;
+            case 5:
+                OrderForList();
                 break;
             case 6:
-                Product();
+                cart();
                 break;
             case 7:
                 ProductItem();
                 break;
-           
-            default: return;
+
+            default:
+                break;
                 //וכן הלאה....
         }
         void order()
@@ -48,7 +51,7 @@ public class ApplicationBL
             //order.CustomerAddress = "123345";
             //order.CustomerName = "dtgfdgtf";
 
-            int choose = ReadInt("הודעה שמפרטת מה להקיש");
+            int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For add menu enter 1, For GetAnObject menu enter 2, For Get menu enter 3, For Update menu enter 4, For Delete menu enter 5");
             switch (choose)
             {
                 case 0:
@@ -57,7 +60,27 @@ public class ApplicationBL
                     blVar.Order.Add(myOrder);
                     break;
                 case 2:
-                    blVar.Order.GetAnObject();
+                    Order order1 = blVar.Order.GetAnObject(e => e.GetHashCode() == e.GetHashCode());//מחזיר תמיד אמת
+                    Console.WriteLine("the return obj is: ", order1);
+                    break;
+                case 3:
+                    IEnumerable<Order>? orders = blVar.Order.Get(e => e.GetHashCode() == e.GetHashCode());
+                    if (orders == null)
+                        Console.WriteLine("the list is empty");
+                    else
+                    {
+                        foreach (var item in orders)
+                        {
+                            Console.WriteLine(item);
+                        }
+                    }
+                    break;
+                case 4:
+                    blVar.Order.Update(order);
+                    break;
+                case 5:
+                    blVar.Order.Delete(order.ID);
+                    break;
 
                 default:
                     break;
@@ -67,48 +90,145 @@ public class ApplicationBL
 
         void OrderForList()
         {
-            int choose = ReadInt("הודעה שמפרטת מה להקיש");
+            Console.WriteLine("This function doesn't implemented yet.");
+            //int choose = ReadInt("הודעה שמפרטת מה להקיש");
+            //switch (choose)
+            //{
+            //    case 0:
+            //        return;
+            //    case 1:
+            //        blVar.OrderForList.Add();
+            //        break;
+
+
+            //}
+        }
+
+        void OrderItem()
+        {
+            OrderItem orderItem = new OrderItem();
+            orderItem.Amount = 12;
+            orderItem.ProductPrice = 13.4;
+            orderItem.autoID = 1;
+            orderItem.OrderID = 1;
+            orderItem.ProductID = 1;
+
+            int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For add menu enter 1, For GetAnObject menu enter 2, For Get menu enter 3, For Update menu enter 4, For Delete menu enter 5");
+
             switch (choose)
             {
+                case 0:
+                    return;
+                case (1):
+                    blVar.OrderItem.Add(orderItem);
 
+                    break;
+                case (2):
+                    OrderItem orderItem1 = blVar.OrderItem.GetAnObject(e => e.GetHashCode() == e.GetHashCode());
+                    Console.WriteLine("the return obj is: ", orderItem1);
+                    break;
+                case 3:
+                    IEnumerable<OrderItem>? orderItems = blVar.OrderItem.Get(e => e.GetHashCode() == e.GetHashCode());
+                    if (orderItems == null)
+                        Console.WriteLine("the list is empty");
+                    else
+                    {
+                        foreach (var item in orderItems)
+                        {
+                            Console.WriteLine(item);
+                        }
+                    }
 
+                    break;
+                case 4:
+                    blVar.OrderItem.Update(orderItem);
+                    break;
+                case (5):
+                    blVar.OrderItem.Delete(orderItem.OrderID);
+                    break;
 
+                default:
+                    break;
             }
         }
 
-         void OrderItem()
+
+        
+
+        void OrderTracking()
         {
-            throw new NotImplementedException();
+            int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For ChangeOrderStatus menu enter 1");
+            switch (choose)
+            {
+                case 0:
+                    return;
+                case 1:
+                    blVar.OrderTracking.ChangeOrderStatus(new BO.OrderTracking(), BO.OrderStatus.Payed);//הכנסתי אי די של ההזמנה-1 ואת הסטטוס של ההזמנה-0
+                    break;
+            }
+        }
+
+        void Product()
+        {
+            Product product = new Product();
+            product.Barcode = 10000001;
+            product.Category = (DO.Category)2;
+            product.ProductName = "blush sacara";
+            product.ProductPrice = 30;
+            product.AmountInStock = 13;
+
+
+            int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For add menu enter 1, For GetAnObject menu enter 2, For Get menu enter 3, For Update menu enter 4, For Delete menu enter 5");
+            switch (choose)
+            {
+                case 0:
+                    return;
+                case 1:
+                    blVar.Product.Add(product);
+                    break;
+                case 2:
+                    Product product1 = blVar.Product.GetAnObject(e => e.Barcode == 10000001);
+                    Console.WriteLine(product1);
+
+                    break;
+                case 3:
+                    IEnumerable<Product>? products = blVar.Product.Get(e => e.GetHashCode() == e.GetHashCode());
+                    if (products == null)
+                        Console.WriteLine("No itemes in product");
+                    else
+                        foreach (var item in products)
+                        {
+                            Console.WriteLine(item);
+                        }
+
+                    break;
+                case 4:
+                    blVar.Product.Update(product);
+                    break;
+                case 5:
+                    blVar.Product.Delete((int)product.Barcode);
+                    break;
+                default:
+                    break;
+            }
         }
 
 
-
-         void OrderTracking()
+        void ProductItem()
         {
-            throw new NotImplementedException();
+            Console.WriteLine("This function doesn't implemented yet.");
+        }
+        void cart()
+        {
+            Console.WriteLine("This function doesn't implemented yet.");
         }
 
 
-         void Product()
-        {
-            throw new NotImplementedException();
-        }
-
-
-         void ProductItem()
-        {
-            throw new NotImplementedException();
-        }
     }
 
     
 
-    private  void cart()
-    {
-
-    }
-
-  private int ReadInt(string comment)
+    private int ReadInt(string comment)
     {
         Console.WriteLine(comment);
         string? s = Console.ReadLine();
