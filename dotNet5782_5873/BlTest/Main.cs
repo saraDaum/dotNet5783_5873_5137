@@ -42,11 +42,11 @@ public class ApplicationBL
         }
         void order()
         {
-            Order order = new Order();
-            order.OrderDate = DateTime.Now;
-            order.ShipDate = DateTime.Now;
-            order.CustomerAddress = "123345";
-            order.CustomerName = "dtgfdgtf";
+            Order myOrder = new Order();
+            //order.OrderDate = DateTime.Now;
+            //order.ShipDate = DateTime.Now;
+            //order.CustomerAddress = "123345";
+            //order.CustomerName = "dtgfdgtf";
 
             int choose = ReadInt("הודעה שמפרטת מה להקיש");
             switch (choose)
@@ -54,10 +54,10 @@ public class ApplicationBL
                 case 0:
                     return;
                 case 1:
-                    blVar.Order.Add(order);
+                    blVar.Order.Add(myOrder);
                     break;
                 case 2:
-                    blVar.Order.GetAnObject()
+                    blVar.Order.GetAnObject();
 
                 default:
                     break;
