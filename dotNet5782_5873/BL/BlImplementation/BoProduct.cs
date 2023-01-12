@@ -33,10 +33,6 @@ internal class BoProduct:IBoProduct
         throw new NotImplementedException();
     }
 
-    public IEnumerable<Product> GetAll()
-    {
-        throw new NotImplementedException();
-    }
 
     public Product GetAnObject(Predicate<Product> myDelegate)
     {
