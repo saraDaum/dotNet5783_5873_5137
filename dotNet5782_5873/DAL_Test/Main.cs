@@ -113,7 +113,8 @@ namespace DAL_Test
                             case (1):
                                 {
                                    
-                                    DalListVar.Order.Add(myOrder);
+                                   int i= DalListVar.Order.Add(myOrder);
+                                    Console.WriteLine(i);
                                     break;
                                 }
 
@@ -255,7 +256,7 @@ namespace DAL_Test
             catch(EntityNotFoundException ex)
             {
                 Console.WriteLine("EntityNotFoundException");
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ErrorMessage);
             }
             catch(InvalidEntityException ex) {
                 Console.WriteLine("InvalidEntityException");
