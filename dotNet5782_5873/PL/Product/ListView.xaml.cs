@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,14 +20,17 @@ namespace PL.Product
     /// </summary>
     public partial class ListView : Window
     {
-        public ListView()
+        public ListView(IBl bl)
         {
             InitializeComponent();
+            Selector.ItemsSource= Enum.GetValues(typeof(DO.Category));
+
+         
         }
 
         private void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+           
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
