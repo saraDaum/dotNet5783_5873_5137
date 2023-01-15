@@ -76,10 +76,10 @@ public class ApplicationBL
                     }
                     break;
                 case 4:
-                    blVar.Order.Update(order);
+                    blVar.Order.Update(myOrder);
                     break;
                 case 5:
-                    blVar.Order.Delete(order.ID);
+                    blVar.Order.Delete(myOrder.ID);
                     break;
 
                 default:
