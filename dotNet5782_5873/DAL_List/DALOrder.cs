@@ -3,6 +3,7 @@ using DO;
 using Microsoft.VisualBasic;
 using System;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using static DAL.DataSource;
 
@@ -19,169 +20,185 @@ internal class DALOrder : IOrder
     /// <exception cref="Exception"></exception>
     public int Add(Order newOrder)
     {
-        if (newOrder.ID != 0)
+        try
         {
-            if (!OrderList.Contains(newOrder))
+            if (newOrder.ID != 0)
             {
-                OrderList.Insert(0, newOrder);
-                Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
-                return newOrder.ID;
+                int index = OrderList.IndexOf(newOrder);
+                //if (!OrderList.Contains(newOrder))
+                if (index == -1)
+                {
+                    OrderList.Insert(0, newOrder);
+                    Console.WriteLine("The order entered to database successfully.\nThe order number of the item is: ");
+                    return newOrder.ID;
+                }
+                else
+                {
+                    throw new DuplicateIdException(newOrder.ID, "Add function :: DAL_ORDER");
+
+                }
             }
             else
             {
-                throw new DuplicateIdException(newOrder.ID, "Add function :: DAL_ORDER");
-
+                throw new InvalidEntityException("Add function :: DAL_ORDER");
             }
         }
-        else
+        catch (Exception ex)
         {
-            throw new InvalidEntityException("Add function :: DAL_ORDER");
+            Console.WriteLine(ex.Message);
         }
         return 0;
     }
 
     public void Add()
     {
-        string? name = "", email = "", address = "";
-        Order newOrder = new Order();
-        do
-        {
-            Console.WriteLine("Please enter your name");
-            name = Console.ReadLine();
-        }
-        while (name == "");
-        do
-        {
-            Console.WriteLine("Please enter your email address");
-            email = Console.ReadLine();
-            while (!email.EndsWith("@gmail.com"))
+            string? name = "", email = "", address = "";
+            Order newOrder = new Order();
+            do
             {
-                Console.WriteLine("You don't enter a correct email.\nPlease enter a valid email address");
+                Console.WriteLine("Please enter your name");
+                name = Console.ReadLine();
+            }
+            while (name == "");
+            do
+            {
+                Console.WriteLine("Please enter your email address");
                 email = Console.ReadLine();
+                while (!email.EndsWith("@gmail.com"))
+                {
+                    Console.WriteLine("You don't enter a correct email.\nPlease enter a valid email address");
+                    email = Console.ReadLine();
+                }
+            }
+            while (email == "");
+            do
+            {
+                Console.WriteLine("Please enter your living address");
+                address = Console.ReadLine();
+            }
+            while (address == "");
+            Console.WriteLine("O.K. All details are in.\nPlease wait.");
+            newOrder.CustomerName = name;
+            newOrder.CustomerAddress = address;
+            newOrder.CustomerEmail = email;
+            Add(newOrder);
+
+}
+
+
+/// <summary>list
+/// Update order in order's array
+/// </summary>
+/// <param name="newOne"></param>
+/// <returns></returns>
+/// <exception cref="Exception"></exception>
+public void Update(Order newOne)
+{
+        try
+        {
+            int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOne.ID);
+            if (index == -1)
+            {
+                throw new EntityNotFoundException("Update function :: DAL_ORDER");
+            }
+            if (index != -1)
+            {
+                OrderList[index] = newOne;
+
             }
         }
-        while (email == "");
-        do
+        catch(Exception ex)
         {
-            Console.WriteLine("Please enter your living address");
-            address = Console.ReadLine();
+            Console.WriteLine(ex.Message);  
         }
-        while (address == "");
-        Console.WriteLine("O.K. All details are in.\nPlease wait.");
-        newOrder.CustomerName = name;
-        newOrder.CustomerAddress = address;
-        newOrder.CustomerEmail = email;
-        Add(newOrder);
+}
 
-    }
-
-
-    /// <summary>list
-    /// Update order in order's array
-    /// </summary>
-    /// <param name="newOne"></param>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
-    public void Update(Order newOne)
+/// <summary>list
+/// Delete an Order object
+/// </summary>
+/// <param name="id"></param>
+/// <exception cref="Exception"></exception>
+public void Delete()
+{
+    Console.WriteLine("Do you know your order number? Enter y or n.");
+    string? ans = Console.ReadLine();
+    if (ans == "n" || ans == "N")
     {
-        int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOne.ID);
-        if (index == -1)
-        {
-            throw new EntityNotFoundException("Update function :: DAL_ORDER");
-        }
-        if (index != -1)
-        {
-            OrderList[index] = newOne;
-
-        }
+        OrderList.ForEach(MyOrder => print(MyOrder));
     }
-
-    /// <summary>list
-    /// Delete an Order object
-    /// </summary>
-    /// <param name="id"></param>
-    /// <exception cref="Exception"></exception>
-    public void Delete()
+    Console.WriteLine("Please enter your order number.");
+    int orderNumber;
+    string? orderNumStr = Console.ReadLine();
+    bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
+    if (TryParseSucceeded)
     {
-        Console.WriteLine("Do you know your order number? Enter y or n.");
-        string? ans = Console.ReadLine();
-        if (ans == "n" || ans == "N")
-        {
-            OrderList.ForEach(MyOrder => print(MyOrder));
-        }
-        Console.WriteLine("Please enter your order number.");
-        int orderNumber;
-        string? orderNumStr = Console.ReadLine();
-        bool TryParseSucceeded = int.TryParse(orderNumStr, out orderNumber);
-        if (TryParseSucceeded)
-        {
-            Delete(orderNumber);
-
-        }
+        Delete(orderNumber);
 
     }
 
-    public void Delete(int ID)
+}
+
+public void Delete(int ID)
+{
+    int index = OrderList.FindIndex(order => order.ID == ID);
+    if (index == -1)
     {
-        int index = OrderList.FindIndex(order => order.ID == ID);
-        if (index == -1)
-        {
-            throw new InvalidEntityException("Delete function :: DAL_ORDER");
-        }
-        if (index != -1)
-        {
-            OrderList.RemoveAt(index);
-            Console.WriteLine("The item has been successfully removed");
-
-        }
+        throw new InvalidEntityException("Delete function :: DAL_ORDER");
     }
-
-    public static void print(Order obj)
+    if (index != -1)
     {
-        Console.WriteLine(obj);
-    }
+        OrderList.RemoveAt(index);
+        Console.WriteLine("The item has been successfully removed");
 
-    public void PrintAll()
-    {
-        List<Order> orders = OrderList;
-        foreach (var item in orders)
-        {
-            Console.WriteLine(item);
-        }
     }
+}
 
-  
-    /// <summary>list
-    /// This function gets an Order object and print it's detail
-    /// </summary>
-    /// <param name="id"></param>
-    /// <exception cref="Exception"></exception>
-    public void ReadById(int id)
-    {
-        Console.WriteLine("Please enter your order number");
-        bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderNumber);
-        if (TryParseSucceeded)
-        {
-            Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == id);
-            Console.WriteLine(MyOrder);
-        }
-        else
-        {
-            throw new FailedToConvertException("ReadById :: DAL_ORDER");
-        }
-    }
+public static void print(Order obj)
+{
+    Console.WriteLine(obj);
+}
 
-    public IEnumerable<Order> Get(Func<Order,bool>? myDeligate)
+public void PrintAll()
+{
+    List<Order> orders = OrderList;
+    foreach (var item in orders)
     {
-        if (myDeligate != null)
-        {
-           return OrderList.Where(myDeligate);
-        }
-        return OrderList;
+        Console.WriteLine(item);
     }
+}
 
-    public Order GetAnObject(Predicate<Order> myDelegate)
+
+/// <summary>list
+/// This function gets an Order object and print it's detail
+/// </summary>
+/// <param name="id"></param>
+/// <exception cref="Exception"></exception>
+public void ReadById(int id)
+{
+    Console.WriteLine("Please enter your order number");
+    bool TryParseSucceeded = int.TryParse(Console.ReadLine(), out int orderNumber);
+    if (TryParseSucceeded)
     {
-        return OrderList.Find(myDelegate);
+        Order MyOrder = OrderList.Find(MyOrder => MyOrder.ID == id);
+        Console.WriteLine(MyOrder);
     }
+    else
+    {
+        throw new FailedToConvertException("ReadById :: DAL_ORDER");
+    }
+}
+
+public IEnumerable<Order> Get(Func<Order, bool>? myDeligate)
+{
+    if (myDeligate != null)
+    {
+        return OrderList.Where(myDeligate);
+    }
+    return OrderList;
+}
+
+public Order GetAnObject(Predicate<Order> myDelegate)
+{
+    return OrderList.Find(myDelegate);
+}
 }

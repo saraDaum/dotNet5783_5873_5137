@@ -11,5 +11,5 @@ public interface IOrderItem:ICrud<OrderItem>
     /// </summary>
     void Delete();
     void Update();
-    
+    IEnumerable<OrderItem> GetAll();
 }

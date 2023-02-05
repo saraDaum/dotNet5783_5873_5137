@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BI", "BI", "{A9CB83AC-4267-
 		IBI.cs = IBI.cs
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL", "PL\PL.csproj", "{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

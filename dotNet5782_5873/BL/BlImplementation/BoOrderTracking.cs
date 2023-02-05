@@ -11,25 +11,23 @@ using DO;
 
 namespace BlImplementation;
 
-internal class BoOrderTracking:IBoOrderTracking
+internal class BoOrderTracking : IBoOrderTracking
 {
-    private IDal dal= new DalList();
+    private IDal dal = new DalList();
 
-    public bool ChangeOrderStatus(BO.OrderTracking order ,BO.OrderStatus status)
+    //We don't implement it yet because we don't know what to do.
+    //We wait to see the rest of the instructions.
+
+
+    //Mirymi, I don't know what do you want to do here!!!
+    //check input!!
+    public bool ChangeOrderStatus(BO.OrderTracking order, BO.OrderStatus status)
     {
         order.Status = status;
-       
-        //{
-        //    if (item.orderId == orderId)//נמצא את ההזמנה שהאי די שלה נשלח
-        //    {
-        //        Console.WriteLine(item);
-
-        //        return true;
-        //    } 
-        }
-                                      
-                                      //נשנה את הסטטוס שלה
-        //נחזיר אם הצלחנו
-        return true;
+        if (order.Status == status)
+            return true;
+        else
+            return false;
     }
+
 }

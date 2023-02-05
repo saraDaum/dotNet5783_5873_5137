@@ -18,11 +18,11 @@ namespace BlImplementation
 
         public IBoOrderItem OrderItem => new BoOrderItem();
 
-        public IBoOrderTracking OrderTracking => throw new NotImplementedException();
+        public IBoOrderTracking OrderTracking => new BoOrderTracking();
 
-        public IBoProduct Product => throw new NotImplementedException();
+        public IBoProduct Product =>new BoProduct();
 
-        public IBoProductItem ProductItem => throw new NotImplementedException();
+        public IBoProductItem ProductItem =>new BoProductItem();
     }
 }
 

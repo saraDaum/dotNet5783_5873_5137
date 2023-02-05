@@ -1,4 +1,6 @@
-﻿namespace DalApi;
+﻿using System.Runtime.CompilerServices;
+
+namespace DalApi;
 /// <summary>
 /// This exception will be thrown if an entity not find
 /// </summary>
@@ -18,7 +20,9 @@ public class EntityNotFoundException : Exception
     {
         ErrorMessage = message;
         Console.WriteLine("Exception: An error occurred in "+message);
+       
     }
+    
 }
 
 /// <summary>
