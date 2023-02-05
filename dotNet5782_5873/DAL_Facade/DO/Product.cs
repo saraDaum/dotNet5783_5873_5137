@@ -22,6 +22,15 @@ public struct Product
     public int InStock { get; set; }
     public int AmountInStock { get; set; }
 
+    public Product(int b, string n, Category c, double p, int i, int a)
+    {
+        Barcode = b;
+        ProductName = n;    
+        Category = c;
+        ProductPrice = p;
+        ProductPrice = i;
+        ProductPrice = a;
+    }
     public override string ToString() => $@"
     Product details:\n
     {nameof(Barcode)}- {ProductName}, 

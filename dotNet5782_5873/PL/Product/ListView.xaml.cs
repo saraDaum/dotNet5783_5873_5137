@@ -20,11 +20,14 @@ namespace PL.Product
     /// </summary>
     public partial class ListView : Window
     {
-        public ListView(IBl bl)
+        IBl? bl;
+        public ListView(IBl? bl)
         {
+            this.bl = bl;
             InitializeComponent();
             Selector.ItemsSource= Enum.GetValues(typeof(DO.Category));
-
+            ProductListview.ItemsSource = bl.Product.Get(item => item.Barcode == item.Barcode);
+               
          
         }
 
