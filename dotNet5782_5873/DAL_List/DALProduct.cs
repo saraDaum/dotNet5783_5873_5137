@@ -21,13 +21,19 @@ internal class DALProduct : DalApi.IProduct
     }
 
 
+    public List<Product> ReturnList()
+    {
+        return DataSource.ProductList;
+    }
+    
+
     /// <summary>list
     /// This function create a product object and enter it to the array.
     /// </summary>
     /// <returns></returns>
     public int Add()
     {
-        Category category = new Category();
+      /*  Category category = new Category();
         Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
         string AnsCategory = Console.ReadLine();
         switch (AnsCategory)
@@ -61,7 +67,7 @@ internal class DALProduct : DalApi.IProduct
                 }
             default:
                 break;
-        }
+        }*/
         Console.WriteLine("Please enter your ProductName ");
         string? AnsProductName = Console.ReadLine();
         Console.WriteLine("How much does the item cost? ");
@@ -74,7 +80,7 @@ internal class DALProduct : DalApi.IProduct
         {
             Barcode = MakeABarcode(),
             ProductName = AnsProductName,
-            Category = category,
+            Category = 0,
             ProductPrice = price,
             InStock = amount,
 
@@ -100,7 +106,7 @@ internal class DALProduct : DalApi.IProduct
         return newProduct.Barcode;
     }
 
-     Random my_rnd=new Random();
+    Random my_rnd = new Random();
 
     /// <summary>list
     /// This function restart the array in index "i" with a barcode.
@@ -108,7 +114,7 @@ internal class DALProduct : DalApi.IProduct
     /// <returns></returns>
     public int MakeABarcode()
     {
-        int  barcode = my_rnd.Next(10000000, 100000000);
+        int barcode = my_rnd.Next(10000000, 100000000);
         bool checkarcode = is_Barkode_OK(barcode);
         while (checkarcode)
         {
@@ -129,12 +135,12 @@ internal class DALProduct : DalApi.IProduct
         int index = DataSource.ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
         if (index == -1)
             return true;
-       
+
         return false;
     }
 
-    
-       
+
+
     //public void Delete()
     //{
     //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
@@ -321,28 +327,23 @@ internal class DALProduct : DalApi.IProduct
         }
     }
 
-   public List<Product> ReturnList()
-            {
-        List<Product> products = new List<Product>();   
-                foreach (var item in DataSource.ProductList)
-                {
-                    products.Add(item);
-                }
-                return products;
-            }
+    
     public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
     {
-       // DataSource.auto_Init_Products();
-       if (deligate != null)
+        // DataSource.auto_Init_Products();
+        if (deligate != null)
         {
-            List<Product> products = ReturnList();
-                
-          
-            IEnumerable<Product> p = products.Where(deligate);
+           // List<Product> products = ReturnList();
+
+
+            IEnumerable<Product>? p = DataSource.ProductList.Where(deligate);
             return p;
         }
-        return DataSource.ProductList;  
+        Console.WriteLine(DataSource.ProductList);
+        return DataSource.ProductList/*.Where(item=> item.Barcode!=null)*/; 
     }
+
+    
 
     public Product GetAnObject(Predicate<Product> myDelegate)
     {

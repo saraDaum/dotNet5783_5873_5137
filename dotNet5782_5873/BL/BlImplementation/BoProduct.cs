@@ -15,6 +15,7 @@ internal class BoProduct : IBoProduct
 {
     private IDal dal = new DalList();
     OurAutoMapper AutoMapper = new OurAutoMapper();
+    IEnumerable<DO.Product>DoProducts = new List<DO.Product>();
     public int Add(Product entity)
     {
         IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
@@ -35,9 +36,9 @@ internal class BoProduct : IBoProduct
             try
             {
                 IEnumerable<Product> BoProduct = new List<Product>();
-                IEnumerable<DO.Product>? DoProducts = dal.Product.Get(item => item.Barcode == item.Barcode);
+                IEnumerable<DO.Product>? DoProducts = dal.Product.Get(item => item.Barcode == item.Barcode);//Returns all products from DAL
                 IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-                foreach (DO.Product DoProduct in DoProducts)
+              foreach (DO.Product DoProduct in DoProducts)
                 {
                     Product MyProduct = mapper.Map<Product>(DoProduct);
                     BoProduct.Append(MyProduct);
@@ -58,9 +59,11 @@ internal class BoProduct : IBoProduct
         throw new NotImplementedException();
     }
 
-    public void Update(Product entity)
+    public void Update(Product MyBoProduct)
     {
-        throw new NotImplementedException();
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        DO.Product DoProduct = mapper.Map<DO.Product>(MyBoProduct);
+        dal.Product.Update(DoProduct);
     }
 }
 
