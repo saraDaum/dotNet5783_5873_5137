@@ -266,6 +266,11 @@ internal class DALOrderItem : IOrderItem
     {
         return OrderItemList.Find(myDelegate);
     }
+
+    public IEnumerable<OrderItem> GetAll()
+    {
+        throw new NotImplementedException();
+    }
 }
 
 

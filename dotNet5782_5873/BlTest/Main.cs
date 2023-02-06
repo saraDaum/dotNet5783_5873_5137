@@ -60,7 +60,8 @@ public class ApplicationBL
                 case 0:
                     return;
                 case 1:
-                    blVar.Order.Add(myOrder);
+                    int i = blVar.Order.Add(myOrder);
+                    Console.WriteLine("Item entered " + i);
                     break;
                 case 2:
                     Order order1 = blVar.Order.GetAnObject(e => e.GetHashCode() == e.GetHashCode());//מחזיר תמיד אמת
@@ -123,8 +124,8 @@ public class ApplicationBL
                 case 0:
                     return;
                 case (1):
-                    blVar.OrderItem.Add(orderItem);
-
+                    int i = blVar.OrderItem.Add(orderItem);
+                    Console.WriteLine("Item entered " + i);
                     break;
                 case (2):
                     OrderItem orderItem1 = blVar.OrderItem.GetAnObject(e => e.GetHashCode() == e.GetHashCode());
@@ -157,7 +158,7 @@ public class ApplicationBL
 
 
 
-        
+
         void OrderTracking()
         {
             int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For ChangeOrderStatus menu enter 1");
@@ -166,7 +167,7 @@ public class ApplicationBL
                 case 0:
                     return;
                 case 1:
-                   // blVar.OrderTracking.ChangeOrderStatus(, 0);//הכנסתי אי די של ההזמנה-1 ואת הסטטוס של ההזמנה-0
+                    // blVar.OrderTracking.ChangeOrderStatus(, 0);//הכנסתי אי די של ההזמנה-1 ואת הסטטוס של ההזמנה-0
                     break;
             }
         }
@@ -187,7 +188,8 @@ public class ApplicationBL
                 case 0:
                     return;
                 case 1:
-                    blVar.Product.Add(myProduct);
+                    int i = blVar.Product.Add(myProduct);
+                    Console.WriteLine("Item entered " + i);
                     break;
                 case 2:
                     Product product1 = blVar.Product.GetAnObject(e => e.Barcode == 10000001);
@@ -229,7 +231,7 @@ public class ApplicationBL
 
     }
 
-    
+
 
     private int ReadInt(string comment)
     {

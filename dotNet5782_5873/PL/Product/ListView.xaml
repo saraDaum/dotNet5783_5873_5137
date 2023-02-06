@@ -6,32 +6,32 @@
         xmlns:local="clr-namespace:PL.Product"
         mc:Ignorable="d"
         Title="ListView" Height="450" Width="800">
-    <Grid>
-        <Grid Background="#FFE1E6EC" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40*"/>
-                <RowDefinition Height="500*"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+    <Grid Name="MainGrid" Width="auto"  Height="auto">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="500*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <StackPanel Grid.ColumnSpan="3"/>
-            <Grid Name="UpGrid" Height="auto" Width="auto" Background="#FF162B5D">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
-            <ComboBox Name="Selector" SelectionChanged="Selector_SelectionChanged" Margin="0,108,0,262" Grid.Row="1" Background="#FFE0DEDE"  >
-                <Label Content="Label" Grid.Column="0"/>
-            </ComboBox>
-            <ListView Grid.Row="1" x:Name="ProductListview" d:ItemsSource="{d:SampleData ItemCount=5}" Width="900" Height="500" SelectionChanged="ListView_SelectionChanged">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
+        <Grid  Grid.Row="0" Name="UpGrid" Height="auto" Width="auto" Background="#FF162B5D" Margin="0,0,0,379">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox Name="Selector" SelectionChanged="Selector_SelectionChanged" Margin="171,17,24,-45"  Background="Aqua" Grid.Column="1" />
+            <Label Name="SelectorLabel" Content="Select items" Margin="14,17,386,-41" Background="Bisque" Grid.ColumnSpan="2"/>
+
         </Grid>
+
+        <ListView Grid.Row="1" x:Name="ProductListview" SelectionChanged="ListView_SelectionChanged" Margin="0,23,0,0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
 
     </Grid>
 </Window>

@@ -9,6 +9,7 @@ using AutoMapper;
 using DAL;
 using DO;
 using System.Reflection.Metadata.Ecma335;
+using BO;
 
 namespace BlImplementation;
 
@@ -19,6 +20,7 @@ internal class BoOrder : IBoOrder
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
     IEnumerable<BO.Order> AllBoOrders = new List<BO.Order>();//A new list of BO.Order
+ 
 
     private IEnumerable<BO.Order> getOrderslist()
     {
@@ -98,7 +100,7 @@ internal class BoOrder : IBoOrder
         throw new NotImplementedException();
     }
 
-    public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
+  /*  public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
     {
 
         AllBoOrders = getOrderslist();
@@ -108,21 +110,22 @@ internal class BoOrder : IBoOrder
 
         }
         return AllBoOrders;
-    }
+    }*/
 
     //
-    public IEnumerable<OrderItem>? Get(Func<OrderItem, bool>? deligate)
+    public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
     {
         if (deligate != null)
         {
-            return OrderItemList.Where(deligate);
+            IEnumerable<BO.Order> orders = getOrderslist();
+             return orders.Where(deligate); 
         }
-        return OrderItemList;
+        return null;
     }
 
-    public OrderItem GetAnObject(Predicate<OrderItem> myDelegate)
+    /*public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
     {
-        return OrderItemList.Find(myDelegate);
-    }
+        return OrderList.Find(myDelegate);
+    }*/
     //
 }

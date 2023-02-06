@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BlApi;
+using BlImplementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,17 +13,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+ 
+namespace PL.Product;
 
-namespace PL.Product
-{
-    /// <summary>
-    /// Interaction logic for ProductWindow.xaml
-    /// </summary>
-    public partial class ProductWindow : Window
+
+/// <summary>
+/// Interaction logic for ProductWindow.xaml
+/// </summary>
+public partial class ProductWindow : Window
+{ 
+    private BlApi.IBl bl = new BL();
+    public ProductWindow()
     {
-        public ProductWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

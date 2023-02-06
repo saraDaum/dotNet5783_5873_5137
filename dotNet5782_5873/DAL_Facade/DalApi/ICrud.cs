@@ -31,7 +31,7 @@ public interface ICrud<T>
    void Delete(int id);
 
     /// <summary>
-    /// This function get a deligate and return the objects that match to the condition.
+    /// This function gets a deligate and returns the objects that match to the condition.
     /// </summary>
     /// <param name="deligate"></param>
     /// <returns></returns>

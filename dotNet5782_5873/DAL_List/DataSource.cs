@@ -22,17 +22,19 @@ internal class DataSource
     //Constructor
     static DataSource()
     {
-        s_Initalize();
+        try
+        {
+            s_Initalize();
+        }
+        catch
+        {
+            Console.WriteLine("here");
+        }
+
     }
 
 
-    /// <summary>
-    /// The arrays are in list form
-    /// </summary>
 
-    internal static List<Order> OrderList = new List<Order>();
-    internal static List<OrderItem> OrderItemList = new List<OrderItem>();
-    internal static List<Product> ProductList = new List<Product>();
 
 
     /// <summary>
@@ -58,7 +60,7 @@ internal class DataSource
             CustomerAddress = "Hamodia 3, Ofakim",
             OrderDate = DateTime.Today,
             ShipDate = DateTime.Today.AddDays(2),
-            DeliveryDate =DateTime.Today.AddDays(10)
+            DeliveryDate = DateTime.Today.AddDays(10)
         };
         OrderList.Add(MyOrder);
         Order MyOrder1 = new Order
@@ -307,13 +309,13 @@ internal class DataSource
 
     }
 
-   
+
     /// <summary>list
     /// Auto boot
     /// </summary>
     public static void auto_Init_Products()
     {
-        var helper= new DALProduct();
+        var helper = new DALProduct();
         Product MyProduct1 = new Product
         {
             Barcode = helper.MakeABarcode(),
@@ -325,7 +327,7 @@ internal class DataSource
         ProductList.Add(MyProduct1);
         Product MyProduct2 = new Product
         {
-            Barcode =helper.MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
@@ -352,7 +354,7 @@ internal class DataSource
         ProductList.Add(MyProduct4);
         Product MyProduct5 = new Product
         {
-            Barcode = helper    .MakeABarcode(),
+            Barcode = helper.MakeABarcode(),
             ProductName = "A black eye pencil- SACARA",
             Category = Category.Pencils,
             ProductPrice = 19,
@@ -471,7 +473,13 @@ internal class DataSource
 
 
 
+    /// <summary>
+    /// The arrays are in list form
+    /// </summary>
 
+    public static List<Order> OrderList = new List<Order>();
+    public static List<OrderItem> OrderItemList = new List<OrderItem>();
+    public static List<Product>? ProductList = new List<Product>();
 
 
 
