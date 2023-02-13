@@ -18,7 +18,7 @@ namespace BlImplementation
 
         public MapperConfiguration OrderConfiguration = new MapperConfiguration(cnf =>
         cnf.CreateMap<BO.Order, DO.Order>()
-         .ForMember(b => b.ID, option => option.Ignore())
+         .ForMember(b => b.ID, a=> a.MapFrom(x=> x.ID))
         .ReverseMap()
         );
 
