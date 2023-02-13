@@ -25,7 +25,7 @@ internal class DALProduct : DalApi.IProduct
     {
         return DataSource.ProductList;
     }
-    
+
 
     /// <summary>list
     /// This function create a product object and enter it to the array.
@@ -33,41 +33,41 @@ internal class DALProduct : DalApi.IProduct
     /// <returns></returns>
     public int Add()
     {
-      /*  Category category = new Category();
-        Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
-        string AnsCategory = Console.ReadLine();
-        switch (AnsCategory)
-        {
-            case ("Pencils"):
-                {
-                    category = (Category)0;
-                    break;
-                }
-            case ("lipstiks"):
-                {
-                    category = (Category)1;
+        /*  Category category = new Category();
+          Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
+          string AnsCategory = Console.ReadLine();
+          switch (AnsCategory)
+          {
+              case ("Pencils"):
+                  {
+                      category = (Category)0;
+                      break;
+                  }
+              case ("lipstiks"):
+                  {
+                      category = (Category)1;
 
-                    break;
-                }
-            case (" blushes"):
-                {
-                    category = (Category)2;
-                    break;
-                }
-            case ("bronzers"):
+                      break;
+                  }
+              case (" blushes"):
+                  {
+                      category = (Category)2;
+                      break;
+                  }
+              case ("bronzers"):
 
-                {
-                    category = (Category)3;
-                    break;
-                }
-            case ("makeup"):
-                {
-                    category = (Category)4;
-                    break;
-                }
-            default:
-                break;
-        }*/
+                  {
+                      category = (Category)3;
+                      break;
+                  }
+              case ("makeup"):
+                  {
+                      category = (Category)4;
+                      break;
+                  }
+              default:
+                  break;
+          }*/
         Console.WriteLine("Please enter your ProductName ");
         string? AnsProductName = Console.ReadLine();
         Console.WriteLine("How much does the item cost? ");
@@ -113,18 +113,15 @@ internal class DALProduct : DalApi.IProduct
     /// <returns></returns>
     public int MakeABarcode()
     {
-        Random my_rnd = new Random();                 
-        int barcode = my_rnd.Next(10000000,100000000);
-        int thisbarcode = barcode;
-
-        bool checkBarcode = is_Barkode_OK(thisbarcode);
+        Random my_rnd = new Random();
+        int barcode = my_rnd.Next(10000000, 100000000);
+        bool checkBarcode = is_Barkode_OK(barcode);
         while (!checkBarcode)
         {
-            barcode = my_rnd.Next(10000000, 100000000);
-            int thisbarcode2 = barcode;
-            checkBarcode = is_Barkode_OK(thisbarcode2);
+            barcode = my_rnd.Next(10000000, 100000000);            
+            checkBarcode = is_Barkode_OK(barcode);
         }
-        return thisbarcode;
+        return barcode;
 
     }
 
@@ -331,7 +328,7 @@ internal class DALProduct : DalApi.IProduct
         }
     }
 
-    
+
     public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
     {
         DataSource.auto_Init_Products();
@@ -341,10 +338,10 @@ internal class DALProduct : DalApi.IProduct
             return p;
         }
         Console.WriteLine(DataSource.ProductList);
-        return DataSource.ProductList/*.Where(item=> item.Barcode!=null)*/; 
+        return DataSource.ProductList/*.Where(item=> item.Barcode!=null)*/;
     }
 
-    
+
 
     public Product GetAnObject(Predicate<Product> myDelegate)
     {
