@@ -37,10 +37,13 @@ namespace PL.Product
 
         private void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            IEnumerable<Category>? selctorsItems = new List<Category>();
             var category = Selector.SelectedItem;
-            Selector.SelectedItem = bl.Product.Get(item => item.Category == (Category)category);
+            if(category!=null)
+                Selector.SelectedItem = bl.Product.Get(item => item.Category == (Category)category);
+            else//If he didn't choose any condition to filter we return all items
+                Selector.SelectedItem = bl.Product.Get(item => item.Category == item.Category);//Stopid condition- to get all items.
 
+            return;
 
         }
 

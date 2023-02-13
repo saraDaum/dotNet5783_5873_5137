@@ -322,7 +322,7 @@ internal class DataSource
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
-            InStock = 6
+            InStock = 16
         };
         ProductList.Add(MyProduct1);
         Product MyProduct2 = new Product
@@ -340,7 +340,7 @@ internal class DataSource
             ProductName = "Blush for a natural color in the cheeks - MAC",
             Category = Category.blushes,
             ProductPrice = 75,
-            InStock = 4
+            InStock = 10
         };
         ProductList.Add(MyProduct3);
         Product MyProduct4 = new Product
@@ -349,7 +349,7 @@ internal class DataSource
             ProductName = "A luxurious blush - Loreal",
             Category = Category.blushes,
             ProductPrice = 59,
-            InStock = 3
+            InStock = 13
         };
         ProductList.Add(MyProduct4);
         Product MyProduct5 = new Product
@@ -358,7 +358,7 @@ internal class DataSource
             ProductName = "A black eye pencil- SACARA",
             Category = Category.Pencils,
             ProductPrice = 19,
-            InStock = 6
+            InStock = 15
         };
         ProductList.Add(MyProduct5);
         Product MyProduct6 = new Product
@@ -394,7 +394,7 @@ internal class DataSource
             ProductName = "A simple lipstick- SACARA",
             Category = Category.lipstiks,
             ProductPrice = 36,
-            InStock = 3
+            InStock = 12
         };
         ProductList.Add(MyProduct9);
         Product MyProduct10 = new Product
@@ -403,7 +403,7 @@ internal class DataSource
             ProductName = "Pair lipstick, hipoalerganic - MAC",
             Category = Category.lipstiks,
             ProductPrice = 72,
-            InStock = 2
+            InStock = 11
         };
         ProductList.Add(MyProduct10);
         Product MyProduct11 = new Product
@@ -412,7 +412,7 @@ internal class DataSource
             ProductName = "Makeup number 310 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
-            InStock = 3
+            InStock = 13
         };
         ProductList.Add(MyProduct11);
         Product MyProduct12 = new Product
@@ -479,8 +479,8 @@ internal class DataSource
 
     public static List<Order> OrderList = new List<Order>();
     public static List<OrderItem> OrderItemList = new List<OrderItem>();
-    public static List<Product>? ProductList = new List<Product>();
-
+    public static List<Product>? ProductList = new List<Product>(); 
+    
 
 
 

@@ -109,7 +109,7 @@ internal class DALProduct : DalApi.IProduct
     Random my_rnd = new Random();
 
     /// <summary>list
-    /// This function restart the array in index "i" with a barcode.
+    /// This function initializes the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
     public int MakeABarcode()
@@ -330,12 +330,9 @@ internal class DALProduct : DalApi.IProduct
     
     public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
     {
-        // DataSource.auto_Init_Products();
+        DataSource.auto_Init_Products();
         if (deligate != null)
         {
-           // List<Product> products = ReturnList();
-
-
             IEnumerable<Product>? p = DataSource.ProductList.Where(deligate);
             return p;
         }
