@@ -58,9 +58,6 @@ internal class DataSource
             CustomerName = "Sara Cohen",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today.AddDays(2),
-            DeliveryDate = DateTime.Today.AddDays(10)
         };
         OrderList.Add(MyOrder);
         Order MyOrder1 = new Order
@@ -68,9 +65,6 @@ internal class DataSource
             CustomerName = "Hodaya Levy",
             CustomerEmail = "Hodaya25840@gmail.com",
             CustomerAddress = "Zahal 52, Beit-Shemesh",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder1);
         Order MyOrder2 = new Order
@@ -78,108 +72,73 @@ internal class DataSource
             CustomerName = "Rachel Cohen",
             CustomerEmail = "racheli.me@gmail.com",
             CustomerAddress = "Smile 103, Jerusalem",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder2);
         Order MyOrder3 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Malka Seld",
             CustomerEmail = "malka_seld@gmail.com",
             CustomerAddress = "Happyness 72, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder3);
         Order MyOrder4 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Shira Cohen",
             CustomerEmail = "Shira_052715@gmail.com",
             CustomerAddress = "Black  23, Jerusalem",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder4);
         Order MyOrder5 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Yael Fadila",
             CustomerEmail = "Yael.no.yes@gmail.com",
             CustomerAddress = "Hamodia 83, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder5);
         Order MyOrder6 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Adi Holasher",
             CustomerEmail = "Adi_123@gmail.com",
             CustomerAddress = "Flower 91, Beer - Sheva",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder6);
         Order MyOrder7 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Shlomo Cohen",
             CustomerEmail = "Shlomo_120548@gmail.com",
             CustomerAddress = "Sorek 94, Cineret",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder7);
         Order MyOrder8 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Zadok Cohen Zedek",
             CustomerEmail = "someone@gmail.com",
             CustomerAddress = "anivalid 137, Zfat",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder8);
         Order MyOrder9 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Maya Feld",
             CustomerEmail = "M1010_m10@gmail.com",
             CustomerAddress = "Gilo 94, Duchifat",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder9);
         Order MyOrder10 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Lea Daum",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder10);
         Order MyOrder11 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Keren Karni",
             CustomerEmail = "karen.local@gmail.com",
             CustomerAddress = "Gefen 3, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder11);
         Order MyOrder12 = new Order
@@ -188,119 +147,85 @@ internal class DataSource
             CustomerName = "Jak Levy",
             CustomerEmail = "0558523510@gmail.com",
             CustomerAddress = "Zahal 512, Beit-Shemesh",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder12);
         Order MyOrder13 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Akiva Gidoni",
             CustomerEmail = "smile.me@gmail.com",
             CustomerAddress = "Smile 83, Tirat - Carmel",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder13);
         Order MyOrder14 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Tom Seldalom",
             CustomerEmail = "tim.tom@gmail.com",
             CustomerAddress = "Happyness 73,  Tirat - Carmel",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder14);
         Order MyOrder15 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Shir bonbon",
             CustomerEmail = "Shir_0123@gmail.com",
             CustomerAddress = "My boat  19, Kiryat - Shmona",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder15);
         Order MyOrder16 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Yael Fogel",
             CustomerEmail = "Yaeyes@gmail.com",
             CustomerAddress = "Tena 83, Hermon",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder16);
         Order MyOrder17 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Adi Ozer",
             CustomerEmail = "Adi_Ozer@gmail.com",
             CustomerAddress = "Flower 94, Gidon",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder17);
         Order MyOrder18 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Gad Jakobi",
             CustomerEmail = "Dad@gmail.com",
             CustomerAddress = "Fish 94, Cineret",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder18);
         Order MyOrder19 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = " Dan  Zedek",
             CustomerEmail = "Dani_Dan@gmail.com",
             CustomerAddress = "Summer 137, Zfat",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder19);
         Order MyOrder20 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Maya Bobi",
             CustomerEmail = "M_BOBI@gmail.com",
             CustomerAddress = "Gilo 96, Duchifat",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder20);
         Order MyOrder21 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Bob Sfog",
             CustomerEmail = "bob100@gmail.com",
             CustomerAddress = "Dogilo 126, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
+
         };
         OrderList.Add(MyOrder21);
         Order MyOrder22 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Bob Sfog",
             CustomerEmail = "bob100@gmail.com",
             CustomerAddress = "Dogilo 126, Ofakim",
-            OrderDate = DateTime.Today,
-            ShipDate = DateTime.Today + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 3L)),
-            DeliveryDate = DateTime.Now + new TimeSpan(Config.rnd.NextInt64(10L * 1000L * 1000L * 3600L * 24L * 10L))
         };
         OrderList.Add(MyOrder22);
 
@@ -478,7 +403,7 @@ internal class DataSource
     public static List<Order> OrderList = new List<Order>();
     public static List<OrderItem> OrderItemList = new List<OrderItem>();
     public static List<Product>? ProductList = new List<Product>();
-   static Product MyProduct = new Product
+    static Product MyProduct = new Product
     {
         Barcode = 87659210,
         ProductName = "Bronzer - Lori",
