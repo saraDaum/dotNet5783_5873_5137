@@ -7,13 +7,13 @@ namespace DO;
 /// </summary>
 public struct Order
 {
-
+    private static int _id = 20000000;
     //Static ID, helper variable
-    private static int staticID=1000;
+    private static int staticID = 1000;
     /// <summary>
     /// Unique order ID
     /// </summary>
-    public int ID { get=> staticID++;  set=>ID= value; }
+    public int ID { get; set; } //{ get=> staticID++;  set=>ID= value; }
 
     /// <summary>
     /// Customer name
@@ -33,18 +33,28 @@ public struct Order
     /// <summary>
     /// Order date
     /// </summary>
-    public DateTime OrderDate { get=>DateTime.Today ; set=> OrderDate= value; }
+    public DateTime OrderDate { get; set ; }
 
     /// <summary>
     /// Ship date of this order
     /// </summary>
-    public DateTime ShipDate { get => DateTime.Today.AddDays(2); set => ShipDate = value; }
+    public DateTime ShipDate { get; set; }
 
     /// <summary>
     /// Delivery date of this order
     /// </summary>
-    public DateTime DeliveryDate { get=> DateTime.Today.AddDays(10); set=> DeliveryDate = value; }
+    public DateTime DeliveryDate { get; set; }
+    public Order()
+    {
 
+        ID = ++_id;
+        CustomerName = "";
+        CustomerEmail = $"{ID}@gmail.com";
+        CustomerAddress = "";
+        OrderDate = DateTime.Today;
+        ShipDate = DateTime.Today.AddDays(2);
+        DeliveryDate = DateTime.Today.AddDays(10);
+    }
 
     //Constructor
     //public Order( string customerName, string customerEmail, string customerAddress, DateTime orderDate)
