@@ -44,6 +44,7 @@ internal class DataSource
     {
         auto_Init_Products();
         auto_Init_order();
+        ProductList.Add(MyProduct);
         //orderItem
     }
 
@@ -54,7 +55,6 @@ internal class DataSource
     {
         Order MyOrder = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Sara Cohen",
             CustomerEmail = "Sara0548@gmail.com",
             CustomerAddress = "Hamodia 3, Ofakim",
@@ -65,7 +65,6 @@ internal class DataSource
         OrderList.Add(MyOrder);
         Order MyOrder1 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Hodaya Levy",
             CustomerEmail = "Hodaya25840@gmail.com",
             CustomerAddress = "Zahal 52, Beit-Shemesh",
@@ -76,7 +75,6 @@ internal class DataSource
         OrderList.Add(MyOrder1);
         Order MyOrder2 = new Order
         {
-            ID = Config.NextOrderNumber,
             CustomerName = "Rachel Cohen",
             CustomerEmail = "racheli.me@gmail.com",
             CustomerAddress = "Smile 103, Jerusalem",
@@ -479,8 +477,16 @@ internal class DataSource
 
     public static List<Order> OrderList = new List<Order>();
     public static List<OrderItem> OrderItemList = new List<OrderItem>();
-    public static List<Product>? ProductList = new List<Product>(); 
-    
+    public static List<Product>? ProductList = new List<Product>();
+   static Product MyProduct = new Product
+    {
+        Barcode = 87659210,
+        ProductName = "Bronzer - Lori",
+        Category = Category.bronzers,
+        ProductPrice = 45,
+        InStock = 12
+    };
+    //ProductList.Add(MyProduct);
 
 
 

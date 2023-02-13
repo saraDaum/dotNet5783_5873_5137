@@ -32,7 +32,6 @@ public struct Product
         ProductPrice = a;
     }
     public override string ToString() => $@"
-    Product details:\n
     {nameof(Barcode)}- {ProductName}, 
     category: {Category},
     Price: {ProductPrice},
