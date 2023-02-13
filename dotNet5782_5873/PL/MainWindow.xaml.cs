@@ -22,5 +22,11 @@ namespace PL
            
 
         }
+
+        private void _try_Click(object sender, RoutedEventArgs e)
+        {
+            BO.Product p = new BO.Product();
+            new NewProduct(p).Show();
+        }
     }
 }

@@ -123,6 +123,11 @@ internal class BoOrder : IBoOrder
         return null;
     }
 
+    public void Update(Action order)
+    {
+        throw new NotImplementedException();
+    }
+
     /*public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
     {
         return OrderList.Find(myDelegate);
