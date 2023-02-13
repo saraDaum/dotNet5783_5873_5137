@@ -19,14 +19,17 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <ComboBox Name="Selector" SelectionChanged="Selector_SelectionChanged" Margin="171,17,24,-45"  Background="Aqua" Grid.Column="1" />
+            <ComboBox Name="Selector" SelectionChanged="Selector_SelectionChanged" Margin="171,17,24,-45"  Background="#7F5F6565" Grid.Column="1" />
             <Label Name="SelectorLabel" Content="Select items" Margin="14,17,386,-41" Background="Bisque" Grid.ColumnSpan="2"/>
 
         </Grid>
 
-        <ListView Grid.Row="1" x:Name="ProductListview" SelectionChanged="ListView_SelectionChanged" Margin="0,23,0,0">
+        <ListView Grid.Row="1" x:Name="ProductListview" SelectionChanged="ListView_SelectionChanged" Margin="0,23,0,0" Background="#FFF9E4C9">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn/>
+                    <GridViewColumn/>
+                    <GridViewColumn/>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>

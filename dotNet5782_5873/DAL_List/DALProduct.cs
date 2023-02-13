@@ -21,7 +21,7 @@ internal class DALProduct : DalApi.IProduct
     }
 
 
-    public List<Product> ReturnList()
+    public List<Product>? ReturnList()
     {
         return DataSource.ProductList;
     }
@@ -106,7 +106,6 @@ internal class DALProduct : DalApi.IProduct
         return newProduct.Barcode;
     }
 
-    Random my_rnd = new Random();
 
     /// <summary>list
     /// This function initializes the array in index "i" with a barcode.
@@ -114,14 +113,18 @@ internal class DALProduct : DalApi.IProduct
     /// <returns></returns>
     public int MakeABarcode()
     {
-        int barcode = my_rnd.Next(10000000, 100000000);
-        bool checkarcode = is_Barkode_OK(barcode);
-        while (checkarcode)
+        Random my_rnd = new Random();                 
+        int barcode = my_rnd.Next(10000000,100000000);
+        int thisbarcode = barcode;
+
+        bool checkBarcode = is_Barkode_OK(thisbarcode);
+        while (!checkBarcode)
         {
             barcode = my_rnd.Next(10000000, 100000000);
-            checkarcode = is_Barkode_OK(barcode);
+            int thisbarcode2 = barcode;
+            checkBarcode = is_Barkode_OK(thisbarcode2);
         }
-        return barcode;
+        return thisbarcode;
 
     }
 
@@ -130,9 +133,10 @@ internal class DALProduct : DalApi.IProduct
     /// </summary>
     /// <param name="b"></param>
     /// <returns></returns>
-    public bool is_Barkode_OK(int barcode)
+    bool is_Barkode_OK(int barcode)
     {
         int index = DataSource.ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
+        Console.WriteLine(DataSource.ProductList);
         if (index == -1)
             return true;
 

@@ -38,19 +38,19 @@ namespace PL
         //הפונקציה שקוראת כשלוחצים אישור על הוספת הפריט
         private void ConfirmBtn_Click(object sender, RoutedEventArgs e)
         {
-            //בדיקה שהשדות לא ריקים
-            if (Nametxb.Text != null && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)
+            //Check that fields doesn't empty 
+            if (Nametxb.Text != "" || Pricetxb.Text != null || Amounttxb.Text != null || CategoryTxb.Text != null)//null or ""
             {
-                //יוצרים מופע חדש של מוצר ומאתחלים את השדות שלו לשדות שהמשתמש מילא
+                //We create a new instance of Product with this details.
                 BO.Product product = new BO.Product();
                 product.ProductName = Nametxb.Text;
                 product.ProductPrice = int.Parse(Pricetxb.Text);
                 product.AmountInStock = int.Parse(Amounttxb.Text);
                 product.Category = (DO.Category)Enum.Parse(typeof(DO.Category), CategoryTxb.Text);
-                //מוסיפים את המוצר לרשימה
+                //Add product to list
                 try
                 {
-                    bl.Product.Add(product);
+                   int i= bl.Product.Add(product);
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
                 }
                 catch
