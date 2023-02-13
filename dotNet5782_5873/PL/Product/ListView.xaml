@@ -30,8 +30,15 @@
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
+
         </ListView>
 
+
+
+
+        <Grid  Grid.Row="2" >
+            <Button Content="add new product" HorizontalAlignment="Left" Margin="0,5,0,5" Padding="5" Click="Button_Click" Width="795"/>
+        </Grid>
 
     </Grid>
 </Window>
