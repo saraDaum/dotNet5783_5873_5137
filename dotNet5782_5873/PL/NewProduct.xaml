@@ -24,6 +24,6 @@
         <Label x:Name="Newbel_Copy1" Content="Amount In Stock:" Margin="46,316,46,68" Background="Bisque" HorizontalContentAlignment="Right"/>
         
         <TextBox x:Name="Amounttxb" TextChanged="TextBox_TextChanged" Margin="46,316,46,68" Background="Gray" Grid.Column="1"/>
-        <Button x:Name="ConfirmBtn" Grid.Column="1" Content="Confirm" HorizontalAlignment="Left" Margin="139,404,0,0" VerticalAlignment="Top" Click="ConfirmBtn_Click"/>
+        <Button x:Name="OK" Content="O.K" Margin="320,380,346,16" Grid.ColumnSpan="2" Background="Linen" Click="Button_Click"/>
     </Grid>
 </Window>

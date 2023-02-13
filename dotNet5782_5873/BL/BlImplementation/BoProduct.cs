@@ -62,7 +62,7 @@ internal class BoProduct : IBoProduct
     public void Update(Product MyBoProduct)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        DO.Product DoProduct = mapper.Map<DO.Product>(MyBoProduct);
+        DO.Product DoProduct = mapper.Map<BO.Product,DO.Product>(MyBoProduct);
         dal.Product.Update(DoProduct);
     }
 }
