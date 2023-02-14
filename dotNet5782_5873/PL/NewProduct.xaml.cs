@@ -70,6 +70,7 @@ namespace PL
                 try
                 {
                     int i = bl.Product.Add(product);
+                    Message.Visibility = Visibility.Visible;    
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
                 }
                 catch
@@ -113,6 +114,11 @@ namespace PL
         private void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void returnToListView(object sender, RoutedEventArgs e)
+        {
+            new ListView(bl).Show();
         }
     }
 }

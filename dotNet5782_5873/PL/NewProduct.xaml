@@ -7,20 +7,27 @@
         mc:Ignorable="d"
         Title="NewProduct" Height="450" Width="800">
     <Grid Margin="-16,-5,0,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="13*"/>
+            <RowDefinition Height="421*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="8*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="103*"/>
+            <ColumnDefinition Width="136*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Name="NewLabel" Content="name:                    " Margin="243,50,46,345" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold"/>
+        <Label Name="NewLabel" Content="name:                    " Margin="144,37,46,345" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
 
-        <TextBox x:Name="Nametxb" TextChanged="TextBox_TextChanged" Margin="35,50,56,345" Background="#FFBDBAA3" Grid.Column="1"/>
+        <TextBox x:Name="Nametxb" TextChanged="TextBox_TextChanged" Margin="35,37,56,345" Background="#FFBDBAA3" Grid.Column="4" Grid.Row="1"/>
 
-        <Label Name="Newbel" Content="Price:&#x9;&#x9;" Margin="243,126,46,270" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold"/>
+        <Label Name="Newbel" Content="Price:&#x9;&#x9;" Margin="144,113,46,270" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
 
-        <TextBox TextChanged="TextBox_TextAdd" x:Name="Pricetxb" Margin="36,126,56,270" Background="#FFBDBAA3" Grid.Column="1"/>
-        <Label x:Name="Newbel_Copy" Content="Category:&#x9;         " Margin="243,204,46,191" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold"/>
-        <ComboBox  Name="Selector"  Margin="33,205,53,190" RenderTransformOrigin="0.5,0.5" Grid.Column="1" Background="#FFBDBAA5" SelectionChanged="Selector_SelectionChanged"  >
+        <TextBox TextChanged="TextBox_TextAdd" x:Name="Pricetxb" Margin="36,113,56,270" Background="#FFBDBAA3" Grid.Column="4" Grid.Row="1"/>
+        <Label x:Name="Newbel_Copy" Content="Category:&#x9;         " Margin="144,191,46,191" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
+        <ComboBox  Name="Selector"  Margin="33,192,53,190" RenderTransformOrigin="0.5,0.5" Grid.Column="4" Background="#FFBDBAA5" SelectionChanged="Selector_SelectionChanged" Grid.Row="1"  >
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -30,10 +37,15 @@
                 </TransformGroup>
             </ComboBox.RenderTransform>
         </ComboBox>
-        <TextBox x:Name="CategoryTxb" TextChanged="TextBox_TextChanged" Margin="35,217,57,178" Background="#FFBDBAA3" Grid.Column="1" Visibility="Hidden"/>
-        <Label x:Name="Newbel_Copy1" Content="Amount In Stock:  " Margin="243,288,46,107" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="15" FontWeight="Bold"/>
+        <TextBox x:Name="CategoryTxb" TextChanged="TextBox_TextChanged" Margin="35,204,57,178" Background="#FFBDBAA3" Grid.Column="4" Visibility="Hidden" Grid.Row="1"/>
+        <Label x:Name="Newbel_Copy1" Content="Amount In Stock:  " Margin="144,275,46,107" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="15" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
 
-        <TextBox x:Name="Amounttxb" TextChanged="TextBox_TextChanged" Margin="36,288,56,107" Background="#FFBDBAA3" Grid.Column="1"/>
-        <Button x:Name="OK" Content="O.K" Margin="320,380,346,16" Grid.ColumnSpan="2" Background="#FFD0D2BE" Click="Button_Click" FontFamily="Almoni DL AAA" FontSize="20" FontWeight="Bold"/>
+        <TextBox x:Name="Amounttxb" TextChanged="TextBox_TextChanged" Margin="36,275,56,107" Background="#FFBDBAA3" Grid.Column="4" Grid.Row="1"/>
+        <Button x:Name="OK" Content="O.K" Margin="221,367,346,16" Grid.ColumnSpan="2" Background="#FFD0D2BE" Click="Button_Click" FontFamily="Almoni DL AAA" FontSize="20" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
+        <Button x:Name="Message" Click="returnToListView" Content="&#xD;&#xA;        Item added successfully" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="401" Margin="26,0,0,0" VerticalAlignment="Center" Width="780" Background="#AD90A494" FontSize="50" FontWeight="Bold" Visibility="Hidden" Grid.Row="1">
+
+
+
+        </Button>
     </Grid>
 </Window>
