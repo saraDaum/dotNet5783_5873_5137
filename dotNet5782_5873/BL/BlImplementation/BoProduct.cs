@@ -41,9 +41,9 @@ internal class BoProduct : IBoProduct
               foreach (DO.Product DoProduct in DoProducts)
                 {
                     Product MyProduct = mapper.Map<Product>(DoProduct);
-                    BoProduct.Append(MyProduct);
+                    BoProduct= BoProduct.Append(MyProduct);
                 }
-                return BoProduct;
+                return BoProduct.Where(deligate);
             }
             catch (Exception ex)
             {

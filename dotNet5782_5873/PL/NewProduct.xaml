@@ -6,24 +6,24 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="NewProduct" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="-16,-5,0,5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label Name="NewLabel" Content="name:" Margin="46,24,46,357" Background="Bisque" HorizontalContentAlignment="Right"/>
+        <Label Name="NewLabel" Content="name:                    " Margin="243,50,46,345" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold"/>
 
-        <TextBox x:Name="Nametxb" TextChanged="TextBox_TextChanged" Margin="46,24,46,357" Background="Gray" Grid.Column="1"/>
+        <TextBox x:Name="Nametxb" TextChanged="TextBox_TextChanged" Margin="35,50,60,345" Background="#FFBDBAA3" Grid.Column="1"/>
 
-        <Label Name="Newbel" Content="Price" Margin="46,126,46,258" Background="Bisque" HorizontalContentAlignment="Right"/>
+        <Label Name="Newbel" Content="Price:&#x9;&#x9;" Margin="243,126,46,270" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold"/>
 
-        <TextBox TextChanged="TextBox_TextAdd" x:Name="Pricetxb" Margin="46,126,46,258" Background="Gray" Grid.Column="1"/>
-        <Label x:Name="Newbel_Copy" Content="Category" Margin="46,217,46,166" Background="Bisque" HorizontalContentAlignment="Right"/>
-        <TextBox x:Name="CategoryTxb" TextChanged="TextBox_TextChanged" Margin="46,217,46,166" Background="Gray" Grid.Column="1"/>
-        <Label x:Name="Newbel_Copy1" Content="Amount In Stock:" Margin="46,316,46,68" Background="Bisque" HorizontalContentAlignment="Right"/>
-        
-        <TextBox x:Name="Amounttxb" TextChanged="TextBox_TextChanged" Margin="46,316,46,68" Background="Gray" Grid.Column="1"/>
-        <Button x:Name="OK" Content="O.K" Margin="320,380,346,16" Grid.ColumnSpan="2" Background="Linen" Click="Button_Click"/>
+        <TextBox TextChanged="TextBox_TextAdd" x:Name="Pricetxb" Margin="36,126,59,270" Background="#FFBDBAA3" Grid.Column="1"/>
+        <Label x:Name="Newbel_Copy" Content="Category:&#x9;        " Margin="243,204,46,191" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold"/>
+        <TextBox x:Name="CategoryTxb" TextChanged="TextBox_TextChanged" Margin="36,204,56,191" Background="#FFBDBAA3" Grid.Column="1"/>
+        <Label x:Name="Newbel_Copy1" Content="Amount In Stock:  " Margin="243,288,46,107" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="15" FontWeight="Bold"/>
+
+        <TextBox x:Name="Amounttxb" TextChanged="TextBox_TextChanged" Margin="36,288,60,107" Background="#FFBDBAA3" Grid.Column="1"/>
+        <Button x:Name="OK" Content="O.K" Margin="320,380,346,16" Grid.ColumnSpan="2" Background="#FFD0D2BE" Click="Button_Click" FontFamily="Almoni DL AAA" FontSize="20" FontWeight="Bold"/>
     </Grid>
 </Window>

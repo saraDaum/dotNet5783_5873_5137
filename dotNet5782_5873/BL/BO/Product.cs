@@ -44,7 +44,7 @@ namespace BO
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $@"
-    Product details:\n
+   
     {nameof(Barcode)} -{ProductName}, 
     {nameof(Category)}: {Category},
     {nameof(ProductPrice)} :{ProductPrice},
