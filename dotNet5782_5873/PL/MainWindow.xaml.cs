@@ -18,6 +18,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
             new ListView(bl).Show();
            
 
