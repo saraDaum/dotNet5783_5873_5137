@@ -1,7 +1,8 @@
 ﻿using BlApi;
 using System.Windows;
 using PL.Product;
-
+using System.Windows.Controls;
+using PL.Product;
 
 namespace PL
 {
@@ -18,10 +19,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
             new ListView(bl).Show();
-           
-
         }
 
         private void _try_Click(object sender, RoutedEventArgs e)

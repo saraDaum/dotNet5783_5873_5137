@@ -14,6 +14,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Product\ListView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <DesignData Include="Product\ListView.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
   </ItemGroup>
 
