@@ -73,5 +73,11 @@ namespace PL.Product
         {
             ProductListview.ItemsSource = bl.Product.Get(item => item.Category == item.Category);//To get all.
         }
+
+        private void choosen(object sender, MouseButtonEventArgs e)
+        {
+            BO.Product product = (BO.Product)ProductListview.SelectedItem;
+            new NewProduct(product).Show();
+        }
     }
 }

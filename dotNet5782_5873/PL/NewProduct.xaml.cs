@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,12 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ListView = PL.Product.ListView;
 
 namespace PL
 {
@@ -22,17 +25,20 @@ namespace PL
     {
         BO.Product product;
         IBl bl = new BlImplementation.BL();
+
         public NewProduct()
         {
             InitializeComponent();
+            Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
         }
         public NewProduct(BO.Product product)
         {
             InitializeComponent();
+            Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
             this.product = product;
             Nametxb.Text = product.ProductName;
             Pricetxb.Text = product.ProductPrice.ToString();
-            CategoryTxb.Text = product.Category.ToString();
+            Selector.SelectedItem = product.Category;
             Amounttxb.Text = product.AmountInStock.ToString();
             OK.Click -= Button_Click;
             OK.Click += UpdateButtonClick;
@@ -58,11 +64,12 @@ namespace PL
                 product.ProductName = Nametxb.Text;
                 product.ProductPrice = int.Parse(Pricetxb.Text);
                 product.AmountInStock = int.Parse(Amounttxb.Text);
-                product.Category = (DO.Category)Enum.Parse(typeof(DO.Category), CategoryTxb.Text);
+                product.Category = (DO.Category)Selector.SelectedItem;
+                
                 //Add product to list
                 try
                 {
-                   int i= bl.Product.Add(product);
+                    int i = bl.Product.Add(product);
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
                 }
                 catch
@@ -70,7 +77,7 @@ namespace PL
                     //מה עושים כשתופסים שגיאה?
                     //אפשר לספר למשתמש על התקלה או מה שבא לנו אם לא מה שעושה ה"קטץ" זה שהתוכנית תמשיך לרוץ
                 }
-                
+
             }
         }
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
@@ -79,16 +86,17 @@ namespace PL
             if (Nametxb.Text != null && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)
             {
                 //יוצרים מופע חדש של מוצר ומאתחלים את השדות שלו לשדות שהמשתמש מילא
-                
+
                 product.ProductName = Nametxb.Text;
                 product.ProductPrice = int.Parse(Pricetxb.Text);
                 product.AmountInStock = int.Parse(Amounttxb.Text);
-                product.Category = (DO.Category)Enum.Parse(typeof(DO.Category), CategoryTxb.Text);
+                product.Category =(DO.Category)Selector.SelectedItem;
                 //מוסיפים את המוצר לרשימה
                 try
                 {
                     bl.Product.Update(product);
-                    // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
+                    new ListView(bl).Show();
+                   
                 }
                 catch
                 {
@@ -102,5 +110,9 @@ namespace PL
 
 
 
+        private void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
