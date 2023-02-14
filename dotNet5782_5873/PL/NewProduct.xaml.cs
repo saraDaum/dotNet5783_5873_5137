@@ -51,7 +51,7 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Check that fields doesn't empty 
-            if (Nametxb.Text != "" || Pricetxb.Text != null || Amounttxb.Text != null || CategoryTxb.Text != null)//null or ""
+            if (Nametxb.Text != null && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)//null or ""
             {
                 //We create a new instance of Product with this details.
                 BO.Product product = new BO.Product();

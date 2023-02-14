@@ -36,7 +36,7 @@ internal class BoCart : IBoCart
         if (BoProduct.AmountInStock - quantityRequested > 0)
         {
 
-            product.InStock -= quantityRequested;
+            product.AmountInStock -= quantityRequested;
             BoProduct.AmountInStock -= quantityRequested;
             dal.Product.Update(product);//Check that it's works
             cart.TotalPrice += entity.ProductPrice * entity.Amount;

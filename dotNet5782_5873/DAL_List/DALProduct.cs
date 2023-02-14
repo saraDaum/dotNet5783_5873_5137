@@ -82,7 +82,7 @@ internal class DALProduct : DalApi.IProduct
             ProductName = AnsProductName,
             Category = 0,
             ProductPrice = price,
-            InStock = amount,
+            AmountInStock = amount,
 
 
         };
@@ -234,7 +234,7 @@ internal class DALProduct : DalApi.IProduct
                                     ProductName = name,
                                     Category = DataSource.ProductList[index].Category,
                                     ProductPrice = DataSource.ProductList[index].ProductPrice,
-                                    InStock = DataSource.ProductList[index].InStock
+                                    AmountInStock = DataSource.ProductList[index].AmountInStock
 
 
                                 };
@@ -255,7 +255,7 @@ internal class DALProduct : DalApi.IProduct
                                         ProductName = DataSource.ProductList[index].ProductName,
                                         Category = DataSource.ProductList[index].Category,
                                         ProductPrice = newPrice,
-                                        InStock = DataSource.ProductList[index].InStock
+                                        AmountInStock = DataSource.ProductList[index].AmountInStock
 
 
                                     };
@@ -281,7 +281,7 @@ internal class DALProduct : DalApi.IProduct
                                         ProductName = DataSource.ProductList[index].ProductName,
                                         Category = DataSource.ProductList[index].Category,
                                         ProductPrice = DataSource.ProductList[index].ProductPrice,
-                                        InStock = newInStock
+                                        AmountInStock = newInStock
                                     };
                                     Update(updateOne);
                                     break;
@@ -331,7 +331,6 @@ internal class DALProduct : DalApi.IProduct
 
     public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
     {
-        DataSource.auto_Init_Products();
         if (deligate != null)
         {
             IEnumerable<Product>? p = DataSource.ProductList.Where(deligate);

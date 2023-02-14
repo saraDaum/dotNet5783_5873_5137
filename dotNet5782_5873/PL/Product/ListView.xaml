@@ -15,22 +15,22 @@
 
         <Grid  Grid.Row="0" Name="UpGrid" Height="auto" Width="auto" Background="#FF162B5D" Margin="0,0,0,379">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="23*"/>
             </Grid.ColumnDefinitions>
 
-            <ComboBox Name="Selector" SelectionChanged="Selector_SelectionChanged" Margin="171,17,24,-45"  Background="#7F5F6565" Grid.Column="1" />
-            <Label Name="SelectorLabel" Content="Select items" Margin="14,17,386,-41" Background="Bisque" Grid.ColumnSpan="2"/>
+            <ComboBox Name="Selector" SelectionChanged="Selector_SelectionChanged" Margin="206,17,22,-41"  Background="#FFEDEEEF" Grid.Column="1" Grid.ColumnSpan="2" />
+            <Button Name="Clear" Click="Button_Click"/>
+            <Label Name="SelectorLabel" Content="Select items" Margin="14,17,198,-41" Background="Bisque" Width="auto"  Grid.ColumnSpan="2"/>
 
         </Grid>
 
-        <ListView Grid.Row="1" x:Name="ProductListview" SelectionChanged="ListView_SelectionChanged" Margin="0,23,0,0" Background="#FFF9E4C9">
+        <ListView Grid.Row="1" x:Name="ProductListview" SelectionChanged="ListView_SelectionChanged" Margin="0,23,0,0" Background="#FFFBE4C6">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
-                    <GridViewColumn/>
-                    <GridViewColumn/>
-                    <GridViewColumn/>
+
                 </GridView>
             </ListView.View>
 
@@ -42,6 +42,7 @@
         <Grid  Grid.Row="2" >
             <Button Content="add new product" HorizontalAlignment="Left" Margin="0,5,0,5" Padding="5" Click="Button_Click" Width="795"/>
         </Grid>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="516,17,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.139,0.185" Grid.RowSpan="2" Width="82" Height="24" Background="#FFF5EBDE" BorderBrush="#FFEFD6B1" Foreground="#FF131311" OpacityMask="Black" FontFamily="Bahnschrift Light" FontSize="14" Click="Button_Click_1"/>
 
     </Grid>
 </Window>

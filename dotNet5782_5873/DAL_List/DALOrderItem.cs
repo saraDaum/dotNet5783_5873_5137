@@ -196,7 +196,7 @@ internal class DALOrderItem : IOrderItem
     {
         Console.WriteLine("Do you know your order item ID? Enter y or n.");
         string? ans = Console.ReadLine();
-        int OrderNumber, productBarcode;
+        //int OrderNumber, productBarcode;    DELETE!!
         if (ans == "n" || ans == "N")
         {
             foreach (var currentOrderItem in OrderItemList)
