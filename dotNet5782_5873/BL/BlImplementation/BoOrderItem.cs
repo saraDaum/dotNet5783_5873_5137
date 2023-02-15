@@ -32,11 +32,13 @@ internal class BoOrderItem : IBoOrderItem
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
         IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
         IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.Get(item=>item.autoID==item.autoID); //Get the DO.Order list
-        foreach (OrderItem currentOrderItem in AllDOOrderItems)
-        {
-            BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
-            AllBoOrderItems.Append(myOrderItem);
-        }
+        //foreach (OrderItem currentOrderItem in AllDOOrderItems)
+        //{
+        //    BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
+        //    AllBoOrderItems.Append(myOrderItem);
+        //}
+
+        AllBoOrderItems = AllDOOrderItems.Select(item => mapper.Map<BO.OrderItem>(item));
         return AllBoOrderItems;
     }
 
@@ -45,11 +47,12 @@ internal class BoOrderItem : IBoOrderItem
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
         IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
         IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.GetAll(); //Get the DO.Order list
-        foreach (OrderItem currentOrderItem in AllDOOrderItems)
-        {
-            BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
-            AllBoOrderItems.Append(myOrderItem);
-        }
+        //foreach (OrderItem currentOrderItem in AllDOOrderItems)
+        //{
+        //    BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
+        //    AllBoOrderItems.Append(myOrderItem);
+        //}
+        AllBoOrderItems = AllDOOrderItems.Select(item => mapper.Map<BO.OrderItem>(item));
         return AllBoOrderItems;
     }
 

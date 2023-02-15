@@ -27,5 +27,20 @@ internal class BoOrderTracking : IBoOrderTracking
         else
             return false;
     }
+    public void useLinqToObjectQuery(List<BO.OrderTracking> initList)
+    {
+        var v = from item in initList
+                let average = item.ID
+                where average < 80
+                orderby item.ID descending
+                select new
+                { id = item.ID, Status = item.Status, Average = average };
+        var v2 = from item in initList
+                 let average = item.ID
+                 where average < 80
+                 orderby item.ID descending
+                 group item by item.ID;
+               
+    }
 
 }

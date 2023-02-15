@@ -37,11 +37,14 @@ internal class BoProduct : IBoProduct
                 IEnumerable<Product> BoProduct = new List<Product>();
                 IEnumerable<DO.Product>? DoProducts = dal.Product.Get(item => item.Barcode == item.Barcode);//Returns all products from DAL
                 IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-              foreach (DO.Product DoProduct in DoProducts)
-                {
-                    Product MyProduct = mapper.Map<Product>(DoProduct);
-                    BoProduct= BoProduct.Append(MyProduct);
-                }
+                //foreach (DO.Product DoProduct in DoProducts)
+                //  {
+                //      Product MyProduct = mapper.Map<Product>(DoProduct);
+                //      BoProduct= BoProduct.Append(MyProduct);
+                //  }
+
+                BoProduct = DoProducts .Select(item => mapper.Map<BO.Product>(item));
+            
                 return BoProduct.Where(deligate);
             }
             catch (Exception ex)
