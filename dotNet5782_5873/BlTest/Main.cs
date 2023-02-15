@@ -12,8 +12,8 @@ public class ApplicationBL
 {
     public void Main(string[] args)
     {
-        IBl blVar = new BL();
-        IDal dal = new DalList();//CHECK: Is it okay?
+        IBl? blVar = BlApi.Factory.Get();
+        IDal? dal = DalApi.Factory.Get();//CHECK: Is it okay?
         int choose = ReadInt("Choose the Entity you want: For exit menu enter 0, For order menu enter 1, For orderitem menu enter 2, For Trackinorder menu enter 3, For product menu enter 4, For OrderForList menu enter 5, For cart menu enter 6, For  ProductItem menu enter 7 ");//להחליף את ההודעה למפורטת
         switch (choose)
         {

@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using BlApi;
 using DalApi;
 using AutoMapper;
-using DAL;
 using DO;
 using System.Reflection.Metadata.Ecma335;
 using BO;
@@ -15,7 +14,7 @@ namespace BlImplementation;
 
 internal class BoOrder : IBoOrder
 {
-    private IDal dal = new DalList();
+    IDal? dal = DalApi.Factory.Get();
 
     OurAutoMapper AutoMapper = new OurAutoMapper();
 

@@ -19,14 +19,12 @@ public class Application
     {
         try
         {
-            IDal DalListVar = new DalList();
+            IDal? DalListVar = Factory.Get();
             Order myOrder = new Order
             {
-
                 CustomerAddress = "Zhahl 13",
                 CustomerEmail = "Shira@gmail.com",
                 CustomerName = "Shira Cohen",
-
             };
 
             Product myProduct = new Product

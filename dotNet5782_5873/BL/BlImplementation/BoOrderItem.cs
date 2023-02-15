@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using BlApi;
-using DAL;
 using DalApi;
 using DO;
 
@@ -13,7 +12,7 @@ namespace BlImplementation;
 
 internal class BoOrderItem : IBoOrderItem
 {
-    private IDal dal = new DalList();
+    IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
     public int Add(BO.OrderItem BoEntity)
     {

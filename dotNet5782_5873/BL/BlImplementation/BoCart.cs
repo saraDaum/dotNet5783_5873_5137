@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using DalApi;
 using BlApi;
 using System.Runtime.InteropServices;
-using DAL;
 using System.Data.Common;
 using AutoMapper;
 using BO;
@@ -15,7 +14,7 @@ namespace BlImplementation;
 
 internal class BoCart : IBoCart
 {
-    private IDal dal = new DalList();
+    IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
 

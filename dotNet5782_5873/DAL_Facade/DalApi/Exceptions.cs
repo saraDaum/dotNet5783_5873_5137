@@ -25,6 +25,12 @@ public class EntityNotFoundException : Exception
     
 }
 
+public class DalConfigException : Exception
+{
+    public DalConfigException(string msg) : base(msg) { }
+    public DalConfigException(string msg, Exception ex) : base(msg, ex) { }
+}
+
 /// <summary>
 /// This exception will be thrown if a convert failed
 /// </summary>
