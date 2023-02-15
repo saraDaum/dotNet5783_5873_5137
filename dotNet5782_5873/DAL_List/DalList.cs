@@ -14,10 +14,9 @@ namespace DAL
         public IOrderItem OrderItem => new DALOrderItem();
         public IProduct Product => new DALProduct();
 
-        /*private DalList()
+       /*  DalList()
         {
 
         }*/
-
     }
 }
