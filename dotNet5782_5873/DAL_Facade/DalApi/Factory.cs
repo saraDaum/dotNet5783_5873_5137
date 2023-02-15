@@ -13,19 +13,18 @@ public static class Factory
 
         try
         {
-            Assembly.Load(dal ?? throw new DalConfigException($"Package {dal} is null"));
+            Assembly.Load(dal ?? throw new DalConfigException($"Package {dal} is null"));//Load DalList.dll file
         }
         catch (Exception)
         {
             throw new DalConfigException("Failed to load {dal}.dll package");
         }
 
-        Type? type = Type.GetType($"Dal.{dal}, {dal}")
+        Type? type = Type.GetType($"Dal.{dal}, {dal}")//Returns metadata of Dal.DalList
             ?? throw new DalConfigException($"Class Dal.{dal} was not found in {dal}.dll");
 
-        return type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)?
-                   .GetValue(null) as IDal
+        return type.GetProperty("Instance", BindingFlags.Public | BindingFlags.Static)?//Returns metadata of Instance
+                   .GetValue(null) as IDal //Returns metadata of Instance that must be a single instance of DalList class (SingleTone)
             ?? throw new DalConfigException($"Class {dal} is not singleton or Instance property not found");
     }
 }
-

@@ -3,7 +3,7 @@ using DO;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 
-namespace DAL;
+namespace Dal;
 internal class DataSource
 {
     internal static class Config
