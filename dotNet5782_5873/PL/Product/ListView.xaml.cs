@@ -25,7 +25,7 @@ namespace PL.Product
     /// </summary>
     public partial class ListView : Window
     {
-        IBl? bl;
+        IBl? bl = BlApi.Factory.Get();
 
         //A private list with all Filters products
         private IEnumerable<BO.Product>? FiltersProduct = new List<BO.Product>();
@@ -42,8 +42,8 @@ namespace PL.Product
             else
                 ProductListview.ItemsSource = bl.Product.Get(item => item.Barcode == item.Barcode);//Stopid condition- to get all items.
         }
-       
-        private void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        public void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var category = Selector.SelectedItem;
             if (category != null)

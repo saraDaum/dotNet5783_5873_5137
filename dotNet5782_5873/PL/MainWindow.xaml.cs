@@ -1,7 +1,7 @@
-﻿using BlApi;
-using System.Windows;
+﻿using System.Windows;
 using PL.Product;
-
+using System.Windows.Controls;
+using PL.Product;
 
 namespace PL
 {
@@ -10,7 +10,8 @@ namespace PL
     /// </summary>
     public partial class MainWindow : Window
     {
-        IBl bl = new BlImplementation.BL();
+        
+        BlApi.IBl bl  = BlApi.Factory.Get();
         public MainWindow()
         {
             InitializeComponent();
@@ -18,15 +19,9 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new ListView(bl).Show();
-           
-
+            new PL.Product.ListView(bl).Show();
         }
 
-        private void _try_Click(object sender, RoutedEventArgs e)
-        {
-            BO.Product p = new BO.Product();
-            new NewProduct(p).Show();
-        }
+       
     }
 }

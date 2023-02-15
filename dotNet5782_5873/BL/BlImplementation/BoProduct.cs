@@ -6,14 +6,13 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BlApi;
 using BO;
-using DAL;
 using DalApi;
 
 namespace BlImplementation;
 
 internal class BoProduct : IBoProduct
 {
-    private IDal dal = new DalList();
+    IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
     IEnumerable<DO.Product>DoProducts = new List<DO.Product>();
     public int Add(Product entity)

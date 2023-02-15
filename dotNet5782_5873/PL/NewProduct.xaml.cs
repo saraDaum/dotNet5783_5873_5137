@@ -1,5 +1,4 @@
 ﻿using BlApi;
-using DO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,8 +23,7 @@ namespace PL
     public partial class NewProduct : Window
     {
         BO.Product product;
-        IBl bl = new BlImplementation.BL();
-
+        BlApi.IBl bl = BlApi.Factory.Get();
         public NewProduct()
         {
             InitializeComponent();
@@ -57,7 +55,7 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //Check that fields doesn't empty 
-            if (Nametxb.Text != null && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)//null or ""
+            if (Nametxb.Text != "" && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)//null or ""
             {
                 //We create a new instance of Product with this details.
                 BO.Product product = new BO.Product();
