@@ -5,9 +5,9 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using static DAL.DataSource;
+using static Dal.DataSource;
 
-namespace DAL;
+namespace Dal;
 
 
 internal class DALOrder : IOrder

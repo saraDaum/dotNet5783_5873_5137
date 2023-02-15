@@ -2,7 +2,7 @@
 using DO;
 using DalApi;
 
-namespace DAL;
+namespace Dal;
 
 internal class DALProduct : DalApi.IProduct
 {
@@ -202,7 +202,7 @@ internal class DALProduct : DalApi.IProduct
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
-            foreach (var item in DAL.DataSource.ProductList)
+            foreach (var item in Dal.DataSource.ProductList)
             {
                 Console.WriteLine(item);
             }

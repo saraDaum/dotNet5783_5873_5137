@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace DAL
+namespace Dal
 {
     sealed internal class DalList : IDal
     {
@@ -14,9 +14,9 @@ namespace DAL
         public IOrderItem OrderItem => new DALOrderItem();
         public IProduct Product => new DALProduct();
 
-       /*  DalList()
+        public DalList()
         {
 
-        }*/
+        }
     }
 }

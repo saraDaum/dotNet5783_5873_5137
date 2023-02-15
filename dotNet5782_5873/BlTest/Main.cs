@@ -1,7 +1,7 @@
 ﻿using BlApi;
 using BlImplementation;
 using BO;
-using DAL;
+using Dal;
 using DalApi;
 using System;
 using System.Security.Cryptography.X509Certificates;
