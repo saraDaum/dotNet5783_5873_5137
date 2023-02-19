@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\st226\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj": {}
+    "C:\\Users\\דאום\\source\\repos\\saraDaum\\dotNet5783_5873_5137\\dotNet5782_5873\\stage0\\stage0.csproj": {}
   },
   "projects": {
-    "C:\\Users\\st226\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj": {
+    "C:\\Users\\דאום\\source\\repos\\saraDaum\\dotNet5783_5873_5137\\dotNet5782_5873\\stage0\\stage0.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\st226\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
+        "projectUniqueName": "C:\\Users\\דאום\\source\\repos\\saraDaum\\dotNet5783_5873_5137\\dotNet5782_5873\\stage0\\stage0.csproj",
         "projectName": "stage0",
-        "projectPath": "C:\\Users\\st226\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\stage0.csproj",
-        "packagesPath": "C:\\Users\\st226\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\st226\\source\\repos\\saraDaum\\dotNet5783_5873_0000\\dotNet5782_5873\\stage0\\obj\\",
+        "projectPath": "C:\\Users\\דאום\\source\\repos\\saraDaum\\dotNet5783_5873_5137\\dotNet5782_5873\\stage0\\stage0.csproj",
+        "packagesPath": "C:\\Users\\דאום\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\דאום\\source\\repos\\saraDaum\\dotNet5783_5873_5137\\dotNet5782_5873\\stage0\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\st226\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\דאום\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

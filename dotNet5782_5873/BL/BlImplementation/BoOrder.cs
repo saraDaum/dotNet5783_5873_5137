@@ -9,6 +9,7 @@ using AutoMapper;
 using DO;
 using System.Reflection.Metadata.Ecma335;
 using BO;
+using System.Linq.Expressions;
 
 namespace BlImplementation;
 
@@ -19,20 +20,16 @@ internal class BoOrder : IBoOrder
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
     IEnumerable<BO.Order> AllBoOrders = new List<BO.Order>();//A new list of BO.Order
- 
+
 
     private IEnumerable<BO.Order> getOrderslist()
     {
-        AllBoOrders.DefaultIfEmpty();
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
         IEnumerable<DO.Order>? AllDoOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
         if (AllDoOrders.Count() > 0)
         {
-            foreach (DO.Order order in AllDoOrders)
-            {
-                BO.Order myOrder = mapper.Map<BO.Order>(order);//Mapper
-                AllBoOrders.Append(myOrder);
-            }
+            IEnumerable<BO.Order> AllBoOrders = AllDoOrders.Select(item => mapper.Map<BO.Order>(item));
+          
         }
         return AllBoOrders;
     }
@@ -67,11 +64,18 @@ internal class BoOrder : IBoOrder
     /// <returns></returns>
     public BO.Order GetById(int id)
     {
-        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID ==id);
-        BO.Order myBoOrder = new BO.Order();
-        myBoOrder = mapper.Map<BO.Order>(DoOrder);
-        return myBoOrder;
+        try
+        {
+            IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+            IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID == id);
+            BO.Order myBoOrder = new BO.Order();
+            myBoOrder = mapper.Map<BO.Order>(DoOrder);
+            return myBoOrder;
+        }
+        catch (Exception ex)
+        {
+            throw new somethingWrong("--------------", ex);
+        }
     }
 
     /// <summary>
@@ -91,7 +95,7 @@ internal class BoOrder : IBoOrder
     /// <returns></returns>
     public IEnumerable<BO.Order> GetAll()
     {
-        return AllBoOrders=getOrderslist();
+        return AllBoOrders = getOrderslist();
     }
 
     public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
@@ -99,17 +103,17 @@ internal class BoOrder : IBoOrder
         throw new NotImplementedException();
     }
 
-  /*  public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
-    {
+    /*  public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
+      {
 
-        AllBoOrders = getOrderslist();
-        IEnumerable<DO.Order>? AllDoOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
-        if (AllDoOrders.Count() > 0)
-        {
+          AllBoOrders = getOrderslist();
+          IEnumerable<DO.Order>? AllDoOrders = dal.Order.Get(item => item.ID == item.ID);//Stupid condition because I want it return all list
+          if (AllDoOrders.Count() > 0)
+          {
 
-        }
-        return AllBoOrders;
-    }*/
+          }
+          return AllBoOrders;
+      }*/
 
     //
     public IEnumerable<BO.Order>? Get(Func<BO.Order, bool>? deligate)
@@ -117,7 +121,7 @@ internal class BoOrder : IBoOrder
         if (deligate != null)
         {
             IEnumerable<BO.Order> orders = getOrderslist();
-             return orders.Where(deligate); 
+            return orders.Where(deligate);
         }
         return null;
     }

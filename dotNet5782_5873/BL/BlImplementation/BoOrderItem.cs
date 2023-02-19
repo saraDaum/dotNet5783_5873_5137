@@ -31,13 +31,7 @@ internal class BoOrderItem : IBoOrderItem
     {
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
         IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
-        IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.Get(item=>item.autoID==item.autoID); //Get the DO.Order list
-        //foreach (OrderItem currentOrderItem in AllDOOrderItems)
-        //{
-        //    BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
-        //    AllBoOrderItems.Append(myOrderItem);
-        //}
-
+        IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.Get(item => item.autoID == item.autoID); //Get the DO.Order list
         AllBoOrderItems = AllDOOrderItems.Select(item => mapper.Map<BO.OrderItem>(item));
         return AllBoOrderItems;
     }
@@ -47,11 +41,6 @@ internal class BoOrderItem : IBoOrderItem
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
         IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
         IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.GetAll(); //Get the DO.Order list
-        //foreach (OrderItem currentOrderItem in AllDOOrderItems)
-        //{
-        //    BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
-        //    AllBoOrderItems.Append(myOrderItem);
-        //}
         AllBoOrderItems = AllDOOrderItems.Select(item => mapper.Map<BO.OrderItem>(item));
         return AllBoOrderItems;
     }
@@ -64,7 +53,7 @@ internal class BoOrderItem : IBoOrderItem
     public BO.OrderItem GetById(int id, int orderId)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.Get(item=>item.autoID==id));
+        BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.Get(item => item.autoID == id));
         return myOrderItem;
     }
 
@@ -76,6 +65,6 @@ internal class BoOrderItem : IBoOrderItem
         dal.OrderItem.Update(DoOrderItem);
     }
 
-   
+
 
 }
