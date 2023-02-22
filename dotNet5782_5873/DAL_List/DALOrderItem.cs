@@ -3,6 +3,7 @@ using System;
 using DalApi;
 using static Dal.DataSource;
 using System.Reflection;
+using System.Security.Cryptography;
 
 namespace Dal;
 //Finish
@@ -16,6 +17,7 @@ internal class DALOrderItem : IOrderItem
     public int Add(OrderItem newOrderItem)
     {
         bool isExist = false;
+
         foreach (OrderItem currentOrderItem in OrderItemList)
         {
             if (currentOrderItem.OrderID == newOrderItem.OrderID && currentOrderItem.ProductID == newOrderItem.ProductID)
@@ -48,7 +50,6 @@ internal class DALOrderItem : IOrderItem
         }
         else
         {
-
             OrderItemList.ForEach(MyOrderItm => MyOrderItm.ToString());
             Console.WriteLine("Please enter your order number");
         }
@@ -93,28 +94,28 @@ internal class DALOrderItem : IOrderItem
                     {
 
 
-                        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
+                        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM", new Exception());
 
                     }
                 }
                 else
                 {
-                    throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
+                    throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM", new Exception());
 
                 }
             }
             else
             {
-                throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
+                throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM", new Exception());
             }
 
         }
         else
         {
-            throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
+            throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM", new Exception());
         }
 
-        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM");
+        throw new FailedToConvertException("CreateAnOrderItem function :: DAL_ORDER_ITEM", new Exception());
        
     }
 
@@ -161,12 +162,12 @@ internal class DALOrderItem : IOrderItem
 
             else
             {
-                throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM");
+                throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM", new Exception());
             }
         }
         else
         {
-            throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM");
+            throw new FailedToConvertException("Update function :: DAL_ORDER_ITEM", new Exception());
         }
     }
 
@@ -216,7 +217,7 @@ internal class DALOrderItem : IOrderItem
 
             else
             {
-                throw new FailedToConvertException("Daelete function :: DAL_ORDER_ITEM");
+                throw new FailedToConvertException("Daelete function :: DAL_ORDER_ITEM", new Exception());
             }
         }
     }
@@ -234,7 +235,7 @@ internal class DALOrderItem : IOrderItem
         }
         else
         {
-            throw new InvalidEntityException("Delete function :: DAL_ORDER_ITEM");
+            throw new InvalidEntityException("Delete function :: DAL_ORDER_ITEM", new Exception());
 
         }
     }
@@ -249,7 +250,7 @@ internal class DALOrderItem : IOrderItem
         }
         else
         {
-            throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM");
+            throw new InvalidEntityException("GetById function :: DAL_ORDER_ITEM", new Exception());
         }
     }
 

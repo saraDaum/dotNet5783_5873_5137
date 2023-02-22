@@ -34,13 +34,13 @@ internal class DALOrder : IOrder
                 }
                 else
                 {
-                    throw new DuplicateIdException(newOrder.ID, "Add function :: DAL_ORDER");
+                    throw new DuplicateIdException( "Add function :: DAL_ORDER", new Exception());
 
                 }
             }
             else
             {
-                throw new InvalidEntityException("Add function :: DAL_ORDER");
+                throw new InvalidEntityException("Add function :: DAL_ORDER", new Exception());
             }
         }
         catch (Exception ex)
@@ -99,7 +99,7 @@ public void Update(Order newOne)
             int index = OrderList.FindIndex(MyOrder => MyOrder.ID == newOne.ID);
             if (index == -1)
             {
-                throw new EntityNotFoundException("Update function :: DAL_ORDER");
+                throw new EntityNotFoundException("Update function :: DAL_ORDER", new Exception());
             }
             if (index != -1)
             {
@@ -143,7 +143,7 @@ public void Delete(int ID)
     int index = OrderList.FindIndex(order => order.ID == ID);
     if (index == -1)
     {
-        throw new InvalidEntityException("Delete function :: DAL_ORDER");
+        throw new InvalidEntityException("Delete function :: DAL_ORDER", new Exception());
     }
     if (index != -1)
     {
@@ -184,7 +184,7 @@ public void ReadById(int id)
     }
     else
     {
-        throw new FailedToConvertException("ReadById :: DAL_ORDER");
+        throw new FailedToConvertException("ReadById :: DAL_ORDER", new Exception());
     }
 }
 
