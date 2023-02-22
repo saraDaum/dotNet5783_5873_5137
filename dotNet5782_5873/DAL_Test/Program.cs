@@ -261,27 +261,22 @@ public class Application
         catch (EntityNotFoundException ex)
         {
             Console.WriteLine("EntityNotFoundException");
-            Console.WriteLine(ex.ErrorMessage);
         }
         catch (InvalidEntityException ex)
         {
             Console.WriteLine("InvalidEntityException");
-            Console.WriteLine(ex.Message);
         }
         catch (FailedToConvertException ex)
         {
             Console.WriteLine("FailedToConvertException");
-            Console.WriteLine(ex.Message);
         }
         catch (DuplicateIdException ex)
         {
             Console.WriteLine("DuplicateIdException");
-            Console.WriteLine(ex.Message);
         }
         catch (Exception ex)
         {
             Console.WriteLine("Exception");
-            Console.WriteLine(ex.Message);
         }
     }
 

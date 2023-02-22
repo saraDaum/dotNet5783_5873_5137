@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -29,20 +30,37 @@ namespace PL.Product
         BO.Cart cart;
 
         //A private list with all Filters products
-        private IEnumerable<BO.Product>? FiltersProduct = new List<BO.Product>();
+        private IEnumerable<BO.Product>? FiltersProduct = new List<BO.Product>();//I think taht we can delete it
 
         public ListView(IBl? bl, Cart cart)
         {
-            this.bl = bl;
-            InitializeComponent();
-            Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
-            //To show all without filter
-            var category = Selector.SelectedItem;
-            if (category != null)
-                ProductListview.ItemsSource = bl.Product.Get(item => (int)item.Category == (int)category);
-            else
-                ProductListview.ItemsSource = bl.Product.Get(item => item.Barcode == item.Barcode);//Stopid condition- to get all items.
-        }
+            try
+            {
+                this.bl = bl;
+                InitializeComponent();
+
+                Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
+                //To show all without filter
+                var category = Selector.SelectedItem;
+                if (category != null)
+                    ProductListview.ItemsSource = bl.Product.Get(item => (int)item.Category == (int)category);
+                else
+                    ProductListview.ItemsSource = bl.Product.Get(item => item.Barcode == item.Barcode);//Stopid condition- to get all items.
+            }
+          
+            catch (somethingWrong ex)
+            {
+
+               /* myMessagesWindow wnd = new myMessagesWindow(ex.innerexception.messages);
+                wnd.ShowDialog();*/
+            }
+            catch (Exception)
+            {
+
+               /* lbl1.text = "kjhgfgf";
+                myMessagesWindow wnd = new myMessagesWindow(ex.innerexception.messages);
+                wnd.ShowDialog();*/
+            }        }
 
         public ListView(IBl bl)
         {

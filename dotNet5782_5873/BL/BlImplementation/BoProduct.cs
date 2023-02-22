@@ -14,7 +14,7 @@ internal class BoProduct : IBoProduct
 {
     IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
-    IEnumerable<DO.Product>DoProducts = new List<DO.Product>();
+    IEnumerable<DO.Product> DoProducts = new List<DO.Product>();
     public int Add(Product entity)
     {
         IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
@@ -37,15 +37,8 @@ internal class BoProduct : IBoProduct
                 IEnumerable<Product> BoProduct = new List<Product>();
                 IEnumerable<DO.Product>? DoProducts = dal.Product.Get(item => item.Barcode == item.Barcode);//Returns all products from DAL
                 IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-                //foreach (DO.Product DoProduct in DoProducts)
-                //  {
-                //      Product MyProduct = mapper.Map<Product>(DoProduct);
-                //      BoProduct= BoProduct.Append(MyProduct);
-                //  }
-
-                BoProduct = DoProducts .Select(item => mapper.Map<BO.Product>(item));
-            
-                return BoProduct.Where(deligate);
+                BoProduct = DoProducts.Select(item => mapper.Map<BO.Product>(item));
+                return BoProduct.Where(deligate);//Filter
             }
             catch (Exception ex)
             {
@@ -64,7 +57,7 @@ internal class BoProduct : IBoProduct
     public void Update(Product MyBoProduct)
     {
         IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-        DO.Product DoProduct = mapper.Map<BO.Product,DO.Product>(MyBoProduct);
+        DO.Product DoProduct = mapper.Map<BO.Product, DO.Product>(MyBoProduct);
         dal.Product.Update(DoProduct);
     }
 }

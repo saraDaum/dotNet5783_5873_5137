@@ -8,23 +8,16 @@ public class EntityNotFoundException : Exception
 {
 
     /// <summary>
-    /// Error details. What occurred and in which function
-    /// </summary>
-    public string ErrorMessage { get; init; }
-
-    /// <summary>
     /// EntityNotFoundException constructor
     /// </summary>
     /// <param name="message"></param>
-    public EntityNotFoundException(string message)
-    {
-        ErrorMessage = message;
-        Console.WriteLine("Exception: An error occurred in " + message);
-
-    }
+    public EntityNotFoundException(string message, Exception ex) : base(message, ex) { }
 
 }
 
+/// <summary>
+/// This exception will be thrown if an error would occur in DalConfig
+/// </summary>
 public class DalConfigException : Exception
 {
     public DalConfigException(string msg) : base(msg) { }
@@ -36,22 +29,11 @@ public class DalConfigException : Exception
 /// </summary>
 public class FailedToConvertException : Exception
 {
-
-    /// <summary>
-    /// Error details. What occurred and in which function
-    /// </summary>
-    public string ErrorMessage { get; init; }
-
     /// <summary>
     /// FailedToConvertException constructor
     /// </summary>
     /// <param name="message"></param>
-    public FailedToConvertException(string message)
-    {
-        ErrorMessage = message;
-        Console.WriteLine("Exception: An error occurred in " + message);
-    }
-
+    public FailedToConvertException(string message, Exception ex) : base(message, ex) { }
 }
 
 
@@ -60,28 +42,7 @@ public class FailedToConvertException : Exception
 /// </summary>
 public class DuplicateIdException : Exception
 {
-    /// <summary>
-    /// The duplicate id
-    /// </summary>
-    public int DuplicateId { get; init; }
-
-    /// <summary>
-    /// Error details. What occurred and in which function
-    /// </summary>
-    public string ErrorMessage { get; init; }
-
-    /// <summary>
-    /// DuplicateIdException constructor
-    /// </summary>
-    /// <param name="Id"></param>
-    /// <param name="message"></param>
-    public DuplicateIdException(int Id, string message)
-    {
-        DuplicateId = Id;
-        ErrorMessage = message;
-        Console.WriteLine("Exception: An error occurred in " + message + "\nDouble ID id: " + DuplicateId);
-
-    }
+    public DuplicateIdException(string message, Exception ex) : base(message, ex) { }
 
 }
 
@@ -90,19 +51,9 @@ public class DuplicateIdException : Exception
 /// </summary>
 public class InvalidEntityException : Exception
 {
-
-    /// <summary>
-    /// Error details. What occurred and in which function
-    /// </summary>
-    public string ErrorMessage { get; init; }
-
     /// <summary>
     /// InvalidEntityException constructor
     /// </summary>
     /// <param name="message"></param>
-    public InvalidEntityException(string message)
-    {
-        ErrorMessage = message;
-        Console.WriteLine("Exception: An error occurred in " + message);
-    }
+    public InvalidEntityException(string message, Exception ex) : base(message, ex) { }
 }
