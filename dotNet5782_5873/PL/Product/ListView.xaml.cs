@@ -26,11 +26,12 @@ namespace PL.Product
     public partial class ListView : Window
     {
         IBl? bl = BlApi.Factory.Get();
+        BO.Cart cart;
 
         //A private list with all Filters products
         private IEnumerable<BO.Product>? FiltersProduct = new List<BO.Product>();
 
-        public ListView(IBl? bl)
+        public ListView(IBl? bl, Cart cart)
         {
             this.bl = bl;
             InitializeComponent();
@@ -41,6 +42,11 @@ namespace PL.Product
                 ProductListview.ItemsSource = bl.Product.Get(item => (int)item.Category == (int)category);
             else
                 ProductListview.ItemsSource = bl.Product.Get(item => item.Barcode == item.Barcode);//Stopid condition- to get all items.
+        }
+
+        public ListView(IBl bl)
+        {
+            this.bl = bl;
         }
 
         public void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -66,7 +72,7 @@ namespace PL.Product
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NewProduct().Show();
+            new NewProduct(cart).Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
