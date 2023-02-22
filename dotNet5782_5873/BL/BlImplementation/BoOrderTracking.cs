@@ -5,37 +5,42 @@ using System.Text;
 using System.Threading.Tasks;
 using BlApi;
 using BO;
-using DAL;
 using DalApi;
+using DO;
 
 namespace BlImplementation;
 
-internal class BoOrderTracking:IBoOrderTracking
+internal class BoOrderTracking : IBoOrderTracking
 {
-    private IDal dal= new DalList();
+    IDal? dal = DalApi.Factory.Get();
+    //We don't implement it yet because we don't know what to do.
+    //We wait to see the rest of the instructions.
 
-    public int Add(OrderTracking entity)
+
+    //Mirymi, I don't know what do you want to do here!!!
+    //check input!!
+    public bool ChangeOrderStatus(BO.OrderTracking order, BO.OrderStatus status)
     {
-        throw new NotImplementedException();
+        order.Status = status;
+        if (order.Status == status)
+            return true;
+        else
+            return false;
+    }
+    public void useLinqToObjectQuery(List<BO.OrderTracking> initList)
+    {
+        var v = from item in initList
+                let average = item.ID
+                where average < 80
+                orderby item.ID descending
+                select new
+                { id = item.ID, Status = item.Status, Average = average };
+        var v2 = from item in initList
+                 let average = item.ID
+                 where average < 80
+                 orderby item.ID descending
+                 group item by item.ID;
+               
     }
 
-    public void Delete(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<OrderTracking> GetAll()
-    {
-        throw new NotImplementedException();
-    }
-
-    public OrderTracking GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-    public void Update(OrderTracking entity)
-    {
-        throw new NotImplementedException();
-    }
 }

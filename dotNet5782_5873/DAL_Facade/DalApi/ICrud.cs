@@ -1,13 +1,40 @@
-﻿namespace DalApi;
+﻿using DO;
+
+namespace DalApi;
 
 public interface ICrud<T>
 {
+    /// <summary>
+    /// This function gets an oject and enters it to the list. Than, it returns the object ID. 
+    /// </summary>
+    /// <param name="entity"></param>
+    /// <returns></returns>
     int Add(T entity);
-    T GetById(int id);
-    IEnumerable<T?> GetAll();
+
+    /// <summary>
+    /// This funtion gets
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    T GetAnObject(Predicate<T> myDelegate);
+
+    /// <summary>
+    /// This function gets a updated object and update the old one.   
+    /// </summary>
+    /// <param name="entity"></param>
     void Update(T entity);
-    void Delete(int id);
-    //T deleteAll();
-    //IEnumerable<T>
+
+    /// <summary>
+    /// This function gets an ID and delete the match item from list.
+    /// </summary>
+    /// <param name="id"></param>
+   void Delete(int id);
+
+    /// <summary>
+    /// This function gets a deligate and returns the objects that match to the condition.
+    /// </summary>
+    /// <param name="deligate"></param>
+    /// <returns></returns>
+    IEnumerable<T>? Get(Func<T, bool>? deligate);
 
 }

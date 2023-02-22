@@ -1,4 +1,5 @@
-﻿using DalApi;
+﻿using BO;
+using DalApi;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BlApi
 {
-    public interface IBoProduct:ICrud<BO.Product>
+    public interface IBoProduct:ICrud<Product>
     {
 
 

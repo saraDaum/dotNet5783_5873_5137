@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DAL_Facade\DAL_Facade.csproj" />
-    <ProjectReference Include="..\DAL_List\DAL_List.csproj" />
+    <ProjectReference Include="..\DAL_List\DalList.csproj" />
   </ItemGroup>
 
 </Project>

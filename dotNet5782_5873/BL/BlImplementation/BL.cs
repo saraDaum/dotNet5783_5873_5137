@@ -8,18 +8,22 @@ using System.Threading.Tasks;
 
 namespace BlImplementation
 {
-    sealed public class BL:IBl
+    internal  class BL : IBl
     {
-            public IBoOrder Order => new BoOrder();
+        public IBoCart Cart => new BoCart();
 
-            public IBoOrderItem OrderItem => new BoOrderItem();
+        public IBoOrder Order => new BoOrder();
 
-            public IBoProduct Product => new BoProduct();
+        public IBoOrderForList OrderForList => new BoOrderForList();
 
-            public List<BO.Order> Orders = new List<BO.Order>();
+        public IBoOrderItem OrderItem => new BoOrderItem();
 
-        }
+        public IBoOrderTracking OrderTracking => new BoOrderTracking();
+
+        public IBoProduct Product => new BoProduct();
+        
+        public IBoProductItem ProductItem => new BoProductItem();
     }
+}
 
-}
-}
+

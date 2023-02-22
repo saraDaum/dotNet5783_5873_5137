@@ -19,13 +19,20 @@ public struct Product
     /// </summary>
     public Category Category { get; set; }
     public double ProductPrice { get; set; }
-    public int InStock { get; set; }
     public int AmountInStock { get; set; }
+    // public int InStock { get; set; }
 
+    public Product(int b, string n, Category c, double p, int a)
+    {
+        Barcode = b;
+        ProductName = n;
+        Category = c;
+        ProductPrice = p;
+        AmountInStock = a;
+    }
     public override string ToString() => $@"
-    Product details:\n
     {nameof(Barcode)}- {ProductName}, 
     category: {Category},
     Price: {ProductPrice},
-   	Amount in stock: {InStock}";
+   	Amount in stock: {AmountInStock}";
 }

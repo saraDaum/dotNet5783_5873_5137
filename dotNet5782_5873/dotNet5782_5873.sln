@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "stage0", "stage0\stage0.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Facade", "DAL_Facade\DAL_Facade.csproj", "{9B605F71-F0F0-453E-80B1-D4CE2FD5B8E9}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_List", "DAL_List\DAL_List.csproj", "{33BB6ACF-9DEC-44EE-82D7-60846B9C38AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DalList", "DAL_List\DalList.csproj", "{33BB6ACF-9DEC-44EE-82D7-60846B9C38AC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL_Test", "DAL_Test\DAL_Test.csproj", "{A8F1B6D3-B8D0-4882-A1DA-9FA8B1387628}"
 EndProject
@@ -18,6 +18,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BI", "BI", "{A9CB83AC-4267-488F-AEC8-73EC9F1C742D}"
 	ProjectSection(SolutionItems) = preProject
 		IBI.cs = IBI.cs
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PL", "PL\PL.csproj", "{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "xml", "xml", "{8F4F2496-CD6F-40B4-B8FD-85497627378B}"
+	ProjectSection(SolutionItems) = preProject
+		dal-config.xml = dal-config.xml
 	EndProjectSection
 EndProject
 Global
@@ -50,6 +57,10 @@ Global
 		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9F19351-9B9F-41C8-96B3-263F19836AFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DBE6631-50E0-4C2E-BDC0-F70FB478CEF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

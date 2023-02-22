@@ -15,27 +15,28 @@ namespace BO
         /// <summary>
         /// Product barcde in OrderItem
         /// </summary>
-        public int ProductID { get;}
+        public int ProductID { get; set; }
 
         /// <summary>
         /// Order number in OrderItem
         /// </summary>
-        public int OrderID { get;}
+        public int OrderID { get; set; }
 
         /// <summary>
         /// Product price in OrderItem
         /// </summary>
-        public double ProductPrice { get;}
+        public double ProductPrice { get; set; }
 
         /// <summary>
         /// The requested quantity of the product
         /// </summary>
-        public int Amount { get;}
+        public int Amount { get; set;}
+            
 
         /// <summary>
         /// Auto ID for this OrderItem
         /// </summary>
-        public int autoID { get;}
+        public int autoID { get; set; }
 
         /// <summary>
         /// Print all OrderItem's details

@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 using AutoMapper;
 using BlApi;
 using BO;
-using DAL;
 using DalApi;
 
 namespace BlImplementation;
 
-internal class BoProduct:IBoProduct
+internal class BoProduct : IBoProduct
 {
-   private IDal dal= new DalList();
-    OurAutoMapper AutoMapper= new OurAutoMapper();
+    IDal? dal = DalApi.Factory.Get();
+    OurAutoMapper AutoMapper = new OurAutoMapper();
+    IEnumerable<DO.Product>DoProducts = new List<DO.Product>();
     public int Add(Product entity)
     {
         IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-        DO.Product DoProduct= mapper.Map<DO.Product>(entity);
+        DO.Product DoProduct = mapper.Map<DO.Product>(entity);
         int Barcode = dal.Product.Add(DoProduct);
         return Barcode;
     }
@@ -28,19 +28,44 @@ internal class BoProduct:IBoProduct
         dal.Product.Delete(id);
     }
 
-    public IEnumerable<Product> GetAll()
+    public IEnumerable<Product>? Get(Func<Product, bool> deligate)
+    {
+        if (deligate != null)
+        {
+            try
+            {
+                IEnumerable<Product> BoProduct = new List<Product>();
+                IEnumerable<DO.Product>? DoProducts = dal.Product.Get(item => item.Barcode == item.Barcode);//Returns all products from DAL
+                IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+                //foreach (DO.Product DoProduct in DoProducts)
+                //  {
+                //      Product MyProduct = mapper.Map<Product>(DoProduct);
+                //      BoProduct= BoProduct.Append(MyProduct);
+                //  }
+
+                BoProduct = DoProducts .Select(item => mapper.Map<BO.Product>(item));
+            
+                return BoProduct.Where(deligate);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        return null;
+    }
+
+
+    public Product GetAnObject(Predicate<Product> myDelegate)
     {
         throw new NotImplementedException();
     }
 
-    public Product GetById(int id)
+    public void Update(Product MyBoProduct)
     {
-        throw new NotImplementedException();
-    }
-
-    public void Update(Product entity)
-    {
-        throw new NotImplementedException();
+        IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+        DO.Product DoProduct = mapper.Map<BO.Product,DO.Product>(MyBoProduct);
+        dal.Product.Update(DoProduct);
     }
 }
 

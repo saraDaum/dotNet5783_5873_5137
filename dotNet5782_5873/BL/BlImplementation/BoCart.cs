@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using DalApi;
 using BlApi;
 using System.Runtime.InteropServices;
-using DAL;
 using System.Data.Common;
 using AutoMapper;
 using BO;
@@ -15,7 +14,7 @@ namespace BlImplementation;
 
 internal class BoCart : IBoCart
 {
-    private IDal dal = new DalList();
+    IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
 
 
@@ -29,14 +28,14 @@ internal class BoCart : IBoCart
     public int Add(BO.Cart cart, BO.OrderItem entity)
     {
         //Update the new amount
-        DO.Product product = dal.Product.GetAll().First(item => item.Barcode == entity.ProductID);
+        DO.Product product = dal.Product.GetAnObject(item => item.Barcode == entity.ProductID);
         IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
         BO.Product BoProduct = mapper.Map<BO.Product>(product);
         int quantityRequested = entity.Amount;
         if (BoProduct.AmountInStock - quantityRequested > 0)
         {
 
-            product.InStock -= quantityRequested;
+            product.AmountInStock -= quantityRequested;
             BoProduct.AmountInStock -= quantityRequested;
             dal.Product.Update(product);//Check that it's works
             cart.TotalPrice += entity.ProductPrice * entity.Amount;

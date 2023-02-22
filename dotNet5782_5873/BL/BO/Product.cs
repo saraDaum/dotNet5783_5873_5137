@@ -17,7 +17,7 @@ namespace BO
         /// <summary>
         /// Product barcode (identification number)
         /// </summary>
-        public int? Barcode { get; }
+        public int Barcode { get; set; }//It is not null. Product must have a barcode.
 
         /// <summary>
         /// Product name
@@ -44,7 +44,7 @@ namespace BO
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $@"
-    Product details:\n
+   
     {nameof(Barcode)} -{ProductName}, 
     {nameof(Category)}: {Category},
     {nameof(ProductPrice)} :{ProductPrice},

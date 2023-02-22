@@ -9,8 +9,8 @@ using DO;
 
 namespace BlApi;
 
-public interface IBoOrder: ICrud<BO.Order>
+public interface IBoOrder : ICrud<BO.Order>
 {
-    
+    void Update(Action order);
 }
 

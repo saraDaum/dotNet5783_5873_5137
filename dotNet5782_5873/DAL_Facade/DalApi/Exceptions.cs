@@ -1,10 +1,12 @@
-﻿namespace DalApi;
+﻿using System.Runtime.CompilerServices;
+
+namespace DalApi;
 /// <summary>
 /// This exception will be thrown if an entity not find
 /// </summary>
 public class EntityNotFoundException : Exception
 {
-    
+
     /// <summary>
     /// Error details. What occurred and in which function
     /// </summary>
@@ -17,8 +19,16 @@ public class EntityNotFoundException : Exception
     public EntityNotFoundException(string message)
     {
         ErrorMessage = message;
-        Console.WriteLine("Exception: An error occurred in "+message);
+        Console.WriteLine("Exception: An error occurred in " + message);
+
     }
+
+}
+
+public class DalConfigException : Exception
+{
+    public DalConfigException(string msg) : base(msg) { }
+    public DalConfigException(string msg, Exception ex) : base(msg, ex) { }
 }
 
 /// <summary>
@@ -26,7 +36,7 @@ public class EntityNotFoundException : Exception
 /// </summary>
 public class FailedToConvertException : Exception
 {
-    
+
     /// <summary>
     /// Error details. What occurred and in which function
     /// </summary>
@@ -40,7 +50,6 @@ public class FailedToConvertException : Exception
     {
         ErrorMessage = message;
         Console.WriteLine("Exception: An error occurred in " + message);
-
     }
 
 }
@@ -55,7 +64,7 @@ public class DuplicateIdException : Exception
     /// The duplicate id
     /// </summary>
     public int DuplicateId { get; init; }
-   
+
     /// <summary>
     /// Error details. What occurred and in which function
     /// </summary>
@@ -66,10 +75,11 @@ public class DuplicateIdException : Exception
     /// </summary>
     /// <param name="Id"></param>
     /// <param name="message"></param>
-    public DuplicateIdException(int Id, string message) {
+    public DuplicateIdException(int Id, string message)
+    {
         DuplicateId = Id;
-        ErrorMessage= message;
-        Console.WriteLine("Exception: An error occurred in " + message+"\nDouble ID id: "+DuplicateId);
+        ErrorMessage = message;
+        Console.WriteLine("Exception: An error occurred in " + message + "\nDouble ID id: " + DuplicateId);
 
     }
 
@@ -78,7 +88,8 @@ public class DuplicateIdException : Exception
 /// <summary>
 /// This exception will be thrown if an invalid entity is found
 /// </summary>
-public class InvalidEntityException : Exception {
+public class InvalidEntityException : Exception
+{
 
     /// <summary>
     /// Error details. What occurred and in which function

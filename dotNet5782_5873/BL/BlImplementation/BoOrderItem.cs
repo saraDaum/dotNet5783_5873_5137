@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using BlApi;
-using DAL;
 using DalApi;
 using DO;
 
@@ -13,7 +12,7 @@ namespace BlImplementation;
 
 internal class BoOrderItem : IBoOrderItem
 {
-    private IDal dal = new DalList();
+    IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
     public int Add(BO.OrderItem BoEntity)
     {
@@ -28,23 +27,44 @@ internal class BoOrderItem : IBoOrderItem
         dal.OrderItem.Delete(id);
     }
 
+    public IEnumerable<BO.OrderItem>? Get(Func<BO.OrderItem, bool>? deligate)
+    {
+        IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
+        IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
+        IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.Get(item=>item.autoID==item.autoID); //Get the DO.Order list
+        //foreach (OrderItem currentOrderItem in AllDOOrderItems)
+        //{
+        //    BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
+        //    AllBoOrderItems.Append(myOrderItem);
+        //}
+
+        AllBoOrderItems = AllDOOrderItems.Select(item => mapper.Map<BO.OrderItem>(item));
+        return AllBoOrderItems;
+    }
+
     public IEnumerable<BO.OrderItem> GetAll()
     {
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
         IEnumerable<BO.OrderItem> AllBoOrderItems = new List<BO.OrderItem>();//A new list of BO.Order
         IEnumerable<DO.OrderItem> AllDOOrderItems = dal.OrderItem.GetAll(); //Get the DO.Order list
-        foreach (OrderItem currentOrderItem in AllDOOrderItems)
-        {
-            BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
-            AllBoOrderItems.Append(myOrderItem);
-        }
+        //foreach (OrderItem currentOrderItem in AllDOOrderItems)
+        //{
+        //    BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(currentOrderItem);//Mapper
+        //    AllBoOrderItems.Append(myOrderItem);
+        //}
+        AllBoOrderItems = AllDOOrderItems.Select(item => mapper.Map<BO.OrderItem>(item));
         return AllBoOrderItems;
+    }
+
+    public BO.OrderItem GetAnObject(Predicate<BO.OrderItem> myDelegate)
+    {
+        throw new NotImplementedException();
     }
 
     public BO.OrderItem GetById(int id, int orderId)
     {
         IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-        BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.GetById(id));
+        BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.Get(item=>item.autoID==id));
         return myOrderItem;
     }
 

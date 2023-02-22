@@ -8,4 +8,5 @@ public interface IProduct:ICrud<Product>
     /// It get all required details from the customer and sends them to the matched function
     /// </summary>
       void Update();
+  
 }

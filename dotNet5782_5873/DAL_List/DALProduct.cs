@@ -1,25 +1,29 @@
-﻿using static DAL.DataSource;
+﻿//using static DAL.DataSource;
 using DO;
 using DalApi;
 
-namespace DAL;
+namespace Dal;
 
 internal class DALProduct : DalApi.IProduct
 {
-    private Product NULL;
-
-    public Product GetById(int barcode)
+    public Product? GetById(int barcode)
     {
-        int index = ProductList.FindIndex(current => current.Barcode == barcode);
+        int index = DataSource.ProductList.FindIndex(current => current.Barcode == barcode);
         if (index != -1)
         {
-            return ProductList[index];
+            return DataSource.ProductList[index];
         }
         else
         {
             throw new EntityNotFoundException("GetById functin::DAL_PRODUCT");
         }
-        return NULL;
+        return null;
+    }
+
+
+    public List<Product>? ReturnList()
+    {
+        return DataSource.ProductList;
     }
 
 
@@ -29,56 +33,56 @@ internal class DALProduct : DalApi.IProduct
     /// <returns></returns>
     public int Add()
     {
-        Category category = new Category();
-        Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
-        string AnsCategory = Console.ReadLine();
-        switch (AnsCategory)
-        {
-            case ("Pencils"):
-                {
-                    category = (Category)0;
-                    break;
-                }
-            case ("lipstiks"):
-                {
-                    category = (Category)1;
+        /*  Category category = new Category();
+          Console.WriteLine("Hello, please enter product category.\n Options are: Pencils, \r\n        lipstiks,\r\n        blushes,\r\n        bronzers,\r\n        makeup,");
+          string AnsCategory = Console.ReadLine();
+          switch (AnsCategory)
+          {
+              case ("Pencils"):
+                  {
+                      category = (Category)0;
+                      break;
+                  }
+              case ("lipstiks"):
+                  {
+                      category = (Category)1;
 
-                    break;
-                }
-            case (" blushes"):
-                {
-                    category = (Category)2;
-                    break;
-                }
-            case ("bronzers"):
+                      break;
+                  }
+              case (" blushes"):
+                  {
+                      category = (Category)2;
+                      break;
+                  }
+              case ("bronzers"):
 
-                {
-                    category = (Category)3;
-                    break;
-                }
-            case ("makeup"):
-                {
-                    category = (Category)4;
-                    break;
-                }
-            default:
-                break;
-        }
+                  {
+                      category = (Category)3;
+                      break;
+                  }
+              case ("makeup"):
+                  {
+                      category = (Category)4;
+                      break;
+                  }
+              default:
+                  break;
+          }*/
         Console.WriteLine("Please enter your ProductName ");
-        string AnsProductName = Console.ReadLine();
+        string? AnsProductName = Console.ReadLine();
         Console.WriteLine("How much does the item cost? ");
-        string strPrice = Console.ReadLine();
+        string? strPrice = Console.ReadLine();
         Console.WriteLine("What is the quantity in stock? ");
         double price = Convert.ToDouble(strPrice);
-        string strAmount = Console.ReadLine();
+        string? strAmount = Console.ReadLine();
         int amount = Convert.ToInt32(strAmount); ;
         Product newProduct = new Product
         {
             Barcode = MakeABarcode(),
             ProductName = AnsProductName,
-            Category = category,
+            Category = 0,
             ProductPrice = price,
-            InStock = amount,
+            AmountInStock = amount,
 
 
         };
@@ -98,24 +102,24 @@ internal class DALProduct : DalApi.IProduct
 
     public int Add(Product newProduct)
     {
-        ProductList.Add(newProduct);
+        DataSource.ProductList.Add(newProduct);
         return newProduct.Barcode;
     }
 
-     Random my_rnd=new Random();
 
     /// <summary>list
-    /// This function restart the array in index "i" with a barcode.
+    /// This function initializes the array in index "i" with a barcode.
     /// </summary>
     /// <returns></returns>
-    public  int MakeABarcode()
+    public int MakeABarcode()
     {
-        int  barcode = my_rnd.Next(10000000, 100000000);
-        bool checkarcode = is_Barkode_OK(barcode);
-        while (checkarcode)
+        Random my_rnd = new Random();
+        int barcode = my_rnd.Next(10000000, 100000000);
+        bool checkBarcode = is_Barkode_OK(barcode);
+        while (!checkBarcode)
         {
-            barcode = my_rnd.Next(10000000, 100000000);
-            checkarcode = is_Barkode_OK(barcode);
+            barcode = my_rnd.Next(10000000, 100000000);            
+            checkBarcode = is_Barkode_OK(barcode);
         }
         return barcode;
 
@@ -126,17 +130,18 @@ internal class DALProduct : DalApi.IProduct
     /// </summary>
     /// <param name="b"></param>
     /// <returns></returns>
-    public bool is_Barkode_OK(int barcode)
+    bool is_Barkode_OK(int barcode)
     {
-        int index = ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
+        int index = DataSource.ProductList.FindIndex(MyProduct => MyProduct.Barcode == barcode);
+        Console.WriteLine(DataSource.ProductList);
         if (index == -1)
             return true;
-       
+
         return false;
     }
 
-    
-       
+
+
     //public void Delete()
     //{
     //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
@@ -167,14 +172,14 @@ internal class DALProduct : DalApi.IProduct
     /// <exception cref="Exception"></exception>
     public void Delete(int barcode)
     {
-        int index = ProductList.FindIndex(obj => obj.Barcode == barcode);
+        int index = DataSource.ProductList.FindIndex(obj => obj.Barcode == barcode);
         if (index == -1)
         {
             throw new EntityNotFoundException("Delete function ::DAL_PRODUCT");
         }
         else
         {
-            ProductList.RemoveAt(index);
+            DataSource.ProductList.RemoveAt(index);
             Console.WriteLine("The item has been successfully removed");
         }
     }
@@ -193,28 +198,28 @@ internal class DALProduct : DalApi.IProduct
     public void Update()
     {
         Console.WriteLine("Do you know your product's barcode? Enter y or n.");
-        string ans = Console.ReadLine();
+        string? ans = Console.ReadLine();
         //int OrderNumber, productBarcode;
         if (ans == "n" || ans == "N")
         {
-            foreach (var item in DAL.DataSource.ProductList)
+            foreach (var item in Dal.DataSource.ProductList)
             {
                 Console.WriteLine(item);
             }
         }
         Console.WriteLine("Please enter your product's barcode.");
-        string strBarcode = Console.ReadLine();
+        string? strBarcode = Console.ReadLine();
         int barcode;
         bool TryParseSucceeded = int.TryParse(strBarcode, out barcode);
         if (TryParseSucceeded)
         {
             Console.WriteLine("What do you want to update?\nTo update product name enter 1, To update product price enter 2, To update product amount in stock enter 2\n");
-            string answer = Console.ReadLine();
+            string? answer = Console.ReadLine();
             int choose;
             bool TryParseSucceeded2 = int.TryParse(answer, out choose);
             if (TryParseSucceeded2)
             {
-                int index = ProductList.FindIndex(obj => obj.Barcode == barcode);         //Searching the item to make an update object
+                int index = DataSource.ProductList.FindIndex(obj => obj.Barcode == barcode);         //Searching the item to make an update object
                 if (index != -1)
                 {
                     switch (choose)
@@ -225,11 +230,11 @@ internal class DALProduct : DalApi.IProduct
                                 string name = Console.ReadLine();
                                 Product updateOne = new Product
                                 {
-                                    Barcode = ProductList[index].Barcode,
+                                    Barcode = DataSource.ProductList[index].Barcode,
                                     ProductName = name,
-                                    Category = ProductList[index].Category,
-                                    ProductPrice = ProductList[index].ProductPrice,
-                                    InStock = ProductList[index].InStock
+                                    Category = DataSource.ProductList[index].Category,
+                                    ProductPrice = DataSource.ProductList[index].ProductPrice,
+                                    AmountInStock = DataSource.ProductList[index].AmountInStock
 
 
                                 };
@@ -246,11 +251,11 @@ internal class DALProduct : DalApi.IProduct
                                 {
                                     Product updateOne = new Product
                                     {
-                                        Barcode = ProductList[index].Barcode,
-                                        ProductName = ProductList[index].ProductName,
-                                        Category = ProductList[index].Category,
+                                        Barcode = DataSource.ProductList[index].Barcode,
+                                        ProductName = DataSource.ProductList[index].ProductName,
+                                        Category = DataSource.ProductList[index].Category,
                                         ProductPrice = newPrice,
-                                        InStock = ProductList[index].InStock
+                                        AmountInStock = DataSource.ProductList[index].AmountInStock
 
 
                                     };
@@ -272,11 +277,11 @@ internal class DALProduct : DalApi.IProduct
                                 {
                                     Product updateOne = new Product
                                     {
-                                        Barcode = ProductList[index].Barcode,
-                                        ProductName = ProductList[index].ProductName,
-                                        Category = ProductList[index].Category,
-                                        ProductPrice = ProductList[index].ProductPrice,
-                                        InStock = newInStock
+                                        Barcode = DataSource.ProductList[index].Barcode,
+                                        ProductName = DataSource.ProductList[index].ProductName,
+                                        Category = DataSource.ProductList[index].Category,
+                                        ProductPrice = DataSource.ProductList[index].ProductPrice,
+                                        AmountInStock = newInStock
                                     };
                                     Update(updateOne);
                                     break;
@@ -311,10 +316,10 @@ internal class DALProduct : DalApi.IProduct
     /// <param name="myOrderItem"></param>
     public void Update(Product myProduct)
     {
-        int index = ProductList.FindIndex(obj => obj.Barcode == myProduct.Barcode);         //Searching the item to make an update object
+        int index = DataSource.ProductList.FindIndex(obj => obj.Barcode == myProduct.Barcode);         //Searching the item to make an update object
         if (index != -1)
         {
-            ProductList[index] = myProduct;
+            DataSource.ProductList[index] = myProduct;
             Console.WriteLine("Item has been successfully updated. ");
         }
         else
@@ -324,18 +329,22 @@ internal class DALProduct : DalApi.IProduct
     }
 
 
-    /// <summary>
-    /// This function returns all instances of  product 
-    /// </summary>
-    /// <returns></returns>
-
-    public IEnumerable<Product> GetAll()
+    public IEnumerable<Product>? Get(Func<Product, bool>? deligate)
     {
-        IEnumerable<Product> AllProducts = ProductList;
-        return AllProducts;
+        if (deligate != null)
+        {
+            IEnumerable<Product>? p = DataSource.ProductList.Where(deligate);
+            return p;
+        }
+        Console.WriteLine(DataSource.ProductList);
+        return DataSource.ProductList/*.Where(item=> item.Barcode!=null)*/;
     }
 
-  
-   
+
+
+    public Product GetAnObject(Predicate<Product> myDelegate)
+    {
+        return DataSource.ProductList.Find(myDelegate);
+    }
 }
 
