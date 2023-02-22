@@ -19,9 +19,22 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new PL.Product.ListView(bl).Show();
+           
+                            new NewCart().Show();
+//לפתוח חלון שמותר רק למנהל
+                
         }
 
-       
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            uc.Visibility = Visibility.Visible;
+            if  (Authentication.IsManager)
+                new Manager().Show();    
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

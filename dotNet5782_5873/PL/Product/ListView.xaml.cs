@@ -27,11 +27,12 @@ namespace PL.Product
     public partial class ListView : Window
     {
         IBl? bl = BlApi.Factory.Get();
+        BO.Cart cart;
 
         //A private list with all Filters products
         private IEnumerable<BO.Product>? FiltersProduct = new List<BO.Product>();//I think taht we can delete it
 
-        public ListView(IBl? bl)
+        public ListView(IBl? bl, Cart cart)
         {
             try
             {
@@ -61,6 +62,11 @@ namespace PL.Product
                 wnd.ShowDialog();*/
             }        }
 
+        public ListView(IBl bl)
+        {
+            this.bl = bl;
+        }
+
         public void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var category = Selector.SelectedItem;
@@ -84,7 +90,7 @@ namespace PL.Product
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NewProduct().Show();
+            new NewProduct(cart).Show();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
