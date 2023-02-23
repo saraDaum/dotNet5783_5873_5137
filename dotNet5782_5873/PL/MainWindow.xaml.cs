@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using PL.Product;
 using System.Windows.Controls;
-using PL.Product;
+
 
 namespace PL
 {
@@ -20,13 +20,13 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
            
-                            new NewCart().Show();
-//לפתוח חלון שמותר רק למנהל
-                
+            new NewCart().Show();
+
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
+        {   //לפתוח חלון שמותר רק למנהל
+                
             uc.Visibility = Visibility.Visible;
             if  (Authentication.IsManager)
                 new Manager().Show();    

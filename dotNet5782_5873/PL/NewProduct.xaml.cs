@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ListView = PL.Product.ListView;
 
+
 namespace PL
 {
     /// <summary>
@@ -78,7 +79,7 @@ namespace PL
                 
                 //Add product to list
                 try
-                {
+                {                                                                              
                     int i = bl.Product.Add(product);
                     Message.Visibility = Visibility.Visible;    
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...

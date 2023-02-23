@@ -15,23 +15,25 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Manager.xaml
+    /// Interaction logic for ProductForList.xaml
     /// </summary>
-    public partial class Manager : Window
+    public partial class ProductForList : Window
     {
-        public Manager()
+        BlApi.IBl bl = BlApi.Factory.Get();
+        public ProductForList()
         {
             InitializeComponent();
+            product.ItemsSource = bl.Product.Get(e=>e.GetHashCode()==e.GetHashCode());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NewProduct().Show();    
+            new NewProduct().Show();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            new ProductForList().Show();   
+
         }
     }
 }

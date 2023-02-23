@@ -15,23 +15,28 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for Manager.xaml
+    /// Interaction logic for UserView.xaml
     /// </summary>
-    public partial class Manager : Window
+    public partial class UserView : Window
+
     {
-        public Manager()
+        BlApi.IBl bl = BlApi.Factory.Get();
+
+        public UserView()
         {
             InitializeComponent();
+
+            ListProductUser.ItemsSource = bl.ProductItem.Get(e=>e.GetHashCode()==e.GetHashCode());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new NewProduct().Show();    
+
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            new ProductForList().Show();   
+
         }
     }
 }

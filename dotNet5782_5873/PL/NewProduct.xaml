@@ -27,13 +27,13 @@
 
         <TextBox TextChanged="TextBox_TextAdd" x:Name="Pricetxb" Margin="36,113,57,248" Background="#FFBDBAA3" Grid.Column="4" Grid.Row="1"/>
         <Label x:Name="Newbel_Copy" Content="Category:&#x9;         " Margin="54,204,46,158" Background="Bisque" HorizontalContentAlignment="Right" FontFamily="Almoni DL AAA" FontSize="17" FontWeight="Bold" Grid.Column="3" Grid.Row="1"/>
-        <ComboBox  Name="Selector"  Margin="33,192,48,177" RenderTransformOrigin="0.5,0.5" Grid.Column="4" Background="#FFBDBAA5" SelectionChanged="Selector_SelectionChanged" Grid.Row="1"  >
+        <ComboBox  Name="Selector"  Margin="36,202,55,167" RenderTransformOrigin="0.5,0.5" Grid.Column="4" Background="#FFBDBAA5" SelectionChanged="Selector_SelectionChanged" Grid.Row="1"  >
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-1.896"/>
-                    <TranslateTransform/>
+                    <SkewTransform AngleX="0.171"/>
+                    <RotateTransform Angle="-0.008"/>
+                    <TranslateTransform X="-0.077" Y="0.003"/>
                 </TransformGroup>
             </ComboBox.RenderTransform>
         </ComboBox>
