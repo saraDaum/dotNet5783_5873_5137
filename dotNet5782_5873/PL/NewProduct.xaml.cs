@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,23 @@ namespace PL
     {
         BO.Product product;
         BlApi.IBl bl = BlApi.Factory.Get();
+        BO.Cart cart;
         public NewProduct()
         {
+            if (!Authentication.IsManager)
+            {
+                this.Close();
+                MessageBox.Show("משתמש אינו מורשה להוסיף מוצר");
+            }
+
+        }
+        public NewProduct(Cart cartt):this()
+        {
+            cart = cartt;
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
         }
-        public NewProduct(BO.Product product)
+        public NewProduct(BO.Product product):this()
         {
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
@@ -53,7 +65,7 @@ namespace PL
         }
         //הפונקציה שקוראת כשלוחצים אישור על הוספת הפריט
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             //Check that fields doesn't empty 
             if (Nametxb.Text != "" && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)//null or ""
             {

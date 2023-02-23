@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="ProductWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="252,126,0,0" VerticalAlignment="Top" Background="#FF19214E" Foreground="#FFF3EFEF" FontFamily="Roboto Black" FontSize="16"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="252,126,0,0" VerticalAlignment="Top" Background="#FF19214E" Foreground="#FFF3EFEF" FontFamily="Roboto Black" FontSize="16" Click="Button_Click"/>
 
     </Grid>
 </Window>
