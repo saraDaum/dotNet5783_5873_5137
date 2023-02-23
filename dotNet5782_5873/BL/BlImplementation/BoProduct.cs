@@ -17,14 +17,34 @@ internal class BoProduct : IBoProduct
     IEnumerable<DO.Product> DoProducts = new List<DO.Product>();
     public int Add(Product entity)
     {
-        IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-        DO.Product DoProduct = mapper.Map<DO.Product>(entity);
-        int Barcode = dal.Product.Add(DoProduct);
-        return Barcode;
+
+        try
+        {
+            if (entity.ProductPrice > 0 & entity.AmountInStock > 0 & entity.Barcode > 0 & entity.ProductName != null)
+            {
+                IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+                DO.Product DoProduct = mapper.Map<DO.Product>(entity);
+                int Barcode = dal.Product.Add(DoProduct);
+
+                return Barcode;
+
+
+
+            }
+            else
+                throw new Exception();//A way to get exception details
+        }
+        catch (Exception ex)
+        {
+
+            throw new BO.InvalidEntityException("Sorry, the product has not been added.\nSome details seem to be missing", ex);
+        }
+
     }
 
     public void Delete(int id)
     {
+
         dal.Product.Delete(id);
     }
 
@@ -56,9 +76,21 @@ internal class BoProduct : IBoProduct
 
     public void Update(Product MyBoProduct)
     {
-        IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-        DO.Product DoProduct = mapper.Map<BO.Product, DO.Product>(MyBoProduct);
-        dal.Product.Update(DoProduct);
+        try
+        {
+            if (MyBoProduct.ProductPrice > 0 & MyBoProduct.AmountInStock > 0 & MyBoProduct.Barcode > 0 & MyBoProduct.ProductName != null)
+            {
+                IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+                DO.Product DoProduct = mapper.Map<BO.Product, DO.Product>(MyBoProduct);
+                dal.Product.Update(DoProduct);
+            }
+            else
+                throw new Exception();
+        }
+        catch (Exception ex)
+        {
+            throw new BO.InvalidEntityException("Sorry, the product has not been added.\nSome details seem to be missing", ex);
+        }
     }
 }
 
