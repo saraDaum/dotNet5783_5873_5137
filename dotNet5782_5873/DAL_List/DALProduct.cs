@@ -1,11 +1,11 @@
-﻿//using static DAL.DataSource;
-using DO;
+﻿using DO;
 using DalApi;
 
 namespace Dal;
 
 internal class DALProduct : DalApi.IProduct
 {
+    //I didn't do a catch block for all throws... REMEMBER!!!
     public Product? GetById(int barcode)
     {
         int index = DataSource.ProductList.FindIndex(current => current.Barcode == barcode);
@@ -15,7 +15,7 @@ internal class DALProduct : DalApi.IProduct
         }
         else
         {
-            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT" ,new Exception());
+            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT", new Exception());
         }
         return null;
     }
@@ -118,7 +118,7 @@ internal class DALProduct : DalApi.IProduct
         bool checkBarcode = is_Barkode_OK(barcode);
         while (!checkBarcode)
         {
-            barcode = my_rnd.Next(10000000, 100000000);            
+            barcode = my_rnd.Next(10000000, 100000000);
             checkBarcode = is_Barkode_OK(barcode);
         }
         return barcode;
@@ -141,30 +141,6 @@ internal class DALProduct : DalApi.IProduct
     }
 
 
-
-    //public void Delete()
-    //{
-    //    Console.WriteLine("Do you know your product barcode? Enter y or n.");
-    //    string ans = Console.ReadLine();
-    //    int ProductBarcode;
-    //    if (ans == "n" || ans == "N")
-    //    {
-    //        ProductList.ForEach(p => print(p));     //Print all order items for customer
-    //    }
-    //    Console.WriteLine("Please enter your product barcode.");
-    //    string orderNumStr = Console.ReadLine();
-    //    bool TryParseSucceeded = int.TryParse(orderNumStr, out ProductBarcode);
-    //    if (TryParseSucceeded)
-    //    {
-    //        int index = ProductList.FindIndex(obj => obj.Barcode == ProductBarcode);
-    //        Delete(index);
-    //    }
-    //    else
-    //    {
-    //        throw new Exception("ERROR: Failed to convert variables. Failed to receive input.");
-    //    }
-    //}
-
     /// <summary>list
     /// Delete an Order object
     /// </summary>
@@ -172,15 +148,23 @@ internal class DALProduct : DalApi.IProduct
     /// <exception cref="Exception"></exception>
     public void Delete(int barcode)
     {
-        int index = DataSource.ProductList.FindIndex(obj => obj.Barcode == barcode);
-        if (index == -1)
+        try
         {
-            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT", new Exception());
+            int index = DataSource.ProductList.FindIndex(obj => obj.Barcode == barcode);
+            if (index == -1)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                DataSource.ProductList.RemoveAt(index);
+                Console.WriteLine("The item has been successfully removed", new Exception());
+            }
         }
-        else
+        catch (Exception ex)
         {
-            DataSource.ProductList.RemoveAt(index);
-            Console.WriteLine("The item has been successfully removed", new Exception());
+            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT", ex);
+
         }
     }
 
@@ -243,28 +227,36 @@ internal class DALProduct : DalApi.IProduct
                             }
                         case (2):
                             {
-                                Console.WriteLine("O.K. Please enter the new price.");
-                                string strPrice = Console.ReadLine();
-                                int newPrice;
-                                bool tryToConvert = int.TryParse(strPrice, out newPrice);
-                                if (tryToConvert)
+                                try
                                 {
-                                    Product updateOne = new Product
+                                    Console.WriteLine("O.K. Please enter the new price.");
+                                    string strPrice = Console.ReadLine();
+                                    int newPrice;
+                                    bool tryToConvert = int.TryParse(strPrice, out newPrice);
+                                    if (tryToConvert)
                                     {
-                                        Barcode = DataSource.ProductList[index].Barcode,
-                                        ProductName = DataSource.ProductList[index].ProductName,
-                                        Category = DataSource.ProductList[index].Category,
-                                        ProductPrice = newPrice,
-                                        AmountInStock = DataSource.ProductList[index].AmountInStock
+                                        Product updateOne = new Product
+                                        {
+                                            Barcode = DataSource.ProductList[index].Barcode,
+                                            ProductName = DataSource.ProductList[index].ProductName,
+                                            Category = DataSource.ProductList[index].Category,
+                                            ProductPrice = newPrice,
+                                            AmountInStock = DataSource.ProductList[index].AmountInStock
 
 
-                                    };
-                                    Update(updateOne);
-                                    break;
+                                        };
+                                        Update(updateOne);
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        throw new Exception();
+                                    }
                                 }
-                                else
+                                catch (Exception ex)
                                 {
-                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT", new Exception());
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT", ex);
+
                                 }
                             }
                         case 3:
