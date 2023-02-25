@@ -24,19 +24,23 @@ internal class BoProductItem : IBoProductItem
 
 
 
-    IEnumerable<ProductItem>? IBoProductItem.Get(Func<object, bool> value)
+    IEnumerable<ProductItem>? IBoProductItem.Get(Func<BO.ProductItem, bool> value)
     {
         //    לבקש את כל המוצרים
        // IEnumerable<BO.Product>? productList = bl.Product.Get(x => x.Barcode == x.Barcode);
         IEnumerable<DO.Product>? allDoProducts = dalVar.Product.Get(item=>item.Barcode==item.Barcode);//A stopid condition to get all items
         //    לעשות המרה לPRODUCT - ITEM
-        IEnumerable<BO.ProductItem>? productItemsList;
+        IEnumerable<BO.ProductItem>? productItemsList = new List<BO.ProductItem>();
         IMapper mapper = AutoMapper.ProductItemConfiguration.CreateMapper();
-        productItemsList = allDoProducts.Select(item => mapper.Map<ProductItem>(item));
-        productItemsList= (IEnumerable<ProductItem>)productItemsList.Where(value);
+        //productItemsList = allDoProducts.Select(item => mapper.Map<ProductItem>(item));
+        foreach(DO.Product item in allDoProducts)
+        {
+            productItemsList = productItemsList.Append(mapper.Map<ProductItem>(item));
+        }
+        //productItemsList= productItemsList.Where(value);
         
         //    להחזיר את הרשימה
-        return productItemsList;
+        return (IEnumerable<ProductItem>?)productItemsList.Where(value);
     }
 
     

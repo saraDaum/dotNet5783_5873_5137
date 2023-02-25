@@ -23,7 +23,7 @@ namespace PL
         public ProductForList()
         {
             InitializeComponent();
-            product.ItemsSource = bl.ProductItem.Get(e=>e.GetHashCode()==e.GetHashCode());
+            product.ItemsSource = bl.Product.Get(e=>e.GetHashCode()==e.GetHashCode());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
