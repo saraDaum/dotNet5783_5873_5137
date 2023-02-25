@@ -47,6 +47,11 @@ namespace PL
                 new UserView(cart).Show();
                 Close();
             }
+            else
+            {
+                Message myMessage = new Message("Some details seem to be missing", "alert");
+                myMessage.Show();
+            }
         
         }
 

@@ -38,14 +38,11 @@ namespace PL
             }
         }
 
-        internal static void ShowDialog(string v1, string v2)
-        {
-            throw new NotImplementedException();
-        }
+ 
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Close();
         }
     }
 }

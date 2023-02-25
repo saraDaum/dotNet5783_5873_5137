@@ -58,7 +58,9 @@ namespace BO
         /// InvalidEntityException constructor
         /// </summary>
         /// <param name="message"></param>
-        public InvalidEntityException(string message, Exception ex) : base(message, ex) { }
+        public InvalidEntityException(string message, Exception ex) : base(message, ex) { 
+           
+        }
     }
 
 }

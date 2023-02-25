@@ -11,7 +11,7 @@
        
         <Button Content="Manager" HorizontalAlignment="Left" Height="43" Margin="55,160,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click_1"/>
         <local:AuthUC x:Name="uc" Visibility="Hidden" />
-        <Button   Content="StatosOrder" Margin="58,64,575,319" Click="Button_Click_2"/>
+        <Button   Content="Order status" Margin="58,64,575,319" Click="Button_Click_2"/>
 
     </Grid>
 </Window>
