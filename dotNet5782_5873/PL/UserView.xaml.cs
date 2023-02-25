@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,9 +22,10 @@ namespace PL
 
     {
         BlApi.IBl bl = BlApi.Factory.Get();
-
-        public UserView()
+        Cart cart;
+        public UserView(Cart cart)
         {
+            this.cart = cart;
             InitializeComponent();
 
             ListProductUser.ItemsSource = bl.ProductItem.Get(e=>e.GetHashCode()==e.GetHashCode());
@@ -35,6 +37,11 @@ namespace PL
         }
 
         private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
         }

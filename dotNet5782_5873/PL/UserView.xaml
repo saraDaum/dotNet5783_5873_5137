@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="UserView" Height="450" Width="800">
     <Grid>
-        <Button Content="My cart"  HorizontalAlignment="Left" Height="31" Margin="52,20,0,0" VerticalAlignment="Top" Width="84"/>
-        <ListView x:Name="ListProductUser" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="product_SelectionChanged" Margin="20,65,10,74">
+        <Button Content="My cart"  HorizontalAlignment="Left" Height="31" Margin="52,20,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_1"/>
+        <ListView x:Name="ListProductUser"  SelectionChanged="product_SelectionChanged" Margin="20,65,10,74">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

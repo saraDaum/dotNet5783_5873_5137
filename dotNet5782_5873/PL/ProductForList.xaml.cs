@@ -23,7 +23,7 @@ namespace PL
         public ProductForList()
         {
             InitializeComponent();
-            product.ItemsSource = bl.Product.Get(e=>e.GetHashCode()==e.GetHashCode());
+            product.ItemsSource = bl.ProductItem.Get(e=>e.GetHashCode()==e.GetHashCode());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,6 +34,13 @@ namespace PL
         private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void product_SelectionChanged(object sender, MouseButtonEventArgs e)
+        {
+            BO.Product p = (BO.Product)product.SelectedItem;
+            new NewProduct(p).Show();
+            Close();
         }
     }
 }

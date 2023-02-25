@@ -32,13 +32,16 @@ namespace PL.Product
         //A private list with all Filters products
         private IEnumerable<BO.Product>? FiltersProduct = new List<BO.Product>();//I think taht we can delete it
 
-        public ListView(IBl? bl, Cart cart)
+        public ListView(IBl? bl, Cart? cart= null)
         {
+            if(cart != null)
+            {
+
+            }
             try
             {
                 this.bl = bl;
                 InitializeComponent();
-
                 Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
                 //To show all without filter
                 var category = Selector.SelectedItem;
@@ -62,10 +65,12 @@ namespace PL.Product
                 wnd.ShowDialog();*/
             }        }
 
-        public ListView(IBl bl)
-        {
-            this.bl = bl;
-        }
+        //public ListView(IBl bl)
+        //{
+        //    this.bl = bl;
+        //    InitializeComponent();
+        //    Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
+        //}
 
         public void Selector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -15,7 +15,7 @@ namespace BO
         /// <summary>
         /// Identification number product item
         /// </summary>
-        public int ID { get; set; }
+        public int Barcode { get; set; }
         /// <summary>
         /// Product name
         /// </summary>
@@ -46,7 +46,7 @@ namespace BO
         /// <returns></returns>
         public override string ToString() => $@"
     Product item details:\n
-    {nameof(ID)}: {ID}
+    {nameof(Barcode)}: {Barcode}
     {nameof(Name)}: {Name},
     {nameof(Category)}:{Category}
     {nameof(Price)}: {Price},

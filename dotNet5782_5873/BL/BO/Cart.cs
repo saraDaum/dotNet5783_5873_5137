@@ -28,7 +28,7 @@ namespace BO
         /// <summary>
         /// An item in cart
         /// </summary>
-        public List<DO.OrderItem>? ItemsInCart { get; set; }
+        public List<BO.ProductItem>? ItemsInCart { get; set; }=new List<BO.ProductItem>();
         /// <summary>
         /// The Total price of customer cart
         /// </summary>

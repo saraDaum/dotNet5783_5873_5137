@@ -44,7 +44,8 @@ namespace PL
             cart.CustomerEmail = EmailTxt.Text; 
             cart.CustomerAddress = AddressTxt.Text;
 
-                new PL.Product.ListView(bl, cart).Show();
+                new UserView(cart).Show();
+                Close();
             }
         
         }

@@ -9,7 +9,7 @@
     <Grid>
 
         <Button  Content="Add product" HorizontalAlignment="Left" Height="65" Margin="308,343,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click" Background="#FFF1B9B9"/>
-        <ListView x:Name="product" d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="product_SelectionChanged" Margin="0,0,0,113">
+        <ListView x:Name="product"  MouseDoubleClick="product_SelectionChanged" Margin="0,0,0,113">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

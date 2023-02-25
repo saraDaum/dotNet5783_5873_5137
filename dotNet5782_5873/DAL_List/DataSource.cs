@@ -245,7 +245,7 @@ internal class DataSource
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
-            AmountInStock = 16
+            Amount = 16
         };
         ProductList.Add(MyProduct1);
         Product MyProduct2 = new Product
@@ -254,7 +254,7 @@ internal class DataSource
             ProductName = "Red blushe - SACARA",
             Category = Category.blushes,
             ProductPrice = 45,
-            AmountInStock = 22
+            Amount = 22
         };
         ProductList.Add(MyProduct2);
         Product MyProduct3 = new Product
@@ -263,7 +263,7 @@ internal class DataSource
             ProductName = "Blush for a natural color in the cheeks - MAC",
             Category = Category.blushes,
             ProductPrice = 75,
-            AmountInStock = 10
+            Amount = 10
         };
         ProductList.Add(MyProduct3);
         Product MyProduct4 = new Product
@@ -272,7 +272,7 @@ internal class DataSource
             ProductName = "A luxurious blush - Loreal",
             Category = Category.blushes,
             ProductPrice = 59,
-            AmountInStock = 13
+            Amount = 13
         };
         ProductList.Add(MyProduct4);
         Product MyProduct5 = new Product
@@ -281,7 +281,7 @@ internal class DataSource
             ProductName = "A black eye pencil- SACARA",
             Category = Category.Pencils,
             ProductPrice = 19,
-            AmountInStock = 15
+            Amount = 15
         };
         ProductList.Add(MyProduct5);
         Product MyProduct6 = new Product
@@ -290,7 +290,7 @@ internal class DataSource
             ProductName = "A gray eye pencil- MAC",
             Category = Category.Pencils,
             ProductPrice = 39,
-            AmountInStock = 12
+            Amount = 12
         };
         ProductList.Add(MyProduct6);
         Product MyProduct7 = new Product
@@ -299,7 +299,7 @@ internal class DataSource
             ProductName = "A black eye pencil, hipoalerganic- MAC",
             Category = Category.Pencils,
             ProductPrice = 49,
-            AmountInStock = 14
+            Amount = 14
         };
         ProductList.Add(MyProduct7);
         Product MyProduct8 = new Product
@@ -308,7 +308,7 @@ internal class DataSource
             ProductName = "A natural lipstick- MAC",
             Category = Category.lipstiks,
             ProductPrice = 69,
-            AmountInStock = 14
+            Amount = 14
         };
         ProductList.Add(MyProduct8);
         Product MyProduct9 = new Product
@@ -317,7 +317,7 @@ internal class DataSource
             ProductName = "A simple lipstick- SACARA",
             Category = Category.lipstiks,
             ProductPrice = 36,
-            AmountInStock = 12
+            Amount = 12
         };
         ProductList.Add(MyProduct9);
         Product MyProduct10 = new Product
@@ -326,7 +326,7 @@ internal class DataSource
             ProductName = "Pair lipstick, hipoalerganic - MAC",
             Category = Category.lipstiks,
             ProductPrice = 72,
-            AmountInStock = 11
+            Amount = 11
         };
         ProductList.Add(MyProduct10);
         Product MyProduct11 = new Product
@@ -335,7 +335,7 @@ internal class DataSource
             ProductName = "Makeup number 310 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
-            AmountInStock = 18
+            Amount = 18
         };
         ProductList.Add(MyProduct11);
         Product MyProduct12 = new Product
@@ -344,7 +344,7 @@ internal class DataSource
             ProductName = "Makeup number 350 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
-            AmountInStock = 24
+            Amount = 24
         };
         ProductList.Add(MyProduct12);
         Product MyProduct13 = new Product
@@ -353,7 +353,7 @@ internal class DataSource
             ProductName = "Makeup number 390 - MAC",
             Category = Category.makeup,
             ProductPrice = 79,
-            AmountInStock = 4
+            Amount = 4
         };
         ProductList.Add(MyProduct13);
         Product MyProduct14 = new Product
@@ -362,7 +362,7 @@ internal class DataSource
             ProductName = "Light Makeup  - SOFT-TOUCH",
             Category = Category.makeup,
             ProductPrice = 59,
-            AmountInStock = 3
+            Amount = 3
         };
         ProductList.Add(MyProduct14);
         Product MyProduct15 = new Product
@@ -371,7 +371,7 @@ internal class DataSource
             ProductName = "Light bronzer - SOFT-TOUCH",
             Category = Category.bronzers,
             ProductPrice = 35,
-            AmountInStock = 5
+            Amount = 5
         };
         ProductList.Add(MyProduct15);
         Product MyProduct16 = new Product
@@ -380,7 +380,7 @@ internal class DataSource
             ProductName = "Dramatic bronzer - SOFT-TOUCH",
             Category = Category.bronzers,
             ProductPrice = 39,
-            AmountInStock = 4
+            Amount = 4
         };
         ProductList.Add(MyProduct16);
         Product MyProduct17 = new Product
@@ -389,7 +389,7 @@ internal class DataSource
             ProductName = "Bronzer - MAC",
             Category = Category.bronzers,
             ProductPrice = 45,
-            AmountInStock = 2
+            Amount = 2
         };
         ProductList.Add(MyProduct17);
     }
@@ -409,7 +409,7 @@ internal class DataSource
         ProductName = "Bronzer - Lori",
         Category = Category.bronzers,
         ProductPrice = 45,
-        AmountInStock = 12
+        Amount = 12
     };
     //ProductList.Add(MyProduct);
 

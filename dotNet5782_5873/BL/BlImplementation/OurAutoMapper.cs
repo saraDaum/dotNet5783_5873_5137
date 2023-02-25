@@ -22,11 +22,18 @@ namespace BlImplementation
         .ReverseMap()
         );
 
+        
+
+
 
         public MapperConfiguration ProductConfiguration = new MapperConfiguration(cnf =>
         cnf.CreateMap<BO.Product, DO.Product>()
         .ReverseMap()
             );
+        public MapperConfiguration ProductItemConfiguration = new MapperConfiguration(cnf =>
+       cnf.CreateMap<BO.ProductItem, DO.Product>()
+        .ReverseMap()
+           );
 
         /*
         MapperConfiguration configurationOrderItem = new MapperConfiguration(cnf =>

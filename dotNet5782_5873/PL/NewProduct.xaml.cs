@@ -29,6 +29,8 @@ namespace PL
         BO.Cart cart;
         public NewProduct()
         {
+            InitializeComponent();
+            Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
             if (!Authentication.IsManager)
             {
                 this.Close();
