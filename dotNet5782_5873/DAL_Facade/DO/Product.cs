@@ -34,5 +34,5 @@ public struct Product
    {ProductName} 
     Category: {Category}
     Price: {ProductPrice}
-   	Amount in stock: {AmountInStock}";
+   	Amount in stock: {Amount}";
 }

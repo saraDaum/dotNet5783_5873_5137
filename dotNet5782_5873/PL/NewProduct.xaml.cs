@@ -34,7 +34,8 @@ namespace PL
             if (!Authentication.IsManager)
             {
                 this.Close();
-                MessageBox.Show("משתמש אינו מורשה להוסיף מוצר");
+              Message myMessage = new Message("User is not authorized to add a product", "alert");
+              myMessage.ShowDialog();
             }
 
         }
@@ -83,7 +84,13 @@ namespace PL
                 try
                 {                                                                              
                     int i = bl.Product.Add(product);
-                    Message.Visibility = Visibility.Visible;    
+                    if (i > 0)
+                    {
+                        Message myMessage = new Message("The product has been successfully added", "info");
+                        myMessage.ShowDialog();
+                        this.Close();
+                    }
+                   // Message.Visibility = Visibility.Visible;    
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
                 }
                 catch
@@ -92,6 +99,11 @@ namespace PL
                     //אפשר לספר למשתמש על התקלה או מה שבא לנו אם לא מה שעושה ה"קטץ" זה שהתוכנית תמשיך לרוץ
                 }
 
+            }
+            else
+            {
+                Message myMessage = new Message("Some details seem to be missing", "alert");
+                myMessage.ShowDialog();
             }
         }
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
@@ -119,7 +131,11 @@ namespace PL
                 }
 
             }
-
+            else
+            {
+                Message myMessage = new Message("Some details seem to be missing", "alert");
+                myMessage.ShowDialog();
+            }
         }
 
 

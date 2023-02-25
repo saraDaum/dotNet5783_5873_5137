@@ -12,11 +12,11 @@ using DalApi;
 namespace BlImplementation;
 internal class BoProductItem : IBoProductItem
 {
-    OurAutoMapper AutoMapper= new OurAutoMapper();
+    OurAutoMapper AutoMapper = new OurAutoMapper();
     public IDal? dalVar = DalApi.Factory.Get();
     BlApi.IBl bl = BlApi.Factory.Get();
-   
-    
+
+
     private object deligate;
 
     //We don't implement it yet because we don't know what to do.
@@ -24,20 +24,15 @@ internal class BoProductItem : IBoProductItem
 
 
 
-    IEnumerable<ProductItem>? IBoProductItem.Get(Func<object, bool> value)
+    IEnumerable<ProductItem>? IBoProductItem.Get(Func<ProductItem, bool> value)
     {
-        //    לבקש את כל המוצרים
-       // IEnumerable<BO.Product>? productList = bl.Product.Get(x => x.Barcode == x.Barcode);
-        IEnumerable<DO.Product>? allDoProducts = dalVar.Product.Get(item=>item.Barcode==item.Barcode);//A stopid condition to get all items
-        //    לעשות המרה לPRODUCT - ITEM
+        IEnumerable<DO.Product>? allDoProducts = dalVar.Product.Get(item => item.Barcode == item.Barcode);//A stopid condition to get all items
         IEnumerable<BO.ProductItem>? productItemsList;
         IMapper mapper = AutoMapper.ProductItemConfiguration.CreateMapper();
         productItemsList = allDoProducts.Select(item => mapper.Map<ProductItem>(item));
-        productItemsList= (IEnumerable<ProductItem>)productItemsList.Where(value);
-        
-        //    להחזיר את הרשימה
+        productItemsList =productItemsList.Where(value); // (IEnumerable<ProductItem>)
         return productItemsList;
     }
 
-    
+
 }
