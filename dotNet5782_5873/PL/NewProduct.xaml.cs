@@ -1,4 +1,5 @@
 ﻿using BlApi;
+using BO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ListView = PL.Product.ListView;
 
+
 namespace PL
 {
     /// <summary>
@@ -24,12 +26,25 @@ namespace PL
     {
         BO.Product product;
         BlApi.IBl bl = BlApi.Factory.Get();
+        BO.Cart cart;
         public NewProduct()
         {
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
+            if (!Authentication.IsManager)
+            {
+                this.Close();
+                MessageBox.Show("משתמש אינו מורשה להוסיף מוצר");
+            }
+
         }
-        public NewProduct(BO.Product product)
+        public NewProduct(Cart cartt):this()
+        {
+            cart = cartt;
+            InitializeComponent();
+            Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
+        }
+        public NewProduct(BO.Product product):this()
         {
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
@@ -53,7 +68,7 @@ namespace PL
         }
         //הפונקציה שקוראת כשלוחצים אישור על הוספת הפריט
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
+        { 
             //Check that fields doesn't empty 
             if (Nametxb.Text != "" && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)//null or ""
             {
@@ -66,7 +81,7 @@ namespace PL
                 
                 //Add product to list
                 try
-                {
+                {                                                                              
                     int i = bl.Product.Add(product);
                     Message.Visibility = Visibility.Visible;    
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...

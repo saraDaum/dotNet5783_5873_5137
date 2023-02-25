@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using PL.Product;
 using System.Windows.Controls;
-using PL.Product;
+
 
 namespace PL
 {
@@ -19,9 +19,22 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            new PL.Product.ListView(bl).Show();
+           
+            new NewCart().Show();
+
         }
 
-       
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {   //לפתוח חלון שמותר רק למנהל
+                
+            uc.Visibility = Visibility.Visible;
+            if  (Authentication.IsManager)
+                new Manager().Show();    
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

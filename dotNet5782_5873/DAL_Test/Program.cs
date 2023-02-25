@@ -19,6 +19,7 @@ public class Application
     {
         try
         {
+           
             IDal? DalListVar = Factory.Get();
             Order myOrder = new Order
             {
@@ -33,7 +34,7 @@ public class Application
                 ProductName = "Revlon lipstick",
                 Category = 0,
                 ProductPrice = 45,
-                AmountInStock = 13,
+                Amount = 13,
 
             };
 
@@ -261,27 +262,22 @@ public class Application
         catch (EntityNotFoundException ex)
         {
             Console.WriteLine("EntityNotFoundException");
-            Console.WriteLine(ex.ErrorMessage);
         }
         catch (InvalidEntityException ex)
         {
             Console.WriteLine("InvalidEntityException");
-            Console.WriteLine(ex.Message);
         }
         catch (FailedToConvertException ex)
         {
             Console.WriteLine("FailedToConvertException");
-            Console.WriteLine(ex.Message);
         }
         catch (DuplicateIdException ex)
         {
             Console.WriteLine("DuplicateIdException");
-            Console.WriteLine(ex.Message);
         }
         catch (Exception ex)
         {
             Console.WriteLine("Exception");
-            Console.WriteLine(ex.Message);
         }
     }
 

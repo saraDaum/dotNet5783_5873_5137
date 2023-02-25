@@ -15,7 +15,7 @@ internal class DALProduct : DalApi.IProduct
         }
         else
         {
-            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT");
+            throw new EntityNotFoundException("GetById functin::DAL_PRODUCT" ,new Exception());
         }
         return null;
     }
@@ -82,7 +82,7 @@ internal class DALProduct : DalApi.IProduct
             ProductName = AnsProductName,
             Category = 0,
             ProductPrice = price,
-            AmountInStock = amount,
+            Amount = amount,
 
 
         };
@@ -175,12 +175,12 @@ internal class DALProduct : DalApi.IProduct
         int index = DataSource.ProductList.FindIndex(obj => obj.Barcode == barcode);
         if (index == -1)
         {
-            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT");
+            throw new EntityNotFoundException("Delete function ::DAL_PRODUCT", new Exception());
         }
         else
         {
             DataSource.ProductList.RemoveAt(index);
-            Console.WriteLine("The item has been successfully removed");
+            Console.WriteLine("The item has been successfully removed", new Exception());
         }
     }
 
@@ -234,7 +234,7 @@ internal class DALProduct : DalApi.IProduct
                                     ProductName = name,
                                     Category = DataSource.ProductList[index].Category,
                                     ProductPrice = DataSource.ProductList[index].ProductPrice,
-                                    AmountInStock = DataSource.ProductList[index].AmountInStock
+                                    Amount = DataSource.ProductList[index].Amount
 
 
                                 };
@@ -255,7 +255,7 @@ internal class DALProduct : DalApi.IProduct
                                         ProductName = DataSource.ProductList[index].ProductName,
                                         Category = DataSource.ProductList[index].Category,
                                         ProductPrice = newPrice,
-                                        AmountInStock = DataSource.ProductList[index].AmountInStock
+                                        Amount = DataSource.ProductList[index].Amount
 
 
                                     };
@@ -264,7 +264,7 @@ internal class DALProduct : DalApi.IProduct
                                 }
                                 else
                                 {
-                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT", new Exception());
                                 }
                             }
                         case 3:
@@ -281,32 +281,32 @@ internal class DALProduct : DalApi.IProduct
                                         ProductName = DataSource.ProductList[index].ProductName,
                                         Category = DataSource.ProductList[index].Category,
                                         ProductPrice = DataSource.ProductList[index].ProductPrice,
-                                        AmountInStock = newInStock
+                                        Amount = newInStock
                                     };
                                     Update(updateOne);
                                     break;
                                 }
                                 else
                                 {
-                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT");
+                                    throw new FailedToConvertException("Update function :: DAL_PRODUCT", new Exception());
                                 }
                             }
                     }
                 }
                 else
                 {
-                    throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
+                    throw new EntityNotFoundException("Update function :: DAL_PRODUCT", new Exception());
                 }
             }
 
             else
             {
-                throw new FailedToConvertException("Update function :: DAL_PRODUCT");
+                throw new FailedToConvertException("Update function :: DAL_PRODUCT", new Exception());
             }
         }
         else
         {
-            throw new FailedToConvertException("Update function :: DAL_PRODUCT");
+            throw new FailedToConvertException("Update function :: DAL_PRODUCT", new Exception());
         }
     }
 
@@ -324,7 +324,7 @@ internal class DALProduct : DalApi.IProduct
         }
         else
         {
-            throw new EntityNotFoundException("Update function :: DAL_PRODUCT");
+            throw new EntityNotFoundException("Update function :: DAL_PRODUCT", new Exception());
         }
     }
 

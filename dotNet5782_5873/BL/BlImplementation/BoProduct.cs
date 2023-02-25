@@ -14,17 +14,37 @@ internal class BoProduct : IBoProduct
 {
     IDal? dal = DalApi.Factory.Get();
     OurAutoMapper AutoMapper = new OurAutoMapper();
-    IEnumerable<DO.Product>DoProducts = new List<DO.Product>();
+    IEnumerable<DO.Product> DoProducts = new List<DO.Product>();
     public int Add(Product entity)
     {
-        IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-        DO.Product DoProduct = mapper.Map<DO.Product>(entity);
-        int Barcode = dal.Product.Add(DoProduct);
-        return Barcode;
+
+        try
+        {
+            if (entity.ProductPrice > 0 & entity.AmountInStock > 0 & entity.Barcode > 0 & entity.ProductName != null)
+            {
+                IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+                DO.Product DoProduct = mapper.Map<DO.Product>(entity);
+                int Barcode = dal.Product.Add(DoProduct);
+
+                return Barcode;
+
+
+
+            }
+            else
+                throw new Exception();//A way to get exception details
+        }
+        catch (Exception ex)
+        {
+
+            throw new BO.InvalidEntityException("Sorry, the product has not been added.\nSome details seem to be missing", ex);
+        }
+
     }
 
     public void Delete(int id)
     {
+
         dal.Product.Delete(id);
     }
 
@@ -37,15 +57,8 @@ internal class BoProduct : IBoProduct
                 IEnumerable<Product> BoProduct = new List<Product>();
                 IEnumerable<DO.Product>? DoProducts = dal.Product.Get(item => item.Barcode == item.Barcode);//Returns all products from DAL
                 IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-                //foreach (DO.Product DoProduct in DoProducts)
-                //  {
-                //      Product MyProduct = mapper.Map<Product>(DoProduct);
-                //      BoProduct= BoProduct.Append(MyProduct);
-                //  }
-
-                BoProduct = DoProducts .Select(item => mapper.Map<BO.Product>(item));
-            
-                return BoProduct.Where(deligate);
+                BoProduct = DoProducts.Select(item => mapper.Map<BO.Product>(item));
+                return BoProduct.Where(deligate);//Filter
             }
             catch (Exception ex)
             {
@@ -63,9 +76,21 @@ internal class BoProduct : IBoProduct
 
     public void Update(Product MyBoProduct)
     {
-        IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
-        DO.Product DoProduct = mapper.Map<BO.Product,DO.Product>(MyBoProduct);
-        dal.Product.Update(DoProduct);
+        try
+        {
+            if (MyBoProduct.ProductPrice > 0 & MyBoProduct.AmountInStock > 0 & MyBoProduct.Barcode > 0 & MyBoProduct.ProductName != null)
+            {
+                IMapper mapper = AutoMapper.ProductConfiguration.CreateMapper();
+                DO.Product DoProduct = mapper.Map<BO.Product, DO.Product>(MyBoProduct);
+                dal.Product.Update(DoProduct);
+            }
+            else
+                throw new Exception();
+        }
+        catch (Exception ex)
+        {
+            throw new BO.InvalidEntityException("Sorry, the product has not been added.\nSome details seem to be missing", ex);
+        }
     }
 }
 

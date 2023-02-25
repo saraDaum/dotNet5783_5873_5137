@@ -16,7 +16,7 @@
 	  <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
 	  
     <RootNamespace>DAL</RootNamespace>
-  </PropertyGroup>
+  </PropertyGroup> 
 
   <ItemGroup>
     <ProjectReference Include="..\DAL_Facade\DAL_Facade.csproj" />
