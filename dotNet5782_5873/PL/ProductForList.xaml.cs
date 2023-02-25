@@ -29,6 +29,7 @@ namespace PL
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             new NewProduct().Show();
+            Close();
         }
 
         private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)

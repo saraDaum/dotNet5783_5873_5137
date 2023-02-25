@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="UserView" Height="450" Width="800">
-    <Grid>
-        <Button Content="My cart"  HorizontalAlignment="Left" Height="31" Margin="52,20,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_1"/>
-        <ListView x:Name="ListProductUser"  MouseDoubleClick="product_SelectionChanged" Margin="20,65,10,74">
+    <Grid Background="#FFF1D1D1">
+        <Button Content="My cart"  HorizontalAlignment="Left" Height="31" Margin="52,20,0,0" VerticalAlignment="Top" Width="84" Click="Button_Click_1" Background="#FFC4EFA2"/>
+        <ListView x:Name="ListProductUser"  MouseDoubleClick="product_SelectionChanged" Margin="20,65,10,74" SelectionChanged="ListProductUser_SelectionChanged">
            
         </ListView>
-        <Button Content="End of shopping" HorizontalAlignment="Left" Height="38" Margin="268,375,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click"/>
+        <Button Content="End of shopping" HorizontalAlignment="Left" Height="38" Margin="268,375,0,0" VerticalAlignment="Top" Width="188" Click="Button_Click" Background="#FFB7E49F"/>
 
     </Grid>
 </Window>

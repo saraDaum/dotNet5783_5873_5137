@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="Manager" Height="450" Width="800">
     <Grid>
-        <Button Content="Product" HorizontalAlignment="Center" Margin="0,138,0,0" VerticalAlignment="Top" Height="79" Width="200" Click="Button_Click_1"/>
-        <Button Content="Order" HorizontalAlignment="Center" Margin="0,261,0,0" VerticalAlignment="Top" Height="79" Width="199"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FFF3BCBC" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Content="Product" HorizontalAlignment="Center" Margin="0,138,0,0" VerticalAlignment="Top" Height="79" Width="200" Click="Button_Click_1" Background="#FFCEE69C"/>
+        <Button Content="Order" HorizontalAlignment="Center" Margin="0,261,0,0" VerticalAlignment="Top" Height="79" Width="199" Background="#FFC3E299"/>
     </Grid>
 </Window>

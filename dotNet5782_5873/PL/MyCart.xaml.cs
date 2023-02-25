@@ -46,6 +46,7 @@ namespace PL
         private void ListView_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
             new ItemInCart(cart, (BO.ProductItem)CartList.SelectedItem).Show();
+            Close();
         }
     }
 }

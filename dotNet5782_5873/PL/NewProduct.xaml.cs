@@ -122,7 +122,8 @@ namespace PL
                 {
                     bl.Product.Update(product);
                     new ListView(bl).Show();
-                   
+                    Close();
+
                 }
                 catch
                 {
