@@ -49,14 +49,8 @@ namespace PL.Product
                     ProductListview.ItemsSource = bl.Product.Get(item => (int)item.Category == (int)category);
                 else
                     ProductListview.ItemsSource = bl.Product.Get(item => item.Barcode == item.Barcode);//Stopid condition- to get all items.
-            }
-          
-            catch (somethingWrong ex)
-            {
-
-               /* myMessagesWindow wnd = new myMessagesWindow(ex.innerexception.messages);
-                wnd.ShowDialog();*/
-            }
+            }          
+                          
             catch (Exception)
             {
 

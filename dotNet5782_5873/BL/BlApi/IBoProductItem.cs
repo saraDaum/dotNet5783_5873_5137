@@ -10,6 +10,6 @@ using System.Threading.Tasks;
 namespace BlApi;
 public interface IBoProductItem
 {
-    IEnumerable<BO.ProductItem> Get(Func<BO.ProductItem, bool> value);
+    IEnumerable<BO.ProductItem> Get(Func<ProductItem, bool> value);
 }
 

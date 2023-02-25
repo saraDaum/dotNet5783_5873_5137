@@ -65,18 +65,11 @@ internal class BoOrder : IBoOrder
     /// <returns></returns>
     public BO.Order GetById(int id)
     {
-        try
-        {
             IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
             IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID == id);
             BO.Order myBoOrder = new BO.Order();
             myBoOrder = mapper.Map<BO.Order>(DoOrder);
             return myBoOrder;
-        }
-        catch (Exception ex)
-        {
-            throw new somethingWrong("--------------", ex);
-        }
     }
 
     /// <summary>
