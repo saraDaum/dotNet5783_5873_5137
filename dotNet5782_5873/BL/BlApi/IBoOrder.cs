@@ -12,5 +12,8 @@ namespace BlApi;
 public interface IBoOrder : ICrud<BO.Order>
 {
     void Update(Action order);
+    int CreateOrder(BO.Cart cart);
+
+
 }
 

@@ -1,4 +1,4 @@
-﻿using BO;
+﻿using AutoMapper.Configuration.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +16,26 @@ using System.Windows.Shapes;
 namespace PL
 {
     /// <summary>
-    /// Interaction logic for UserView.xaml
+    /// Interaction logic for MyCart.xaml
     /// </summary>
-    public partial class UserView : Window
-
+    public partial class MyCart : Window
     {
         BlApi.IBl bl = BlApi.Factory.Get();
-        Cart cart;
-        public UserView(Cart cart)
+        BO.Cart cart;
+        public MyCart(BO.Cart cart)
         {
             this.cart = cart;
             InitializeComponent();
-
-            ListProductUser.ItemsSource = bl.ProductItem.Get(e=>e.GetHashCode()==e.GetHashCode());
+            CartList.ItemsSource = bl.Cart.GetAll(cart);
+            TotalPriceLabel.Content = cart.TotalPrice.ToString() + "$";
         }
+
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            new UserView(cart).Show();
+            Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -46,10 +43,9 @@ namespace PL
 
         }
 
-        private void product_SelectionChanged(object sender, MouseButtonEventArgs e)
+        private void ListView_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
-            bl.Cart.Add(cart, (ProductItem)ListProductUser.SelectedItem);
-            new MyCart(cart).Show();
+            new ItemInCart(cart, (BO.ProductItem)CartList.SelectedItem).Show();
         }
     }
 }

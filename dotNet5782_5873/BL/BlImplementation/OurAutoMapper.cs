@@ -32,7 +32,12 @@ namespace BlImplementation
             );
         public MapperConfiguration ProductItemConfiguration = new MapperConfiguration(cnf =>
        cnf.CreateMap<BO.ProductItem, DO.Product>()
+        .ForMember(b=> b.ProductPrice, a=> a.MapFrom(x=> x.Price))
         .ReverseMap()
+        .ForMember(b => b.Price, a => a.MapFrom(x => x.ProductPrice))
+        .ForMember(b => b.Amount, a=> a.MapFrom(x=> 1))
+        .ForMember(b => b.InStock, a => a.MapFrom(x => x.Amount > 3))
+
            );
 
         /*
