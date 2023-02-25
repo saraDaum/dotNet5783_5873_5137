@@ -31,8 +31,8 @@ public struct Product
         Amount = a;
     }
     public override string ToString() => $@"
-    {nameof(Barcode)}- {ProductName}, 
-    category: {Category},
-    Price: {ProductPrice},
-   	Amount in stock: {Amount}";
+   {ProductName} 
+    Category: {Category}
+    Price: {ProductPrice}
+   	Amount in stock: {AmountInStock}";
 }
