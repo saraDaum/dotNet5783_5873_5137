@@ -33,7 +33,8 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            new MyCart(cart).Show();
+            Close();
         }
 
         private void product_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -43,13 +44,20 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+            new MyCart(cart).Show();
+            Close();
         }
 
         private void product_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
             bl.Cart.Add(cart, (ProductItem)ListProductUser.SelectedItem);
             new MyCart(cart).Show();
+            Close();
+        }
+
+        private void ListProductUser_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

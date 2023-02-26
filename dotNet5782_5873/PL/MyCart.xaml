@@ -7,14 +7,20 @@
         mc:Ignorable="d"
         Title="MyCart" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FFF1B5B5" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <ListView x:Name="CartList"  RenderTransformOrigin="0.5,0.5" Margin="75,67,121,124" MouseDoubleClick="ListView_SelectionChanged">
             
             
         </ListView>
         <Label x:Name="TotalPriceLabel" HorizontalAlignment="Left" Height="60" Margin="101,329,0,0" VerticalAlignment="Top" Width="299"/>
-        <Button Content="Continue shopping" HorizontalAlignment="Left" Height="40" Margin="448,343,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="162" Click="Button_Click">
+        <Button Content="Continue shopping" HorizontalAlignment="Left" Height="40" Margin="448,343,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Width="162" Click="Button_Click" Background="#FFBBCC96">
         </Button>
-        <Button Content="To pay" HorizontalAlignment="Left" Margin="662,346,0,0" VerticalAlignment="Top" Height="43" Width="105" Click="Button_Click_1"/>
+        <Button Content="To pay" HorizontalAlignment="Left" Margin="662,346,0,0" VerticalAlignment="Top" Height="43" Width="105" Click="Button_Click_1" Background="#FFC7DA96"/>
 
     </Grid>
 </Window>

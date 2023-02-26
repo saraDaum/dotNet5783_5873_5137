@@ -7,9 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Enter to products" HorizontalAlignment="Left" Margin="55,254,0,0" VerticalAlignment="Top" Height="44" Width="170" Click="Button_Click" Background="#FF2568B3"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FFFBD4D4" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Content="Enter to products" HorizontalAlignment="Left" Margin="55,254,0,0" VerticalAlignment="Top" Height="44" Width="170" Click="Button_Click" Background="#FFB2CE77"/>
        
-        <Button Content="Manager" HorizontalAlignment="Left" Height="43" Margin="55,160,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click_1"/>
+        <Button Content="Manager" HorizontalAlignment="Left" Height="43" Margin="55,160,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click_1" Background="#FFBCDA71"/>
         <local:AuthUC x:Name="uc" Visibility="Hidden" />
         <Button   Content="Order status" Margin="58,64,575,319" Click="Button_Click_2"/>
 

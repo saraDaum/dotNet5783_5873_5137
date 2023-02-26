@@ -7,9 +7,18 @@
         mc:Ignorable="d"
         Title="ProductForList" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="425*"/>
+            <RowDefinition Height="0*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="9*"/>
+            <ColumnDefinition Width="791*"/>
+        </Grid.ColumnDefinitions>
 
-        <Button  Content="Add product" HorizontalAlignment="Left" Height="65" Margin="308,343,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click" Background="#FFF1B9B9"/>
-        <ListView x:Name="product"  MouseDoubleClick="product_SelectionChanged" Margin="0,0,0,113">
+        <Button  Content="Add product" HorizontalAlignment="Left" Height="65" Margin="305,343,0,0" VerticalAlignment="Top" Width="164" Click="Button_Click" Background="#FFF1B9B9" Grid.Column="1"/>
+        <ListView x:Name="product"  MouseDoubleClick="product_SelectionChanged" Margin="0,0,0,104" Grid.ColumnSpan="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>

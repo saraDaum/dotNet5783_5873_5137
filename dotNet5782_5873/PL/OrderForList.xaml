@@ -7,7 +7,14 @@
         mc:Ignorable="d"
         Title="OrderForList" Height="450" Width="800">
     <Grid>
-        <Button Content="Add order" HorizontalAlignment="Left" Height="78" Margin="247,295,0,0" VerticalAlignment="Top" Width="215" Click="Button_Click"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFB9ED9D" Offset="0.043"/>
+                <GradientStop Color="#FFE0ACAC" Offset="1"/>
+                <GradientStop Color="#FFC6ECB1" Offset="0.053"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Button Content="Add order" HorizontalAlignment="Center" Height="78" Margin="0,297,0,0" VerticalAlignment="Top" Width="216" Click="Button_Click" Background="#FFC8FDCB" RenderTransformOrigin="0.584,0.475"/>
 
     </Grid>
 </Window>

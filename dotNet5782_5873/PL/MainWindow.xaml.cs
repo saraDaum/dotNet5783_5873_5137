@@ -21,6 +21,7 @@ namespace PL
         {
            
             new NewCart().Show();
+           
 
         }
 
@@ -29,7 +30,8 @@ namespace PL
                 
             uc.Visibility = Visibility.Visible;
             if  (Authentication.IsManager)
-                new Manager().Show();    
+                new Manager().Show();
+          
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)

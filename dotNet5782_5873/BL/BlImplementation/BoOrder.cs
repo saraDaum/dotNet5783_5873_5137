@@ -65,11 +65,11 @@ internal class BoOrder : IBoOrder
     /// <returns></returns>
     public BO.Order GetById(int id)
     {
-            IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-            IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID == id);
-            BO.Order myBoOrder = new BO.Order();
-            myBoOrder = mapper.Map<BO.Order>(DoOrder);
-            return myBoOrder;
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID == id);
+        BO.Order myBoOrder = new BO.Order();
+        myBoOrder = mapper.Map<BO.Order>(DoOrder);
+        return myBoOrder;
     }
 
     /// <summary>
@@ -135,20 +135,17 @@ internal class BoOrder : IBoOrder
         order.OrderDate = DateTime.Now;
         order.ShipDate = DateTime.Now;
 
-        Add(order);
-        //לשלוח את ההזמנה לפונקציה ADD
-
+        int ID = Add(order);
         foreach (BO.ProductItem item in cart.ItemsInCart)                         //ליצר OrderItems מתתוך הרשימה שבסל
         {
             bl.OrderItem.Add(create(item, order.ID));
-
         }
         //כל OrderItem לשלוח לפונקציה ADD של ORDER-ITEM
 
-        return (order.ID);
+        return ID;
     }
 
-    public BO.OrderItem create(BO.ProductItem entity, int id)
+    private BO.OrderItem create(BO.ProductItem entity, int id)
     {
         BO.OrderItem newEntity = new();
         newEntity.ProductID = entity.Barcode;
@@ -158,10 +155,6 @@ internal class BoOrder : IBoOrder
         return newEntity;
     }
 
+
    
-    /*public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
-{
-   return OrderList.Find(myDelegate);
-}*/
-    //
 }
