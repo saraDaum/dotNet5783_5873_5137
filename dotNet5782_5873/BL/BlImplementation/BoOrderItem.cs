@@ -56,8 +56,6 @@ internal class BoOrderItem : IBoOrderItem
         BO.OrderItem myOrderItem = mapper.Map<BO.OrderItem>(dal.OrderItem.Get(item => item.autoID == id));
         return myOrderItem;
     }
-
-
     public void Update(BO.OrderItem BoEntity)
     {
         IMapper mapper = AutoMapper.OrderItemConfiguration.CreateMapper();
