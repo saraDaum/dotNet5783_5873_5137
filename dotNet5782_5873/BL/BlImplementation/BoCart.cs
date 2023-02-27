@@ -109,26 +109,32 @@ internal class BoCart : IBoCart
             return cart.ItemsInCart.ToList();
     }
 
-    //public int AddUser(BO.Cart cart, BO.)
+    //public int AddUser(BO.Cart cart,BO.Order order)
     //{
-    //    //לבדוק אם כבר המוצר כבר קיים ברשימת המוצרים- ואם כן,תוסיף בכמות של המוצר
-    //    if (cart.ItemsInCart.Any(x => x.Barcode == entity.Barcode))
+
+    //    if (cart.CustomerName.
     //    {
+    //    //    int index = cart.ItemsInCart.FindIndex(x => x.Barcode == entity.Barcode);
+    //    //    cart.ItemsInCart[index].Amount += entity.Amount;
+    //    //}
+    //    //else//תוסיף את המוצר לרשימת המוצרים
+    //    //{
+    //    //    cart.ItemsInCart.Add(entity);
+    //    }
 
 
+        //    } 
+        //}
+        // public string GetUser(Cart cart)
+        //{
+        //   new List<BO.Cart>()
 
-    //    } 
-    //}
-    // public string GetUser(Cart cart)
-    //{
-    //   new List<BO.Cart>()
-       
-    //    return
-    //}
+        //    return
+        //}
+    }
 
 
-
-    public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
+            public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
     {
         if(amount >= 0)
         {
@@ -144,3 +150,4 @@ internal class BoCart : IBoCart
     }
 
 }
+        
