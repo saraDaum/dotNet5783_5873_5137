@@ -40,7 +40,8 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+          new PayDetails(cart).Show();
+            this.Close();
         }
 
         private void ListView_SelectionChanged(object sender, MouseButtonEventArgs e)

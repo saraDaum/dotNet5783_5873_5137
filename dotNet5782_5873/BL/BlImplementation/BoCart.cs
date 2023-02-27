@@ -25,22 +25,20 @@ internal class BoCart : IBoCart
     /// <param name="entity"></param>
     /// <returns></returns>
     /// <exception cref="Exception"></exception>
-    public int Add(BO.Cart cart, BO.ProductItem entity)
+    public void Add(Cart cart, BO.ProductItem entity)
     {
-        //לבדוק אם כבר המוצר כבר קיים ברשימת המוצרים- ואם כן,תוסיף בכמות של המוצר
-        if (cart.ItemsInCart.Any(x => x.Barcode == entity.Barcode))
+
+        int index = cart.ItemsInCart.FindIndex(x => x.Barcode == entity.Barcode);
+        if (index != -1)
         {
-            int index = cart.ItemsInCart.FindIndex(x => x.Barcode == entity.Barcode);
             cart.ItemsInCart[index].Amount += entity.Amount;
         }
-        else//תוסיף את המוצר לרשימת המוצרים
+        else
         {
             cart.ItemsInCart.Add(entity);
         }
-        //בכל מקרה:
-        //לעדכן את הTOTAL-PRICE לפי הכמות והמחיר
         cart.TotalPrice += entity.Price * entity.Amount;
-        
+
 
 
         ////Update the new amount
@@ -64,7 +62,7 @@ internal class BoCart : IBoCart
         //        throw new Exception("The requested quantity of this product is not available");
         //}
 
-        return 0;
+
 
     }
 
@@ -76,10 +74,9 @@ internal class BoCart : IBoCart
     public void Delete(Cart cart, ProductItem entity)
     {
         //לבדוק את המוצר קיים ברשימה ולמחוק אם כן
-        if(cart.ItemsInCart.Any(x => x.Barcode == entity.Barcode))
+        if (cart.ItemsInCart.Any(x => x.Barcode == entity.Barcode))
         {
             cart.ItemsInCart.Remove(entity);
-            //לעדכן כמות
             cart.TotalPrice -= entity.Price * entity.Amount;
         }
     }
@@ -105,19 +102,28 @@ internal class BoCart : IBoCart
     {
         return cart.ItemsInCart.ToList();
     }
-    public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
+    public void ChangeAmount(Cart cart, int id, int amount)//id= Barcode
     {
-        if(amount >= 0)
+        if (amount >= 0)
         {
-            if(cart.ItemsInCart.Any(x=> x.Barcode == id))
+            int index = cart.ItemsInCart.FindIndex(x => x.Barcode == id);
+            if (index != -1)
             {
-                int index = cart.ItemsInCart.FindIndex(x=> x.Barcode == id);
-                cart.TotalPrice -= cart.ItemsInCart[index].Amount * cart.ItemsInCart[index].Price;
-                cart.ItemsInCart[index].Amount = amount;
-                cart.TotalPrice += amount * cart.ItemsInCart[index].Price;
+                cart.TotalPrice -= cart.ItemsInCart[index].Amount * cart.ItemsInCart[index].Price;//נוריד את המוצר מהעגלה
+                cart.ItemsInCart[index].Amount = amount;//נעדכן את הכמות החדשה
+                cart.TotalPrice += amount * cart.ItemsInCart[index].Price;//נעדכן את המחיר החדש
 
+            }
+        }
+        if (amount == 0)
+        {
+            bool isRemove = cart.ItemsInCart.Remove(cart.ItemsInCart.Find(item => item.Barcode == id));
+            if (!isRemove)
+            {
+                throw new Exception();
             }
         }
     }
 
+    
 }

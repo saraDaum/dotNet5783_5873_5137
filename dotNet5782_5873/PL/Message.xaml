@@ -7,21 +7,18 @@
         mc:Ignorable="d"
         Title="Message" Height="450" Width="800">
     <Grid Cursor="Wait">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="53*"/>
+            <RowDefinition Height="381*"/>
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="33*"/>
             <ColumnDefinition Width="367*"/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="Text" Content="" HorizontalAlignment="Left"  Height="372" Margin="-46,-32,0,0" VerticalAlignment="Top" Width="846" Background="#82F9F9F9" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.064"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <Button Content="O.K." HorizontalAlignment="Left" Height="56" Margin="32,359,0,0" VerticalAlignment="Top" Width="739" Click="Button_Click" Background="#FFB7B9C1" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="TextBlock"  HorizontalAlignment="Left"  Height="224" Margin="33,20,0,0"
+                   VerticalAlignment="Top" Width="738" Background="#82F9F9F9" 
+                   RenderTransformOrigin="0.5,0.5" Text="tghghghg" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <Button Content="O.K." HorizontalAlignment="Left" Height="56" Margin="32,306,0,0" VerticalAlignment="Top" Width="739" Click="Button_Click" Background="#FFB7B9C1" Grid.ColumnSpan="2" Grid.Row="1"/>
 
     </Grid>
 </Window>

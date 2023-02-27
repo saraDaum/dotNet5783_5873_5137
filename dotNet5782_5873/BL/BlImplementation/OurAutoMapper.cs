@@ -35,8 +35,9 @@ namespace BlImplementation
         .ForMember(b=> b.ProductPrice, a=> a.MapFrom(x=> x.Price))
         .ReverseMap()
         .ForMember(b => b.Price, a => a.MapFrom(x => x.ProductPrice))
+        .ForMember(b => b.Name, a => a.MapFrom(x => x.ProductName))
         .ForMember(b => b.Amount, a=> a.MapFrom(x=> 1))
-        .ForMember(b => b.InStock, a => a.MapFrom(x => x.Amount > 3))
+        .ForMember(b => b.InStock, a => a.MapFrom(x => x.Amount > 0))
 
            );
 
