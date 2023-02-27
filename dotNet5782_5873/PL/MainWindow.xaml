@@ -13,11 +13,11 @@
                 <GradientStop Color="#FFFBD4D4" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <Button Content="Enter to products" HorizontalAlignment="Left" Margin="55,254,0,0" VerticalAlignment="Top" Height="44" Width="170" Click="Button_Click" Background="#FFB2CE77"/>
-       
-        <Button Content="Manager" HorizontalAlignment="Left" Height="43" Margin="55,160,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click_1" Background="#FFBCDA71"/>
+        <Button Content="Enter to products" HorizontalAlignment="Left" Margin="94,285,0,0" VerticalAlignment="Top" Height="56" Width="170" Click="Button_Click" Background="#FFB2CE77"/>
+
+        <Button Content="Manager" HorizontalAlignment="Left" Height="55" Margin="94,0,0,0" VerticalAlignment="Center" Width="170" Click="Button_Click_1" Background="#FFBCDA71"/>
         <local:AuthUC x:Name="uc" Visibility="Hidden" />
-        <Button   Content="StatosOrder" Margin="58,64,575,319" Click="Button_Click_2" Background="#FFC1E68E"/>
+        <Button   Content="StatosOrder" Margin="96,97,536,283" Click="Button_Click_2" Background="#FFC1E68E"/>
 
     </Grid>
 </Window>

@@ -13,7 +13,7 @@
                 <GradientStop Color="#FFF1B5B5" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
-        <ListView x:Name="CartList"  RenderTransformOrigin="0.5,0.5" Margin="75,67,121,124" MouseDoubleClick="ListView_SelectionChanged">
+        <ListView x:Name="CartList"  RenderTransformOrigin="0.5,0.5" Margin="75,67,121,124" MouseDoubleClick="ListView_SelectionChanged" SelectionChanged="CartList_SelectionChanged">
             
             
         </ListView>

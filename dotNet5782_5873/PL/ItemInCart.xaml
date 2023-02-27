@@ -7,16 +7,29 @@
         mc:Ignorable="d"
         Title="ItemInCart" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="#FFD69494" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
         <Label x:Name="DataLabel" Content="" HorizontalAlignment="Left" Height="88" Margin="281,155,0,0" VerticalAlignment="Top" Width="159"/>
-        <Button x:Name="ChangeAmountButton" Content="Confirm" HorizontalAlignment="Left" Margin="74,193,0,191" Width="60" Click="ChangeAmountButton_Click"/>
-        <TextBox x:Name="AmountTxtbx" HorizontalAlignment="Left" Margin="74,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="58" Height="44"/>
-        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="75,323,0,0" VerticalAlignment="Top" Height="44" Width="58" Click="DeleteButton_Click"/>
-        <Label Content="DeleteLabel" HorizontalAlignment="Left" Margin="75,267,0,0" VerticalAlignment="Top" Width="114"/>
-        <Label x:Name="label1" Content="Enter The Amount You Choose:" HorizontalAlignment="Left" Margin="34,107,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="ChangeAmountButton" Content="Confirm" HorizontalAlignment="Left" Margin="74,193,0,191" Width="134" Click="ChangeAmountButton_Click" Background="#FFC0EC9D"/>
+        <TextBox x:Name="AmountTxtbx" HorizontalAlignment="Left" Margin="74,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="134" Height="44" Background="#FFBDE08E"/>
+        <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="75,323,0,0" VerticalAlignment="Top" Height="44" Width="133" Click="DeleteButton_Click" Background="#FFC6F5A0"/>
+        <Label Content="DeleteLabel" HorizontalAlignment="Left" Margin="75,267,0,0" VerticalAlignment="Top" Width="162"/>
+        <Label x:Name="label1" Content="Enter The Amount You Choose:" HorizontalAlignment="Left" Margin="34,107,0,0" VerticalAlignment="Top" Foreground="#FFDABABA">
+            <Label.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="#FFCE9292" Offset="1"/>
+                </LinearGradientBrush>
+            </Label.BorderBrush>
+        </Label>
 
     </Grid>
 </Window>

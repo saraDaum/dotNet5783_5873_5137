@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Data.Common;
 using AutoMapper;
 using BO;
+using System.Xml.Serialization;
 
 namespace BlImplementation;
 
@@ -68,7 +69,6 @@ internal class BoCart : IBoCart
 
     }
 
-
     /// <summary>
     /// This function clear the customer cart
     /// </summary>
@@ -101,10 +101,33 @@ internal class BoCart : IBoCart
     //    }
     //    return Tuple.Create(allItemsInCart, myCart.TotalPrice);
     //}
-    public List<BO.ProductItem> GetAll(BO.Cart cart)
+    public List<BO.ProductItem>GetAll(BO.Cart cart)
+        
     {
-        return cart.ItemsInCart.ToList();
+        if (cart.ItemsInCart.First().Barcode == null)
+            return new List<BO.ProductItem>(); 
+            return cart.ItemsInCart.ToList();
     }
+
+    //public int AddUser(BO.Cart cart, BO.)
+    //{
+    //    //לבדוק אם כבר המוצר כבר קיים ברשימת המוצרים- ואם כן,תוסיף בכמות של המוצר
+    //    if (cart.ItemsInCart.Any(x => x.Barcode == entity.Barcode))
+    //    {
+
+
+
+    //    } 
+    //}
+    // public string GetUser(Cart cart)
+    //{
+    //   new List<BO.Cart>()
+       
+    //    return
+    //}
+
+
+
     public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
     {
         if(amount >= 0)

@@ -1,0 +1,21 @@
+﻿<Window x:Class="PL.confirm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PL"
+        mc:Ignorable="d"
+        Title="confirm" Height="450" Width="800">
+    <Grid>
+        <ListView x:Name="ListProductConfirm" Margin="299,35,31,21" SelectionChanged="ListView_SelectionChanged_2" >
+
+        </ListView>
+        <ListView x:Name="ListUserConfirm" Margin="28,107,524,122" SelectionChanged="ListView_SelectionChanged_1" >
+
+        </ListView>
+        <Label x:Name="TotalPriceLabel" HorizontalAlignment="Left" Height="60" Margin="101,329,0,0" VerticalAlignment="Top" Width="299"/>
+        <Button Content="To continue in shoping" HorizontalAlignment="Left" Margin="28,35,0,0" VerticalAlignment="Top" Height="44" Width="144"/>
+        <Button Content="O.K" HorizontalAlignment="Left" Margin="97,341,0,0" VerticalAlignment="Top" Height="48" Width="87"/>
+
+    </Grid>
+</Window>

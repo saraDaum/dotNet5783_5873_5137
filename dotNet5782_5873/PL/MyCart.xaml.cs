@@ -40,13 +40,18 @@ namespace PL
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
+           new confirm(cart).Show();
         }
 
         private void ListView_SelectionChanged(object sender, MouseButtonEventArgs e)
         {
             new ItemInCart(cart, (BO.ProductItem)CartList.SelectedItem).Show();
             Close();
+        }
+
+        private void CartList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
