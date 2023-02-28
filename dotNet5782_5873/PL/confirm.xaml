@@ -14,8 +14,8 @@
 
         </ListView>
         <Label x:Name="TotalPriceLabel" HorizontalAlignment="Left" Height="60" Margin="101,329,0,0" VerticalAlignment="Top" Width="299"/>
-        <Button Content="To continue in shoping" HorizontalAlignment="Left" Margin="28,35,0,0" VerticalAlignment="Top" Height="44" Width="144"/>
-        <Button Content="O.K" HorizontalAlignment="Left" Margin="97,341,0,0" VerticalAlignment="Top" Height="48" Width="87"/>
+        <Button Content="To continue in shoping" HorizontalAlignment="Left" Margin="28,35,0,0" VerticalAlignment="Top" Height="44" Width="144" Click="Button_Click"/>
+        <Button Content="O.K" HorizontalAlignment="Left" Margin="97,341,0,0" VerticalAlignment="Top" Height="48" Width="87" Click="Button_Click_1"/>
 
     </Grid>
 </Window>
