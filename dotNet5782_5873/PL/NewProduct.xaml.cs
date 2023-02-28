@@ -39,9 +39,9 @@ namespace PL
             }
 
         }
-        public NewProduct(Cart cartt):this()
+        public NewProduct(Cart cart):this()
         {
-            cart = cartt;
+            cart = cart;
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
         }

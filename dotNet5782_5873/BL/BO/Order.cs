@@ -25,7 +25,7 @@ namespace BO
         /// <summary>
         /// The email address of the orderer
         /// </summary>
-        public string? CustomerEmail { get; set; }
+        public string CustomerEmail { get; set; }
 
         /// <summary>
         /// The Address of the orderer
@@ -52,7 +52,7 @@ namespace BO
         /// </summary>
         /// <returns></returns>
         public override string ToString() => $@"
-    Order details:\n
+   
     Order number: {ID}, 
     {nameof(CustomerName)}: {CustomerName},
     {nameof(CustomerAddress)}: {CustomerAddress}

@@ -21,16 +21,17 @@ namespace PL
     {
         public Message(string message, string type)
         {
-
             InitializeComponent();
-            Text.Content = message;
+            TextBlock.Text = message;
+            
+
             switch (type)
             {
                 case "alert":
-                    Text.Background = Brushes.Red;
+                    TextBlock.Background = Brushes.Red;
                     break;
                 case "info":
-                    Text.Background = Brushes.Green;
+                    TextBlock.Background = Brushes.Green;
                     break;
 
                 default:

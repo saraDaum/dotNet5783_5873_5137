@@ -5,14 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Manager" Height="450" Width="800">
-    <Grid>
-        <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="Black"/>
-                <GradientStop Color="#FFF3BCBC" Offset="1"/>
-            </LinearGradientBrush>
-        </Grid.Background>
+        Title="Manager" Height="450" Width="800" Background="#FFABA5A5">
+    <Grid Background="#FFA5A5A5">
         <Button Content="Product" HorizontalAlignment="Center" Margin="0,138,0,0" VerticalAlignment="Top" Height="79" Width="200" Click="Button_Click_1" Background="#FFCEE69C"/>
         <Button Content="Order" HorizontalAlignment="Center" Margin="0,261,0,0" VerticalAlignment="Top" Height="79" Width="199" Background="#FFC3E299"/>
     </Grid>
