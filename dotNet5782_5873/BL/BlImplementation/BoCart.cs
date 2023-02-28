@@ -67,6 +67,8 @@ internal class BoCart : IBoCart
 
     }
 
+    
+
     /// <summary>
     /// This function clear the customer cart
     /// </summary>
@@ -120,18 +122,15 @@ internal class BoCart : IBoCart
     //    }
 
 
-        //    } 
-        //}
-        // public string GetUser(Cart cart)
-        //{
-        //   new List<BO.Cart>()
+    //    } 
+    //}
+    // public string GetUser(Cart cart)
+    //{
+    //   new List<BO.Cart>()
 
-        //    return
-        //}
-    }
-
-
-            public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
+    //    return
+    //}
+    public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
     {
         if (amount >= 0)
         {
