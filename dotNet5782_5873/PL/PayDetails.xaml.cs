@@ -48,7 +48,7 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (Digits != null && CreditDate != null && CreditNumber != null)
+            if (Digits != null && CreditDate != null && CreditNumber != null)//What happend???
             {  
                 allProducts = bl.Product.Get(item => item.Barcode == item.Barcode);
                 foreach (BO.ProductItem item in cart.ItemsInCart)
