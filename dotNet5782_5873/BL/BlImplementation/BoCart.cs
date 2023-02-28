@@ -69,6 +69,8 @@ internal class BoCart : IBoCart
 
     }
 
+    
+
     /// <summary>
     /// This function clear the customer cart
     /// </summary>
@@ -123,31 +125,33 @@ internal class BoCart : IBoCart
     //    }
 
 
-        //    } 
-        //}
-        // public string GetUser(Cart cart)
-        //{
-        //   new List<BO.Cart>()
+    //    } 
+    //}
+    // public string GetUser(Cart cart)
+    //{
+    //   new List<BO.Cart>()
 
-        //    return
-        //}
-    }
-
-
-            public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
+    //    return
+    //}
+    public void ChangeAmount(Cart cart, int id, int amount)//Why ID?
     {
-        if(amount >= 0)
+        if (amount >= 0)
         {
-            if(cart.ItemsInCart.Any(x=> x.Barcode == id))
+            if (cart.ItemsInCart.Any(x => x.Barcode == id))
             {
-                int index = cart.ItemsInCart.FindIndex(x=> x.Barcode == id);
+                int index = cart.ItemsInCart.FindIndex(x => x.Barcode == id);
                 cart.TotalPrice -= cart.ItemsInCart[index].Amount * cart.ItemsInCart[index].Price;
                 cart.ItemsInCart[index].Amount = amount;
                 cart.TotalPrice += amount * cart.ItemsInCart[index].Price;
 
             }
         }
-    }
 
+
+    }
 }
+
+
+
+
         

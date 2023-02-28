@@ -31,6 +31,9 @@ namespace PL
             ListProductConfirm.ItemsSource = bl.Cart.GetAll(cart);
             //ListUserConfirm.ItemsSource= 
             TotalPriceLabel.Content = cart.TotalPrice.ToString() + "$";
+            name.Content = cart.CustomerName;
+            Adress.Content = cart.CustomerAddress;
+            Mail.Content = cart.CustomerEmail;
           
         }
 
