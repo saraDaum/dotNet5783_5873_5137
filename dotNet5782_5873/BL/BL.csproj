@@ -13,12 +13,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\DAL_Facade\DAL_Facade.csproj" />
-	  <ProjectReference Include="..\DAL_List\DalList.csproj" />
+		<ProjectReference Include="..\DAL_Facade\DAL_Facade.csproj" />
+		<ProjectReference Include="..\DAL_List\DalList.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="AutoMapper" Version="12.0.1" />
+		<PackageReference Include="AutoMapper" Version="12.0.1" />
 	</ItemGroup>
 
 

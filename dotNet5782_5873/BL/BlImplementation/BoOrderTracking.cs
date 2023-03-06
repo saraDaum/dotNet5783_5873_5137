@@ -31,7 +31,7 @@ internal class BoOrderTracking : IBoOrderTracking
     {
         var v = from item in initList
                 let average = item.ID
-                where average < 80
+                where average < 80 //Only to use all options in quries... 😊😊
                 orderby item.ID descending
                 select new
                 { id = item.ID, Status = item.Status, Average = average };

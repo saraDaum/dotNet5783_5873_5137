@@ -5,13 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
-        Title="Manager" Height="450" Width="800">
-    <Grid>
-        <Label Content="ProductForList" Margin="53,39,43,249" Background="Gray"/>
-        <Label Content="OrderForList" Margin="53,237,43,45" Background="Gray"/>
-        <Button Content="UpdetProduct" HorizontalAlignment="Left" Margin="245,73,0,0" VerticalAlignment="Top" Height="79" Width="199" Click="Button_Click_1"/>
-        <Button Content="AddProduct" HorizontalAlignment="Left" Margin="519,73,0,0" VerticalAlignment="Top" Height="79" Width="196" Click="Button_Click"/>
-        <Button Content="ShowOrder" HorizontalAlignment="Left" Margin="245,274,0,0" VerticalAlignment="Top" Height="79" Width="199"/>
-        <Button Content="UpdateOrder" HorizontalAlignment="Left" Margin="519,274,0,0" VerticalAlignment="Top" Height="79" Width="196"/>
+        Title="Manager" Height="450" Width="800" Background="#FFABA5A5">
+    <Grid Background="#FFA5A5A5">
+        <Button Content="Product" HorizontalAlignment="Center" Margin="0,138,0,0" VerticalAlignment="Top" Height="79" Width="200" Click="Button_Click_1" Background="#FFCEE69C"/>
+        <Button Content="Order" HorizontalAlignment="Center" Margin="0,261,0,0" VerticalAlignment="Top" Height="79" Width="199" Background="#FFC3E299"/>
     </Grid>
 </Window>

@@ -37,16 +37,34 @@ namespace PL
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(NameTxt.Text!="" && EmailTxt.Text!="" && AddressTxt.Text!="")
-            { 
-            BO.Cart cart= new BO.Cart();
-            cart.CustomerName = NameTxt.Text;
-            cart.CustomerEmail = EmailTxt.Text; 
-            cart.CustomerAddress = AddressTxt.Text;
+            bool flag = true;
+            if (NameTxt.Text != "" && EmailTxt.Text != "" && AddressTxt.Text != "")
+            {
+                BO.Cart cart = new BO.Cart();
+                cart.CustomerName = NameTxt.Text;
+                if (EmailTxt.Text.Contains("@gmail.com"))
+                {
+                    cart.CustomerEmail = EmailTxt.Text;
 
-                new PL.Product.ListView(bl, cart).Show();
+                }
+                else
+                {
+                    new Message("Please enter valid email address", "alert").Show();
+                    flag = false;
+                }
+                cart.CustomerAddress = AddressTxt.Text;
+                if (flag)
+                {
+                    new UserView(cart).Show();
+                    Close();
+                }
             }
-        
+            else
+            {
+                Message myMessage = new Message("Some details seem to be missing", "alert");
+                myMessage.Show();
+            }
+
         }
 
         private void AddressTxt_TextChanged(object sender, TextChangedEventArgs e)

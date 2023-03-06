@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using ListView = PL.Product.ListView;
 
+
 namespace PL
 {
     /// <summary>
@@ -28,16 +29,19 @@ namespace PL
         BO.Cart cart;
         public NewProduct()
         {
+            InitializeComponent();
+            Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
             if (!Authentication.IsManager)
             {
                 this.Close();
-                MessageBox.Show("משתמש אינו מורשה להוסיף מוצר");
+              Message myMessage = new Message("User is not authorized to add a product", "alert");
+              myMessage.ShowDialog();
             }
 
         }
-        public NewProduct(Cart cartt):this()
+        public NewProduct(Cart cart):this()
         {
-            cart = cartt;
+            cart = cart;
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
         }
@@ -78,9 +82,15 @@ namespace PL
                 
                 //Add product to list
                 try
-                {
+                {                                                                              
                     int i = bl.Product.Add(product);
-                    Message.Visibility = Visibility.Visible;    
+                    if (i > 0)
+                    {
+                        Message myMessage = new Message("The product has been successfully added", "info");
+                        myMessage.ShowDialog();
+                        this.Close();
+                    }
+                   // Message.Visibility = Visibility.Visible;    
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
                 }
                 catch
@@ -89,6 +99,11 @@ namespace PL
                     //אפשר לספר למשתמש על התקלה או מה שבא לנו אם לא מה שעושה ה"קטץ" זה שהתוכנית תמשיך לרוץ
                 }
 
+            }
+            else
+            {
+                Message myMessage = new Message("Some details seem to be missing", "alert");
+                myMessage.ShowDialog();
             }
         }
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
@@ -107,7 +122,8 @@ namespace PL
                 {
                     bl.Product.Update(product);
                     new ListView(bl).Show();
-                   
+                    Close();
+
                 }
                 catch
                 {
@@ -116,7 +132,11 @@ namespace PL
                 }
 
             }
-
+            else
+            {
+                Message myMessage = new Message("Some details seem to be missing", "alert");
+                myMessage.ShowDialog();
+            }
         }
 
 

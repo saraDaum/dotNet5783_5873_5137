@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Enter to products" HorizontalAlignment="Left" Margin="55,254,0,0" VerticalAlignment="Top" Height="44" Width="170" Click="Button_Click" Background="#FF2568B3"/>
-       
-        <Button Content="Manager" HorizontalAlignment="Left" Height="43" Margin="55,160,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click_1"/>
+    <Grid Background="#FFC1C1C1">
+        <Button Content="Enter to products" HorizontalAlignment="Left" Margin="55,254,0,0" VerticalAlignment="Top" Height="44" Width="170" Click="Button_Click" Background="#FFB2CE77"/>
+
+        <Button Content="Manager" HorizontalAlignment="Left" Height="43" Margin="55,160,0,0" VerticalAlignment="Top" Width="170" Click="Button_Click_1" Background="#FFBCDA71"/>
         <local:AuthUC x:Name="uc" Visibility="Hidden" />
-        <Button   Content="StatosOrder" Margin="58,64,575,319" Click="Button_Click_2"/>
+        <Button   Content="Order status" Margin="58,64,575,319" Click="Button_Click_2" Background="#FF95D079"/>
 
     </Grid>
 </Window>

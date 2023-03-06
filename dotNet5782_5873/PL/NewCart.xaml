@@ -6,17 +6,19 @@
         xmlns:local="clr-namespace:PL"
         mc:Ignorable="d"
         Title="NewCart" Height="450" Width="800">
-    <Grid>
+    <Grid Background="#FFBDB8B8">
         <Grid.RowDefinitions>
             <RowDefinition Height="219*"/>
             <RowDefinition Height="153*"/>
             <RowDefinition Height="17*"/>
             <RowDefinition Height="45*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="NameTxt"  TextWrapping="Wrap"   Margin="210,51,466,20" RenderTransformOrigin="0.462,0.326" Background="Bisque"/>
-        <TextBox x:Name="EmailTxt"  TextWrapping="Wrap"    Margin="210,113,466,57" RenderTransformOrigin="0.462,0.326" Background="Bisque" Grid.RowSpan="2"/>
-        <Label Content="adress" Margin="627,10,10,5" Grid.RowSpan="2"/>
-        <TextBox x:Name="AddressTxt"  TextWrapping="Wrap"   Margin="210,175,264,7" RenderTransformOrigin="0.462,0.326" Background="Bisque" TextChanged="AddressTxt_TextChanged" Grid.RowSpan="2"/>
+        <Label Content="Name" Margin="160,47,556,83" RenderTransformOrigin="-0.246,0.646" Background="Gray"/>
+        <TextBox x:Name="NameTxt"  TextWrapping="Wrap"   Margin="270,47,270,83" RenderTransformOrigin="0.462,0.326" Background="Bisque"/>
+        <Label Content="Email" Margin="160,164,556,126" RenderTransformOrigin="-0.246,0.646" Background="Gray" Grid.RowSpan="2"/>
+        <TextBox x:Name="EmailTxt"  TextWrapping="Wrap"    Margin="269,164,270,126" RenderTransformOrigin="0.462,0.326" Background="Bisque" Grid.RowSpan="2"/>
+        <Label Content="Adress" Margin="160,61,556,10" RenderTransformOrigin="-0.246,0.646" Background="Gray" Grid.Row="1"/>
+        <TextBox  x:Name="AddressTxt"  TextWrapping="Wrap"   Margin="269,61,270,10" RenderTransformOrigin="0.462,0.326" Background="Bisque" TextChanged="AddressTxt_TextChanged" Grid.Row="1"/>
         <Button Content="Button" Click="Button_Click" Margin="320,9,374,11" Grid.Row="2" Grid.RowSpan="2"/>
 
     </Grid>

@@ -84,8 +84,8 @@ internal class BoProduct : IBoProduct
                 DO.Product DoProduct = mapper.Map<BO.Product, DO.Product>(MyBoProduct);
                 dal.Product.Update(DoProduct);
             }
-            else
-                throw new Exception();
+           
+           
         }
         catch (Exception ex)
         {

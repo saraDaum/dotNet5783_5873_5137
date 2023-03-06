@@ -19,6 +19,7 @@ public class Application
     {
         try
         {
+           
             IDal? DalListVar = Factory.Get();
             Order myOrder = new Order
             {
@@ -33,7 +34,7 @@ public class Application
                 ProductName = "Revlon lipstick",
                 Category = 0,
                 ProductPrice = 45,
-                AmountInStock = 13,
+                Amount = 13,
 
             };
 

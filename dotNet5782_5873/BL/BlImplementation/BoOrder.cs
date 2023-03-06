@@ -10,6 +10,7 @@ using DO;
 using System.Reflection.Metadata.Ecma335;
 using BO;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BlImplementation;
 
@@ -29,7 +30,7 @@ internal class BoOrder : IBoOrder
         if (AllDoOrders.Count() > 0)
         {
             IEnumerable<BO.Order> AllBoOrders = AllDoOrders.Select(item => mapper.Map<BO.Order>(item));
-          
+
         }
         return AllBoOrders;
     }
@@ -64,18 +65,11 @@ internal class BoOrder : IBoOrder
     /// <returns></returns>
     public BO.Order GetById(int id)
     {
-        try
-        {
-            IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
-            IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID == id);
-            BO.Order myBoOrder = new BO.Order();
-            myBoOrder = mapper.Map<BO.Order>(DoOrder);
-            return myBoOrder;
-        }
-        catch (Exception ex)
-        {
-            throw new somethingWrong("--------------", ex);
-        }
+        IMapper mapper = AutoMapper.OrderConfiguration.CreateMapper();
+        IEnumerable<DO.Order>? DoOrder = dal.Order.Get(item => item.ID == id);
+        BO.Order myBoOrder = new BO.Order();
+        myBoOrder = mapper.Map<BO.Order>(DoOrder);
+        return myBoOrder;
     }
 
     /// <summary>
@@ -131,9 +125,36 @@ internal class BoOrder : IBoOrder
         throw new NotImplementedException();
     }
 
-    /*public BO.Order GetAnObject(Predicate<BO.Order> myDelegate)
+    public int CreateOrder(Cart cart)
     {
-        return OrderList.Find(myDelegate);
-    }*/
-    //
+        IBl bl = BlApi.Factory.Get();
+        BO.Order order = new BO.Order(); //ליצר הזמנה חדשה שהפרטים האישיים תואמים לפרטים שבסל
+        order.CustomerName = cart.CustomerName;
+        order.CustomerEmail = cart.CustomerEmail;
+        order.CustomerAddress = cart.CustomerAddress;
+        order.OrderDate = DateTime.Now;
+        order.ShipDate = DateTime.Now;
+
+        int ID = Add(order);
+        foreach (BO.ProductItem item in cart.ItemsInCart)                         //ליצר OrderItems מתתוך הרשימה שבסל
+        {
+            bl.OrderItem.Add(create(item, order.ID));
+        }
+        //כל OrderItem לשלוח לפונקציה ADD של ORDER-ITEM
+
+        return ID;
+    }
+
+    private BO.OrderItem create(BO.ProductItem entity, int id)
+    {
+        BO.OrderItem newEntity = new();
+        newEntity.ProductID = entity.Barcode;
+        newEntity.OrderID = id;
+        newEntity.Amount = entity.Amount;
+        newEntity.ProductPrice = entity.Price;
+        return newEntity;
+    }
+
+
+   
 }
