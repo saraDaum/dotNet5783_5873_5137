@@ -62,8 +62,8 @@ namespace PL
                     else
                     {
                         if (flag == 0)
-                            new Message("We are sorry, but the requested quantity of" +item.Name + "is not in stock", "alert").Show();
-                        this.Close();
+                            MessageBox.Show("We are sorry, but the requested quantity of" + item.Name + "is not in stock", "Error");
+                        Close();
                         
                         flag++;
 

@@ -49,7 +49,7 @@ namespace PL
                 }
                 else
                 {
-                    new Message("Please enter valid email address", "alert").Show();
+                    MessageBox.Show("Please enter valid email address", "Error");
                     flag = false;
                 }
                 cart.CustomerAddress = AddressTxt.Text;
@@ -60,10 +60,8 @@ namespace PL
                 }
             }
             else
-            {
-                Message myMessage = new Message("Some details seem to be missing", "alert");
-                myMessage.Show();
-            }
+                MessageBox.Show("Some details seem to be missing", "Error");
+
 
         }
 

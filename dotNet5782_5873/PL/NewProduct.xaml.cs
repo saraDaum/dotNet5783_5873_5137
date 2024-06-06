@@ -33,19 +33,18 @@ namespace PL
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
             if (!Authentication.IsManager)
             {
-                this.Close();
-              Message myMessage = new Message("User is not authorized to add a product", "alert");
-              myMessage.ShowDialog();
+                Close();
+                MessageBox.Show("User is not authorized to add a product", "Error");
             }
 
         }
-        public NewProduct(Cart cart):this()
+        public NewProduct(Cart cart) : this()
         {
             cart = cart;
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
         }
-        public NewProduct(BO.Product product):this()
+        public NewProduct(BO.Product product) : this()
         {
             InitializeComponent();
             Selector.ItemsSource = Enum.GetValues(typeof(DO.Category));
@@ -69,7 +68,7 @@ namespace PL
         }
         //הפונקציה שקוראת כשלוחצים אישור על הוספת הפריט
         private void Button_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             //Check that fields doesn't empty 
             if (Nametxb.Text != "" && Pricetxb.Text != null && Amounttxb.Text != null && CategoryTxb.Text != null)//null or ""
             {
@@ -79,18 +78,17 @@ namespace PL
                 product.ProductPrice = int.Parse(Pricetxb.Text);
                 product.AmountInStock = int.Parse(Amounttxb.Text);
                 product.Category = (DO.Category)Selector.SelectedItem;
-                
+
                 //Add product to list
                 try
-                {                                                                              
+                {
                     int i = bl.Product.Add(product);
                     if (i > 0)
                     {
-                        Message myMessage = new Message("The product has been successfully added", "info");
-                        myMessage.ShowDialog();
-                        this.Close();
+                        MessageBox.Show("The product has been successfully added", "Information");
+                        Close();
                     }
-                   // Message.Visibility = Visibility.Visible;    
+                    // Message.Visibility = Visibility.Visible;    
                     // מה יקרה עכשיו: החלון יסגר ויחזור לתצוגה הראשית או הודעה או כל דבר אחר...
                 }
                 catch
@@ -101,10 +99,9 @@ namespace PL
 
             }
             else
-            {
-                Message myMessage = new Message("Some details seem to be missing", "alert");
-                myMessage.ShowDialog();
-            }
+
+                MessageBox.Show("Some details seem to be missing", "Error");
+
         }
         private void UpdateButtonClick(object sender, RoutedEventArgs e)
         {
@@ -116,7 +113,7 @@ namespace PL
                 product.ProductName = Nametxb.Text;
                 product.ProductPrice = int.Parse(Pricetxb.Text);
                 product.AmountInStock = int.Parse(Amounttxb.Text);
-                product.Category =(DO.Category)Selector.SelectedItem;
+                product.Category = (DO.Category)Selector.SelectedItem;
                 //מוסיפים את המוצר לרשימה
                 try
                 {
@@ -134,8 +131,7 @@ namespace PL
             }
             else
             {
-                Message myMessage = new Message("Some details seem to be missing", "alert");
-                myMessage.ShowDialog();
+                MessageBox.Show("Some details seem to be missing", "Error");
             }
         }
 

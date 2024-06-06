@@ -67,7 +67,7 @@ internal class BoCart : IBoCart
 
     }
 
-    
+
 
     /// <summary>
     /// This function clear the customer cart
@@ -100,12 +100,12 @@ internal class BoCart : IBoCart
     //    }
     //    return Tuple.Create(allItemsInCart, myCart.TotalPrice);
     //}
-    public List<BO.ProductItem>GetAll(BO.Cart cart)
-        
+    public List<BO.ProductItem> GetAll(BO.Cart cart)
+
     {
         if (cart.ItemsInCart.First().Barcode == null)
-            return new List<BO.ProductItem>(); 
-            return cart.ItemsInCart.ToList();
+            return new List<BO.ProductItem>();
+        return cart.ItemsInCart.ToList();
     }
 
     //public int AddUser(BO.Cart cart,BO.Order order)
@@ -153,6 +153,5 @@ internal class BoCart : IBoCart
         }
     }
 
-    
+
 }
-        
