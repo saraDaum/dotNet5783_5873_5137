@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\dotNet5782_5873",
+    "\\dotNet5782_5873\\BL",
+    "\\dotNet5782_5873\\BL\\BlApi"
   ],
-  "SelectedNode": "\\dotNet5782_5873.sln",
+  "SelectedNode": "\\dotNet5782_5873\\BL\\BlApi\\IBoMapper.cs",
   "PreviewInSolutionExplorer": false
 }
