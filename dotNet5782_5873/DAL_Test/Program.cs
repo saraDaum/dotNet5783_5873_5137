@@ -13,8 +13,6 @@ using System.Xml;
 
 public class Application
 {
-
-
     public static void Main(string[] args)
     {
         try
@@ -261,23 +259,23 @@ public class Application
         }
         catch (EntityNotFoundException ex)
         {
-            Console.WriteLine("EntityNotFoundException");
+            Console.WriteLine("EntityNotFoundException: ", ex);
         }
         catch (InvalidEntityException ex)
         {
-            Console.WriteLine("InvalidEntityException");
+            Console.WriteLine("InvalidEntityException: ", ex);
         }
         catch (FailedToConvertException ex)
         {
-            Console.WriteLine("FailedToConvertException");
+            Console.WriteLine("FailedToConvertException: ", ex);
         }
         catch (DuplicateIdException ex)
         {
-            Console.WriteLine("DuplicateIdException");
+            Console.WriteLine("DuplicateIdException: ", ex);
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Exception");
+            Console.WriteLine("Exception: ", ex);
         }
     }
 
